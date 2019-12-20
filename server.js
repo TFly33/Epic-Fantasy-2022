@@ -1,6 +1,8 @@
 const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
+const teamRoutes = require("./routes/TeamRoutes");
+const myTeamRoutes = require("./routes/MyTeams");
 const app = express();
 
 // Define middleware here
@@ -12,6 +14,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
+app.use(teamRoutes);
+app.use(myTeamRoutes);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/EpicFantasyLeague");
 
 // Send every other request to the React app
 // Define any API routes before this runs

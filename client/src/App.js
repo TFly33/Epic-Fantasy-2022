@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/Home";
-
-
+import MyTeams from "./pages/MyTeams";
+// This currently isn't working
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
 
@@ -12,6 +13,9 @@ class App extends Component {
         <Router>
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/home" component={Home}></Route>
+          <Route exact path="/MyTeams" component={MyTeams}></Route>
+          {/* ADD THE LOGIN PAGE BELOW */}
+          {/* <Route exact path="/Login" component={Login}></Route> */}
         </Router>
       </div>
     );

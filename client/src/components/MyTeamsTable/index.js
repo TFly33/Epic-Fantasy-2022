@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import "./Table.css";
-import API from "../../utils/API"
+import "./MyTeamsTable.css";
 
 // This table is being used for the Home Page currently, but not for the My Teams page. I am going to create that table separately. 
 
-class Table extends Component {
+class MyTeamsTable extends Component {
     constructor(props) {
         super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
         this.state = {
@@ -24,19 +23,6 @@ class Table extends Component {
         }
     }
 
-    componentDidMount() {
-        // this.getTeams();
-    };
-
-    getTeams = () => {
-        API.getTeams()
-            .then(res =>
-                this.setState({ teams: res.data })
-            )
-            .catch(err => console.log(err));
-    }
-
-
     returnTable() {
         return this.state.teams.map((teams, index) => {
             const { id, name, EPL, NFL, NHL, NBA, MLB, Points } = teams //Here is a destructuring of the teams list. 
@@ -54,6 +40,7 @@ class Table extends Component {
             )
         })
     }
+
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
         return (
             <div className="container">
@@ -82,4 +69,4 @@ class Table extends Component {
 }
 
 // Let's export the table.
-export default Table;
+export default MyTeamsTable;
