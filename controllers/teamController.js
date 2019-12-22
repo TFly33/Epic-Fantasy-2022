@@ -1,6 +1,6 @@
 const db = require("../models");
 
-// Defining methods for the TeamsController
+// Defining methods for the TeamsController. Going to keep all these different options for now in case I end up using them, but right now just need findAll basically. 
 module.exports = {
   findAll: function(req, res) {
     db.Team

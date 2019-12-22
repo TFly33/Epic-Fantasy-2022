@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const myTeamController = require("../../controllers/MyTeamsController");
+const myTeamController = require("./../controllers/MyTeamsController");
 
 // Matches with "/api/team"
 router.route("/api/myteam")

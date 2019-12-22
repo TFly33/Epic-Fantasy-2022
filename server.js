@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 3001;
 const teamRoutes = require("./routes/TeamRoutes");
 const myTeamRoutes = require("./routes/MyTeams");
 const app = express();
+const mongoose = require("mongoose");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -16,7 +17,11 @@ if (process.env.NODE_ENV === "production") {
 // Define API routes here
 app.use(teamRoutes);
 app.use(myTeamRoutes);
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/EpicFantasyLeague");
+
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/EpicFantasyLeague";
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Send every other request to the React app
 // Define any API routes before this runs
