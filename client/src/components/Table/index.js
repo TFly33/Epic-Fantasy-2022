@@ -12,6 +12,7 @@ class Table extends Component {
         allTeams: [],
         allNBA: [],
         tomNBA: "",
+        patrickNBA: "",
     }
 
     componentDidMount() {
@@ -23,31 +24,54 @@ class Table extends Component {
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {
+                // HERE ARE NBA TEAMS FOR TOMMY. 
                 console.log(res);
                 console.log(res.data.api.standings);
-                var heatWin = res.data.api.standings[0].win;
-                var netsWin = res.data.api.standings[1].win;
-                var spursWin = res.data.api.standings[2].win;
+                var heatWin = res.data.api.standings[2].win;
+                var netsWin = res.data.api.standings[8].win;
+                var spursWin = res.data.api.standings[16].win;
 
-                const tempNBA = this.state.allNBA;
+                const tempTomNBA = this.state.allNBA;
 
-                tempNBA.push(heatWin);
-                tempNBA.push(netsWin);
-                tempNBA.push(spursWin);
+                tempTomNBA.push(heatWin);
+                tempTomNBA.push(netsWin);
+                tempTomNBA.push(spursWin);
 
-                var doubledScores = tempNBA.map(team => team * 2);
+                var tomDoubledScores = tempTomNBA.map(team => team * 2);
 
                 var TomPoints = 0;
-                
-               for(var i = 0; i < doubledScores.length; i++) {
-                TomPoints += doubledScores[i];
-               }
-                
+
+                for (var i = 0; i < tomDoubledScores.length; i++) {
+                    TomPoints += tomDoubledScores[i];
+                }
                 console.log(TomPoints);
-                this.setState({tomNBA: TomPoints})
+                this.setState({ tomNBA: TomPoints });
+
+                // NOW I NEED TO RECREATE THIS FOR ALL 10 TEAMS IN THE EFL LEAGUE. 
+
+                // PATRICK
+                var lakersWin = res.data.api.standings[23].win;
+                var warriorsWin = res.data.api.standings[20].win;
+                var jazzWin = res.data.api.standings[27].win;
+
+                const tempPatrickNBA = [];
+
+                tempPatrickNBA.push(lakersWin);
+                tempPatrickNBA.push(warriorsWin);
+                tempPatrickNBA.push(jazzWin);
+
+                var patDoubledScores = tempPatrickNBA.map(team => team * 2);
+
+                var PatrickPoints = 0;
+
+                for (var i = 0; i < patDoubledScores.length; i++) {
+                    PatrickPoints += patDoubledScores[i];
+                }
+                console.log(PatrickPoints);
+                this.setState({ patrickNBA: PatrickPoints })
             })
-            .catch(error =>{
-            console.log(error)
+            .catch(error => {
+                console.log(error)
             });
     }
 
@@ -98,11 +122,25 @@ class Table extends Component {
                         {/* returning the state. Eventually this will be an API call to the mongo database, which will include each user's team info. For now, going to have a hard-coded table. */}
                         {/* {this.returnTable()} */}
                         <tr>
-                            <th scope="col">Team</th>
+                            <th scope="col">Tommy</th>
                             <th scope="col">EPL</th>
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.tomNBA}</th>
+                            <th scope="col">MLB</th>
+                            <th scope="col">Total Points</th>
+                        </tr>
+
+                    </tbody>
+                    <tbody>
+                        {/* returning the state. Eventually this will be an API call to the mongo database, which will include each user's team info. For now, going to have a hard-coded table. */}
+                        {/* {this.returnTable()} */}
+                        <tr>
+                            <th scope="col">Patrick</th>
+                            <th scope="col">EPL</th>
+                            <th scope="col">NFL</th>
+                            <th scope="col">NHL</th>
+                            <th scope="col">{this.state.patrickNBA}</th>
                             <th scope="col">MLB</th>
                             <th scope="col">Total Points</th>
                         </tr>
