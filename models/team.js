@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 const TeamSchema = new Schema({
   id: { type: String, required: true },
   name: { type: String, required: true },
-  EPL: { type: Array, required: true },
-  NFL: { type: Array, required: true },
-  NHL: { type: Array, required: true },
-  NBA: { type: Array, required: true },
-  MLB: { type: Array, required: true },
+  EPL: { type: Number, required: true },
+  NFL: { type: Number, required: true },
+  NHL: { type: Number, required: true },
+  NBA: { type: Number, required: true },
+  MLB: { type: Number, required: true },
 });
 
 const Team = mongoose.model("Team", TeamSchema);

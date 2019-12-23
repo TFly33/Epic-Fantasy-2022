@@ -5,51 +5,38 @@ import API from "../../utils/API"
 // This table is being used for the Home Page currently, but not for the My Teams page. I am going to create that table separately. 
 
 class Table extends Component {
-    constructor(props) {
-        super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
-        this.state = {
-            //   Let's define our team's here.Eventually this will be an empty array, which we will fill with an API call. The model will match the structure that we want to use for the table. 
-            teams: [
-                { id: 1, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
-                { id: 2, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
-                { id: 3, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
-                { id: 4, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
-                { id: 5, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
-                { id: 6, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
-                { id: 7, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
-                { id: 8, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
-                { id: 9, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
-                { id: 10, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
-            ]
-        }
+
+    //since we are extending class Table so we have to use super in order to override Component class constructor
+    state = {
+        allTeams: []
     }
 
     componentDidMount() {
-        // this.getTeams();
+        this.getTeams();
     };
 
+    // This will be the function used to show the teams. 
     getTeams = () => {
         API.getTeams()
             .then(res =>
-                this.setState({ teams: res.data })
+                this.setState({ allTeams: res.data })
+                // console.log(res)
             )
             .catch(err => console.log(err));
     }
 
-
     returnTable() {
-        return this.state.teams.map((teams, index) => {
-            const { id, name, EPL, NFL, NHL, NBA, MLB, Points } = teams //Here is a destructuring of the teams list. 
+        return this.state.allTeams.map((teams, index) => {
+            const { id, name, EPL, NFL, NHL, NBA, MLB, totalPoints } = teams //Here is a destructuring of the teams list. 
             return (
                 <tr key={id}>
-                    <td>{id}</td>
                     <td>{name}</td>
                     <td>{EPL}</td>
                     <td>{NFL}</td>
                     <td>{NHL}</td>
                     <td>{NBA}</td>
                     <td>{MLB}</td>
-                    <td>{Points}</td>
+                    <td>{totalPoints}</td>
                 </tr>
             )
         })
@@ -60,7 +47,6 @@ class Table extends Component {
                 <table className="table table-striped table-hover">
                     <thead className="thead-dark">
                         <tr>
-                            <th scope="col">ID</th>
                             <th scope="col">Team</th>
                             <th scope="col">EPL</th>
                             <th scope="col">NFL</th>

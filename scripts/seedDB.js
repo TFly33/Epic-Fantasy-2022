@@ -12,7 +12,7 @@ const myTeamSeed = [
     {
         name: "Team Bommy",
         NBA: [
-            "Miami Hear",
+            "Miami Heat",
             "San Antonio Spurs",
             "Brooklyn Nets"
         ],
@@ -41,7 +41,113 @@ const myTeamSeed = [
 db.MyTeam
     .remove({})
     .then(() => db.MyTeam.collection.insertMany(myTeamSeed))
-console.log(myTeamSeed)
+// console.log(myTeamSeed)
+    .then(data => {
+        console.log(data.result.n + "My Teams Inserted!");
+        process.exit(0);
+    })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });
+
+const Team = [
+    {
+        name: "Bommy",
+        NBA: 25,
+        EPL: 30,
+        NFL: 50,
+        NHL: 75,
+        MLB: 0,
+        TotalPoints: 200,
+    },
+    {
+        name: "James",
+        NBA: 25,
+        EPL: 30,
+        NFL: 50,
+        NHL: 75,
+        MLB: 0,
+        TotalPoints: 200
+    },
+    {
+        name: "Patrick",
+        NBA: 25,
+        EPL: 30,
+        NFL: 50,
+        NHL: 75,
+        MLB: 0,
+        TotalPoints: 200
+    },
+    {
+        name: "DJ",
+        NBA: 25,
+        EPL: 30,
+        NFL: 50,
+        NHL: 75,
+        MLB: 0,
+        TotalPoints: 200
+    },
+    {
+        name: "Goose",
+        NBA: 25,
+        EPL: 30,
+        NFL: 50,
+        NHL: 75,
+        MLB: 0,
+        TotalPoints: 200
+    },
+    {
+        name: "Neptune",
+        NBA: 25,
+        EPL: 30,
+        NFL: 50,
+        NHL: 75,
+        MLB: 0,
+        TotalPoints: 200
+    },
+    {
+        name: "Ben",
+        NBA: 25,
+        EPL: 30,
+        NFL: 50,
+        NHL: 75,
+        MLB: 0,
+        TotalPoints: 200
+    },
+    {
+        name: "Team Bommy",
+        NBA: 25,
+        EPL: 30,
+        NFL: 50,
+        NHL: 75,
+        MLB: 0,
+        TotalPoints: 200
+    },
+    {
+        name: "Steids/Trigs",
+        NBA: 25,
+        EPL: 30,
+        NFL: 50,
+        NHL: 75,
+        MLB: 0,
+        TotalPoints: 200
+    },
+    {
+        name: "Al",
+        NBA: 25,
+        EPL: 30,
+        NFL: 50,
+        NHL: 75,
+        MLB: 0,
+        TotalPoints: 200
+    }
+];
+
+db.Team
+    .remove({})
+    .then(() => db.Team.collection.insertMany(Team))
+// console.log(Team)
     .then(data => {
         console.log(data.result.n + "Teams Inserted!");
         process.exit(0);

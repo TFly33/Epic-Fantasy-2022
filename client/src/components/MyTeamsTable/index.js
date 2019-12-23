@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "./MyTeamsTable.css";
+import API from "../../utils/API"
 
 // This table is being used for the Home Page currently, but not for the My Teams page. I am going to create that table separately. 
 
@@ -10,8 +11,8 @@ class MyTeamsTable extends Component {
             //   Let's define our team's here.Eventually this will be an empty array, which we will fill with an API call. The model will match the structure that we want to use for the table. 
             teams: [
                 { id: 1, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
-                { id: 2, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
-                { id: 3, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
+                { id: 2, name: 'Al', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
+                { id: 3, name: 'Ryan', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
                 { id: 4, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
                 { id: 5, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
                 { id: 6, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
@@ -21,6 +22,18 @@ class MyTeamsTable extends Component {
                 { id: 10, name: 'Bommy', EPL: "points", NFL: 'points', NHL: "points", NBA: "points", MLB: "points", Points: "Total Points" },
             ]
         }
+    }
+
+    componentDidMount() {
+        this.getMyTeams();
+    };
+
+    getTeams = () => {
+        API.getTeams()
+            .then(res =>
+                this.setState({ teams: res.data })
+            )
+            .catch(err => console.log(err));
     }
 
     returnTable() {
