@@ -8,7 +8,19 @@ export default {
       return axios.get("/api/team");
     },
 
-// ADD A SCCRAPE FUNCTYION HERE THAT AUTO SCRAPES USING COMPONENT DID RENDER. YOU WILL CALL IT FROM THE FRONT END. 
+    getScoresNBA: function() {
+      // Sports API Search Here. 
+      return axios({
+        "method":"GET",
+        "url":"https://api-nba-v1.p.rapidapi.com/standings/standard/2019",
+        "headers":{
+        "content-type":"application/octet-stream",
+        "x-rapidapi-host":"api-nba-v1.p.rapidapi.com",
+        "x-rapidapi-key":"52aa6a2637mshdf98d5a291eb6cep182376jsnfb67836d7b3b"
+        }
+        })
+        
+    },
 
     // Gets the book with the given id
     getMyTeams: function(id) {

@@ -28,7 +28,7 @@ class MyTeamsTable extends Component {
         this.getMyTeams();
     };
 
-    getTeams = () => {
+    getMyTeams = () => {
         API.getTeams()
             .then(res =>
                 this.setState({ teams: res.data })
@@ -40,7 +40,7 @@ class MyTeamsTable extends Component {
         return this.state.teams.map((teams, index) => {
             const { id, name, EPL, NFL, NHL, NBA, MLB, Points } = teams //Here is a destructuring of the teams list. 
             return (
-                <tr key={id}>
+                <tr key={index}>
                     <td>{id}</td>
                     <td>{name}</td>
                     <td>{EPL}</td>
