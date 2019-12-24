@@ -10,6 +10,7 @@ class Table extends Component {
     //since we are extending class Table so we have to use super in order to override Component class constructor
     state = {
         allTeams: [],
+        // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         tomNBA: "",
         patrickNBA: "",
@@ -19,6 +20,8 @@ class Table extends Component {
         gooseNBA:"",
         alNBA:"",
         joeNBA:"",
+        steidsNBA:"",
+        benNBA:"",
     }
 
     componentDidMount() {
@@ -199,6 +202,48 @@ class Table extends Component {
                   }
                   console.log(JoePoints);
                   this.setState({ joeNBA: JoePoints });
+
+                   // Steids
+                   var clippersWin = res.data.api.standings[21].win;
+                   var hawksWin = res.data.api.standings[4].win;
+                   var bullsWin = res.data.api.standings[13].win;
+   
+                   const tempSteidsNBA = [];
+   
+                   tempSteidsNBA.push(clippersWin);
+                   tempSteidsNBA.push(hawksWin);
+                   tempSteidsNBA.push(bullsWin);
+   
+                   var SteidsDoubledScores = tempSteidsNBA.map(team => team * 2);
+   
+                   var SteidsPoints = 0;
+   
+                   for (var i = 0; i < SteidsDoubledScores.length; i++) {
+                       SteidsPoints += SteidsDoubledScores[i];
+                   }
+                   console.log(SteidsPoints);
+                   this.setState({ steidsNBA: SteidsPoints });
+
+                   // Ben
+                   var pelicansWin = res.data.api.standings[18].win;
+                   var grizzliesWin = res.data.api.standings[17].win;
+                   var cavsWin = res.data.api.standings[14].win;
+   
+                   const tempBenNBA = [];
+   
+                   tempBenNBA.push(pelicansWin);
+                   tempBenNBA.push(grizzliesWin);
+                   tempBenNBA.push(cavsWin);
+   
+                   var BenDoubledScores = tempBenNBA.map(team => team * 2);
+   
+                   var BenPoints = 0;
+   
+                   for (var i = 0; i < BenDoubledScores.length; i++) {
+                       BenPoints += BenDoubledScores[i];
+                   }
+                   console.log(BenPoints);
+                   this.setState({ benNBA: BenPoints });
             })
             .catch(error => {
                 console.log(error)
@@ -255,7 +300,7 @@ class Table extends Component {
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.tomNBA}</th>
-                            <th scope="col">MLB</th>
+                            <th scope="col">0</th>
                             <th scope="col">Total Points</th>
                         </tr>
                     </tbody>
@@ -266,7 +311,7 @@ class Table extends Component {
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.patrickNBA}</th>
-                            <th scope="col">MLB</th>
+                            <th scope="col">0</th>
                             <th scope="col">Total Points</th>
                         </tr>
                     </tbody>
@@ -277,7 +322,7 @@ class Table extends Component {
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.jamesNBA}</th>
-                            <th scope="col">MLB</th>
+                            <th scope="col">0</th>
                             <th scope="col">Total Points</th>
                         </tr>
                     </tbody>
@@ -288,7 +333,7 @@ class Table extends Component {
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.neptuneNBA}</th>
-                            <th scope="col">MLB</th>
+                            <th scope="col">0</th>
                             <th scope="col">Total Points</th>
                         </tr>
                     </tbody>
@@ -299,7 +344,7 @@ class Table extends Component {
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.DJNBA}</th>
-                            <th scope="col">MLB</th>
+                            <th scope="col">0</th>
                             <th scope="col">Total Points</th>
                         </tr>
                     </tbody>
@@ -310,7 +355,7 @@ class Table extends Component {
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.gooseNBA}</th>
-                            <th scope="col">MLB</th>
+                            <th scope="col">0</th>
                             <th scope="col">Total Points</th>
                         </tr>
                     </tbody>
@@ -321,7 +366,7 @@ class Table extends Component {
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.alNBA}</th>
-                            <th scope="col">MLB</th>
+                            <th scope="col">0</th>
                             <th scope="col">Total Points</th>
                         </tr>
                     </tbody>
@@ -332,7 +377,29 @@ class Table extends Component {
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.joeNBA}</th>
-                            <th scope="col">MLB</th>
+                            <th scope="col">0</th>
+                            <th scope="col">Total Points</th>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <th scope="col">Steids</th>
+                            <th scope="col">EPL</th>
+                            <th scope="col">NFL</th>
+                            <th scope="col">NHL</th>
+                            <th scope="col">{this.state.steidsNBA}</th>
+                            <th scope="col">0</th>
+                            <th scope="col">Total Points</th>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <th scope="col">Ben</th>
+                            <th scope="col">EPL</th>
+                            <th scope="col">NFL</th>
+                            <th scope="col">NHL</th>
+                            <th scope="col">{this.state.benNBA}</th>
+                            <th scope="col">0</th>
                             <th scope="col">Total Points</th>
                         </tr>
                     </tbody>
