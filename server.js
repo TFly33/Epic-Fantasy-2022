@@ -3,6 +3,8 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const teamRoutes = require("./routes/TeamRoutes");
 const myTeamRoutes = require("./routes/MyTeams");
+// Might need to add this login route eventually. 
+// const loginRoutes = require("./routes/Login");
 const app = express();
 const mongoose = require("mongoose");
 
@@ -17,6 +19,7 @@ if (process.env.NODE_ENV === "production") {
 // Define API routes here
 app.use(teamRoutes);
 app.use(myTeamRoutes);
+// app.use(loginRoutes);
 
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/EpicFantasyLeague";

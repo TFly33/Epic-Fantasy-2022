@@ -16,26 +16,37 @@ class Table extends Component {
         patrickNBA: "",
         jamesNBA: "",
         neptuneNBA: "",
-        DJNBA:"",
-        gooseNBA:"",
-        alNBA:"",
-        joeNBA:"",
-        steidsNBA:"",
-        benNBA:"",
+        DJNBA: "",
+        gooseNBA: "",
+        alNBA: "",
+        joeNBA: "",
+        steidsNBA: "",
+        benNBA: "",
     }
 
     componentDidMount() {
         // first we scrape. Inside the function, need to post to the Mongo DB. 
         this.getScoresNBA();
         // Now, once the updates have applied, we call the getteams. This will show updated results. 
+        this.getScoresEPL();
     };
+
+    getScoresEPL = () => {
+        API.getScoresEPL()
+            .then(res => {
+                console.log(res);
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    }
 
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {
                 // HERE ARE NBA TEAMS FOR TOMMY. 
-                console.log(res);
-                console.log(res.data.api.standings);
+                // console.log(res);
+                // console.log(res.data.api.standings);
                 var heatWin = res.data.api.standings[2].win;
                 var netsWin = res.data.api.standings[8].win;
                 var spursWin = res.data.api.standings[16].win;
@@ -140,115 +151,118 @@ class Table extends Component {
                 console.log(DJPoints);
                 this.setState({ DJNBA: DJPoints });
 
-                 // Goose
-                 var raptorsWin = res.data.api.standings[5].win;
-                 var pistonsWin = res.data.api.standings[12].win;
-                 var knicksWin = res.data.api.standings[9].win;
- 
-                 const tempGooseNBA = [];
- 
-                 tempGooseNBA.push(raptorsWin);
-                 tempGooseNBA.push(pistonsWin);
-                 tempGooseNBA.push(knicksWin);
- 
-                 var GooseDoubledScores = tempGooseNBA.map(team => team * 2);
- 
-                 var GoosePoints = 0;
- 
-                 for (var i = 0; i < GooseDoubledScores.length; i++) {
-                     GoosePoints += GooseDoubledScores[i];
-                 }
-                 console.log(GoosePoints);
-                 this.setState({ gooseNBA: GoosePoints });
+                // Goose
+                var raptorsWin = res.data.api.standings[5].win;
+                var pistonsWin = res.data.api.standings[12].win;
+                var knicksWin = res.data.api.standings[9].win;
 
-                  // Al
-                  var mavericksWin = res.data.api.standings[19].win;
-                  var magicWin = res.data.api.standings[0].win;
-                  var wizardsWin = res.data.api.standings[3].win;
-  
-                  const tempAlNBA = [];
-  
-                  tempAlNBA.push(mavericksWin);
-                  tempAlNBA.push(magicWin);
-                  tempAlNBA.push(wizardsWin);
-  
-                  var AlDoubledScores = tempAlNBA.map(team => team * 2);
-  
-                  var AlPoints = 0;
-  
-                  for (var i = 0; i < AlDoubledScores.length; i++) {
-                      AlPoints += AlDoubledScores[i];
-                  }
-                  console.log(AlPoints);
-                  this.setState({ alNBA: AlPoints });
+                const tempGooseNBA = [];
 
-                  // Joe
-                  var nuggetsWin = res.data.api.standings[25].win;
-                  var blazersWin = res.data.api.standings[26].win;
-                  var kingsWin = res.data.api.standings[22].win;
-  
-                  const tempJoeNBA = [];
-  
-                  tempJoeNBA.push(nuggetsWin);
-                  tempJoeNBA.push(blazersWin);
-                  tempJoeNBA.push(kingsWin);
-  
-                  var JoeDoubledScores = tempJoeNBA.map(team => team * 2);
-  
-                  var JoePoints = 0;
-  
-                  for (var i = 0; i < JoeDoubledScores.length; i++) {
-                      JoePoints += JoeDoubledScores[i];
-                  }
-                  console.log(JoePoints);
-                  this.setState({ joeNBA: JoePoints });
+                tempGooseNBA.push(raptorsWin);
+                tempGooseNBA.push(pistonsWin);
+                tempGooseNBA.push(knicksWin);
 
-                   // Steids
-                   var clippersWin = res.data.api.standings[21].win;
-                   var hawksWin = res.data.api.standings[4].win;
-                   var bullsWin = res.data.api.standings[13].win;
-   
-                   const tempSteidsNBA = [];
-   
-                   tempSteidsNBA.push(clippersWin);
-                   tempSteidsNBA.push(hawksWin);
-                   tempSteidsNBA.push(bullsWin);
-   
-                   var SteidsDoubledScores = tempSteidsNBA.map(team => team * 2);
-   
-                   var SteidsPoints = 0;
-   
-                   for (var i = 0; i < SteidsDoubledScores.length; i++) {
-                       SteidsPoints += SteidsDoubledScores[i];
-                   }
-                   console.log(SteidsPoints);
-                   this.setState({ steidsNBA: SteidsPoints });
+                var GooseDoubledScores = tempGooseNBA.map(team => team * 2);
 
-                   // Ben
-                   var pelicansWin = res.data.api.standings[18].win;
-                   var grizzliesWin = res.data.api.standings[17].win;
-                   var cavsWin = res.data.api.standings[14].win;
-   
-                   const tempBenNBA = [];
-   
-                   tempBenNBA.push(pelicansWin);
-                   tempBenNBA.push(grizzliesWin);
-                   tempBenNBA.push(cavsWin);
-   
-                   var BenDoubledScores = tempBenNBA.map(team => team * 2);
-   
-                   var BenPoints = 0;
-   
-                   for (var i = 0; i < BenDoubledScores.length; i++) {
-                       BenPoints += BenDoubledScores[i];
-                   }
-                   console.log(BenPoints);
-                   this.setState({ benNBA: BenPoints });
+                var GoosePoints = 0;
+
+                for (var i = 0; i < GooseDoubledScores.length; i++) {
+                    GoosePoints += GooseDoubledScores[i];
+                }
+                console.log(GoosePoints);
+                this.setState({ gooseNBA: GoosePoints });
+
+                // Al
+                var mavericksWin = res.data.api.standings[19].win;
+                var magicWin = res.data.api.standings[0].win;
+                var wizardsWin = res.data.api.standings[3].win;
+
+                const tempAlNBA = [];
+
+                tempAlNBA.push(mavericksWin);
+                tempAlNBA.push(magicWin);
+                tempAlNBA.push(wizardsWin);
+
+                var AlDoubledScores = tempAlNBA.map(team => team * 2);
+
+                var AlPoints = 0;
+
+                for (var i = 0; i < AlDoubledScores.length; i++) {
+                    AlPoints += AlDoubledScores[i];
+                }
+                console.log(AlPoints);
+                this.setState({ alNBA: AlPoints });
+
+                // Joe
+                var nuggetsWin = res.data.api.standings[25].win;
+                var blazersWin = res.data.api.standings[26].win;
+                var kingsWin = res.data.api.standings[22].win;
+
+                const tempJoeNBA = [];
+
+                tempJoeNBA.push(nuggetsWin);
+                tempJoeNBA.push(blazersWin);
+                tempJoeNBA.push(kingsWin);
+
+                var JoeDoubledScores = tempJoeNBA.map(team => team * 2);
+
+                var JoePoints = 0;
+
+                for (var i = 0; i < JoeDoubledScores.length; i++) {
+                    JoePoints += JoeDoubledScores[i];
+                }
+                console.log(JoePoints);
+                this.setState({ joeNBA: JoePoints });
+
+                // Steids
+                var clippersWin = res.data.api.standings[21].win;
+                var hawksWin = res.data.api.standings[4].win;
+                var bullsWin = res.data.api.standings[13].win;
+
+                const tempSteidsNBA = [];
+
+                tempSteidsNBA.push(clippersWin);
+                tempSteidsNBA.push(hawksWin);
+                tempSteidsNBA.push(bullsWin);
+
+                var SteidsDoubledScores = tempSteidsNBA.map(team => team * 2);
+
+                var SteidsPoints = 0;
+
+                for (var i = 0; i < SteidsDoubledScores.length; i++) {
+                    SteidsPoints += SteidsDoubledScores[i];
+                }
+                console.log(SteidsPoints);
+                this.setState({ steidsNBA: SteidsPoints });
+
+                // Ben
+                var pelicansWin = res.data.api.standings[18].win;
+                var grizzliesWin = res.data.api.standings[17].win;
+                var cavsWin = res.data.api.standings[14].win;
+
+                const tempBenNBA = [];
+
+                tempBenNBA.push(pelicansWin);
+                tempBenNBA.push(grizzliesWin);
+                tempBenNBA.push(cavsWin);
+
+                var BenDoubledScores = tempBenNBA.map(team => team * 2);
+
+                var BenPoints = 0;
+
+                for (var i = 0; i < BenDoubledScores.length; i++) {
+                    BenPoints += BenDoubledScores[i];
+                }
+                console.log(BenPoints);
+                this.setState({ benNBA: BenPoints });
             })
             .catch(error => {
                 console.log(error)
             });
     }
+
+    // Going to put the EPL scores function here. 
+
 
     // This will be the function used to show the teams. 
     // getTeams = () => {
