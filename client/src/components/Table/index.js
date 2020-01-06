@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import "./Table.css";
 import API from "../../utils/API";
-import { throws } from 'assert';
 
 // This table is being used for the Home Page currently, but not for the My Teams page. I am going to create that table separately. 
 
@@ -16,7 +15,7 @@ class Table extends Component {
         patrickNBA: "",
         jamesNBA: "",
         neptuneNBA: "",
-        DJNBA: "",
+        djNBA: "",
         gooseNBA: "",
         alNBA: "",
         joeNBA: "",
@@ -28,19 +27,105 @@ class Table extends Component {
         patEPL: "",
         jamesEPL: "",
         neptuneEPL: "",
-        DJEPL: "",
+        djEPL: "",
         gooseEPL: "",
         alEPL: "",
         joeEPL: "",
         steidsEPL: "",
         benEPL: "",
+        // Putting NFL results here, even though I actually don't need to dynamically render them right now.
+        allNFL: [],
+        tomNFL: "",
+        patNFL: "",
+        jamesNFL: "",
+        neptuneNFL: "",
+        djNFL: "",
+        gooseNFL: "",
+        alNFL: "",
+        joeNFL: "",
+        steidsNFL: "",
+        benNFL: "",
+        // Total Points here. 
+        tomTotal: "",
+        patTotal: "",
+        jamesTotal: "",
+        neptuneTotal: "",
+        djTotal: "",
+        gooseTotal: "",
+        alTotal: "",
+        joeTotal: "",
+        steidsTotal: "",
+        benTotal: "",
     }
+
 
     componentDidMount() {
         // first we scrape. Inside the function, need to post to the Mongo DB. 
         this.getScoresNBA();
-        // Now, once the updates have applied, we call the getteams. This will show updated results. 
+        // Now, once the updates have applied, we call the getteams. This will show updated results. I'm gonna freeze this for the time being so I don't make a million API calls. 
         this.getScoresEPL();
+        // I'm gonna run this as a function even though these are just dead numbers at this point (since the NFL regular season ended)
+        this.getScoresNFL();
+    };
+
+    // Let's create a function to add up all the scores also. But, I need that to run at the end of all the other functions, otherwise I will just get a blank slate back. 
+
+    totalScores = () => {
+
+        // Totals for Tom 
+        var tomTotalPoints = parseInt((this.state.tomNBA)) + parseInt((this.state.tomNFL)) + parseInt((this.state.tomEPL));
+        this.setState({ tomTotal: tomTotalPoints });
+
+        // Totals for Pat 
+        var patTotalPoints = parseInt((this.state.patrickNBA)) + parseInt((this.state.patNFL)) + parseInt((this.state.patEPL));
+        this.setState({ patTotal: patTotalPoints });
+
+        // Totals for JAmes
+        var jamesTotalPoints = parseInt((this.state.jamesNBA)) + parseInt((this.state.jamesNFL)) + parseInt((this.state.jamesEPL));
+        this.setState({ jamesTotal: jamesTotalPoints });
+
+        // Totals for Neptune
+        var neptuneTotalPoints = parseInt((this.state.neptuneNBA)) + parseInt((this.state.neptuneNFL)) + parseInt((this.state.neptuneEPL));
+        this.setState({ neptuneTotal: neptuneTotalPoints });
+
+        // Totals for DJ
+        var djTotalPoints = parseInt((this.state.djNBA)) + parseInt((this.state.djNFL)) + parseInt((this.state.djEPL));
+        this.setState({ djTotal: djTotalPoints });
+
+        // Totals for Goose 
+        var gooseTotalPoints = parseInt((this.state.gooseNBA)) + parseInt((this.state.gooseNFL)) + parseInt((this.state.gooseEPL));
+        this.setState({ gooseTotal: gooseTotalPoints });
+
+        // Totals for Al
+        var alTotalPoints = parseInt((this.state.alNBA)) + parseInt((this.state.alNFL)) + parseInt((this.state.alEPL));
+        this.setState({ alTotal: alTotalPoints });
+
+        // Totals for Joe
+        var joeTotalPoints = parseInt((this.state.joeNBA)) + parseInt((this.state.joeNFL)) + parseInt((this.state.joeEPL));
+        this.setState({ joeTotal: joeTotalPoints });
+
+        // Totals for Steids
+        var steidsTotalPoints = parseInt((this.state.steidsNBA)) + parseInt((this.state.steidsNFL)) + parseInt((this.state.steidsEPL));
+        this.setState({ steidsTotal: steidsTotalPoints });
+
+        // Totals for Ben
+        var benTotalPoints = parseInt((this.state.benNBA)) + parseInt((this.state.benNFL)) + parseInt((this.state.benEPL));
+        this.setState({ benTotal: benTotalPoints });
+    };
+
+    // This one I get to hard code because the season ended. 
+
+    getScoresNFL = () => {
+        this.setState({ tomNFL: 360 });
+        this.setState({ patNFL: 300 });
+        this.setState({ jamesNFL: 232.35 });
+        this.setState({ neptuneNFL: 190 });
+        this.setState({ djNFL: 250 });
+        this.setState({ gooseNFL: 190 });
+        this.setState({ alNFL: 280 });
+        this.setState({ joeNFL: 240 });
+        this.setState({ steidsNFL: 210 });
+        this.setState({ benNFL: 200 });
     };
 
     getScoresEPL = () => {
@@ -55,10 +140,10 @@ class Table extends Component {
                 // Now Brighton results
                 var brightonWin = res.data.api.standings[0][13].all.win;
                 var brightonTie = res.data.api.standings[0][13].all.draw;
-                var brightonTotal = (brightonWin * 4.25) + (brightonTie)
-               
+                var brightonTotal = (brightonWin * 4.25) + (brightonTie);
+
                 // Here is the final result
-                var tomPoints = chelseaTotal + brightonTotal
+                var tomPoints = chelseaTotal + brightonTotal;
                 this.setState({ tomEPL: tomPoints });
 
                 // HERE ARE EPL TEAMS FOR Patrick. 
@@ -71,9 +156,9 @@ class Table extends Component {
                 var wolvesWin = res.data.api.standings[0][6].all.win;
                 var wolvesTie = res.data.api.standings[0][6].all.draw;
                 var wolvesTotal = (wolvesWin * 4.25) + (wolvesTie)
-               
+
                 // Here is the final result
-                var patPoints = cityTotal + wolvesTotal
+                var patPoints = cityTotal + wolvesTotal;
                 this.setState({ patEPL: patPoints });
 
                 // HERE ARE EPL TEAMS FOR James. 
@@ -86,7 +171,7 @@ class Table extends Component {
                 var palaceWin = res.data.api.standings[0][8].all.win;
                 var palaceTie = res.data.api.standings[0][8].all.draw;
                 var palaceTotal = (palaceWin * 4.25) + (palaceTie)
-               
+
                 // Here is the final result
                 var jamesPoints = newcastleTotal + palaceTotal
                 this.setState({ jamesEPL: jamesPoints });
@@ -101,7 +186,7 @@ class Table extends Component {
                 var norwichWin = res.data.api.standings[0][19].all.win;
                 var norwichTie = res.data.api.standings[0][19].all.draw;
                 var norwichTotal = (norwichWin * 4.25) + (norwichTie)
-               
+
                 // Here is the final result
                 var neptunePoints = leicesterTotal + norwichTotal
                 this.setState({ neptuneEPL: neptunePoints });
@@ -116,7 +201,7 @@ class Table extends Component {
                 var burnleyWin = res.data.api.standings[0][14].all.win;
                 var burnleyTie = res.data.api.standings[0][14].all.draw;
                 var burnleyTotal = (burnleyWin * 4.25) + (burnleyTie)
-               
+
                 // Here is the final result
                 var djPoints = sheffieldTotal + burnleyTotal
                 this.setState({ djEPL: djPoints });
@@ -131,7 +216,7 @@ class Table extends Component {
                 var westhamWin = res.data.api.standings[0][15].all.win;
                 var westhamTie = res.data.api.standings[0][15].all.draw;
                 var westhamTotal = (westhamWin * 4.25) + (westhamTie)
-               
+
                 // Here is the final result
                 var goosePoints = manuTotal + westhamTotal
                 this.setState({ gooseEPL: goosePoints });
@@ -146,7 +231,7 @@ class Table extends Component {
                 var southhamptonWin = res.data.api.standings[0][11].all.win;
                 var southhamptonTie = res.data.api.standings[0][11].all.draw;
                 var southhamptonTotal = (southhamptonWin * 4.25) + (southhamptonTie)
-               
+
                 // Here is the final result
                 var alPoints = evertonTotal + southhamptonTotal
                 this.setState({ alEPL: alPoints });
@@ -161,7 +246,7 @@ class Table extends Component {
                 var astonWin = res.data.api.standings[0][16].all.win;
                 var astonTie = res.data.api.standings[0][16].all.draw;
                 var astonTotal = (astonWin * 4.25) + (astonTie)
-               
+
                 // Here is the final result
                 var joePoints = liverpoolTotal + astonTotal
                 this.setState({ joeEPL: joePoints });
@@ -176,7 +261,7 @@ class Table extends Component {
                 var bournemouthWin = res.data.api.standings[0][17].all.win;
                 var bournemouthTie = res.data.api.standings[0][17].all.draw;
                 var bournemouthTotal = (bournemouthWin * 4.25) + (bournemouthTie)
-               
+
                 // Here is the final result
                 var benPoints = tottenhamTotal + bournemouthTotal
                 this.setState({ benEPL: benPoints });
@@ -191,10 +276,14 @@ class Table extends Component {
                 var watfordWin = res.data.api.standings[0][18].all.win;
                 var watfordTie = res.data.api.standings[0][18].all.draw;
                 var watfordTotal = (watfordWin * 4.25) + (watfordTie)
-               
+
                 // Here is the final result
                 var steidsPoints = arsenalTotal + watfordTotal
                 this.setState({ steidsEPL: steidsPoints });
+
+                // And now I need to run the totalscores function so that it can get logged. 
+                this.totalScores();
+
             })
             .catch(error => {
                 console.log(error)
@@ -224,7 +313,7 @@ class Table extends Component {
                 for (var i = 0; i < tomDoubledScores.length; i++) {
                     TomPoints += tomDoubledScores[i];
                 }
-                console.log(TomPoints);
+                // console.log(TomPoints);
                 this.setState({ tomNBA: TomPoints });
 
                 // PATRICK
@@ -245,7 +334,7 @@ class Table extends Component {
                 for (var i = 0; i < patDoubledScores.length; i++) {
                     PatrickPoints += patDoubledScores[i];
                 }
-                console.log(PatrickPoints);
+                // console.log(PatrickPoints);
                 this.setState({ patrickNBA: PatrickPoints });
 
                 // James
@@ -266,7 +355,7 @@ class Table extends Component {
                 for (var i = 0; i < jamesDoubledScores.length; i++) {
                     jamesPoints += jamesDoubledScores[i];
                 }
-                console.log(jamesPoints);
+                // console.log(jamesPoints);
                 this.setState({ jamesNBA: jamesPoints });
 
                 // Neptune
@@ -287,7 +376,7 @@ class Table extends Component {
                 for (var i = 0; i < NeptuneDoubledScores.length; i++) {
                     NeptunePoints += NeptuneDoubledScores[i];
                 }
-                console.log(NeptunePoints);
+                // console.log(NeptunePoints);
                 this.setState({ neptuneNBA: NeptunePoints });
 
                 // DJ
@@ -308,8 +397,8 @@ class Table extends Component {
                 for (var i = 0; i < DJDoubledScores.length; i++) {
                     DJPoints += DJDoubledScores[i];
                 }
-                console.log(DJPoints);
-                this.setState({ DJNBA: DJPoints });
+                // console.log(DJPoints);
+                this.setState({ djNBA: DJPoints });
 
                 // Goose
                 var raptorsWin = res.data.api.standings[5].win;
@@ -329,7 +418,7 @@ class Table extends Component {
                 for (var i = 0; i < GooseDoubledScores.length; i++) {
                     GoosePoints += GooseDoubledScores[i];
                 }
-                console.log(GoosePoints);
+                // console.log(GoosePoints);
                 this.setState({ gooseNBA: GoosePoints });
 
                 // Al
@@ -350,7 +439,7 @@ class Table extends Component {
                 for (var i = 0; i < AlDoubledScores.length; i++) {
                     AlPoints += AlDoubledScores[i];
                 }
-                console.log(AlPoints);
+                // console.log(AlPoints);
                 this.setState({ alNBA: AlPoints });
 
                 // Joe
@@ -371,7 +460,7 @@ class Table extends Component {
                 for (var i = 0; i < JoeDoubledScores.length; i++) {
                     JoePoints += JoeDoubledScores[i];
                 }
-                console.log(JoePoints);
+                // console.log(JoePoints);
                 this.setState({ joeNBA: JoePoints });
 
                 // Steids
@@ -392,7 +481,7 @@ class Table extends Component {
                 for (var i = 0; i < SteidsDoubledScores.length; i++) {
                     SteidsPoints += SteidsDoubledScores[i];
                 }
-                console.log(SteidsPoints);
+                // console.log(SteidsPoints);
                 this.setState({ steidsNBA: SteidsPoints });
 
                 // Ben
@@ -413,8 +502,9 @@ class Table extends Component {
                 for (var i = 0; i < BenDoubledScores.length; i++) {
                     BenPoints += BenDoubledScores[i];
                 }
-                console.log(BenPoints);
+                // console.log(BenPoints);
                 this.setState({ benNBA: BenPoints });
+                this.totalScores();
             })
             .catch(error => {
                 console.log(error)
@@ -441,110 +531,110 @@ class Table extends Component {
                         <tr>
                             <th scope="col">Tommy</th>
                             <th scope="col">{this.state.tomEPL}</th>
-                            <th scope="col">NFL</th>
+                            <th scope="col">{this.state.tomNFL}</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.tomNBA}</th>
                             <th scope="col">0</th>
-                            <th scope="col">Total Points</th>
+                            <th scope="col">{this.state.tomTotal}</th>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
                             <th scope="col">Patrick</th>
                             <th scope="col">{this.state.patEPL}</th>
-                            <th scope="col">NFL</th>
+                            <th scope="col">{this.state.patNFL}</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.patrickNBA}</th>
                             <th scope="col">0</th>
-                            <th scope="col">Total Points</th>
+                            <th scope="col">{this.state.patTotal}</th>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
                             <th scope="col">James</th>
                             <th scope="col">{this.state.jamesEPL}</th>
-                            <th scope="col">NFL</th>
+                            <th scope="col">{this.state.jamesNFL}</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.jamesNBA}</th>
                             <th scope="col">0</th>
-                            <th scope="col">Total Points</th>
+                            <th scope="col">{this.state.jamesTotal}</th>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
                             <th scope="col">Neptune</th>
                             <th scope="col">{this.state.neptuneEPL}</th>
-                            <th scope="col">NFL</th>
+                            <th scope="col">{this.state.neptuneNFL}</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.neptuneNBA}</th>
                             <th scope="col">0</th>
-                            <th scope="col">Total Points</th>
+                            <th scope="col">{this.state.neptuneTotal}</th>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
                             <th scope="col">DJ</th>
                             <th scope="col">{this.state.djEPL}</th>
-                            <th scope="col">NFL</th>
+                            <th scope="col">{this.state.djNFL}</th>
                             <th scope="col">NHL</th>
-                            <th scope="col">{this.state.DJNBA}</th>
+                            <th scope="col">{this.state.djNBA}</th>
                             <th scope="col">0</th>
-                            <th scope="col">Total Points</th>
+                            <th scope="col">{this.state.djTotal}</th>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
                             <th scope="col">Goose</th>
                             <th scope="col">{this.state.gooseEPL}</th>
-                            <th scope="col">NFL</th>
+                            <th scope="col">{this.state.gooseNFL}</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.gooseNBA}</th>
                             <th scope="col">0</th>
-                            <th scope="col">Total Points</th>
+                            <th scope="col">{this.state.gooseTotal}</th>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
                             <th scope="col">Al</th>
                             <th scope="col">{this.state.alEPL}</th>
-                            <th scope="col">NFL</th>
+                            <th scope="col">{this.state.alNFL}</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.alNBA}</th>
                             <th scope="col">0</th>
-                            <th scope="col">Total Points</th>
+                            <th scope="col">{this.state.alTotal}</th>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
                             <th scope="col">Joe</th>
                             <th scope="col">{this.state.joeEPL}</th>
-                            <th scope="col">NFL</th>
+                            <th scope="col">{this.state.joeNFL}</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.joeNBA}</th>
                             <th scope="col">0</th>
-                            <th scope="col">Total Points</th>
+                            <th scope="col">{this.state.joeTotal}</th>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
                             <th scope="col">Steids</th>
                             <th scope="col">{this.state.steidsEPL}</th>
-                            <th scope="col">NFL</th>
+                            <th scope="col">{this.state.steidsNFL}</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.steidsNBA}</th>
                             <th scope="col">0</th>
-                            <th scope="col">Total Points</th>
+                            <th scope="col">{this.state.steidsTotal}</th>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
                             <th scope="col">Ben</th>
                             <th scope="col">{this.state.benEPL}</th>
-                            <th scope="col">NFL</th>
+                            <th scope="col">{this.state.benNFL}</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.benNBA}</th>
                             <th scope="col">0</th>
-                            <th scope="col">Total Points</th>
+                            <th scope="col">{this.state.benTotal}</th>
                         </tr>
                     </tbody>
                 </table>
