@@ -18,7 +18,17 @@ class MyTeams extends React.Component {
                                 <a class="nav-link" href="/Home">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="/MyTeams">My Teams</a>
+                                {/* <a class="nav-link" href="/MyTeams">My Teams</a> */}
+                                <div class="dropdown show">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Dropdown link
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/Login">LogIn</a>

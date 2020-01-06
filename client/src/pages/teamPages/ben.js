@@ -1,7 +1,7 @@
 import React from "react";
-import Table from "../components/Table"
+import Table from "../../components/Table"
 
-class Home extends React.Component {
+class ben extends React.Component {
     // Here is the function we will use for creating the actual table. 
 
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
@@ -43,6 +43,7 @@ class Home extends React.Component {
                         </ul>
                     </div>
                 </nav>
+                Ben's Page
                 <Table />
                 <body class="d-flex flex-column">
                     <div id="page-content">
@@ -67,4 +68,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default ben;
