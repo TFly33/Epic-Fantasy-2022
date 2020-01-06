@@ -103,7 +103,7 @@ class tommy extends React.Component {
                 </div>
                 {/* Starting my new table here */}
                 <div class="container">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-bordered table-hover">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col-6">Draft Pick</th>
@@ -124,7 +124,7 @@ class tommy extends React.Component {
                             </tr>
                             <tr>
                                 <th scope="row">64</th>
-                                <td>Miami heat</td>
+                                <td>Miami Heat</td>
                                 <td>{this.state.heat}</td>
                             </tr>
                             <tr>

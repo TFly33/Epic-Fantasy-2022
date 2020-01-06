@@ -103,7 +103,7 @@ class patrick extends React.Component {
                 </div>
                 {/* Starting my new table here */}
                 <div class="container">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-bordered table-hover">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col-6">Draft Pick</th>
