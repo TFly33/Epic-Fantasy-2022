@@ -24,16 +24,16 @@ class Home extends React.Component {
                                         Teams
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="tommy">Tommy</a>
-                                        <a class="dropdown-item" href="patrick">Patrick</a>
-                                        <a class="dropdown-item" href="james">James</a>
-                                        <a class="dropdown-item" href="neptune">Neptune</a>
-                                        <a class="dropdown-item" href="dj">DJ</a>
-                                        <a class="dropdown-item" href="goose">Goose</a>
-                                        <a class="dropdown-item" href="al">Al</a>
-                                        <a class="dropdown-item" href="joe">Joe</a>
-                                        <a class="dropdown-item" href="steids">Steids</a>
-                                        <a class="dropdown-item" href="ben">Ben</a>
+                                        <a class="dropdown-item" href="/tommy">Tommy</a>
+                                        <a class="dropdown-item" href="/patrick">Patrick</a>
+                                        <a class="dropdown-item" href="/james">James</a>
+                                        <a class="dropdown-item" href="/neptune">Neptune</a>
+                                        <a class="dropdown-item" href="/dj">DJ</a>
+                                        <a class="dropdown-item" href="/goose">Goose</a>
+                                        <a class="dropdown-item" href="/al">Al</a>
+                                        <a class="dropdown-item" href="/joe">Joe</a>
+                                        <a class="dropdown-item" href="/steids">Steids</a>
+                                        <a class="dropdown-item" href="/ben">Ben</a>
                                     </div>
                                 </div>
                             </li>

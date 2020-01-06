@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import "./Table.css";
 import API from "../../utils/API";
 
-
 // This table is being used for the Home Page currently, but not for the My Teams page. I am going to create that table separately. 
 
 class Table extends Component {
@@ -22,6 +21,18 @@ class Table extends Component {
         joeNBA: "",
         steidsNBA: "",
         benNBA: "",
+        // Putting EPL arrays here. 
+        allEPL: [],
+        tomEPL: "",
+        patrickEPL: "",
+        jamesEPL: "",
+        neptuneEPL: "",
+        DJEPL: "",
+        gooseEPL: "",
+        alEPL: "",
+        joeEPL: "",
+        steidsEPL: "",
+        benEPL: "",
     }
 
     componentDidMount() {
@@ -34,7 +45,39 @@ class Table extends Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
+                console.log("here are the EPL results!")
                 console.log(res);
+                 // HERE ARE EPL TEAMS FOR TOMMY. 
+                var chelseaWin = res.data.api.standings[0][3].all.win;
+                var chelseaTie = res.data.api.standings[0][3].all.draw;
+                // var brightonWin = res.data.api.standings[8].win;
+                console.log("chelsea win results below");
+                console.log(chelseaWin);
+                console.log("chelsea tie results below");
+                console.log(chelseaTie);
+
+                var chelseaTotal = (chelseaWin * 4.25) + (chelseaTie);
+                // const tempTomEPL = this.state.allEPL;
+
+                // Now Brighton results
+                var brightonWin = res.data.api.standings[0][13].all.win;
+                var brightonTie = res.data.api.standings[0][13].all.draw;
+                var brightonTotal = (brightonWin * 4.25) + (brightonTie)
+
+                var tomPoints = chelseaTotal + brightonTotal
+                // tempTomEPL.push(chelseaWin);
+                // // tempTomNBA.push(netsWin);
+                // // tempTomNBA.push(spursWin);
+
+                // var tomDoubledScores = tempTomEPL.map(team => team * 4.25);
+
+                // var TomPoints = 0;
+
+                // for (var i = 0; i < tomDoubledScores.length; i++) {
+                //     TomPoints += tomDoubledScores[i];
+                // }
+                console.log(tomPoints);
+                this.setState({ tomEPL: tomPoints });
             })
             .catch(error => {
                 console.log(error)
@@ -310,7 +353,7 @@ class Table extends Component {
                     <tbody>
                         <tr>
                             <th scope="col">Tommy</th>
-                            <th scope="col">EPL</th>
+                            <th scope="col">{this.state.tomEPL}</th>
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.tomNBA}</th>

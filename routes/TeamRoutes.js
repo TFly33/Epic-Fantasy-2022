@@ -6,7 +6,7 @@ router.route("/api/team")
   .get(teamController.findAll)
   .post(teamController.create);
 
-// Matches with "/api/books/:id"
+// Matches with "/api/teams/:id"
 router
   .route("/api/team/:id")
   .get(teamController.findById)

@@ -51,7 +51,8 @@ export default {
       }
     })
   },
-  // Gets the book with the given id
+
+  // Gets the teams with the given id
   getMyTeams: function (id) {
     return axios.get("/api/myteam/" + id);
   },
