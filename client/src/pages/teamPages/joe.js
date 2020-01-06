@@ -1,8 +1,60 @@
 import React from "react";
-import Table from "../../components/Table"
+import API from "../../utils/API";
 
 class joe extends React.Component {
     // Here is the function we will use for creating the actual table. 
+    state = {
+        allTeams: [],
+        // Putting NBA arrays here. Each person's array will include three NBA teams. 
+        allNBA: [],
+        joeNBA: "",
+        nuggets: "",
+        blazers: "",
+        kings: ""
+    }
+    componentDidMount = () => {
+        this.getScoresNBA();
+    }
+
+    getScoresNBA = () => {
+        API.getScoresNBA()
+            .then(res => {
+                // HERE ARE NBA TEAMS FOR TOMMY. 
+                // console.log(res);
+                // console.log(res.data.api.standings);
+                var nuggetsWin = res.data.api.standings[25].win;
+                var blazersWin = res.data.api.standings[26].win;
+                var kingsWin = res.data.api.standings[22].win;
+
+                // I need to multiply the API result by 2 FIRST since we need them individually. 
+
+                var doublenuggets = (nuggetsWin * 2);
+                var doubleblazers = (blazersWin * 2);
+                var doublekings = (kingsWin * 2);
+
+                const tempjoeNBA = this.state.allNBA;
+
+                tempjoeNBA.push(nuggetsWin);
+                tempjoeNBA.push(blazersWin);
+                tempjoeNBA.push(kingsWin);
+
+                var joeDoubledScores = tempjoeNBA.map(team => team * 2);
+
+                var joePoints = 0;
+
+                for (var i = 0; i < joeDoubledScores.length; i++) {
+                    joePoints += joeDoubledScores[i];
+                }
+                console.log(joePoints);
+                this.setState({ joeNBA: joePoints });
+                this.setState({ nuggets: doublenuggets });
+                this.setState({ blazers: doubleblazers });
+                this.setState({ kings: doublekings });
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    }
 
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
         return (
@@ -43,8 +95,46 @@ class joe extends React.Component {
                         </ul>
                     </div>
                 </nav>
-                Joe's Page
-                <Table />
+                <div class="card">
+                    <div class="card-body text-center bg-light text-secondary">
+                       Joe
+  </div>
+                </div>
+                {/* Starting my new table here */}
+                <div class="container">
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col-6">Draft Pick</th>
+                                <th scope="col-6">NBA Team</th>
+                                <th scope="col-6">Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">18</th>
+                                <td>Denver Nuggets</td>
+                                <td>{this.state.nuggets}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">34</th>
+                                <td>Portland Blazers</td>
+                                <td>{this.state.blazers}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">82</th>
+                                <td>Sacramento Kings</td>
+                                <td>{this.state.kings}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Total</th>
+                                <td></td>
+                                <td>{this.state.joeNBA}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <body class="d-flex flex-column">
                     <div id="page-content">
                         <div class="container text-center">

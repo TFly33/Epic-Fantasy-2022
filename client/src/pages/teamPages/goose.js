@@ -1,8 +1,60 @@
 import React from "react";
-import Table from "../../components/Table"
+import API from "../../utils/API";
 
 class goose extends React.Component {
     // Here is the function we will use for creating the actual table. 
+    state = {
+        allTeams: [],
+        // Putting NBA arrays here. Each person's array will include three NBA teams. 
+        allNBA: [],
+        gooseNBA: "",
+        raptors: "",
+        pistons: "",
+        knicks: ""
+    }
+    componentDidMount = () => {
+        this.getScoresNBA();
+    }
+
+    getScoresNBA = () => {
+        API.getScoresNBA()
+            .then(res => {
+                // HERE ARE NBA TEAMS FOR TOMMY. 
+                // console.log(res);
+                // console.log(res.data.api.standings);
+                var raptorsWin = res.data.api.standings[5].win;
+                var pistonsWin = res.data.api.standings[12].win;
+                var knicksWin = res.data.api.standings[9].win;
+
+                // I need to multiply the API result by 2 FIRST since we need them individually. 
+
+                var doubleRaptors = (raptorsWin * 2);
+                var doublePistons = (pistonsWin * 2);
+                var doubleKnicks = (knicksWin * 2);
+
+                const tempGooseNBA = this.state.allNBA;
+
+                tempGooseNBA.push(raptorsWin);
+                tempGooseNBA.push(pistonsWin);
+                tempGooseNBA.push(knicksWin);
+
+                var GooseDoubledScores = tempGooseNBA.map(team => team * 2);
+
+                var GoosePoints = 0;
+
+                for (var i = 0; i < GooseDoubledScores.length; i++) {
+                    GoosePoints += GooseDoubledScores[i];
+                }
+                console.log(GoosePoints);
+                this.setState({ gooseNBA: GoosePoints });
+                this.setState({ raptors: doubleRaptors });
+                this.setState({ pistons: doublePistons });
+                this.setState({ knicks: doubleKnicks });
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    }
 
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
         return (
@@ -43,8 +95,46 @@ class goose extends React.Component {
                         </ul>
                     </div>
                 </nav>
-                Goose's Page
-                <Table />
+                <div class="card">
+                    <div class="card-body text-center bg-light text-secondary">
+                        Goose
+  </div>
+                </div>
+                {/* Starting my new table here */}
+                <div class="container">
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col-6">Draft Pick</th>
+                                <th scope="col-6">NBA Team</th>
+                                <th scope="col-6">Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">51</th>
+                                <td>Toronto Raptors</td>
+                                <td>{this.state.raptors}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">78</th>
+                                <td>Detroit Pistons</td>
+                                <td>{this.state.pistons}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">128</th>
+                                <td>New York Knicks</td>
+                                <td>{this.state.knicks}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Total</th>
+                                <td></td>
+                                <td>{this.state.gooseNBA}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <body class="d-flex flex-column">
                     <div id="page-content">
                         <div class="container text-center">

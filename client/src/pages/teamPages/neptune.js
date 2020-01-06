@@ -1,8 +1,60 @@
 import React from "react";
-import Table from "../../components/Table"
+import API from "../../utils/API";
 
 class neptune extends React.Component {
     // Here is the function we will use for creating the actual table. 
+    state = {
+        allTeams: [],
+        // Putting NBA arrays here. Each person's array will include three NBA teams. 
+        allNBA: [],
+        neptuneNBA: "",
+        celtics: "",
+        pacers: "",
+        hornets: ""
+    }
+    componentDidMount = () => {
+        this.getScoresNBA();
+    }
+
+    getScoresNBA = () => {
+        API.getScoresNBA()
+            .then(res => {
+                // HERE ARE NBA TEAMS FOR TOMMY. 
+                // console.log(res);
+                // console.log(res.data.api.standings);
+                var celticsWin = res.data.api.standings[7].win;
+                var pacersWin = res.data.api.standings[11].win;
+                var hornetsWin = res.data.api.standings[1].win;
+
+                // I need to multiply the API result by 2 FIRST since we need them individually. 
+
+                var doubleCeltics = (celticsWin * 2);
+                var doublePacers = (pacersWin * 2);
+                var doubleHornets = (hornetsWin * 2);
+
+                const tempNeptuneNBA = this.state.allNBA;
+
+                tempNeptuneNBA.push(celticsWin);
+                tempNeptuneNBA.push(pacersWin);
+                tempNeptuneNBA.push(hornetsWin);
+
+                var NeptuneDoubledScores = tempNeptuneNBA.map(team => team * 2);
+
+                var NeptunePoints = 0;
+
+                for (var i = 0; i < NeptuneDoubledScores.length; i++) {
+                    NeptunePoints += NeptuneDoubledScores[i];
+                }
+                console.log(NeptunePoints);
+                this.setState({ neptuneNBA: NeptunePoints });
+                this.setState({ celtics: doubleCeltics });
+                this.setState({ pacers: doublePacers });
+                this.setState({ hornets: doubleHornets });
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    }
 
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
         return (
@@ -43,8 +95,46 @@ class neptune extends React.Component {
                         </ul>
                     </div>
                 </nav>
-                Neptune's Page
-                <Table />
+                <div class="card">
+                    <div class="card-body text-center bg-light text-secondary">
+                        Neptune
+  </div>
+                </div>
+                {/* Starting my new table here */}
+                <div class="container">
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col-6">Draft Pick</th>
+                                <th scope="col-6">NBA Team</th>
+                                <th scope="col-6">Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">24</th>
+                                <td>Boston Celtics</td>
+                                <td>{this.state.celtics}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">46</th>
+                                <td>Indiana Pacers</td>
+                                <td>{this.state.pacers}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">122</th>
+                                <td>Charlotte Hornets</td>
+                                <td>{this.state.hornets}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Total</th>
+                                <td></td>
+                                <td>{this.state.neptuneNBA}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <body class="d-flex flex-column">
                     <div id="page-content">
                         <div class="container text-center">
