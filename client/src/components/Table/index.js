@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./Table.css";
 import API from "../../utils/API";
+import { throws } from 'assert';
 
 // This table is being used for the Home Page currently, but not for the My Teams page. I am going to create that table separately. 
 
@@ -24,7 +25,7 @@ class Table extends Component {
         // Putting EPL arrays here. 
         allEPL: [],
         tomEPL: "",
-        patrickEPL: "",
+        patEPL: "",
         jamesEPL: "",
         neptuneEPL: "",
         DJEPL: "",
@@ -45,39 +46,155 @@ class Table extends Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-                console.log("here are the EPL results!")
-                console.log(res);
-                 // HERE ARE EPL TEAMS FOR TOMMY. 
+                // HERE ARE EPL TEAMS FOR TOMMY. 
+                //  Chelsea
                 var chelseaWin = res.data.api.standings[0][3].all.win;
                 var chelseaTie = res.data.api.standings[0][3].all.draw;
-                // var brightonWin = res.data.api.standings[8].win;
-                console.log("chelsea win results below");
-                console.log(chelseaWin);
-                console.log("chelsea tie results below");
-                console.log(chelseaTie);
-
                 var chelseaTotal = (chelseaWin * 4.25) + (chelseaTie);
-                // const tempTomEPL = this.state.allEPL;
-
+                console.log(res);
                 // Now Brighton results
                 var brightonWin = res.data.api.standings[0][13].all.win;
                 var brightonTie = res.data.api.standings[0][13].all.draw;
                 var brightonTotal = (brightonWin * 4.25) + (brightonTie)
-
+               
+                // Here is the final result
                 var tomPoints = chelseaTotal + brightonTotal
-                // tempTomEPL.push(chelseaWin);
-                // // tempTomNBA.push(netsWin);
-                // // tempTomNBA.push(spursWin);
-
-                // var tomDoubledScores = tempTomEPL.map(team => team * 4.25);
-
-                // var TomPoints = 0;
-
-                // for (var i = 0; i < tomDoubledScores.length; i++) {
-                //     TomPoints += tomDoubledScores[i];
-                // }
-                console.log(tomPoints);
                 this.setState({ tomEPL: tomPoints });
+
+                // HERE ARE EPL TEAMS FOR Patrick. 
+                //  Manchester City
+                var cityWin = res.data.api.standings[0][2].all.win;
+                var cityTie = res.data.api.standings[0][2].all.draw;
+                var cityTotal = (cityWin * 4.25) + (cityTie);
+
+                // Now Wolves results
+                var wolvesWin = res.data.api.standings[0][6].all.win;
+                var wolvesTie = res.data.api.standings[0][6].all.draw;
+                var wolvesTotal = (wolvesWin * 4.25) + (wolvesTie)
+               
+                // Here is the final result
+                var patPoints = cityTotal + wolvesTotal
+                this.setState({ patEPL: patPoints });
+
+                // HERE ARE EPL TEAMS FOR James. 
+                //  NewCastle
+                var newcastleWin = res.data.api.standings[0][12].all.win;
+                var newcastleTie = res.data.api.standings[0][12].all.draw;
+                var newcastleTotal = (newcastleWin * 4.25) + (newcastleTie);
+
+                // Now Crystal Palace results
+                var palaceWin = res.data.api.standings[0][8].all.win;
+                var palaceTie = res.data.api.standings[0][8].all.draw;
+                var palaceTotal = (palaceWin * 4.25) + (palaceTie)
+               
+                // Here is the final result
+                var jamesPoints = newcastleTotal + palaceTotal
+                this.setState({ jamesEPL: jamesPoints });
+
+                // HERE ARE EPL TEAMS FOR Neptune. 
+                //  Leicester
+                var leicesterWin = res.data.api.standings[0][1].all.win;
+                var leicesterTie = res.data.api.standings[0][1].all.draw;
+                var leicesterTotal = (leicesterWin * 4.25) + (leicesterTie);
+
+                // Now Norwich results
+                var norwichWin = res.data.api.standings[0][19].all.win;
+                var norwichTie = res.data.api.standings[0][19].all.draw;
+                var norwichTotal = (norwichWin * 4.25) + (norwichTie)
+               
+                // Here is the final result
+                var neptunePoints = leicesterTotal + norwichTotal
+                this.setState({ neptuneEPL: neptunePoints });
+
+                // HERE ARE EPL TEAMS FOR DJ. 
+                //  sheffield
+                var sheffieldWin = res.data.api.standings[0][7].all.win;
+                var sheffieldTie = res.data.api.standings[0][7].all.draw;
+                var sheffieldTotal = (sheffieldWin * 4.25) + (sheffieldTie);
+
+                // Now burnley results
+                var burnleyWin = res.data.api.standings[0][14].all.win;
+                var burnleyTie = res.data.api.standings[0][14].all.draw;
+                var burnleyTotal = (burnleyWin * 4.25) + (burnleyTie)
+               
+                // Here is the final result
+                var djPoints = sheffieldTotal + burnleyTotal
+                this.setState({ djEPL: djPoints });
+
+                // HERE ARE EPL TEAMS FOR Goose. 
+                //  manU
+                var manuWin = res.data.api.standings[0][4].all.win;
+                var manuTie = res.data.api.standings[0][4].all.draw;
+                var manuTotal = (manuWin * 4.25) + (manuTie);
+
+                // Now westham results
+                var westhamWin = res.data.api.standings[0][15].all.win;
+                var westhamTie = res.data.api.standings[0][15].all.draw;
+                var westhamTotal = (westhamWin * 4.25) + (westhamTie)
+               
+                // Here is the final result
+                var goosePoints = manuTotal + westhamTotal
+                this.setState({ gooseEPL: goosePoints });
+
+                // HERE ARE EPL TEAMS FOR Al. 
+                //  everton
+                var evertonWin = res.data.api.standings[0][10].all.win;
+                var evertonTie = res.data.api.standings[0][10].all.draw;
+                var evertonTotal = (evertonWin * 4.25) + (evertonTie);
+
+                // southhampton results
+                var southhamptonWin = res.data.api.standings[0][11].all.win;
+                var southhamptonTie = res.data.api.standings[0][11].all.draw;
+                var southhamptonTotal = (southhamptonWin * 4.25) + (southhamptonTie)
+               
+                // Here is the final result
+                var alPoints = evertonTotal + southhamptonTotal
+                this.setState({ alEPL: alPoints });
+
+                // HERE ARE EPL TEAMS FOR Joe. 
+                //  Liverpool
+                var liverpoolWin = res.data.api.standings[0][0].all.win;
+                var liverpoolTie = res.data.api.standings[0][0].all.draw;
+                var liverpoolTotal = (liverpoolWin * 4.25) + (liverpoolTie);
+
+                // Aston Villa results
+                var astonWin = res.data.api.standings[0][16].all.win;
+                var astonTie = res.data.api.standings[0][16].all.draw;
+                var astonTotal = (astonWin * 4.25) + (astonTie)
+               
+                // Here is the final result
+                var joePoints = liverpoolTotal + astonTotal
+                this.setState({ joeEPL: joePoints });
+
+                // HERE ARE EPL TEAMS FOR Ben. 
+                //  tottenham
+                var tottenhamWin = res.data.api.standings[0][5].all.win;
+                var tottenhamTie = res.data.api.standings[0][5].all.draw;
+                var tottenhamTotal = (tottenhamWin * 4.25) + (tottenhamTie);
+
+                // bournemouth results
+                var bournemouthWin = res.data.api.standings[0][17].all.win;
+                var bournemouthTie = res.data.api.standings[0][17].all.draw;
+                var bournemouthTotal = (bournemouthWin * 4.25) + (bournemouthTie)
+               
+                // Here is the final result
+                var benPoints = tottenhamTotal + bournemouthTotal
+                this.setState({ benEPL: benPoints });
+
+                // HERE ARE EPL TEAMS FOR Steids. 
+                //  Arsenal
+                var arsenalWin = res.data.api.standings[0][9].all.win;
+                var arsenalTie = res.data.api.standings[0][9].all.draw;
+                var arsenalTotal = (arsenalWin * 4.25) + (arsenalTie);
+
+                // Watford results
+                var watfordWin = res.data.api.standings[0][18].all.win;
+                var watfordTie = res.data.api.standings[0][18].all.draw;
+                var watfordTotal = (watfordWin * 4.25) + (watfordTie)
+               
+                // Here is the final result
+                var steidsPoints = arsenalTotal + watfordTotal
+                this.setState({ steidsEPL: steidsPoints });
             })
             .catch(error => {
                 console.log(error)
@@ -304,36 +421,6 @@ class Table extends Component {
             });
     }
 
-    // Going to put the EPL scores function here. 
-
-
-    // This will be the function used to show the teams. 
-    // getTeams = () => {
-    //     API.getTeams()
-    //         .then(res =>
-    //             this.setState({ allTeams: res.data })
-    //             // console.log(res)
-    //         )
-    //         .catch(err => console.log(err));
-    // }
-
-    // This is the table that will get returned. It includes the values of each individual row, which we construct and collectively call "teams"
-    // returnTable() {
-    //     // return this.state.allTeams.map((teams, index) => {
-    //     //     const { name, EPL, NFL, NHL, NBA, MLB, totalPoints } = teams //Here is a destructuring of the teams list. 
-    //         return (
-    //             <tr key={index}>
-    //                 <td>{name}</td>
-    //                 <td>{EPL}</td>
-    //                 <td>{NFL}</td>
-    //                 <td>{NHL}</td>
-    //                 <td>{this.state.tomNBA}</td>
-    //                 <td>{MLB}</td>
-    //                 <td>{totalPoints}</td>
-    //             </tr>
-    //         )
-    //     })
-    // }
 
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
         return (
@@ -364,7 +451,7 @@ class Table extends Component {
                     <tbody>
                         <tr>
                             <th scope="col">Patrick</th>
-                            <th scope="col">EPL</th>
+                            <th scope="col">{this.state.patEPL}</th>
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.patrickNBA}</th>
@@ -375,7 +462,7 @@ class Table extends Component {
                     <tbody>
                         <tr>
                             <th scope="col">James</th>
-                            <th scope="col">EPL</th>
+                            <th scope="col">{this.state.jamesEPL}</th>
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.jamesNBA}</th>
@@ -386,7 +473,7 @@ class Table extends Component {
                     <tbody>
                         <tr>
                             <th scope="col">Neptune</th>
-                            <th scope="col">EPL</th>
+                            <th scope="col">{this.state.neptuneEPL}</th>
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.neptuneNBA}</th>
@@ -397,7 +484,7 @@ class Table extends Component {
                     <tbody>
                         <tr>
                             <th scope="col">DJ</th>
-                            <th scope="col">EPL</th>
+                            <th scope="col">{this.state.djEPL}</th>
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.DJNBA}</th>
@@ -408,7 +495,7 @@ class Table extends Component {
                     <tbody>
                         <tr>
                             <th scope="col">Goose</th>
-                            <th scope="col">EPL</th>
+                            <th scope="col">{this.state.gooseEPL}</th>
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.gooseNBA}</th>
@@ -419,7 +506,7 @@ class Table extends Component {
                     <tbody>
                         <tr>
                             <th scope="col">Al</th>
-                            <th scope="col">EPL</th>
+                            <th scope="col">{this.state.alEPL}</th>
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.alNBA}</th>
@@ -430,7 +517,7 @@ class Table extends Component {
                     <tbody>
                         <tr>
                             <th scope="col">Joe</th>
-                            <th scope="col">EPL</th>
+                            <th scope="col">{this.state.joeEPL}</th>
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.joeNBA}</th>
@@ -441,7 +528,7 @@ class Table extends Component {
                     <tbody>
                         <tr>
                             <th scope="col">Steids</th>
-                            <th scope="col">EPL</th>
+                            <th scope="col">{this.state.steidsEPL}</th>
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.steidsNBA}</th>
@@ -452,7 +539,7 @@ class Table extends Component {
                     <tbody>
                         <tr>
                             <th scope="col">Ben</th>
-                            <th scope="col">EPL</th>
+                            <th scope="col">{this.state.benEPL}</th>
                             <th scope="col">NFL</th>
                             <th scope="col">NHL</th>
                             <th scope="col">{this.state.benNBA}</th>
