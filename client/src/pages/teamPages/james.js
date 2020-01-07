@@ -10,7 +10,11 @@ class james extends React.Component {
         jamesNBA: "",
         bucks: "",
         thunder: "",
-        suns: ""
+        suns: "",
+        saints: 130,
+        falcons: 70,
+        lions: 32.5,
+        totalNFL: 232.5
     }
     componentDidMount = () => {
         this.getScoresNBA();
@@ -131,6 +135,39 @@ class james extends React.Component {
                                 <th scope="row">Total</th>
                                 <td></td>
                                 <td>{this.state.jamesNBA}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    {/* Here is NFL */}
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col-6">Draft Pick</th>
+                                <th scope="col-6">NFL Team</th>
+                                <th scope="col-6">Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">15</th>
+                                <td>New Orleans Saints</td>
+                                <td>{this.state.saints}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">74</th>
+                                <td>Atlanta Falcons</td>
+                                <td>{this.state.falcons}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">134</th>
+                                <td>Detroit Lions</td>
+                                <td>{this.state.lions}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Total</th>
+                                <td></td>
+                                <td>{this.state.totalNFL}</td>
                             </tr>
                         </tbody>
                     </table>
