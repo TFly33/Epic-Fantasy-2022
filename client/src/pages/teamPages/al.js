@@ -23,13 +23,14 @@ class al extends React.Component {
         lightning: "",
         bruins: "",
         wings: "",
+        totalNHL: "",
     }
+
     componentDidMount = () => {
         this.getScoresNBA();
         // this.getScoresEPL();
         this.getScoresNHL();
     }
-
 
     getScoresNHL = () => {
         API.getScoresNHL()
