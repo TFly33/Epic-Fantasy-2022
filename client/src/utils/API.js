@@ -52,6 +52,12 @@ export default {
     })
   },
 
+   // This one isn't working yet. 
+   getScoresNHL: function () {
+    // Sports API Search Here. 
+    return axios.get("https://statsapi.web.nhl.com/api/v1/standings")
+  },
+
   // Gets the teams with the given id
   getMyTeams: function (id) {
     return axios.get("/api/myteam/" + id);

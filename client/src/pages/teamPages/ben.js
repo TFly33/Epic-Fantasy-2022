@@ -239,6 +239,45 @@ class ben extends React.Component {
                                 </tbody>
                             </table>
                         </div>
+
+                        {/* Adding the NHL Table here */}
+
+                        <div class="col-6">
+                            {/* Here is NFL */}
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col-6">Draft Pick</th>
+                                        <th scope="col-6">NHL Team</th>
+                                        <th scope="col-6">Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">29</th>
+                                        <td>Vegas Knights</td>
+                                        <td>{this.state.knights}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">106</th>
+                                        <td>Chicago Blackhawks</td>
+                                        <td>{this.state.blackhawks}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">113</th>
+                                        <td>Vancouver Canucks</td>
+                                        <td>{this.state.canucks}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Total</th>
+                                        <td></td>
+                                        <td>{this.state.totalNHL}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        
                     </div>
                 </div>
 

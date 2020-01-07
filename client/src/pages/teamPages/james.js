@@ -19,11 +19,103 @@ class james extends React.Component {
         newcastle: "",
         palace: "",
         jamesEPL: "",
+        // NHL HERE
+        flames: "",
+        pens: "",
+        wild: "",
+        totalNHL: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
+        this.getScoresNHL();
     }
+
+    getScoresNHL = () => {
+        API.getScoresNHL()
+            .then(res => {
+                // This is the Metro Division
+                var metroResults = res.data.records[0].teamRecords;
+                // Atlantic Division
+                var atlanticResults = res.data.records[1].teamRecords;
+                // Central Division
+                var centralResults = res.data.records[2].teamRecords;
+                // central
+                var pacificResults = res.data.records[3].teamRecords;
+
+                console.log(centralResults);
+                var flamesWins;
+                var flamesOTLS;
+                var flamesTotal;
+                var pensWins;
+                var pensOTLS;
+                var pensTotal;
+                var wildWins;
+                var wildOTLS;
+                var wildTotal;
+                var allNHL;
+
+                // Here is the flames loop. 
+                for (var i = 0; i < pacificResults.length; i++) {
+                    // flames
+                    if (pacificResults[i].team.id === 20) {
+                        flamesWins = pacificResults[i].leagueRecord.wins;
+                        flamesOTLS = pacificResults[i].leagueRecord.ot;
+                        console.log(flamesWins);
+                        console.log(flamesOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                // flames total
+                flamesTotal = (flamesWins * 2) + flamesOTLS;
+                console.log(flamesTotal);
+
+                // Here is the loop for the pens
+                for (var i = 0; i < metroResults.length; i++) {
+
+                    // pens
+                    if (metroResults[i].team.id === 5) {
+                        pensWins = metroResults[i].leagueRecord.wins;
+                        pensOTLS = metroResults[i].leagueRecord.ot;
+                        console.log(pensWins);
+                        console.log(pensOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                for (var i = 0; i < centralResults.length; i++) {
+
+                     // wild
+                     if (centralResults[i].team.id === 30) {
+                        wildWins = centralResults[i].leagueRecord.wins;
+                        wildOTLS = centralResults[i].leagueRecord.ot;
+                        console.log(wildWins);
+                        console.log(wildOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+                
+                // pens total
+                pensTotal = (pensWins * 2) + pensOTLS;
+                console.log(pensTotal)
+
+                // wild total
+                wildTotal = (wildWins * 2) + wildOTLS;
+                console.log(wildTotal);
+
+                var allNHL = flamesTotal + pensTotal + wildTotal
+
+                this.setState({ totalNHL: allNHL });
+                this.setState({ flames: flamesTotal });
+                this.setState({ pens: pensTotal });
+                this.setState({ wild: wildTotal });
+
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    };
 
     getScoresEPL = () => {
         API.getScoresEPL()
@@ -240,6 +332,45 @@ class james extends React.Component {
                                 </tbody>
                             </table>
                         </div>
+
+                        {/* Adding the NHL Table here */}
+
+                        <div class="col-6">
+                            {/* Here is NFL */}
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col-6">Draft Pick</th>
+                                        <th scope="col-6">NHL Team</th>
+                                        <th scope="col-6">Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">35</th>
+                                        <td>Calgary Flames</td>
+                                        <td>{this.state.flames}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">48</th>
+                                        <td>Pittsburgh Penguins</td>
+                                        <td>{this.state.pens}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">117</th>
+                                        <td>Minnesota Wild</td>
+                                        <td>{this.state.wild}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Total</th>
+                                        <td></td>
+                                        <td>{this.state.totalNHL}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
                     </div>
                 </div>
 

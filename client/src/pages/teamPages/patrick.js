@@ -18,12 +18,100 @@ class patrick extends React.Component {
         // EPL HERE
         city: "",
         wolves: "",
-        patEPL: ""
+        patEPL: "",
+        // NHL HERE
+        islanders: "",
+        ducks: "",
+        kings: "",
+        totalNHL: "",
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
+        this.getScoresNHL();
     }
+
+    getScoresNHL = () => {
+        API.getScoresNHL()
+            .then(res => {
+                // This is the Metro Division
+                var metroResults = res.data.records[0].teamRecords;
+                // Atlantic Division
+                var atlanticResults = res.data.records[1].teamRecords;
+                // Central Division
+                var centralResults = res.data.records[2].teamRecords;
+                // Pacific
+                var pacificResults = res.data.records[3].teamRecords;
+
+                console.log(metroResults);
+                var islandersWins;
+                var islandersOTLS;
+                var islandersTotal;
+                var ducksWins;
+                var ducksOTLS;
+                var ducksTotal;
+                var kingsWins;
+                var kingsOTLS;
+                var kingsTotal;
+                var allNHL;
+
+                // Here is the ducks/kings for loop. 
+                for (var i = 0; i < pacificResults.length; i++) {
+                    // ducks
+                    if (pacificResults[i].team.id === 24) {
+                        ducksWins = pacificResults[i].leagueRecord.wins;
+                        ducksOTLS = pacificResults[i].leagueRecord.ot;
+                        console.log(ducksWins);
+                        console.log(ducksOTLS);
+                        console.log("this loop is running")
+                    }
+
+                    // kings
+                    if (pacificResults[i].team.id === 26) {
+                        kingsWins = pacificResults[i].leagueRecord.wins;
+                        kingsOTLS = pacificResults[i].leagueRecord.ot;
+                        console.log(kingsWins);
+                        console.log(kingsOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+                // ducks total
+                ducksTotal = (ducksWins * 2) + ducksOTLS;
+                console.log(ducksTotal)
+
+                // Here is the loop for the islanders
+                for (var i = 0; i < metroResults.length; i++) {
+
+                    // islanders
+                    if (metroResults[i].team.id === 2) {
+                        islandersWins = metroResults[i].leagueRecord.wins;
+                        islandersOTLS = metroResults[i].leagueRecord.ot;
+                        console.log(islandersWins);
+                        console.log(islandersOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                // islanders total
+                islandersTotal = (islandersWins * 2) + islandersOTLS;
+                console.log(islandersTotal);
+
+                // ducks total
+                kingsTotal = (kingsWins * 2) + kingsOTLS;
+                console.log(kingsTotal);
+
+                var allNHL = islandersTotal + ducksTotal + kingsTotal
+
+                this.setState({ totalNHL: allNHL });
+                this.setState({ islanders: islandersTotal });
+                this.setState({ ducks: ducksTotal });
+                this.setState({ kings: kingsTotal });
+
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    };
 
     getScoresEPL = () => {
         API.getScoresEPL()
@@ -46,7 +134,7 @@ class patrick extends React.Component {
                 this.setState({ wolves: wolvesTotal });
 
                 // And now I need to run the totalscores function so that it can get logged. 
-                this.totalScores();
+                // this.totalScores();
 
             })
             .catch(error => {
@@ -240,6 +328,44 @@ class patrick extends React.Component {
                                 </tbody>
                             </table>
                         </div>
+
+                        {/* Adding the NHL Table here */}
+
+                        <div class="col-6">
+                            {/* Here is NFL */}
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col-6">Draft Pick</th>
+                                        <th scope="col-6">NHL Team</th>
+                                        <th scope="col-6">Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">66</th>
+                                        <td>New York Islanders</td>
+                                        <td>{this.state.islanders}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">121</th>
+                                        <td>Anaheim Mighty Ducks</td>
+                                        <td>{this.state.ducks}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">140</th>
+                                        <td>Los Angeles Kings</td>
+                                        <td>{this.state.kings}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Total</th>
+                                        <td></td>
+                                        <td>{this.state.totalNHL}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
 

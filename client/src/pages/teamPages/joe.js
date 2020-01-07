@@ -19,11 +19,102 @@ class joe extends React.Component {
         liverpool: "",
         aston: "",
         joeEPL: "",
+        // NHL Here
+        blues: "",
+        jackets: "",
+        oilers: "",
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
+        this.getScoresNHL();
     }
+
+    getScoresNHL = () => {
+        API.getScoresNHL()
+            .then(res => {
+                // This is the Metro Division
+                var metroResults = res.data.records[0].teamRecords;
+                // Atlantic Division
+                var atlanticResults = res.data.records[1].teamRecords;
+                // Central Division
+                var centralResults = res.data.records[2].teamRecords;
+                // central
+                var pacificResults = res.data.records[3].teamRecords;
+
+                console.log(metroResults);
+                var bluesWins;
+                var bluesOTLS;
+                var bluesTotal;
+                var jacketsWins;
+                var jacketsOTLS;
+                var jacketsTotal;
+                var oilersWins;
+                var oilersOTLS;
+                var oilersTotal;
+                var allNHL;
+
+                // Here is the blues loop. 
+                for (var i = 0; i < centralResults.length; i++) {
+                    // blues
+                    if (centralResults[i].team.id === 19) {
+                        bluesWins = centralResults[i].leagueRecord.wins;
+                        bluesOTLS = centralResults[i].leagueRecord.ot;
+                        console.log(bluesWins);
+                        console.log(bluesOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                // blues total
+                bluesTotal = (bluesWins * 2) + bluesOTLS;
+                console.log(bluesTotal);
+
+                // Here is the loop for the jackets
+                for (var i = 0; i < metroResults.length; i++) {
+
+                    // jackets
+                    if (metroResults[i].team.id === 29) {
+                        jacketsWins = metroResults[i].leagueRecord.wins;
+                        jacketsOTLS = metroResults[i].leagueRecord.ot;
+                        console.log(jacketsWins);
+                        console.log(jacketsOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                for (var i = 0; i < pacificResults.length; i++) {
+
+                     // oilers
+                     if (pacificResults[i].team.id === 22) {
+                        oilersWins = pacificResults[i].leagueRecord.wins;
+                        oilersOTLS = pacificResults[i].leagueRecord.ot;
+                        console.log(oilersWins);
+                        console.log(oilersOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+                
+                // jackets total
+                jacketsTotal = (jacketsWins * 2) + jacketsOTLS;
+                console.log(jacketsTotal)
+
+                // oilers total
+                oilersTotal = (oilersWins * 2) + oilersOTLS;
+                console.log(oilersTotal);
+
+                var allNHL = bluesTotal + jacketsTotal + oilersTotal
+
+                this.setState({ totalNHL: allNHL });
+                this.setState({ blues: bluesTotal });
+                this.setState({ jackets: jacketsTotal });
+                this.setState({ oilers: oilersTotal });
+
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    };
 
     getScoresEPL = () => {
         API.getScoresEPL()
@@ -239,6 +330,45 @@ class joe extends React.Component {
                                 </tbody>
                             </table>
                         </div>
+
+                        {/* Adding the NHL Table here */}
+
+                        <div class="col-6">
+                            {/* Here is NFL */}
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col-6">Draft Pick</th>
+                                        <th scope="col-6">NHL Team</th>
+                                        <th scope="col-6">Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">43</th>
+                                        <td>St. Louis Blues</td>
+                                        <td>{this.state.blues}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">70</th>
+                                        <td>Columbus Blue Jackets</td>
+                                        <td>{this.state.jackets}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">119</th>
+                                        <td>Edmonton Oilers</td>
+                                        <td>{this.state.oilers}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Total</th>
+                                        <td></td>
+                                        <td>{this.state.totalNHL}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
                     </div>
                 </div>
 

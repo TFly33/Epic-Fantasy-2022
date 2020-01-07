@@ -11,18 +11,110 @@ class neptune extends React.Component {
         celtics: "",
         pacers: "",
         hornets: "",
+        // NFL STARTING HERE 
         rams: 90,
         jaguars: 60,
         giants: 40,
         totalNFL: 190,
         leicester: "",
         norwich: "",
-        neptuneEPL: ""
+        neptuneEPL: "",
+        // NHL Going here. 
+        sharks: "",
+        rangers: "",
+        devils: "",
+        totalNHL: "",
+
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
-    }
+        this.getScoresNHL();
+    };
+
+    getScoresNHL = () => {
+        API.getScoresNHL()
+            .then(res => {
+                // This is the Metro Division
+                var metroResults = res.data.records[0].teamRecords;
+                // Atlantic Division
+                var atlanticResults = res.data.records[1].teamRecords;
+                // Central Division
+                var centralResults = res.data.records[2].teamRecords;
+                // Pacific
+                var pacificResults = res.data.records[3].teamRecords;
+
+                console.log(metroResults);
+                var sharksWins;
+                var sharksOTLS;
+                var sharksTotal;
+                var rangersWins;
+                var rangersOTLS;
+                var rangersTotal;
+                var devilsWins;
+                var devilsOTLS;
+                var devilsTotal;
+                var allNHL;
+
+                // Here is the sharks loop. 
+                for (var i = 0; i < pacificResults.length; i++) {
+                    // sharks
+                    if (pacificResults[i].team.id === 28) {
+                        sharksWins = pacificResults[i].leagueRecord.wins;
+                        sharksOTLS = pacificResults[i].leagueRecord.ot;
+                        console.log(sharksWins);
+                        console.log(sharksOTLS);
+                        console.log("this loop is running")
+                    }
+
+                }
+
+                // sharks total
+                sharksTotal = (sharksWins * 2) + sharksOTLS;
+                console.log(sharksTotal);
+
+                // Here is the loop for the sharks
+                for (var i = 0; i < metroResults.length; i++) {
+
+                    // devils
+                    if (metroResults[i].team.id === 1) {
+                        devilsWins = metroResults[i].leagueRecord.wins;
+                        devilsOTLS = metroResults[i].leagueRecord.ot;
+                        console.log(devilsWins);
+                        console.log(devilsOTLS);
+                        console.log("this loop is running")
+                    }
+
+                    // rangers
+                    if (metroResults[i].team.id === 3) {
+                        rangersWins = metroResults[i].leagueRecord.wins;
+                        rangersOTLS = metroResults[i].leagueRecord.ot;
+                        console.log(rangersWins);
+                        console.log(rangersOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                // rangers total
+                rangersTotal = (rangersWins * 2) + rangersOTLS;
+                console.log(rangersTotal)
+
+                // rangers total
+                devilsTotal = (devilsWins * 2) + devilsOTLS;
+                console.log(devilsTotal);
+
+                var allNHL = sharksTotal + rangersTotal + devilsTotal
+
+                this.setState({ totalNHL: allNHL });
+                this.setState({ sharks: sharksTotal });
+                this.setState({ rangers: rangersTotal });
+                this.setState({ devils: devilsTotal });
+
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    };
 
     getScoresEPL = () => {
         API.getScoresEPL()
@@ -239,6 +331,44 @@ class neptune extends React.Component {
                                 </tbody>
                             </table>
                         </div>
+
+                        {/* Adding the NHL Table here */}
+
+                        <div class="col-6">
+                            {/* Here is NFL */}
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col-6">Draft Pick</th>
+                                        <th scope="col-6">NHL Team</th>
+                                        <th scope="col-6">Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">37</th>
+                                        <td>San Jose Sharks</td>
+                                        <td>{this.state.sharks}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">91</th>
+                                        <td>New York Rangers</td>
+                                        <td>{this.state.rangers}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">108</th>
+                                        <td>New Jersey Devils</td>
+                                        <td>{this.state.devils}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Total</th>
+                                        <td></td>
+                                        <td>{this.state.totalNHL}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
 

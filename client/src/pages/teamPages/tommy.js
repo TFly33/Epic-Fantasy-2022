@@ -20,10 +20,97 @@ class tommy extends React.Component {
         chelsea: "",
         brighton: "",
         eplTotal: "",
+        // NHL States here 
+        blackhawks: "",
+        knights: "",
+        canucks: "",
+        totalNHL: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
-        this.getScoresEPL();
+        this.getScoresNHL();
+        // this.getScoresEPL();
+    }
+
+    getScoresNHL = () => {
+        API.getScoresNHL()
+            .then(res => {
+                // This is the Metro Division
+                var metroResults = res.data.records[0].teamRecords;
+                // Atlantic Division
+                var atlanticResults = res.data.records[1].teamRecords;
+                // Central Division
+                var centralResults = res.data.records[2].teamRecords;
+                // Pacific
+                var pacificResults = res.data.records[3].teamRecords;
+
+                console.log(pacificResults)
+                var knightsWins;
+                var knightsOTLS;
+                var knightsTotal;
+                var blackhawksWins;
+                var blackhawksOTLS;
+                var blackhawksTotal;
+                var canucksWins;
+                var canucksOTLS;
+                var canucksTotal;
+                var totalNHL;
+
+                // Here is the Blackhawks for loop. 
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    if (centralResults[i].team.id === 16) {
+                      blackhawksWins = centralResults[i].leagueRecord.wins;
+                      blackhawksOTLS = centralResults[i].leagueRecord.ot;
+                      console.log(blackhawksWins);
+                      console.log(blackhawksOTLS);
+                      console.log("this loop is running")
+                    }
+                }
+                // blackhawks total
+                blackhawksTotal = (blackhawksWins * 2) + blackhawksOTLS;
+                console.log(blackhawksTotal)
+
+                 // Here is the loop for the Canucks and Knights, who are in the same division. 
+                 for (var i = 0; i < pacificResults.length; i++) {
+
+                    // Knights
+                    if (pacificResults[i].team.id === 54) {
+                      knightsWins = pacificResults[i].leagueRecord.wins;
+                      knightsOTLS = pacificResults[i].leagueRecord.ot;
+                      console.log(knightsWins);
+                      console.log(knightsOTLS);
+                      console.log("this loop is running")
+                    }
+                    // Canucks
+                    if (pacificResults[i].team.id === 23) {
+                        canucksWins = pacificResults[i].leagueRecord.wins;
+                        canucksOTLS = pacificResults[i].leagueRecord.ot;
+                        console.log(canucksWins);
+                        console.log(canucksOTLS);
+                        console.log("this loop is running")
+                      }
+                }
+
+                // knights total
+                knightsTotal = (knightsWins * 2) + knightsOTLS;
+                console.log(knightsTotal);
+
+                // canucks total
+                canucksTotal = (canucksWins * 2) + canucksOTLS;
+                console.log(canucksTotal); 
+
+                var allNHL = knightsTotal + canucksTotal + blackhawksTotal
+
+                this.setState({ totalNHL: allNHL });
+                this.setState({ knights: knightsTotal });
+                this.setState({ canucks: canucksTotal });
+                this.setState({ blackhawks: blackhawksTotal});
+
+            })
+            .catch(error => {
+                console.log(error)
+            });
     }
 
     getScoresEPL = () => {
@@ -31,13 +118,36 @@ class tommy extends React.Component {
             .then(res => {
                 // HERE ARE EPL TEAMS FOR TOMMY. 
                 //  Chelsea
-                var chelseaWin = res.data.api.standings[0][3].all.win;
-                var chelseaTie = res.data.api.standings[0][3].all.draw;
+                // console.log(res)
+                var chelseaWin;
+                var chelseaTie;
+                var brightonWin;
+                var brightonTie;
+
+                // running the for loop here. 
+                var forLoopArray = res.data.api.standings[0]
+                for (var i = 0; i < forLoopArray.length; i++) {
+
+                    if (forLoopArray[i].team_id === 49) {
+                        chelseaWin = forLoopArray[i].all.win
+                        chelseaTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + chelseaWin);
+                        console.log("here are the ties" + chelseaTie);
+                    }
+
+                    if (forLoopArray[i].team_id === 51) {
+                        brightonWin = forLoopArray[i].all.win
+                        brightonTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + brightonWin);
+                        console.log("here are the ties" + brightonTie);
+                    }
+                }
+
                 var chelseaTotal = (chelseaWin * 4.25) + (chelseaTie);
-                console.log(res);
-                // Now Brighton results
-                var brightonWin = res.data.api.standings[0][13].all.win;
-                var brightonTie = res.data.api.standings[0][13].all.draw;
                 var brightonTotal = (brightonWin * 4.25) + (brightonTie);
 
                 // Here is the final result
@@ -47,7 +157,7 @@ class tommy extends React.Component {
                 this.setState({ eplTotal: tomPoints });
 
                 // And now I need to run the totalscores function so that it can get logged. 
-                this.totalScores();
+                // this.totalScores();
 
             })
             .catch(error => {
@@ -242,6 +352,47 @@ class tommy extends React.Component {
                                 </tbody>
                             </table>
                         </div>
+                        {/* Adding the NHL Table here */}
+
+                        <div class="col-6">
+                            {/* Here is NFL */}
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col-6">Draft Pick</th>
+                                        <th scope="col-6">NHL Team</th>
+                                        <th scope="col-6">Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">29</th>
+                                        <td>Vegas Knights</td>
+                                        <td>{this.state.knights}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">106</th>
+                                        <td>Chicago Blackhawks</td>
+                                        <td>{this.state.blackhawks}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">113</th>
+                                        <td>Vancouver Canucks</td>
+                                        <td>{this.state.canucks}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Total</th>
+                                        <td></td>
+                                        <td>{this.state.totalNHL}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+
+
                     </div>
                 </div>
 
