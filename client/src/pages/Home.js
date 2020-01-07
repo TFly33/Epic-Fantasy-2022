@@ -1,5 +1,6 @@
 import React from "react";
 import Table from "../components/Table"
+import DatatablePage from "../components/fakeTable";
 
 class Home extends React.Component {
     // Here is the function we will use for creating the actual table. 
@@ -44,6 +45,9 @@ class Home extends React.Component {
                     </div>
                 </nav>
                 <Table />
+                <div class ="container">
+                <DatatablePage/>
+                </div>
                 <body class="d-flex flex-column">
                     <div id="page-content">
                         <div class="container text-center">

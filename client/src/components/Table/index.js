@@ -47,10 +47,10 @@ class Table extends Component {
         steidsNFL: "",
         benNFL: "",
         // NHL Here: 
-        tomNHL:"",
+        tomNHL: "",
         patNHL: "",
         jamesNHL: "",
-        neptuneNHL:"",
+        neptuneNHL: "",
         djNHL: "",
         gooseNHL: "",
         alNHL: "",
@@ -76,7 +76,7 @@ class Table extends Component {
         // first we scrape. Inside the function, need to post to the Mongo DB. 
         this.getScoresNBA();
         // Now, once the updates have applied, we call the getteams. This will show updated results. I'm gonna freeze this for the time being so I don't make a million API calls. 
-        this.getScoresEPL();
+        // this.getScoresEPL();
         // I'm gonna run this as a function even though these are just dead numbers at this point (since the NFL regular season ended)
         this.getScoresNFL();
         // running NHL here
@@ -174,27 +174,27 @@ class Table extends Component {
                 for (var i = 0; i < centralResults.length; i++) {
 
                     if (centralResults[i].team.id === 16) {
-                      blackhawksWins = centralResults[i].leagueRecord.wins;
-                      blackhawksOTLS = centralResults[i].leagueRecord.ot;
-                      console.log(blackhawksWins);
-                      console.log(blackhawksOTLS);
-                      console.log("this loop is running")
+                        blackhawksWins = centralResults[i].leagueRecord.wins;
+                        blackhawksOTLS = centralResults[i].leagueRecord.ot;
+                        console.log(blackhawksWins);
+                        console.log(blackhawksOTLS);
+                        console.log("this loop is running")
                     }
                 }
                 // blackhawks total
                 blackhawksTotal = (blackhawksWins * 2) + blackhawksOTLS;
                 console.log(blackhawksTotal)
 
-                 // Here is the loop for the Canucks and Knights, who are in the same division. 
-                 for (var i = 0; i < pacificResults.length; i++) {
+                // Here is the loop for the Canucks and Knights, who are in the same division. 
+                for (var i = 0; i < pacificResults.length; i++) {
 
                     // Knights
                     if (pacificResults[i].team.id === 54) {
-                      knightsWins = pacificResults[i].leagueRecord.wins;
-                      knightsOTLS = pacificResults[i].leagueRecord.ot;
-                      console.log(knightsWins);
-                      console.log(knightsOTLS);
-                      console.log("this loop is running")
+                        knightsWins = pacificResults[i].leagueRecord.wins;
+                        knightsOTLS = pacificResults[i].leagueRecord.ot;
+                        console.log(knightsWins);
+                        console.log(knightsOTLS);
+                        console.log("this loop is running")
                     }
                     // Canucks
                     if (pacificResults[i].team.id === 23) {
@@ -203,7 +203,7 @@ class Table extends Component {
                         console.log(canucksWins);
                         console.log(canucksOTLS);
                         console.log("this loop is running")
-                      }
+                    }
                 }
 
                 // knights total
@@ -212,14 +212,14 @@ class Table extends Component {
 
                 // canucks total
                 canucksTotal = (canucksWins * 2) + canucksOTLS;
-                console.log(canucksTotal); 
+                console.log(canucksTotal);
 
                 var allNHL = knightsTotal + canucksTotal + blackhawksTotal
 
                 this.setState({ tomNHL: allNHL });
                 this.setState({ knights: knightsTotal });
                 this.setState({ canucks: canucksTotal });
-                this.setState({ blackhawks: blackhawksTotal});
+                this.setState({ blackhawks: blackhawksTotal });
 
                 // start of Patrick NHL: 
                 // This is the Metro Division
@@ -297,82 +297,82 @@ class Table extends Component {
 
                 // Start of James NHL here
 
-                 // This is the Metro Division
-                 var metroResults = res.data.records[0].teamRecords;
-                 // Atlantic Division
-                 var atlanticResults = res.data.records[1].teamRecords;
-                 // Central Division
-                 var centralResults = res.data.records[2].teamRecords;
-                 // central
-                 var pacificResults = res.data.records[3].teamRecords;
- 
-                 console.log(centralResults);
-                 var flamesWins;
-                 var flamesOTLS;
-                 var flamesTotal;
-                 var pensWins;
-                 var pensOTLS;
-                 var pensTotal;
-                 var wildWins;
-                 var wildOTLS;
-                 var wildTotal;
-                 var allNHL;
- 
-                 // Here is the flames loop. 
-                 for (var i = 0; i < pacificResults.length; i++) {
-                     // flames
-                     if (pacificResults[i].team.id === 20) {
-                         flamesWins = pacificResults[i].leagueRecord.wins;
-                         flamesOTLS = pacificResults[i].leagueRecord.ot;
-                         console.log(flamesWins);
-                         console.log(flamesOTLS);
-                         console.log("this loop is running")
-                     }
-                 }
- 
-                 // flames total
-                 flamesTotal = (flamesWins * 2) + flamesOTLS;
-                 console.log(flamesTotal);
- 
-                 // Here is the loop for the pens
-                 for (var i = 0; i < metroResults.length; i++) {
- 
-                     // pens
-                     if (metroResults[i].team.id === 5) {
-                         pensWins = metroResults[i].leagueRecord.wins;
-                         pensOTLS = metroResults[i].leagueRecord.ot;
-                         console.log(pensWins);
-                         console.log(pensOTLS);
-                         console.log("this loop is running")
-                     }
-                 }
- 
-                 for (var i = 0; i < centralResults.length; i++) {
- 
-                      // wild
-                      if (centralResults[i].team.id === 30) {
-                         wildWins = centralResults[i].leagueRecord.wins;
-                         wildOTLS = centralResults[i].leagueRecord.ot;
-                         console.log(wildWins);
-                         console.log(wildOTLS);
-                         console.log("this loop is running")
-                     }
-                 }
-                 
-                 // pens total
-                 pensTotal = (pensWins * 2) + pensOTLS;
-                 console.log(pensTotal)
- 
-                 // wild total
-                 wildTotal = (wildWins * 2) + wildOTLS;
-                 console.log(wildTotal);
- 
-                 var allNHL = flamesTotal + pensTotal + wildTotal
- 
-                 this.setState({ jamesNHL: allNHL });
-                 this.setState({ flames: flamesTotal });
-                 this.setState({ pens: pensTotal });
-                 this.setState({ wild: wildTotal });
+                // This is the Metro Division
+                var metroResults = res.data.records[0].teamRecords;
+                // Atlantic Division
+                var atlanticResults = res.data.records[1].teamRecords;
+                // Central Division
+                var centralResults = res.data.records[2].teamRecords;
+                // central
+                var pacificResults = res.data.records[3].teamRecords;
+
+                console.log(centralResults);
+                var flamesWins;
+                var flamesOTLS;
+                var flamesTotal;
+                var pensWins;
+                var pensOTLS;
+                var pensTotal;
+                var wildWins;
+                var wildOTLS;
+                var wildTotal;
+                var allNHL;
+
+                // Here is the flames loop. 
+                for (var i = 0; i < pacificResults.length; i++) {
+                    // flames
+                    if (pacificResults[i].team.id === 20) {
+                        flamesWins = pacificResults[i].leagueRecord.wins;
+                        flamesOTLS = pacificResults[i].leagueRecord.ot;
+                        console.log(flamesWins);
+                        console.log(flamesOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                // flames total
+                flamesTotal = (flamesWins * 2) + flamesOTLS;
+                console.log(flamesTotal);
+
+                // Here is the loop for the pens
+                for (var i = 0; i < metroResults.length; i++) {
+
+                    // pens
+                    if (metroResults[i].team.id === 5) {
+                        pensWins = metroResults[i].leagueRecord.wins;
+                        pensOTLS = metroResults[i].leagueRecord.ot;
+                        console.log(pensWins);
+                        console.log(pensOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // wild
+                    if (centralResults[i].team.id === 30) {
+                        wildWins = centralResults[i].leagueRecord.wins;
+                        wildOTLS = centralResults[i].leagueRecord.ot;
+                        console.log(wildWins);
+                        console.log(wildOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                // pens total
+                pensTotal = (pensWins * 2) + pensOTLS;
+                console.log(pensTotal)
+
+                // wild total
+                wildTotal = (wildWins * 2) + wildOTLS;
+                console.log(wildTotal);
+
+                var allNHL = flamesTotal + pensTotal + wildTotal
+
+                this.setState({ jamesNHL: allNHL });
+                this.setState({ flames: flamesTotal });
+                this.setState({ pens: pensTotal });
+                this.setState({ wild: wildTotal });
 
                 //  starting Neptune NHL here
 
@@ -564,8 +564,8 @@ class Table extends Component {
                         console.log("this loop is running")
                     }
 
-                      // stars
-                      if (centralResults[i].team.id === 25) {
+                    // stars
+                    if (centralResults[i].team.id === 25) {
                         starsWins = centralResults[i].leagueRecord.wins;
                         starsOTLS = centralResults[i].leagueRecord.ot;
                         console.log(starsWins);
@@ -580,8 +580,8 @@ class Table extends Component {
 
                 for (var i = 0; i < atlanticResults.length; i++) {
 
-                     // canadians
-                     if (atlanticResults[i].team.id === 8) {
+                    // canadians
+                    if (atlanticResults[i].team.id === 8) {
                         canadiansWins = atlanticResults[i].leagueRecord.wins;
                         canadiansOTLS = atlanticResults[i].leagueRecord.ot;
                         console.log(canadiansWins);
@@ -589,7 +589,7 @@ class Table extends Component {
                         console.log("this loop is running")
                     }
                 }
-                
+
                 // stars total
                 starsTotal = (starsWins * 2) + starsOTLS;
                 console.log(starsTotal)
@@ -732,8 +732,8 @@ class Table extends Component {
 
                 for (var i = 0; i < pacificResults.length; i++) {
 
-                     // oilers
-                     if (pacificResults[i].team.id === 22) {
+                    // oilers
+                    if (pacificResults[i].team.id === 22) {
                         oilersWins = pacificResults[i].leagueRecord.wins;
                         oilersOTLS = pacificResults[i].leagueRecord.ot;
                         console.log(oilersWins);
@@ -741,7 +741,7 @@ class Table extends Component {
                         console.log("this loop is running")
                     }
                 }
-                
+
                 // jackets total
                 jacketsTotal = (jacketsWins * 2) + jacketsOTLS;
                 console.log(jacketsTotal)
@@ -1306,10 +1306,11 @@ class Table extends Component {
 
 
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
+
         return (
             <div className="container">
-                <table className="table table-striped table-hover">
-                    <thead className="thead-dark">
+                <table id="dtBasicExample" className="table table-striped table-hover">
+                    <thead className="thead-dark"> 
                         <tr>
                             <th scope="col">Team</th>
                             <th scope="col">EPL</th>
