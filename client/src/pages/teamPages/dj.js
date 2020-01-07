@@ -19,11 +19,103 @@ class dj extends React.Component {
         sheffield: "",
         burnley: "",
         djEPL: "",
+        // NHL 
+        jets: "",
+        canes: "",
+        coyotes: "",
+        totalNHL: "",
     }
     componentDidMount = () => {
         this.getScoresNBA();
-        this.getScoresEPL();
+        // this.getScoresEPL();
+        this.getScoresNHL();
     }
+
+    getScoresNHL = () => {
+        API.getScoresNHL()
+            .then(res => {
+                // This is the Metro Division
+                var metroResults = res.data.records[0].teamRecords;
+                // Atlantic Division
+                var atlanticResults = res.data.records[1].teamRecords;
+                // Central Division
+                var centralResults = res.data.records[2].teamRecords;
+                // central
+                var pacificResults = res.data.records[3].teamRecords;
+
+                console.log(metroResults);
+
+                var jetsWins;
+                var jetsOTLS;
+                var jetsTotal;
+                var canesWins;
+                var canesOTLS;
+                var canesTotal;
+                var coyotesWins;
+                var coyotesOTLS;
+                var coyotesTotal;
+                var allNHL;
+
+                // Here is the jets and canes loop. 
+                for (var i = 0; i < centralResults.length; i++) {
+                    // jets
+                    if (centralResults[i].team.id === 52) {
+                        jetsWins = centralResults[i].leagueRecord.wins;
+                        jetsOTLS = centralResults[i].leagueRecord.ot;
+                        console.log(jetsWins);
+                        console.log(jetsOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                // jets total
+                jetsTotal = (jetsWins * 2) + jetsOTLS;
+                console.log(jetsTotal);
+
+                for (var i = 0; i < pacificResults.length; i++) {
+
+                    // coyotes
+                    if (pacificResults[i].team.id === 53) {
+                        coyotesWins = pacificResults[i].leagueRecord.wins;
+                        coyotesOTLS = pacificResults[i].leagueRecord.ot;
+                        console.log(coyotesWins);
+                        console.log(coyotesOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                for (var i = 0; i < metroResults.length; i++) {
+
+                    // canes
+                    if (metroResults[i].team.id === 12) {
+                        canesWins = metroResults[i].leagueRecord.wins;
+                        canesOTLS = metroResults[i].leagueRecord.ot;
+                        console.log(canesWins);
+                        console.log(canesOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                // canes total
+                canesTotal = (canesWins * 2) + canesOTLS;
+                console.log(canesTotal)
+
+                // coyotes total
+                coyotesTotal = (coyotesWins * 2) + coyotesOTLS;
+                console.log(coyotesTotal);
+
+                var allNHL = jetsTotal + canesTotal + coyotesTotal
+
+                this.setState({ totalNHL: allNHL });
+                this.setState({ jets: jetsTotal });
+                this.setState({ canes: canesTotal });
+                this.setState({ coyotes: coyotesTotal });
+
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    };
 
     getScoresEPL = () => {
         API.getScoresEPL()
@@ -254,19 +346,19 @@ class dj extends React.Component {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">29</th>
-                                        <td>Vegas Knights</td>
-                                        <td>{this.state.knights}</td>
+                                        <th scope="row">39</th>
+                                        <td>Winnipeg Jets</td>
+                                        <td>{this.state.jets}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">106</th>
-                                        <td>Chicago Blackhawks</td>
-                                        <td>{this.state.blackhawks}</td>
+                                        <th scope="row">61</th>
+                                        <td>Carolina Hurricanes</td>
+                                        <td>{this.state.canes}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">113</th>
-                                        <td>Vancouver Canucks</td>
-                                        <td>{this.state.canucks}</td>
+                                        <th scope="row">80</th>
+                                        <td>Arizona Coyotes</td>
+                                        <td>{this.state.coyotes}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>
@@ -277,7 +369,7 @@ class dj extends React.Component {
                             </table>
                         </div>
 
-                        
+
                     </div>
                 </div>
 

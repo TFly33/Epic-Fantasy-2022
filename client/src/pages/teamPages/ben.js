@@ -19,11 +19,103 @@ class ben extends React.Component {
         tottenham: "",
         bournemouth: "",
         benEPL: "",
+        // NHL 
+        leafs: "",
+        avalanche: "",
+        flyers: "",
+        totalNHL: "",
     }
     componentDidMount = () => {
         this.getScoresNBA();
-        this.getScoresEPL();
+        // this.getScoresEPL();
+        this.getScoresNHL();
     }
+
+    getScoresNHL = () => {
+        API.getScoresNHL()
+            .then(res => {
+                // This is the Metro Division
+                var metroResults = res.data.records[0].teamRecords;
+                // Atlantic Division
+                var atlanticResults = res.data.records[1].teamRecords;
+                // Central Division
+                var centralResults = res.data.records[2].teamRecords;
+                // central
+                var pacificResults = res.data.records[3].teamRecords;
+
+                console.log(metroResults);
+
+                var leafsWins;
+                var leafsOTLS;
+                var leafsTotal;
+                var avalancheWins;
+                var avalancheOTLS;
+                var avalancheTotal;
+                var flyersWins;
+                var flyersOTLS;
+                var flyersTotal;
+                var allNHL;
+
+                // Here is the leafs loop. 
+                for (var i = 0; i < atlanticResults.length; i++) {
+                    // leafs
+                    if (atlanticResults[i].team.id === 10) {
+                        leafsWins = atlanticResults[i].leagueRecord.wins;
+                        leafsOTLS = atlanticResults[i].leagueRecord.ot;
+                        console.log(leafsWins);
+                        console.log(leafsOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                // leafs total
+                leafsTotal = (leafsWins * 2) + leafsOTLS;
+                console.log(leafsTotal);
+
+                for (var i = 0; i < metroResults.length; i++) {
+
+                    // flyers
+                    if (metroResults[i].team.id === 4) {
+                        flyersWins = metroResults[i].leagueRecord.wins;
+                        flyersOTLS = metroResults[i].leagueRecord.ot;
+                        console.log(flyersWins);
+                        console.log(flyersOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // avalanche
+                    if (centralResults[i].team.id === 21) {
+                        avalancheWins = centralResults[i].leagueRecord.wins;
+                        avalancheOTLS = centralResults[i].leagueRecord.ot;
+                        console.log(avalancheWins);
+                        console.log(avalancheOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                // avalanche total
+                avalancheTotal = (avalancheWins * 2) + avalancheOTLS;
+                console.log(avalancheTotal)
+
+                // flyers total
+                flyersTotal = (flyersWins * 2) + flyersOTLS;
+                console.log(flyersTotal);
+
+                var allNHL = leafsTotal + avalancheTotal + flyersTotal
+
+                this.setState({ totalNHL: allNHL });
+                this.setState({ leafs: leafsTotal });
+                this.setState({ avalanche: avalancheTotal });
+                this.setState({ flyers: flyersTotal });
+
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    };
 
     getScoresEPL = () => {
         API.getScoresEPL()
@@ -254,19 +346,19 @@ class ben extends React.Component {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">29</th>
-                                        <td>Vegas Knights</td>
-                                        <td>{this.state.knights}</td>
+                                        <th scope="row">21</th>
+                                        <td>Toronto Maple Leafs</td>
+                                        <td>{this.state.leafs}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">106</th>
-                                        <td>Chicago Blackhawks</td>
-                                        <td>{this.state.blackhawks}</td>
+                                        <th scope="row">40</th>
+                                        <td>Colorado Avalanche</td>
+                                        <td>{this.state.avalanche}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">113</th>
-                                        <td>Vancouver Canucks</td>
-                                        <td>{this.state.canucks}</td>
+                                        <th scope="row">86</th>
+                                        <td>Philadelphia Flyers</td>
+                                        <td>{this.state.flyers}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>
@@ -277,7 +369,7 @@ class ben extends React.Component {
                             </table>
                         </div>
 
-                        
+
                     </div>
                 </div>
 

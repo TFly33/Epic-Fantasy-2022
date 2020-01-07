@@ -19,11 +19,97 @@ class al extends React.Component {
         everton: "",
         southhampton: "",
         alEPL: "",
+        // NHL
+        lightning: "",
+        bruins: "",
+        wings: "",
     }
     componentDidMount = () => {
         this.getScoresNBA();
-        this.getScoresEPL();
+        // this.getScoresEPL();
+        this.getScoresNHL();
     }
+
+
+    getScoresNHL = () => {
+        API.getScoresNHL()
+            .then(res => {
+                // This is the Metro Division
+                var metroResults = res.data.records[0].teamRecords;
+                // Atlantic Division
+                var atlanticResults = res.data.records[1].teamRecords;
+                // Central Division
+                var centralResults = res.data.records[2].teamRecords;
+                // central
+                var pacificResults = res.data.records[3].teamRecords;
+
+                console.log(atlanticResults);
+
+                var lightningWins;
+                var lightningOTLS;
+                var lightningTotal;
+                var bruinsWins;
+                var bruinsOTLS;
+                var bruinsTotal;
+                var wingsWins;
+                var wingsOTLS;
+                var wingsTotal;
+                var allNHL;
+
+                // Here is the lightning loop. 
+                for (var i = 0; i < atlanticResults.length; i++) {
+                    // lightning
+                    if (atlanticResults[i].team.id === 14) {
+                        lightningWins = atlanticResults[i].leagueRecord.wins;
+                        lightningOTLS = atlanticResults[i].leagueRecord.ot;
+                        console.log(lightningWins);
+                        console.log(lightningOTLS);
+                        console.log("this loop is running")
+                    }
+
+                    // wings
+                    if (atlanticResults[i].team.id === 17) {
+                        wingsWins = atlanticResults[i].leagueRecord.wins;
+                        wingsOTLS = atlanticResults[i].leagueRecord.ot;
+                        console.log(wingsWins);
+                        console.log(wingsOTLS);
+                        console.log("this loop is running")
+                    }
+
+                    // bruins
+                    if (atlanticResults[i].team.id === 6) {
+                        bruinsWins = atlanticResults[i].leagueRecord.wins;
+                        bruinsOTLS = atlanticResults[i].leagueRecord.ot;
+                        console.log(bruinsWins);
+                        console.log(bruinsOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                // lightning total
+                lightningTotal = (lightningWins * 2) + lightningOTLS;
+                console.log(lightningTotal);
+
+                // bruins total
+                bruinsTotal = (bruinsWins * 2) + bruinsOTLS;
+                console.log(bruinsTotal)
+
+                // wings total
+                wingsTotal = (wingsWins * 2) + wingsOTLS;
+                console.log(wingsTotal);
+
+                var allNHL = lightningTotal + bruinsTotal + wingsTotal
+
+                this.setState({ totalNHL: allNHL });
+                this.setState({ lightning: lightningTotal });
+                this.setState({ bruins: bruinsTotal });
+                this.setState({ wings: wingsTotal });
+
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    };
 
     getScoresEPL = () => {
         API.getScoresEPL()
@@ -33,7 +119,7 @@ class al extends React.Component {
                 var evertonWin = res.data.api.standings[0][10].all.win;
                 var evertonTie = res.data.api.standings[0][10].all.draw;
                 var evertonTotal = (evertonWin * 4.25) + (evertonTie);
-                
+
                 // southhampton results
                 var southhamptonWin = res.data.api.standings[0][11].all.win;
                 var southhamptonTie = res.data.api.standings[0][11].all.draw;
@@ -254,19 +340,19 @@ class al extends React.Component {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">29</th>
-                                        <td>Vegas Knights</td>
-                                        <td>{this.state.knights}</td>
+                                        <th scope="row">1</th>
+                                        <td>Tampa Bay Lightning</td>
+                                        <td>{this.state.lightning}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">106</th>
-                                        <td>Chicago Blackhawks</td>
-                                        <td>{this.state.blackhawks}</td>
+                                        <th scope="row">30</th>
+                                        <td>Boston Bruins</td>
+                                        <td>{this.state.bruins}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">113</th>
-                                        <td>Vancouver Canucks</td>
-                                        <td>{this.state.canucks}</td>
+                                        <th scope="row">137</th>
+                                        <td>Detroit Red Wings</td>
+                                        <td>{this.state.wings}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>
@@ -277,7 +363,7 @@ class al extends React.Component {
                             </table>
                         </div>
 
-                        
+
                     </div>
                 </div>
 
