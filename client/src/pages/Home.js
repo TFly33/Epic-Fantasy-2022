@@ -47,7 +47,7 @@ class Home extends React.Component {
                         </ul>
                     </div>
                 </nav>
-                <div>
+                <div class="container">
                 <Table />
                 </div>
                 {/* <div class ="container">
