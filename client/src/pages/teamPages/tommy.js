@@ -29,7 +29,7 @@ class tommy extends React.Component {
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresNHL();
-        // this.getScoresEPL();
+        this.getScoresEPL();
     }
 
     getScoresNHL = () => {
@@ -423,7 +423,7 @@ class tommy extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+                    <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
                         <div class="container text-center">
                             <small>Copyright &copy; Epic Fantasy League 2020</small>
                         </div>
