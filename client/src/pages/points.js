@@ -18,8 +18,8 @@ class points extends React.Component {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/Home">Home <span class="sr-only">(current)</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Home">Standings <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 {/* <a class="nav-link" href="/MyTeams">My Teams</a> */}
@@ -47,7 +47,7 @@ class points extends React.Component {
                             <li class="nav-item">
                                 <a class="nav-link" href="/draft">Draft Results</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item active">
                                 <a class="nav-link" href="/points">Points System</a>
                             </li>
                         </ul>

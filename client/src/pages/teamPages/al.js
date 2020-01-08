@@ -191,10 +191,10 @@ class al extends React.Component {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/Home">Home <span class="sr-only">(current)</span></a>
-                            </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/Home">Standings <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
                                 {/* <a class="nav-link" href="/MyTeams">My Teams</a> */}
                                 <div class="dropdown show">
                                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -235,7 +235,7 @@ class al extends React.Component {
                 <div class="container smallTable">
                     <div class="row">
                         <div class="col">
-                            <table class="table table-striped table-bordered table-hover text-center smallTable">
+                            <table class="table table-striped table-bordered table-hover text-center ">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col-6">Draft Pick</th>
