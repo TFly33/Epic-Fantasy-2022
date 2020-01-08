@@ -58,7 +58,7 @@ class MyTeamsTable extends Component {
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
         return (
             <div className="container">
-                <table className="table table-striped table-hover">
+                <table className="table table-striped table-hover table-bordered">
                     <thead className="thead-dark">
                         <tr>
                             <th scope="col">ID</th>

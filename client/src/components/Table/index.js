@@ -919,8 +919,6 @@ class Table extends Component {
             });
     }
 
-
-
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
@@ -1308,9 +1306,9 @@ class Table extends Component {
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
 
         return (
-            <div className="container">
-                <table id="dtBasicExample" className="table table-striped table-hover">
-                    <thead className="thead-dark"> 
+            <div class="container">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-dark">
                         <tr>
                             <th scope="col">Team</th>
                             <th scope="col">EPL</th>

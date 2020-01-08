@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import draft from "./pages/draft"
 import MyTeams from "./pages/MyTeams";
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 import tommy from "./pages/teamPages/tommy";
 import patrick from "./pages/teamPages/patrick";
 import james from "./pages/teamPages/james";

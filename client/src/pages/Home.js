@@ -47,7 +47,9 @@ class Home extends React.Component {
                         </ul>
                     </div>
                 </nav>
+                <div>
                 <Table />
+                </div>
                 {/* <div class ="container">
                 <DatatablePage/>
                 </div> */}
