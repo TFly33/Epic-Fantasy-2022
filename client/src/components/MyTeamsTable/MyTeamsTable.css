@@ -2,7 +2,7 @@
 .specialTable {
     width:100%;
     border-collapse: separate;
-    margin-top:150px;
+    margin-top:75px;
     padding:20px;
     text-align: center
 }
@@ -10,7 +10,6 @@
 .smallTable {
     margin-top: 30px;
 }
-
 
 footer {
     position: fixed;
