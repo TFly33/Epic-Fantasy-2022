@@ -63,14 +63,14 @@ class points extends React.Component {
                     <div class="row">
                         <div class="col-12">
                             {/* Here is the table for the points system */}
-                            <table class="table table-striped table-bordered table-hover">
+                            <table class="table table-striped table-bordered table-hover text-center">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col-6">League</th>
                                         <th scope="col-6">Total Games</th>
                                         <th scope="col-6">EFL Points Per Win</th>
                                         <th scope="col-6">EFL Points Per Tie</th>
-                                        <th scope="col-6">Total Possible Points</th>
+                                        <th scope="col-6">Possible Points</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
