@@ -221,6 +221,9 @@ class steids extends React.Component {
                             <li class="nav-item">
                                 <a class="nav-link" href="/draft">Draft Results</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/points">Points System</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
