@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { MDBDataTable } from 'mdbreact';
 import "./Table.css";
 import API from "../../utils/API";
 // import { al, totalNHL, } from "../../pages/teamPages/al";
 
 // This table is being used for the Home Page currently, but not for the My Teams page. I am going to create that table separately. 
-
 class Table extends Component {
 
     //since we are extending class Table so we have to use super in order to override Component class constructor
@@ -71,6 +71,159 @@ class Table extends Component {
         benTotal: "",
     }
 
+    datatablePage = () => {
+
+        const data = {
+            columns: [
+                {
+                    label: 'Team',
+                    field: 'team',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'EPL',
+                    field: 'epl',
+                    sort: 'asc',
+                    width: 270
+                },
+                {
+                    label: 'NFL',
+                    field: 'nfl',
+                    sort: 'asc',
+                    width: 200
+                },
+                {
+                    label: 'NBA',
+                    field: 'nba',
+                    sort: 'asc',
+                    width: 100
+                },
+                {
+                    label: 'NHL',
+                    field: 'nhl',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'MLB',
+                    field: 'mlb',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
+                    label: 'Total',
+                    field: 'total',
+                    sort: 'asc',
+                    width: 100
+                }
+            ],
+            rows: [
+                {
+                    team: 'Tommy',
+                    epl: this.state.tomEPL,
+                    nfl: this.state.tomNFL,
+                    nba: this.state.tomNBA,
+                    nhl: this.state.tomNHL,
+                    mlb: 0,
+                    total: this.state.tomTotal
+                },
+                {
+                    team: 'Patrick',
+                    epl: this.state.patEPL,
+                    nfl: this.state.patNFL,
+                    nba: this.state.patrickNBA,
+                    nhl: this.state.patNHL,
+                    mlb: 0,
+                    total: this.state.patTotal
+                },
+                {
+                    team: 'James',
+                    epl: this.state.jamesEPL,
+                    nfl: this.state.jamesNFL,
+                    nba: this.state.jamesNBA,
+                    nhl: this.state.jamesNHL,
+                    mlb: 0,
+                    total: this.state.jamesTotal
+                },
+                {
+                    team: 'Goose',
+                    epl: this.state.gooseEPL,
+                    nfl: this.state.gooseNFL,
+                    nba: this.state.gooseNBA,
+                    nhl: this.state.gooseNHL,
+                    mlb: 0,
+                    total: this.state.gooseTotal
+                },
+                {
+                    team: 'Neptune',
+                    epl: this.state.neptuneEPL,
+                    nfl: this.state.neptuneNFL,
+                    nba: this.state.neptuneNBA,
+                    nhl: this.state.neptuneNHL,
+                    mlb: 0,
+                    total: this.state.neptuneTotal
+                },
+                {
+                    team: 'Joe',
+                    epl: this.state.joeEPL,
+                    nfl: this.state.joeNFL,
+                    nba: this.state.joeNBA,
+                    nhl: this.state.joeNHL,
+                    mlb: 0,
+                    total: this.state.joeTotal
+                },
+                {
+                    team: 'Ben',
+                    epl: this.state.benEPL,
+                    nfl: this.state.benNFL,
+                    nba: this.state.benNBA,
+                    nhl: this.state.benNHL,
+                    mlb: 0,
+                    total: this.state.benTotal
+                },
+                {
+                    team: 'DJ',
+                    epl: this.state.djEPL,
+                    nfl: this.state.djNFL,
+                    nba: this.state.djNBA,
+                    nhl: this.state.djNHL,
+                    mlb: 0,
+                    total: this.state.djTotal
+                },
+                {
+                    team: 'Steids',
+                    epl: this.state.steidsEPL,
+                    nfl: this.state.steidsNFL,
+                    nba: this.state.steidsNBA,
+                    nhl: this.state.steidsNHL,
+                    mlb: 0,
+                    total: this.state.steidsTotal
+                },
+                {
+                    team: 'Al',
+                    epl: this.state.alEPL,
+                    nfl: this.state.alNFL,
+                    nba: this.state.alNBA,
+                    nhl: this.state.alNHL,
+                    mlb: 0,
+                    total: this.state.alTotal
+                },
+    
+            ]
+        };
+    
+        return (
+            <MDBDataTable
+                striped
+                bordered
+                small
+                data={data}
+                paging={false}
+                searching={false}
+            />
+        );
+    }
 
     componentDidMount() {
         // first we scrape. Inside the function, need to post to the Mongo DB. 
@@ -1306,131 +1459,135 @@ class Table extends Component {
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
 
         return (
-            <div class="container">
-                <table class="table table-bordered table-striped table-hover">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Team</th>
-                            <th scope="col">EPL</th>
-                            <th scope="col">NFL</th>
-                            <th scope="col">NHL</th>
-                            <th scope="col">NBA</th>
-                            <th scope="col">MLB</th>
-                            <th scope="col">Total Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="col">Tommy</th>
-                            <th scope="col">{this.state.tomEPL}</th>
-                            <th scope="col">{this.state.tomNFL}</th>
-                            <th scope="col">{this.state.tomNHL}</th>
-                            <th scope="col">{this.state.tomNBA}</th>
-                            <th scope="col">0</th>
-                            <th scope="col">{this.state.tomTotal}</th>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <th scope="col">Patrick</th>
-                            <th scope="col">{this.state.patEPL}</th>
-                            <th scope="col">{this.state.patNFL}</th>
-                            <th scope="col">{this.state.patNHL}</th>
-                            <th scope="col">{this.state.patrickNBA}</th>
-                            <th scope="col">0</th>
-                            <th scope="col">{this.state.patTotal}</th>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <th scope="col">James</th>
-                            <th scope="col">{this.state.jamesEPL}</th>
-                            <th scope="col">{this.state.jamesNFL}</th>
-                            <th scope="col">{this.state.jamesNHL}</th>
-                            <th scope="col">{this.state.jamesNBA}</th>
-                            <th scope="col">0</th>
-                            <th scope="col">{this.state.jamesTotal}</th>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <th scope="col">Neptune</th>
-                            <th scope="col">{this.state.neptuneEPL}</th>
-                            <th scope="col">{this.state.neptuneNFL}</th>
-                            <th scope="col">{this.state.neptuneNHL}</th>
-                            <th scope="col">{this.state.neptuneNBA}</th>
-                            <th scope="col">0</th>
-                            <th scope="col">{this.state.neptuneTotal}</th>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <th scope="col">DJ</th>
-                            <th scope="col">{this.state.djEPL}</th>
-                            <th scope="col">{this.state.djNFL}</th>
-                            <th scope="col">{this.state.djNHL}</th>
-                            <th scope="col">{this.state.djNBA}</th>
-                            <th scope="col">0</th>
-                            <th scope="col">{this.state.djTotal}</th>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <th scope="col">Goose</th>
-                            <th scope="col">{this.state.gooseEPL}</th>
-                            <th scope="col">{this.state.gooseNFL}</th>
-                            <th scope="col">{this.state.gooseNHL}</th>
-                            <th scope="col">{this.state.gooseNBA}</th>
-                            <th scope="col">0</th>
-                            <th scope="col">{this.state.gooseTotal}</th>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <th scope="col">Al</th>
-                            <th scope="col">{this.state.alEPL}</th>
-                            <th scope="col">{this.state.alNFL}</th>
-                            <th scope="col">{this.state.alNHL}</th>
-                            <th scope="col">{this.state.alNBA}</th>
-                            <th scope="col">0</th>
-                            <th scope="col">{this.state.alTotal}</th>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <th scope="col">Joe</th>
-                            <th scope="col">{this.state.joeEPL}</th>
-                            <th scope="col">{this.state.joeNFL}</th>
-                            <th scope="col">{this.state.joeNHL}</th>
-                            <th scope="col">{this.state.joeNBA}</th>
-                            <th scope="col">0</th>
-                            <th scope="col">{this.state.joeTotal}</th>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <th scope="col">Steids</th>
-                            <th scope="col">{this.state.steidsEPL}</th>
-                            <th scope="col">{this.state.steidsNFL}</th>
-                            <th scope="col">{this.state.steidsNHL}</th>
-                            <th scope="col">{this.state.steidsNBA}</th>
-                            <th scope="col">0</th>
-                            <th scope="col">{this.state.steidsTotal}</th>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <th scope="col">Ben</th>
-                            <th scope="col">{this.state.benEPL}</th>
-                            <th scope="col">{this.state.benNFL}</th>
-                            <th scope="col">{this.state.benNHL}</th>
-                            <th scope="col">{this.state.benNBA}</th>
-                            <th scope="col">0</th>
-                            <th scope="col">{this.state.benTotal}</th>
-                        </tr>
-                    </tbody>
-                </table>
+
+            <div>
+                {this.datatablePage()}
             </div>
+            // <div class="container">
+            //     <table class="table table-bordered table-striped table-hover">
+            //         <thead class="thead-dark">
+            //             <tr>
+            //                 <th scope="col">Team</th>
+            //                 <th scope="col">EPL</th>
+            //                 <th scope="col">NFL</th>
+            //                 <th scope="col">NHL</th>
+            //                 <th scope="col">NBA</th>
+            //                 <th scope="col">MLB</th>
+            //                 <th scope="col">Total Points</th>
+            //             </tr>
+            //         </thead>
+            //         <tbody>
+            //             <tr>
+            //                 <th scope="col">Tommy</th>
+            //                 <th scope="col">{this.state.tomEPL}</th>
+            //                 <th scope="col">{this.state.tomNFL}</th>
+            //                 <th scope="col">{this.state.tomNHL}</th>
+            //                 <th scope="col">{this.state.tomNBA}</th>
+            //                 <th scope="col">0</th>
+            //                 <th scope="col">{this.state.tomTotal}</th>
+            //             </tr>
+            //         </tbody>
+            //         <tbody>
+            //             <tr>
+            //                 <th scope="col">Patrick</th>
+            //                 <th scope="col">{this.state.patEPL}</th>
+            //                 <th scope="col">{this.state.patNFL}</th>
+            //                 <th scope="col">{this.state.patNHL}</th>
+            //                 <th scope="col">{this.state.patrickNBA}</th>
+            //                 <th scope="col">0</th>
+            //                 <th scope="col">{this.state.patTotal}</th>
+            //             </tr>
+            //         </tbody>
+            //         <tbody>
+            //             <tr>
+            //                 <th scope="col">James</th>
+            //                 <th scope="col">{this.state.jamesEPL}</th>
+            //                 <th scope="col">{this.state.jamesNFL}</th>
+            //                 <th scope="col">{this.state.jamesNHL}</th>
+            //                 <th scope="col">{this.state.jamesNBA}</th>
+            //                 <th scope="col">0</th>
+            //                 <th scope="col">{this.state.jamesTotal}</th>
+            //             </tr>
+            //         </tbody>
+            //         <tbody>
+            //             <tr>
+            //                 <th scope="col">Neptune</th>
+            //                 <th scope="col">{this.state.neptuneEPL}</th>
+            //                 <th scope="col">{this.state.neptuneNFL}</th>
+            //                 <th scope="col">{this.state.neptuneNHL}</th>
+            //                 <th scope="col">{this.state.neptuneNBA}</th>
+            //                 <th scope="col">0</th>
+            //                 <th scope="col">{this.state.neptuneTotal}</th>
+            //             </tr>
+            //         </tbody>
+            //         <tbody>
+            //             <tr>
+            //                 <th scope="col">DJ</th>
+            //                 <th scope="col">{this.state.djEPL}</th>
+            //                 <th scope="col">{this.state.djNFL}</th>
+            //                 <th scope="col">{this.state.djNHL}</th>
+            //                 <th scope="col">{this.state.djNBA}</th>
+            //                 <th scope="col">0</th>
+            //                 <th scope="col">{this.state.djTotal}</th>
+            //             </tr>
+            //         </tbody>
+            //         <tbody>
+            //             <tr>
+            //                 <th scope="col">Goose</th>
+            //                 <th scope="col">{this.state.gooseEPL}</th>
+            //                 <th scope="col">{this.state.gooseNFL}</th>
+            //                 <th scope="col">{this.state.gooseNHL}</th>
+            //                 <th scope="col">{this.state.gooseNBA}</th>
+            //                 <th scope="col">0</th>
+            //                 <th scope="col">{this.state.gooseTotal}</th>
+            //             </tr>
+            //         </tbody>
+            //         <tbody>
+            //             <tr>
+            //                 <th scope="col">Al</th>
+            //                 <th scope="col">{this.state.alEPL}</th>
+            //                 <th scope="col">{this.state.alNFL}</th>
+            //                 <th scope="col">{this.state.alNHL}</th>
+            //                 <th scope="col">{this.state.alNBA}</th>
+            //                 <th scope="col">0</th>
+            //                 <th scope="col">{this.state.alTotal}</th>
+            //             </tr>
+            //         </tbody>
+            //         <tbody>
+            //             <tr>
+            //                 <th scope="col">Joe</th>
+            //                 <th scope="col">{this.state.joeEPL}</th>
+            //                 <th scope="col">{this.state.joeNFL}</th>
+            //                 <th scope="col">{this.state.joeNHL}</th>
+            //                 <th scope="col">{this.state.joeNBA}</th>
+            //                 <th scope="col">0</th>
+            //                 <th scope="col">{this.state.joeTotal}</th>
+            //             </tr>
+            //         </tbody>
+            //         <tbody>
+            //             <tr>
+            //                 <th scope="col">Steids</th>
+            //                 <th scope="col">{this.state.steidsEPL}</th>
+            //                 <th scope="col">{this.state.steidsNFL}</th>
+            //                 <th scope="col">{this.state.steidsNHL}</th>
+            //                 <th scope="col">{this.state.steidsNBA}</th>
+            //                 <th scope="col">0</th>
+            //                 <th scope="col">{this.state.steidsTotal}</th>
+            //             </tr>
+            //         </tbody>
+            //         <tbody>
+            //             <tr>
+            //                 <th scope="col">Ben</th>
+            //                 <th scope="col">{this.state.benEPL}</th>
+            //                 <th scope="col">{this.state.benNFL}</th>
+            //                 <th scope="col">{this.state.benNHL}</th>
+            //                 <th scope="col">{this.state.benNBA}</th>
+            //                 <th scope="col">0</th>
+            //                 <th scope="col">{this.state.benTotal}</th>
+            //             </tr>
+            //         </tbody>
+            //     </table>
+            // </div>
         )
     }
 }
