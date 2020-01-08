@@ -214,8 +214,11 @@ class al extends React.Component {
                                     </div>
                                 </div>
                             </li>
-                            <li class="nav-item">
+                            {/* <li class="nav-item">
                                 <a class="nav-link" href="/Login">Login</a>
+                            </li> */}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/draft">Draft Results</a>
                             </li>
                         </ul>
                     </div>

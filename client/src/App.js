@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import draft from "./pages/draft"
 import MyTeams from "./pages/MyTeams";
 import Login from "./pages/Login";
 import tommy from "./pages/teamPages/tommy";
@@ -26,7 +27,8 @@ class App extends Component {
           <Route exact path="/home" component={Home}></Route>
           <Route exact path="/MyTeams" component={MyTeams}></Route>
           {/* ADD THE LOGIN PAGE BELOW */}
-          <Route exact path="/login" component={Login}></Route>
+          {/* <Route exact path="/login" component={Login}></Route> */}
+          <Route exact path="/draft" component={draft}></Route>
           <Route exact path="/tommy" component={tommy}></Route>
           <Route exact path="/patrick" component={patrick}></Route>
           <Route exact path="/james" component={james}></Route>

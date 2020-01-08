@@ -56,7 +56,7 @@ class dj extends React.Component {
                 var coyotesTotal;
                 var allNHL;
 
-                // Here is the jets and canes loop. 
+                // Here is the jets loop. 
                 for (var i = 0; i < centralResults.length; i++) {
                     // jets
                     if (centralResults[i].team.id === 52) {
@@ -219,8 +219,11 @@ class dj extends React.Component {
                                     </div>
                                 </div>
                             </li>
-                            <li class="nav-item">
+                            {/* <li class="nav-item">
                                 <a class="nav-link" href="/Login">Login</a>
+                            </li> */}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/draft">Draft Results</a>
                             </li>
                         </ul>
                     </div>

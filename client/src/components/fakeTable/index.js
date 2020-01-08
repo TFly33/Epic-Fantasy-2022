@@ -1,12 +1,10 @@
 import React from 'react';
 import { MDBDataTable } from 'mdbreact';
+import API from "../../utils/API";
+import Table from '../Table';
 
 const DatatablePage = () => {
-
-    var tomBball = 100
-    var patBball = 200
-    var jamesBball = 300
-
+    
     const data = {
         columns: [
             {
@@ -49,7 +47,7 @@ const DatatablePage = () => {
         rows: [
             {
                 team: 'Tommy',
-                nba: tomBball,
+                nba: 100,
                 office: 'Edinburgh',
                 age: '61',
                 date: '2011/04/25',
@@ -57,7 +55,7 @@ const DatatablePage = () => {
             },
             {
                 team: 'Patrick',
-                nba: patBball,
+                nba: 200,
                 office: 'Tokyo',
                 age: '63',
                 date: '2011/07/25',
@@ -65,7 +63,7 @@ const DatatablePage = () => {
             },
             {
                 team: 'James',
-                nba: jamesBball,
+                nba: 300,
                 office: 'San Francisco',
                 age: '66',
                 date: '2009/01/12',
@@ -144,3 +142,5 @@ const DatatablePage = () => {
 }
 
 export default DatatablePage;
+
+

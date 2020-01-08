@@ -38,16 +38,19 @@ class Home extends React.Component {
                                     </div>
                                 </div>
                             </li>
-                            <li class="nav-item">
+                            {/* <li class="nav-item">
                                 <a class="nav-link" href="/Login">Login</a>
+                            </li> */}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/draft">Draft Results</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
                 <Table />
-                <div class ="container">
+                {/* <div class ="container">
                 <DatatablePage/>
-                </div>
+                </div> */}
                 <body class="d-flex flex-column">
                     <div id="page-content">
                         <div class="container text-center">
