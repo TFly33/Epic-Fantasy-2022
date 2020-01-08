@@ -50,7 +50,7 @@ class Home extends React.Component {
                         </ul>
                     </div>
                 </nav>
-                <div class="container">
+                <div class="container specialTable">
                 <Table />
                 </div>
                 {/* <div class ="container">

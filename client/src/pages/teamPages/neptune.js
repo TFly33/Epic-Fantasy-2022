@@ -28,7 +28,7 @@ class neptune extends React.Component {
     }
     componentDidMount = () => {
         this.getScoresNBA();
-        this.getScoresEPL();
+        // this.getScoresEPL();
         this.getScoresNHL();
     };
 
@@ -187,7 +187,7 @@ class neptune extends React.Component {
 
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
         return (
-            <div>
+            <div class="text-center">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                     <a class="navbar-brand" href="/Home">Epic Fantasy League</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -237,9 +237,9 @@ class neptune extends React.Component {
                 </div>
 
                 {/* Starting my new table here */}
-                <div class="container">
+                <div class="container smallTable">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col">
                             <table class="table table-striped table-bordered table-hover">
                                 <thead class="thead-dark">
                                     <tr>
@@ -274,105 +274,116 @@ class neptune extends React.Component {
                         </div>
 
                         {/* Here is NFL */}
-                        <div class="col-6">
-                            <table class="table table-striped table-bordered table-hover">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col-6">Draft Pick</th>
-                                        <th scope="col-6">NFL Team</th>
-                                        <th scope="col-6">Points</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">9</th>
-                                        <td>Los Angeles Rams</td>
-                                        <td>{this.state.rams}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">90</th>
-                                        <td>Jacksonville Jaguars</td>
-                                        <td>{this.state.jaguars}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">139</th>
-                                        <td>New York Giants</td>
-                                        <td>{this.state.giants}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Total</th>
-                                        <td></td>
-                                        <td>{this.state.totalNFL}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">NFL Team</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">9</th>
+                                                <td>Los Angeles Rams</td>
+                                                <td>{this.state.rams}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">90</th>
+                                                <td>Jacksonville Jaguars</td>
+                                                <td>{this.state.jaguars}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">139</th>
+                                                <td>New York Giants</td>
+                                                <td>{this.state.giants}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalNFL}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="col-6">
-                            {/* Here is EPL */}
-                            <table class="table table-striped table-bordered table-hover">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col-6">Draft Pick</th>
-                                        <th scope="col-6">EPL Team</th>
-                                        <th scope="col-6">Points</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">55</th>
-                                        <td>Leicester City</td>
-                                        <td>{this.state.leicester}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">111</th>
-                                        <td>Norwich City</td>
-                                        <td>{this.state.norwich}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Total</th>
-                                        <td></td>
-                                        <td>{this.state.neptuneEPL}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    {/* Here is EPL */}
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">EPL Team</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">55</th>
+                                                <td>Leicester City</td>
+                                                <td>{this.state.leicester}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">111</th>
+                                                <td>Norwich City</td>
+                                                <td>{this.state.norwich}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.neptuneEPL}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Adding the NHL Table here */}
-
-                        <div class="col-6">
-                            {/* Here is NFL */}
-                            <table class="table table-striped table-bordered table-hover">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col-6">Draft Pick</th>
-                                        <th scope="col-6">NHL Team</th>
-                                        <th scope="col-6">Points</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">37</th>
-                                        <td>San Jose Sharks</td>
-                                        <td>{this.state.sharks}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">91</th>
-                                        <td>New York Rangers</td>
-                                        <td>{this.state.rangers}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">108</th>
-                                        <td>New Jersey Devils</td>
-                                        <td>{this.state.devils}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Total</th>
-                                        <td></td>
-                                        <td>{this.state.totalNHL}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    {/* Here is NFL */}
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">NHL Team</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">37</th>
+                                                <td>San Jose Sharks</td>
+                                                <td>{this.state.sharks}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">91</th>
+                                                <td>New York Rangers</td>
+                                                <td>{this.state.rangers}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">108</th>
+                                                <td>New Jersey Devils</td>
+                                                <td>{this.state.devils}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalNHL}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

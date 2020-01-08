@@ -1,5 +1,14 @@
-.table {
+
+.specialTable {
     width:100%;
     border-collapse: separate;
-    margin-top:100px;
+    margin-top:150px;
+    padding:20px;
+    text-align: center
 }
+
+.smallTable {
+    margin-top: 30px;
+}
+
+
