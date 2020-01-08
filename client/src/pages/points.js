@@ -59,9 +59,9 @@ class points extends React.Component {
                      </div>
                 </div>
                 {/* Starting my new tables here */}
-                <div class="container smallTable">
+                <div class="container pointsTable">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                             {/* Here is the table for the points system */}
                             <table class="table table-striped table-bordered table-hover">
                                 <thead class="thead-dark">
