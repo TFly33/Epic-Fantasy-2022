@@ -33,8 +33,8 @@ This is currently the platform for my existing league to use and track points. M
     - MLB:  https://fantasydata.com/api/api-documentation/mlb#(but season hasn’t started)
     - NFL: https://fantasydata.com/api/api-documentation/nfl#/core (but season has ended)
 - Bootstrap:
-    - MDBReact Table 
-    - Balsamiq for wireframe. 
+    - MDBReact Table
+- Balsamiq for wireframe. 
 
 3. Crunching the numbers
 - States on States: Total Score =
