@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "../components/Table"
-import DatatablePage from "../components/fakeTable";
+// import DatatablePage from "../components/fakeTable";
+// here is the user login stuff 
 
 class Home extends React.Component {
     // Here is the function we will use for creating the actual table. 
