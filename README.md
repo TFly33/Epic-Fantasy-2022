@@ -38,32 +38,32 @@ This is currently the platform for my existing league to use and track points. M
 
 3. Crunching the numbers
 - States on States: Total Score =
--   EPL 
-[(API Grab for EPL Team [1] Wins * 4.25) +   (API Grab for EPL Team[1] Ties)] + 
-[(API Grab for EPL Team[2]  Wins * 4.25) +   (API Grab for EPL Team[2] Ties)]  + 
--   NBA 
-[(API Grab for NBA Team[1] Wins * 2) +
-[(API Grab for NBA Team[2] Wins * 2) +   
-[(API Grab for NBA Team[3] Wins * 2) +  
--   NFL
-[(API Grab for NFL Team[1] Wins * 10) + 
-[(API Grab for NFL Team[2] Wins * 10) +
-[(API Grab for NFL Team[3] Wins * 10) +
--   NHL
-[(API Grab for NHL Team[1] Wins * 2) + (API Grab for NHL Team[1] Ties)] +
-[(API Grab for NHL Team[2] Wins * 2) + (API Grab for NHL Team[2] Ties)] +
-[(API Grab for NHL Team[3] Wins * 2) + (API Grab for NHL Team[3] Ties)] +
--   MLB
-[(API Grab for MLB  Team[1] Wins ) + 
-[(API Grab for MLB  Team[2] Wins ) + 
-[(API Grab for MLB  Team[3] Wins ) + 
+    -   EPL 
+    [(API Grab for EPL Team [1] Wins * 4.25) +   (API Grab for EPL Team[1] Ties)] + 
+    [(API Grab for EPL Team[2]  Wins * 4.25) +   (API Grab for EPL Team[2] Ties)]  + 
+    -   NBA 
+    [(API Grab for NBA Team[1] Wins * 2) +
+    [(API Grab for NBA Team[2] Wins * 2) +   
+    [(API Grab for NBA Team[3] Wins * 2) +  
+    -   NFL
+    [(API Grab for NFL Team[1] Wins * 10) + 
+    [(API Grab for NFL Team[2] Wins * 10) +
+    [(API Grab for NFL Team[3] Wins * 10) +
+    -   NHL
+    [(API Grab for NHL Team[1] Wins * 2) + (API Grab for NHL Team[1] Ties)] +
+    [(API Grab for NHL Team[2] Wins * 2) + (API Grab for NHL Team[2] Ties)] +
+    [(API Grab for NHL Team[3] Wins * 2) + (API Grab for NHL Team[3] Ties)] +
+    -   MLB
+    [(API Grab for MLB  Team[1] Wins ) + 
+    [(API Grab for MLB  Team[2] Wins ) + 
+    [(API Grab for MLB  Team[3] Wins ) + 
 
 4. Features I want to add:
 
-A. Add team colors to each individual page/draft 
-B. Use win percentage to project a user’s total points at the end of the season (on a projections page)
-C. Add Win/Loss record for each real life team.    
-D. Build the draft platform. 
+    A. Add team colors to each individual page/draft 
+    B. Use win percentage to project a user’s total points at the end of the season (on a projections page)
+    C. Add Win/Loss record for each real life team.    
+    D. Build the draft platform. 
     - Snake Draft 
     - Auction Draft 
     - Automated Draft (actually the easiest of the three)
