@@ -16,6 +16,7 @@ class neptune extends React.Component {
         jaguars: 60,
         giants: 40,
         totalNFL: 190,
+        // EPL Starting HERE 
         leicester: "",
         norwich: "",
         neptuneEPL: "",
@@ -251,12 +252,12 @@ class neptune extends React.Component {
                                 <tbody>
                                     <tr>
                                         <th scope="row">24</th>
-                                        <td>Boston Celtics</td>
+                                        <td class="celtics">Boston Celtics</td>
                                         <td>{this.state.celtics}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">46</th>
-                                        <td>Indiana Pacers</td>
+                                        <td class="pacers">Indiana Pacers</td>
                                         <td>{this.state.pacers}</td>
                                     </tr>
                                     <tr>
@@ -350,7 +351,7 @@ class neptune extends React.Component {
                         <div class="container smallTable">
                             <div class="row">
                                 <div class="col">
-                                    {/* Here is NFL */}
+                                    {/* Here is NHL */}
                                     <table class="table table-striped table-bordered table-hover">
                                         <thead class="thead-dark">
                                             <tr>

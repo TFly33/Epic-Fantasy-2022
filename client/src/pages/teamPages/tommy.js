@@ -26,6 +26,7 @@ class tommy extends React.Component {
         canucks: "",
         totalNHL: ""
     }
+    
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresNHL();
