@@ -145,7 +145,7 @@ class neptune extends React.Component {
                 console.log(error)
             });
     };
-
+    
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {
@@ -252,7 +252,7 @@ class neptune extends React.Component {
                                 <tbody>
                                     <tr>
                                         <th scope="row">24</th>
-                                        <td class="celtics">Boston Celtics</td>
+                                        <td class="celtics" >Boston Celtics</td>
                                         <td>{this.state.celtics}</td>
                                     </tr>
                                     <tr>
