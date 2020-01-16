@@ -1079,13 +1079,36 @@ class Table extends Component {
             .then(res => {
                 // HERE ARE EPL TEAMS FOR TOMMY. 
                 //  Chelsea
-                var chelseaWin = res.data.api.standings[0][3].all.win;
-                var chelseaTie = res.data.api.standings[0][3].all.draw;
+                // console.log(res)
+                var chelseaWin;
+                var chelseaTie;
+                var brightonWin;
+                var brightonTie;
+
+                // running the for loop here. 
+                var forLoopArray = res.data.api.standings[0]
+                for (var i = 0; i < forLoopArray.length; i++) {
+
+                    if (forLoopArray[i].team_id === 49) {
+                        chelseaWin = forLoopArray[i].all.win
+                        chelseaTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + chelseaWin);
+                        console.log("here are the ties" + chelseaTie);
+                    }
+
+                    if (forLoopArray[i].team_id === 51) {
+                        brightonWin = forLoopArray[i].all.win
+                        brightonTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + brightonWin);
+                        console.log("here are the ties" + brightonTie);
+                    }
+                }
+
                 var chelseaTotal = (chelseaWin * 4.25) + (chelseaTie);
-                console.log(res);
-                // Now Brighton results
-                var brightonWin = res.data.api.standings[0][13].all.win;
-                var brightonTie = res.data.api.standings[0][13].all.draw;
                 var brightonTotal = (brightonWin * 4.25) + (brightonTie);
 
                 // Here is the final result
@@ -1093,138 +1116,349 @@ class Table extends Component {
                 this.setState({ tomEPL: tomPoints });
 
                 // HERE ARE EPL TEAMS FOR Patrick. 
-                //  Manchester City
-                var cityWin = res.data.api.standings[0][2].all.win;
-                var cityTie = res.data.api.standings[0][2].all.draw;
-                var cityTotal = (cityWin * 4.25) + (cityTie);
+                //   Starting Patrick EPL Here 
+                var manCityWin;
+                var manCityTie;
+                var wolvesWin;
+                var wolvesTie;
 
-                // Now Wolves results
-                var wolvesWin = res.data.api.standings[0][6].all.win;
-                var wolvesTie = res.data.api.standings[0][6].all.draw;
-                var wolvesTotal = (wolvesWin * 4.25) + (wolvesTie)
+                // Patrick EPL here
+                // running the for loop here. 
+                var forLoopArray = res.data.api.standings[0]
+                
+                console.log (forLoopArray)
+
+                for (var i = 0; i < forLoopArray.length; i++) {
+
+                    if (forLoopArray[i].team_id === 50) {
+                        manCityWin = forLoopArray[i].all.win
+                        manCityTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + manCityWin);
+                        console.log("here are the ties" + manCityTie);
+                    }
+
+                    if (forLoopArray[i].team_id === 39) {
+                        wolvesWin = forLoopArray[i].all.win
+                        wolvesTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + wolvesWin);
+                        console.log("here are the ties" + wolvesTie);
+                    }
+                }
+
+                var manCityTotal = (manCityWin * 4.25) + (manCityTie);
+                var wolvesTotal = (wolvesWin * 4.25) + (wolvesTie);
 
                 // Here is the final result
-                var patPoints = cityTotal + wolvesTotal;
+                var patPoints = manCityTotal + wolvesTotal;
                 this.setState({ patEPL: patPoints });
 
-                // HERE ARE EPL TEAMS FOR James. 
-                //  NewCastle
-                var newcastleWin = res.data.api.standings[0][12].all.win;
-                var newcastleTie = res.data.api.standings[0][12].all.draw;
-                var newcastleTotal = (newcastleWin * 4.25) + (newcastleTie);
 
-                // Now Crystal Palace results
-                var palaceWin = res.data.api.standings[0][8].all.win;
-                var palaceTie = res.data.api.standings[0][8].all.draw;
-                var palaceTotal = (palaceWin * 4.25) + (palaceTie)
+                 //   Starting Neptune EPL Here 
+                 var newcastleWin;
+                 var newcastleTie;
+                 var palaceWin;
+                 var palaceTie;
+                
+                //  James EPL here 
+                 // running the for loop here. 
+                 var forLoopArray = res.data.api.standings[0];
+                 console.log(forLoopArray);
+ 
+                 for (var i = 0; i < forLoopArray.length; i++) {
+ 
+                     if (forLoopArray[i].team_id === 34) {
+                         newcastleWin = forLoopArray[i].all.win
+                         newcastleTie = forLoopArray[i].all.draw
+                         //then so something
+                         //return something here
+                         console.log("here are the wins" + newcastleWin);
+                         console.log("here are the ties" + newcastleTie);
+                     }
+ 
+                     if (forLoopArray[i].team_id === 52) {
+                         palaceWin = forLoopArray[i].all.win
+                         palaceTie = forLoopArray[i].all.draw
+                         //then so something
+                         //return something here
+                         console.log("here are the wins" + palaceWin);
+                         console.log("here are the ties" + palaceTie);
+                     }
+                 }
+ 
+                 var newcastleTotal = (newcastleWin * 4.25) + (newcastleTie);
+                 var palaceTotal = (palaceWin * 4.25) + (palaceTie);
+ 
+                 // Here is the final result
+                 var jamesPoints = newcastleTotal + palaceTotal;
+                 this.setState({ jamesEPL: jamesPoints });
 
-                // Here is the final result
-                var jamesPoints = newcastleTotal + palaceTotal
-                this.setState({ jamesEPL: jamesPoints });
+                //   Starting Neptune EPL Here 
+                var leicesterWin;
+                var leicesterTie;
+                var norwichWin;
+                var norwichTie;
 
-                // HERE ARE EPL TEAMS FOR Neptune. 
-                //  Leicester
-                var leicesterWin = res.data.api.standings[0][1].all.win;
-                var leicesterTie = res.data.api.standings[0][1].all.draw;
+                // running the for loop here. 
+                var forLoopArray = res.data.api.standings[0];
+                console.log(forLoopArray);
+
+                for (var i = 0; i < forLoopArray.length; i++) {
+
+                    if (forLoopArray[i].team_id === 46) {
+                        leicesterWin = forLoopArray[i].all.win
+                        leicesterTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + leicesterWin);
+                        console.log("here are the ties" + leicesterTie);
+                    }
+
+                    if (forLoopArray[i].team_id === 71) {
+                        norwichWin = forLoopArray[i].all.win
+                        norwichTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + norwichWin);
+                        console.log("here are the ties" + norwichTie);
+                    }
+                }
+
                 var leicesterTotal = (leicesterWin * 4.25) + (leicesterTie);
-
-                // Now Norwich results
-                var norwichWin = res.data.api.standings[0][19].all.win;
-                var norwichTie = res.data.api.standings[0][19].all.draw;
-                var norwichTotal = (norwichWin * 4.25) + (norwichTie)
+                var norwichTotal = (norwichWin * 4.25) + (norwichTie);
 
                 // Here is the final result
-                var neptunePoints = leicesterTotal + norwichTotal
+                var neptunePoints = leicesterTotal + norwichTotal;
                 this.setState({ neptuneEPL: neptunePoints });
 
                 // HERE ARE EPL TEAMS FOR DJ. 
-                //  sheffield
-                var sheffieldWin = res.data.api.standings[0][7].all.win;
-                var sheffieldTie = res.data.api.standings[0][7].all.draw;
-                var sheffieldTotal = (sheffieldWin * 4.25) + (sheffieldTie);
+                //   Starting Goose EPL Here 
+               var sheffieldWin;
+               var sheffieldTie;
+               var burnleyWin;
+               var burnleyTie;
 
-                // Now burnley results
-                var burnleyWin = res.data.api.standings[0][14].all.win;
-                var burnleyTie = res.data.api.standings[0][14].all.draw;
-                var burnleyTotal = (burnleyWin * 4.25) + (burnleyTie)
+               // running the for loop here. 
+               var forLoopArray = res.data.api.standings[0];
+               console.log(forLoopArray);
 
-                // Here is the final result
-                var djPoints = sheffieldTotal + burnleyTotal
-                this.setState({ djEPL: djPoints });
+               for (var i = 0; i < forLoopArray.length; i++) {
 
-                // HERE ARE EPL TEAMS FOR Goose. 
-                //  manU
-                var manuWin = res.data.api.standings[0][4].all.win;
-                var manuTie = res.data.api.standings[0][4].all.draw;
+                   if (forLoopArray[i].team_id === 62) {
+                       sheffieldWin = forLoopArray[i].all.win
+                       sheffieldTie = forLoopArray[i].all.draw
+                       //then so something
+                       //return something here
+                       console.log("here are the wins" + sheffieldWin);
+                       console.log("here are the ties" + sheffieldTie);
+                   }
+
+                   if (forLoopArray[i].team_id === 44) {
+                       burnleyWin = forLoopArray[i].all.win
+                       burnleyTie = forLoopArray[i].all.draw
+                       //then so something
+                       //return something here
+                       console.log("here are the wins" + burnleyWin);
+                       console.log("here are the ties" + burnleyTie);
+                   }
+               }
+
+               var sheffieldTotal = (sheffieldWin * 4.25) + (sheffieldTie);
+               var burnleyTotal = (burnleyWin * 4.25) + (burnleyTie);
+
+               // Here is the final result
+               var djPoints = sheffieldTotal + burnleyTotal;
+               this.setState({ djEPL: djPoints });
+
+                //   Starting Goose EPL Here 
+                var manuWin;
+                var manuTie;
+                var westhamWin;
+                var westhamTie;
+
+                // running the for loop here. 
+                var forLoopArray = res.data.api.standings[0];
+                console.log(forLoopArray);
+
+                for (var i = 0; i < forLoopArray.length; i++) {
+
+                    if (forLoopArray[i].team_id === 33) {
+                        manuWin = forLoopArray[i].all.win
+                        manuTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + manuWin);
+                        console.log("here are the ties" + manuTie);
+                    }
+
+                    if (forLoopArray[i].team_id === 48) {
+                        westhamWin = forLoopArray[i].all.win
+                        westhamTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + westhamWin);
+                        console.log("here are the ties" + westhamTie);
+                    }
+                }
+
                 var manuTotal = (manuWin * 4.25) + (manuTie);
-
-                // Now westham results
-                var westhamWin = res.data.api.standings[0][15].all.win;
-                var westhamTie = res.data.api.standings[0][15].all.draw;
-                var westhamTotal = (westhamWin * 4.25) + (westhamTie)
+                var westhamTotal = (westhamWin * 4.25) + (westhamTie);
 
                 // Here is the final result
-                var goosePoints = manuTotal + westhamTotal
+                var goosePoints = manuTotal + westhamTotal;
                 this.setState({ gooseEPL: goosePoints });
 
-                // HERE ARE EPL TEAMS FOR Al. 
-                //  everton
-                var evertonWin = res.data.api.standings[0][10].all.win;
-                var evertonTie = res.data.api.standings[0][10].all.draw;
-                var evertonTotal = (evertonWin * 4.25) + (evertonTie);
+                 //   Starting Goose EPL Here 
+               var evertonWin;
+               var evertonTie;
+               var southhamptonWin;
+               var southhamptonTie;
 
-                // southhampton results
-                var southhamptonWin = res.data.api.standings[0][11].all.win;
-                var southhamptonTie = res.data.api.standings[0][11].all.draw;
-                var southhamptonTotal = (southhamptonWin * 4.25) + (southhamptonTie)
+               // running the for loop here. 
+               var forLoopArray = res.data.api.standings[0];
+               console.log(forLoopArray);
 
-                // Here is the final result
-                var alPoints = evertonTotal + southhamptonTotal
-                this.setState({ alEPL: alPoints });
+               for (var i = 0; i < forLoopArray.length; i++) {
 
-                // HERE ARE EPL TEAMS FOR Joe. 
-                //  Liverpool
-                var liverpoolWin = res.data.api.standings[0][0].all.win;
-                var liverpoolTie = res.data.api.standings[0][0].all.draw;
-                var liverpoolTotal = (liverpoolWin * 4.25) + (liverpoolTie);
+                   if (forLoopArray[i].team_id === 45) {
+                       evertonWin = forLoopArray[i].all.win
+                       evertonTie = forLoopArray[i].all.draw
+                       //then so something
+                       //return something here
+                       console.log("here are the wins" + evertonWin);
+                       console.log("here are the ties" + evertonTie);
+                   }
 
-                // Aston Villa results
-                var astonWin = res.data.api.standings[0][16].all.win;
-                var astonTie = res.data.api.standings[0][16].all.draw;
-                var astonTotal = (astonWin * 4.25) + (astonTie)
+                   if (forLoopArray[i].team_id === 41) {
+                       southhamptonWin = forLoopArray[i].all.win
+                       southhamptonTie = forLoopArray[i].all.draw
+                       //then so something
+                       //return something here
+                       console.log("here are the wins" + southhamptonWin);
+                       console.log("here are the ties" + southhamptonTie);
+                   }
+               }
 
-                // Here is the final result
-                var joePoints = liverpoolTotal + astonTotal
-                this.setState({ joeEPL: joePoints });
+               var evertonTotal = (evertonWin * 4.25) + (evertonTie);
+               var southhamptonTotal = (southhamptonWin * 4.25) + (southhamptonTie);
 
-                // HERE ARE EPL TEAMS FOR Ben. 
-                //  tottenham
-                var tottenhamWin = res.data.api.standings[0][5].all.win;
-                var tottenhamTie = res.data.api.standings[0][5].all.draw;
-                var tottenhamTotal = (tottenhamWin * 4.25) + (tottenhamTie);
+               // Here is the final result
+               var alPoints = evertonTotal + southhamptonTotal;
+               this.setState({ alEPL: alPoints });
 
-                // bournemouth results
-                var bournemouthWin = res.data.api.standings[0][17].all.win;
-                var bournemouthTie = res.data.api.standings[0][17].all.draw;
-                var bournemouthTotal = (bournemouthWin * 4.25) + (bournemouthTie)
+               //   Starting Neptune EPL Here 
+               var liverpoolWin;
+               var liverpoolTie;
+               var astonWin;
+               var astonTie;
 
-                // Here is the final result
-                var benPoints = tottenhamTotal + bournemouthTotal
-                this.setState({ benEPL: benPoints });
+               // running the for loop here. 
+               var forLoopArray = res.data.api.standings[0];
+               console.log(forLoopArray);
 
-                // HERE ARE EPL TEAMS FOR Steids. 
-                //  Arsenal
-                var arsenalWin = res.data.api.standings[0][9].all.win;
-                var arsenalTie = res.data.api.standings[0][9].all.draw;
+               for (var i = 0; i < forLoopArray.length; i++) {
+
+                   if (forLoopArray[i].team_id === 40) {
+                       liverpoolWin = forLoopArray[i].all.win
+                       liverpoolTie = forLoopArray[i].all.draw
+                       //then so something
+                       //return something here
+                       console.log("here are the wins" + liverpoolWin);
+                       console.log("here are the ties" + liverpoolTie);
+                   }
+
+                   if (forLoopArray[i].team_id === 66) {
+                       astonWin = forLoopArray[i].all.win
+                       astonTie = forLoopArray[i].all.draw
+                       //then so something
+                       //return something here
+                       console.log("here are the wins" + astonWin);
+                       console.log("here are the ties" + astonTie);
+                   }
+               }
+
+               var liverpoolTotal = (liverpoolWin * 4.25) + (liverpoolTie);
+               var astonTotal = (astonWin * 4.25) + (astonTie);
+
+               // Here is the final result
+               var joePoints = liverpoolTotal + astonTotal;
+               this.setState({ joeEPL: joePoints });
+
+                //   Starting Goose EPL Here 
+               var tottenhamWin;
+               var tottenhamTie;
+               var bournemouthWin;
+               var bournemouthTie;
+
+               // running the for loop here. 
+               var forLoopArray = res.data.api.standings[0];
+               console.log(forLoopArray);
+
+               for (var i = 0; i < forLoopArray.length; i++) {
+
+                   if (forLoopArray[i].team_id === 47) {
+                       tottenhamWin = forLoopArray[i].all.win
+                       tottenhamTie = forLoopArray[i].all.draw
+                       //then so something
+                       //return something here
+                       console.log("here are the wins" + tottenhamWin);
+                       console.log("here are the ties" + tottenhamTie);
+                   }
+
+                   if (forLoopArray[i].team_id === 35) {
+                       bournemouthWin = forLoopArray[i].all.win
+                       bournemouthTie = forLoopArray[i].all.draw
+                       //then so something
+                       //return something here
+                       console.log("here are the wins" + bournemouthWin);
+                       console.log("here are the ties" + bournemouthTie);
+                   }
+               }
+
+               var tottenhamTotal = (tottenhamWin * 4.25) + (tottenhamTie);
+               var bournemouthTotal = (bournemouthWin * 4.25) + (bournemouthTie);
+
+               // Here is the final result
+               var benPoints = tottenhamTotal + bournemouthTotal;
+               this.setState({ benEPL: benPoints });
+
+                //   Starting Steids EPL Here 
+                var arsenalWin;
+                var arsenalTie;
+                var watfordWin;
+                var watfordTie;
+
+                // running the for loop here. 
+                var forLoopArray = res.data.api.standings[0]
+                for (var i = 0; i < forLoopArray.length; i++) {
+
+                    if (forLoopArray[i].team_id === 42) {
+                        arsenalWin = forLoopArray[i].all.win
+                        arsenalTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + arsenalWin);
+                        console.log("here are the ties" + arsenalTie);
+                    }
+
+                    if (forLoopArray[i].team_id === 38) {
+                        watfordWin = forLoopArray[i].all.win
+                        watfordTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + watfordWin);
+                        console.log("here are the ties" + watfordTie);
+                    }
+                }
+
                 var arsenalTotal = (arsenalWin * 4.25) + (arsenalTie);
-
-                // Watford results
-                var watfordWin = res.data.api.standings[0][18].all.win;
-                var watfordTie = res.data.api.standings[0][18].all.draw;
-                var watfordTotal = (watfordWin * 4.25) + (watfordTie)
+                var watfordTotal = (watfordWin * 4.25) + (watfordTie);
 
                 // Here is the final result
-                var steidsPoints = arsenalTotal + watfordTotal
+                var steidsPoints = arsenalTotal + watfordTotal;
                 this.setState({ steidsEPL: steidsPoints });
 
                 // And now I need to run the totalscores function so that it can get logged. 
