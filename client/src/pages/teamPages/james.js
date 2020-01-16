@@ -120,47 +120,45 @@ class james extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-                 //   Starting Neptune EPL Here 
-                 var newcastleWin;
-                 var newcastleTie;
-                 var palaceWin;
-                 var palaceTie;
- 
-                 // running the for loop here. 
-                 var forLoopArray = res.data.api.standings[0];
-                 console.log(forLoopArray);
- 
-                 for (var i = 0; i < forLoopArray.length; i++) {
- 
-                     if (forLoopArray[i].team_id === 34) {
-                         newcastleWin = forLoopArray[i].all.win
-                         newcastleTie = forLoopArray[i].all.draw
-                         //then so something
-                         //return something here
-                         console.log("here are the wins" + newcastleWin);
-                         console.log("here are the ties" + newcastleTie);
-                     }
- 
-                     if (forLoopArray[i].team_id === 52) {
-                         palaceWin = forLoopArray[i].all.win
-                         palaceTie = forLoopArray[i].all.draw
-                         //then so something
-                         //return something here
-                         console.log("here are the wins" + palaceWin);
-                         console.log("here are the ties" + palaceTie);
-                     }
-                 }
- 
-                 var newcastleTotal = (newcastleWin * 4.25) + (newcastleTie);
-                 var palaceTotal = (palaceWin * 4.25) + (palaceTie);
- 
-                 // Here is the final result
-                 var jamesPoints = newcastleTotal + palaceTotal;
-                 this.setState({ newcastle: newcastleTotal });
-                 this.setState({ palace: palaceTotal });
-                 this.setState({ jamesEPL: jamesPoints });
- 
+                //   Starting Neptune EPL Here 
+                var newcastleWin;
+                var newcastleTie;
+                var palaceWin;
+                var palaceTie;
 
+                // running the for loop here. 
+                var forLoopArray = res.data.api.standings[0];
+                console.log(forLoopArray);
+
+                for (var i = 0; i < forLoopArray.length; i++) {
+
+                    if (forLoopArray[i].team_id === 34) {
+                        newcastleWin = forLoopArray[i].all.win
+                        newcastleTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + newcastleWin);
+                        console.log("here are the ties" + newcastleTie);
+                    }
+
+                    if (forLoopArray[i].team_id === 52) {
+                        palaceWin = forLoopArray[i].all.win
+                        palaceTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + palaceWin);
+                        console.log("here are the ties" + palaceTie);
+                    }
+                }
+
+                var newcastleTotal = (newcastleWin * 4.25) + (newcastleTie);
+                var palaceTotal = (palaceWin * 4.25) + (palaceTie);
+
+                // Here is the final result
+                var jamesPoints = newcastleTotal + palaceTotal;
+                this.setState({ newcastle: newcastleTotal });
+                this.setState({ palace: palaceTotal });
+                this.setState({ jamesEPL: jamesPoints });
             })
             .catch(error => {
                 console.log(error)
