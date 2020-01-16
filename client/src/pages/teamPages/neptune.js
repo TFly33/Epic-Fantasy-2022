@@ -120,32 +120,52 @@ class neptune extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-                // HERE ARE EPL TEAMS FOR Neptune. 
-                //  Leicester
-                var leicesterWin = res.data.api.standings[0][1].all.win;
-                var leicesterTie = res.data.api.standings[0][1].all.draw;
-                var leicesterTotal = (leicesterWin * 4.25) + (leicesterTie);
+                //   Starting Neptune EPL Here 
+                var leicesterWin;
+                var leicesterTie;
+                var norwichWin;
+                var norwichTie;
 
-                // Now Norwich results
-                var norwichWin = res.data.api.standings[0][19].all.win;
-                var norwichTie = res.data.api.standings[0][19].all.draw;
-                var norwichTotal = (norwichWin * 4.25) + (norwichTie)
+                // running the for loop here. 
+                var forLoopArray = res.data.api.standings[0];
+                console.log(forLoopArray);
+
+                for (var i = 0; i < forLoopArray.length; i++) {
+
+                    if (forLoopArray[i].team_id === 46) {
+                        leicesterWin = forLoopArray[i].all.win
+                        leicesterTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + leicesterWin);
+                        console.log("here are the ties" + leicesterTie);
+                    }
+
+                    if (forLoopArray[i].team_id === 71) {
+                        norwichWin = forLoopArray[i].all.win
+                        norwichTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + norwichWin);
+                        console.log("here are the ties" + norwichTie);
+                    }
+                }
+
+                var leicesterTotal = (leicesterWin * 4.25) + (leicesterTie);
+                var norwichTotal = (norwichWin * 4.25) + (norwichTie);
 
                 // Here is the final result
-                var neptunePoints = leicesterTotal + norwichTotal
-                this.setState({ neptuneEPL: neptunePoints });
+                var neptunePoints = leicesterTotal + norwichTotal;
                 this.setState({ leicester: leicesterTotal });
                 this.setState({ norwich: norwichTotal });
-
-                // And now I need to run the totalscores function so that it can get logged. 
-                this.totalScores();
+                this.setState({ neptuneEPL: neptunePoints });
 
             })
             .catch(error => {
                 console.log(error)
             });
     };
-    
+
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {

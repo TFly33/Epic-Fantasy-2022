@@ -115,25 +115,45 @@ class al extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-                // HERE ARE EPL TEAMS FOR Al. 
-                //  everton
-                var evertonWin = res.data.api.standings[0][10].all.win;
-                var evertonTie = res.data.api.standings[0][10].all.draw;
-                var evertonTotal = (evertonWin * 4.25) + (evertonTie);
+                 //   Starting Goose EPL Here 
+               var evertonWin;
+               var evertonTie;
+               var southhamptonWin;
+               var southhamptonTie;
 
-                // southhampton results
-                var southhamptonWin = res.data.api.standings[0][11].all.win;
-                var southhamptonTie = res.data.api.standings[0][11].all.draw;
-                var southhamptonTotal = (southhamptonWin * 4.25) + (southhamptonTie)
+               // running the for loop here. 
+               var forLoopArray = res.data.api.standings[0];
+               console.log(forLoopArray);
 
-                // Here is the final result
-                var alPoints = evertonTotal + southhamptonTotal
-                this.setState({ alEPL: alPoints });
-                this.setState({ everton: evertonTotal });
-                this.setState({ southhampton: southhamptonTotal });
+               for (var i = 0; i < forLoopArray.length; i++) {
 
-                // And now I need to run the totalscores function so that it can get logged. 
-                this.totalScores();
+                   if (forLoopArray[i].team_id === 45) {
+                       evertonWin = forLoopArray[i].all.win
+                       evertonTie = forLoopArray[i].all.draw
+                       //then so something
+                       //return something here
+                       console.log("here are the wins" + evertonWin);
+                       console.log("here are the ties" + evertonTie);
+                   }
+
+                   if (forLoopArray[i].team_id === 41) {
+                       southhamptonWin = forLoopArray[i].all.win
+                       southhamptonTie = forLoopArray[i].all.draw
+                       //then so something
+                       //return something here
+                       console.log("here are the wins" + southhamptonWin);
+                       console.log("here are the ties" + southhamptonTie);
+                   }
+               }
+
+               var evertonTotal = (evertonWin * 4.25) + (evertonTie);
+               var southhamptonTotal = (southhamptonWin * 4.25) + (southhamptonTie);
+
+               // Here is the final result
+               var alPoints = evertonTotal + southhamptonTotal;
+               this.setState({ everton: evertonTotal });
+               this.setState({ southhampton: southhamptonTotal });
+               this.setState({ alEPL: alPoints });
 
             })
             .catch(error => {

@@ -120,25 +120,45 @@ class dj extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-                // HERE ARE EPL TEAMS FOR DJ. 
-                //  sheffield
-                var sheffieldWin = res.data.api.standings[0][7].all.win;
-                var sheffieldTie = res.data.api.standings[0][7].all.draw;
-                var sheffieldTotal = (sheffieldWin * 4.25) + (sheffieldTie);
+               //   Starting Goose EPL Here 
+               var sheffieldWin;
+               var sheffieldTie;
+               var burnleyWin;
+               var burnleyTie;
 
-                // Now burnley results
-                var burnleyWin = res.data.api.standings[0][14].all.win;
-                var burnleyTie = res.data.api.standings[0][14].all.draw;
-                var burnleyTotal = (burnleyWin * 4.25) + (burnleyTie)
+               // running the for loop here. 
+               var forLoopArray = res.data.api.standings[0];
+               console.log(forLoopArray);
 
-                // Here is the final result
-                var djPoints = sheffieldTotal + burnleyTotal
-                this.setState({ djEPL: djPoints });
-                this.setState({ sheffield: sheffieldTotal });
-                this.setState({ burnley: burnleyTotal });
+               for (var i = 0; i < forLoopArray.length; i++) {
 
-                // And now I need to run the totalscores function so that it can get logged. 
-                this.totalScores();
+                   if (forLoopArray[i].team_id === 62) {
+                       sheffieldWin = forLoopArray[i].all.win
+                       sheffieldTie = forLoopArray[i].all.draw
+                       //then so something
+                       //return something here
+                       console.log("here are the wins" + sheffieldWin);
+                       console.log("here are the ties" + sheffieldTie);
+                   }
+
+                   if (forLoopArray[i].team_id === 44) {
+                       burnleyWin = forLoopArray[i].all.win
+                       burnleyTie = forLoopArray[i].all.draw
+                       //then so something
+                       //return something here
+                       console.log("here are the wins" + burnleyWin);
+                       console.log("here are the ties" + burnleyTie);
+                   }
+               }
+
+               var sheffieldTotal = (sheffieldWin * 4.25) + (sheffieldTie);
+               var burnleyTotal = (burnleyWin * 4.25) + (burnleyTie);
+
+               // Here is the final result
+               var djPoints = sheffieldTotal + burnleyTotal;
+               this.setState({ sheffield: sheffieldTotal });
+               this.setState({ burnley: burnleyTotal });
+               this.setState({ djEPL: djPoints });
 
             })
             .catch(error => {

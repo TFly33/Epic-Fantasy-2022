@@ -119,25 +119,45 @@ class joe extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-                // HERE ARE EPL TEAMS FOR Joe. 
-                //  Liverpool
-                var liverpoolWin = res.data.api.standings[0][0].all.win;
-                var liverpoolTie = res.data.api.standings[0][0].all.draw;
-                var liverpoolTotal = (liverpoolWin * 4.25) + (liverpoolTie);
+                //   Starting Neptune EPL Here 
+                var liverpoolWin;
+                var liverpoolTie;
+                var astonWin;
+                var astonTie;
 
-                // Aston Villa results
-                var astonWin = res.data.api.standings[0][16].all.win;
-                var astonTie = res.data.api.standings[0][16].all.draw;
-                var astonTotal = (astonWin * 4.25) + (astonTie)
+                // running the for loop here. 
+                var forLoopArray = res.data.api.standings[0];
+                console.log(forLoopArray);
+
+                for (var i = 0; i < forLoopArray.length; i++) {
+
+                    if (forLoopArray[i].team_id === 40) {
+                        liverpoolWin = forLoopArray[i].all.win
+                        liverpoolTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + liverpoolWin);
+                        console.log("here are the ties" + liverpoolTie);
+                    }
+
+                    if (forLoopArray[i].team_id === 66) {
+                        astonWin = forLoopArray[i].all.win
+                        astonTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + astonWin);
+                        console.log("here are the ties" + astonTie);
+                    }
+                }
+
+                var liverpoolTotal = (liverpoolWin * 4.25) + (liverpoolTie);
+                var astonTotal = (astonWin * 4.25) + (astonTie);
 
                 // Here is the final result
-                var joePoints = liverpoolTotal + astonTotal
-                this.setState({ joeEPL: joePoints });
+                var joePoints = liverpoolTotal + astonTotal;
                 this.setState({ liverpool: liverpoolTotal });
                 this.setState({ aston: astonTotal });
-
-                // And now I need to run the totalscores function so that it can get logged. 
-                this.totalScores();
+                this.setState({ joeEPL: joePoints });
 
             })
             .catch(error => {

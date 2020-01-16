@@ -116,25 +116,43 @@ class steids extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-                // HERE ARE EPL TEAMS FOR Steids. 
-                //  Arsenal
-                var arsenalWin = res.data.api.standings[0][9].all.win;
-                var arsenalTie = res.data.api.standings[0][9].all.draw;
-                var arsenalTotal = (arsenalWin * 4.25) + (arsenalTie);
+            //   Starting Steids EPL Here 
+                var arsenalWin;
+                var arsenalTie;
+                var watfordWin;
+                var watfordTie;
 
-                // Watford results
-                var watfordWin = res.data.api.standings[0][18].all.win;
-                var watfordTie = res.data.api.standings[0][18].all.draw;
-                var watfordTotal = (watfordWin * 4.25) + (watfordTie)
+                // running the for loop here. 
+                var forLoopArray = res.data.api.standings[0]
+                for (var i = 0; i < forLoopArray.length; i++) {
+
+                    if (forLoopArray[i].team_id === 42) {
+                        arsenalWin = forLoopArray[i].all.win
+                        arsenalTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + arsenalWin);
+                        console.log("here are the ties" + arsenalTie);
+                    }
+
+                    if (forLoopArray[i].team_id === 38) {
+                        watfordWin = forLoopArray[i].all.win
+                        watfordTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + watfordWin);
+                        console.log("here are the ties" + watfordTie);
+                    }
+                }
+
+                var arsenalTotal = (arsenalWin * 4.25) + (arsenalTie);
+                var watfordTotal = (watfordWin * 4.25) + (watfordTie);
 
                 // Here is the final result
-                var steidsPoints = arsenalTotal + watfordTotal
+                var steidsPoints = arsenalTotal + watfordTotal;
                 this.setState({ arsenal: arsenalTotal });
                 this.setState({ watford: watfordTotal });
                 this.setState({ steidsEPL: steidsPoints });
-
-                // And now I need to run the totalscores function so that it can get logged. 
-                // this.totalScores();
 
             })
             .catch(error => {

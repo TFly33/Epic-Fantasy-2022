@@ -117,25 +117,45 @@ class goose extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-                // HERE ARE EPL TEAMS FOR Goose. 
-                //  manU
-                var manuWin = res.data.api.standings[0][4].all.win;
-                var manuTie = res.data.api.standings[0][4].all.draw;
-                var manuTotal = (manuWin * 4.25) + (manuTie);
-
-                // Now westham results
-                var westhamWin = res.data.api.standings[0][15].all.win;
-                var westhamTie = res.data.api.standings[0][15].all.draw;
-                var westhamTotal = (westhamWin * 4.25) + (westhamTie)
-
-                // Here is the final result
-                var goosePoints = manuTotal + westhamTotal
-                this.setState({ gooseEPL: goosePoints });
-                this.setState({ manu: manuTotal });
-                this.setState({ westham: westhamTotal });
-
-                // And now I need to run the totalscores function so that it can get logged. 
-                this.totalScores();
+                 //   Starting Goose EPL Here 
+                 var manuWin;
+                 var manuTie;
+                 var westhamWin;
+                 var westhamTie;
+ 
+                 // running the for loop here. 
+                 var forLoopArray = res.data.api.standings[0];
+                 console.log(forLoopArray);
+ 
+                 for (var i = 0; i < forLoopArray.length; i++) {
+ 
+                     if (forLoopArray[i].team_id === 33) {
+                         manuWin = forLoopArray[i].all.win
+                         manuTie = forLoopArray[i].all.draw
+                         //then so something
+                         //return something here
+                         console.log("here are the wins" + manuWin);
+                         console.log("here are the ties" + manuTie);
+                     }
+ 
+                     if (forLoopArray[i].team_id === 48) {
+                         westhamWin = forLoopArray[i].all.win
+                         westhamTie = forLoopArray[i].all.draw
+                         //then so something
+                         //return something here
+                         console.log("here are the wins" + westhamWin);
+                         console.log("here are the ties" + westhamTie);
+                     }
+                 }
+ 
+                 var manuTotal = (manuWin * 4.25) + (manuTie);
+                 var westhamTotal = (westhamWin * 4.25) + (westhamTie);
+ 
+                 // Here is the final result
+                 var goosePoints = manuTotal + westhamTotal;
+                 this.setState({ manu: manuTotal });
+                 this.setState({ westham: westhamTotal });
+                 this.setState({ gooseEPL: goosePoints });
 
             })
             .catch(error => {

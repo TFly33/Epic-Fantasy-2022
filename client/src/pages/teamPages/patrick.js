@@ -116,26 +116,46 @@ class patrick extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-                // HERE ARE EPL TEAMS FOR Patrick. 
-                //  Manchester City
-                var cityWin = res.data.api.standings[0][2].all.win;
-                var cityTie = res.data.api.standings[0][2].all.draw;
-                var cityTotal = (cityWin * 4.25) + (cityTie);
+                //   Starting Patrick EPL Here 
+                var manCityWin;
+                var manCityTie;
+                var wolvesWin;
+                var wolvesTie;
 
-                // Now Wolves results
-                var wolvesWin = res.data.api.standings[0][6].all.win;
-                var wolvesTie = res.data.api.standings[0][6].all.draw;
-                var wolvesTotal = (wolvesWin * 4.25) + (wolvesTie)
+                // running the for loop here. 
+                var forLoopArray = res.data.api.standings[0]
+                
+                console.log (forLoopArray)
+
+                for (var i = 0; i < forLoopArray.length; i++) {
+
+                    if (forLoopArray[i].team_id === 50) {
+                        manCityWin = forLoopArray[i].all.win
+                        manCityTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + manCityWin);
+                        console.log("here are the ties" + manCityTie);
+                    }
+
+                    if (forLoopArray[i].team_id === 39) {
+                        wolvesWin = forLoopArray[i].all.win
+                        wolvesTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + wolvesWin);
+                        console.log("here are the ties" + wolvesTie);
+                    }
+                }
+
+                var manCityTotal = (manCityWin * 4.25) + (manCityTie);
+                var wolvesTotal = (wolvesWin * 4.25) + (wolvesTie);
 
                 // Here is the final result
-                var patPoints = cityTotal + wolvesTotal;
-                this.setState({ patEPL: patPoints });
-                this.setState({ city: cityTotal });
+                var patPoints = manCityTotal + wolvesTotal;
+                this.setState({ city: manCityTotal });
                 this.setState({ wolves: wolvesTotal });
-
-                // And now I need to run the totalscores function so that it can get logged. 
-                // this.totalScores();
-
+                this.setState({ patEPL: patPoints });
             })
             .catch(error => {
                 console.log(error)

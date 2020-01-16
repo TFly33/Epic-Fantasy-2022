@@ -234,6 +234,8 @@ class Table extends Component {
         this.getScoresNFL();
         // running NHL here
         this.getScoresNHL();
+        // MLB Here 
+        // this.getScoreMLB(); 
 
     };
 
@@ -336,7 +338,7 @@ class Table extends Component {
                 }
                 // blackhawks total
                 blackhawksTotal = (blackhawksWins * 2) + blackhawksOTLS;
-                console.log(blackhawksTotal)
+                // console.log(blackhawksTotal)
 
                 // Here is the loop for the Canucks and Knights, who are in the same division. 
                 for (var i = 0; i < pacificResults.length; i++) {
