@@ -273,17 +273,17 @@ class tommy extends React.Component {
                                 <tbody>
                                     <tr>
                                         <th scope="row">47</th>
-                                        <td>Brooklyn Nets</td>
+                                        <td className="nets">Brooklyn Nets</td>
                                         <td>{this.state.nets}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">54</th>
-                                        <td>San Antonio Spurs</td>
+                                        <td className="spurs">San Antonio Spurs</td>
                                         <td>{this.state.spurs}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">64</th>
-                                        <td>Miami Heat</td>
+                                        <td className="heat">Miami Heat</td>
                                         <td>{this.state.heat}</td>
                                     </tr>
                                     <tr>
@@ -310,17 +310,17 @@ class tommy extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">11</th>
-                                                <td>New England Patriots</td>
+                                                <td className="patriots">New England Patriots</td>
                                                 <td>{this.state.patriots}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">77</th>
-                                                <td>Seattle Seahawks</td>
+                                                <td className="seahawks">Seattle Seahawks</td>
                                                 <td>{this.state.seahawks}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">89</th>
-                                                <td>San Francisco 49ers</td>
+                                                <td className="niners">San Francisco 49ers</td>
                                                 <td>{this.state.fourtyNiners}</td>
                                             </tr>
                                             <tr>
@@ -349,12 +349,12 @@ class tommy extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">10</th>
-                                                <td>Chelsea</td>
+                                                <td className="chelsea">Chelsea</td>
                                                 <td>{this.state.chelsea}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">138</th>
-                                                <td>Brighton and Hove Albion</td>
+                                                <td className="brighton">Brighton and Hove Albion</td>
                                                 <td>{this.state.brighton}</td>
                                             </tr>
                                             <tr>
@@ -386,17 +386,17 @@ class tommy extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">29</th>
-                                                <td>Vegas Knights</td>
+                                                <td className="knights">Vegas Knights</td>
                                                 <td>{this.state.knights}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">106</th>
-                                                <td>Chicago Blackhawks</td>
+                                                <td className="blackhawks">Chicago Blackhawks</td>
                                                 <td>{this.state.blackhawks}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">113</th>
-                                                <td>Vancouver Canucks</td>
+                                                <td className="canucks">Vancouver Canucks</td>
                                                 <td>{this.state.canucks}</td>
                                             </tr>
                                             <tr>

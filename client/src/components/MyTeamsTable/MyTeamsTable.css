@@ -61,7 +61,7 @@ font-weight:bold;
             }
 
             .giants {
-                color: #D14760;
+                color: #CC314B;
                 background: #003C7F;
                 font-weight:bold;
                 
@@ -101,3 +101,81 @@ font-weight:bold;
                                     font-weight:bold;
                                     
                                     }
+
+                                    .heat {
+                                        color: #D45199;
+                                        background: #8EBDDF;
+                                        font-weight:bold;
+                                        
+                                        }
+            
+                                        .nets {
+                                            color: #FEFEFE;
+                                            background: #2D2925;
+                                            font-weight:bold;
+                                            
+                                            }
+            
+                                            .spurs {
+                                                color: #2D2925;
+                                                background: #C4CDD3;
+                                                font-weight:bold;
+                                                
+                                                }
+
+                                                .niners {
+                                                    color: #C6A876;
+                                                    background: #C9233F;
+                                                    font-weight:bold;
+                                                    
+                                                    }
+                        
+                                                    .seahawks {
+                                                        color: #5A9D60;
+                                                        background: #002A5C;
+                                                        font-weight:bold;
+                                                        
+                                                        }
+                        
+                                                        .patriots {
+                                                            color: #DA2128;
+                                                            background: #002A5C;
+                                                            font-weight:bold;
+                                                            
+                                                            }
+
+                                                            .chelsea {
+                                                                color: #FFFFFF;
+                                                                background: #034594;
+                                                                font-weight:bold;
+                                                                
+                                                                }
+                                    
+                                                                .brighton {
+                                                                    color: #FFFFFF;
+                                                                    background: #0053A6;
+                                                                    font-weight:bold;
+                                                                    
+                                                                    }
+                                    
+                                                                    .blackhawks {
+                                                                        color: #C2122D;
+                                                                        background: #010101;
+                                                                        font-weight:bold;
+                                                                        
+                                                                        }
+
+                                                                        .knights {
+                                                                            color: #010101;
+                                                                            background: #B9975B;
+                                                                            font-weight:bold;
+                                                                            
+                                                                            }
+                                                
+                                                                            .canucks {
+                                                                                color: #FFFFFF;
+                                                                                background: #152F54;
+                                                                                font-weight:bold;
+                                                                                
+                                                                                }
+                                                
