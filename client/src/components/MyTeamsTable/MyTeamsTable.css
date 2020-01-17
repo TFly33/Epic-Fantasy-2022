@@ -27,8 +27,8 @@ footer {
   }
 
 .celtics {
-    color:#008347;
-    background:#BB9753;
+    color:#BB9752;
+    background:#078348;
     font-weight:bold;
 }
 
@@ -40,12 +40,64 @@ font-weight:bold;
 }
 
 .hornets {
-    color: #FCB424;
-    background: #081D3F;
+    color:  #1B1060;
+    background: #018CA8;
     font-weight:bold;
-    
+   
     }
  
+    .rams {
+        color: #FFFFFF;
+        background: #002244;
+        font-weight:bold;
+        
+        }
 
+        .jaguars {
+            color: #D7A129;
+            background: #3B7A85;
+            font-weight:bold;
+            
+            }
 
+            .giants {
+                color: #D14760;
+                background: #003C7F;
+                font-weight:bold;
+                
+                }
 
+                .leicester {
+                    color: #FFFFFF;
+                    background: #01479A;
+                    font-weight:bold;
+                    
+                    }
+
+                    .norwich {
+                        color: #FFF200;
+                        background: #0DA650;
+                        font-weight:bold;
+                        
+                        }
+
+                        .sharks {
+                            color: #010101;
+                            background: #016271;
+                            font-weight:bold;
+                            
+                            }
+
+                            .rangers {
+                                color: #C8102E;
+                                background: #0033A0;
+                                font-weight:bold;
+                                
+                                }
+
+                                .devils {
+                                    color: #010101;
+                                    background: #C8102D;
+                                    font-weight:bold;
+                                    
+                                    }
