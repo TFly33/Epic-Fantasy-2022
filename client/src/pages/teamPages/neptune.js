@@ -309,17 +309,17 @@ class neptune extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">9</th>
-                                                <td>Los Angeles Rams</td>
+                                                <td className="rams">Los Angeles Rams</td>
                                                 <td>{this.state.rams}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">90</th>
-                                                <td>Jacksonville Jaguars</td>
+                                                <td className="jaguars">Jacksonville Jaguars</td>
                                                 <td>{this.state.jaguars}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">139</th>
-                                                <td>New York Giants</td>
+                                                <td className="giants">New York Giants</td>
                                                 <td>{this.state.giants}</td>
                                             </tr>
                                             <tr>
@@ -348,12 +348,12 @@ class neptune extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">55</th>
-                                                <td>Leicester City</td>
+                                                <td className="leicester">Leicester City</td>
                                                 <td>{this.state.leicester}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">111</th>
-                                                <td>Norwich City</td>
+                                                <td className="norwich">Norwich City</td>
                                                 <td>{this.state.norwich}</td>
                                             </tr>
                                             <tr>
@@ -383,17 +383,17 @@ class neptune extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">37</th>
-                                                <td>San Jose Sharks</td>
+                                                <td className="sharks">San Jose Sharks</td>
                                                 <td>{this.state.sharks}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">91</th>
-                                                <td>New York Rangers</td>
+                                                <td className="rangers">New York Rangers</td>
                                                 <td>{this.state.rangers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">108</th>
-                                                <td>New Jersey Devils</td>
+                                                <td className="devils">New Jersey Devils</td>
                                                 <td>{this.state.devils}</td>
                                             </tr>
                                             <tr>
