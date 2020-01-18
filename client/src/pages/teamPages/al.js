@@ -266,17 +266,17 @@ class al extends React.Component {
                                 <tbody>
                                     <tr>
                                         <th scope="row">56</th>
-                                        <td>Dallas Mavericks</td>
+                                        <td className="mavs">Dallas Mavericks</td>
                                         <td>{this.state.mavericks}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">73</th>
-                                        <td>Orlando Magic</td>
+                                        <td className="magic">Orlando Magic</td>
                                         <td>{this.state.magic}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">124</th>
-                                        <td>Washington Wizards</td>
+                                        <td className="wiz">Washington Wizards</td>
                                         <td>{this.state.wizards}</td>
                                     </tr>
                                     <tr>
@@ -303,17 +303,17 @@ class al extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">20</th>
-                                                <td>San Diego Chargers</td>
+                                                <td className="chargers">Los Angeles Chargers</td>
                                                 <td>{this.state.chargers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">31</th>
-                                                <td>Green Bay Packers</td>
+                                                <td className="packers">Green Bay Packers</td>
                                                 <td>{this.state.packers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">114</th>
-                                                <td>Buffalo Bills</td>
+                                                <td className="bills">Buffalo Bills</td>
                                                 <td>{this.state.bills}</td>
                                             </tr>
                                             <tr>
@@ -342,12 +342,12 @@ class al extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">45</th>
-                                                <td>Everton</td>
+                                                <td className="everton">Everton</td>
                                                 <td>{this.state.everton}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">115</th>
-                                                <td>Southhampton</td>
+                                                <td className="southhampton">Southhampton</td>
                                                 <td>{this.state.southhampton}</td>
                                             </tr>
                                             <tr>
@@ -377,17 +377,17 @@ class al extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">1</th>
-                                                <td>Tampa Bay Lightning</td>
+                                                <td className="lightning">Tampa Bay Lightning</td>
                                                 <td>{this.state.lightning}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">30</th>
-                                                <td>Boston Bruins</td>
+                                                <td className="bruins">Boston Bruins</td>
                                                 <td>{this.state.bruins}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">137</th>
-                                                <td>Detroit Red Wings</td>
+                                                <td className="redwings">Detroit Red Wings</td>
                                                 <td>{this.state.wings}</td>
                                             </tr>
                                             <tr>
