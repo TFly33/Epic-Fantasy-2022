@@ -256,9 +256,80 @@ font-weight:bold;
 
 }
 
-. {
-color: #;
-background: #;
+.lakers {
+color: #542482;
+background: #FEC42F;
 font-weight:bold;
 
 }
+
+.jazz {
+color: #F9A11A;
+background: #0A213E;
+font-weight:bold;
+
+}
+
+.warriors {
+color: #FDB928;
+background: #1D428A;
+font-weight:bold;
+
+}
+
+.ravens {
+color: #010101;
+background: #2C2D8B;
+font-weight:bold;
+
+}
+
+.titans {
+color: #002A5C;
+background: #4495D1;
+font-weight:bold;
+
+}
+
+.jets {
+color: #FFFFFF;
+background: #115740;
+font-weight:bold;
+
+}
+
+.mancity {
+color: #0B2962;
+background: #6CAEE0;
+font-weight:bold;
+
+}
+
+.wolverhampton {
+color: #221E20;
+background: #F9A01B;
+font-weight:bold;
+
+}
+
+.islanders {
+color: #FC4C01;
+background: #003087;
+font-weight:bold;
+
+}
+
+.ducks {
+color: #101010;
+background: #FC4C01;
+font-weight:bold;
+
+}
+
+.lakings {
+    color: #FFFFFF;
+    background: #000000;
+    font-weight:bold;
+    
+    }
+                                    
