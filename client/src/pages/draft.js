@@ -89,7 +89,7 @@ class draft extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">4</th>
-                                        <td>Philadelphia 76ers</td>
+                                        <td className="sixers">Philadelphia 76ers</td>
                                         <td>DJ</td>
                                     </tr>
                                     <tr>
@@ -154,7 +154,7 @@ class draft extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">17</th>
-                                        <td>Houston Rockets</td>
+                                        <td className="rockets">Houston Rockets</td>
                                         <td>DJ</td>
                                     </tr>
                                     <tr>
@@ -179,7 +179,7 @@ class draft extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">22</th>
-                                        <td>Chicago Bears</td>
+                                        <td className="bears">Chicago Bears</td>
                                         <td>DJ</td>
                                     </tr>
                                     <tr>
@@ -264,7 +264,7 @@ class draft extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">39</th>
-                                        <td>Winnipeg Jets</td>
+                                        <td className="winnipeg">Winnipeg Jets</td>
                                         <td>DJ</td>
                                     </tr>
                                     <tr>
@@ -274,7 +274,7 @@ class draft extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">41</th>
-                                        <td>Houston Texans</td>
+                                        <td className="texans">Houston Texans</td>
                                         <td>DJ</td>
                                     </tr>
                                     <tr>
@@ -374,7 +374,7 @@ class draft extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">61</th>
-                                        <td>Carolina Hurricanes</td>
+                                        <td className="hurricanes">Carolina Hurricanes</td>
                                         <td>DJ</td>
                                     </tr>
                                     <tr>
@@ -469,7 +469,7 @@ class draft extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">80</th>
-                                        <td>Arizona Coyotes</td>
+                                        <td className="coyotes">Arizona Coyotes</td>
                                         <td>DJ</td>
                                     </tr>
                                     <tr>
@@ -489,7 +489,7 @@ class draft extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">84</th>
-                                        <td>Minnesota Timberwolves</td>
+                                        <td className="tWolves">Minnesota Timberwolves</td>
                                         <td>DJ</td>
                                     </tr>
                                     <tr>
@@ -554,7 +554,7 @@ class draft extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">97</th>
-                                        <td>Denver Broncos</td>
+                                        <td className="broncos">Denver Broncos</td>
                                         <td>DJ</td>
                                     </tr>
                                     <tr>
@@ -649,7 +649,7 @@ class draft extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">116</th>
-                                        <td>Sheffield United</td>
+                                        <td className="sheffield">Sheffield United</td>
                                         <td>DJ</td>
                                     </tr>
                                     <tr>
@@ -749,7 +749,7 @@ class draft extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">136</th>
-                                        <td>Burnley</td>
+                                        <td className="burnley">Burnley</td>
                                         <td>DJ</td>
                                     </tr>
                                     <tr>
