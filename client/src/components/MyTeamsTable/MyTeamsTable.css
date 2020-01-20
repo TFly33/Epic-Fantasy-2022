@@ -599,7 +599,7 @@ font-weight:bold;
 }
 
 .lions {
-color: #A0A0A0;
+color: #ffffff;
 background: #0076B6;
 font-weight:bold;
 
@@ -636,6 +636,83 @@ font-weight:bold;
 .wild {
 color: #EEE1C6;
 background: #02462E;
+font-weight:bold;
+
+}
+
+.nuggets {
+color: #FFC627;
+background: #0C2140;
+font-weight:bold;
+
+}
+
+.blazers {
+color: #E03A3D;
+background: #061821;
+font-weight:bold;
+
+}
+
+.kings {
+color: #FFFFFF;
+background: #51388A;
+font-weight:bold;
+
+}
+
+.colts {
+color: #FFFFFF;
+background: #124B98;
+font-weight:bold;
+
+}
+
+.vikings {
+color: #FFFFFF;
+background: #4F2583;
+font-weight:bold;
+
+}
+
+.raiders {
+color: #A5ACAF;
+background: #000000;
+font-weight:bold;
+
+}
+
+.liverpool {
+color: #FFFFFF;
+background: #E31A22;
+font-weight:bold;
+
+}
+
+.astonV {
+color: #94BEE5;
+background: #470125;
+font-weight:bold;
+
+}
+
+.blues {
+color: #EEB53A;
+background: #00539B;
+font-weight:bold;
+
+}
+
+.blueJackets {
+color: #CC1F2C;
+background: #002D62;
+font-weight:bold;
+
+}
+
+.oilers {
+color: #F26923;
+background: #0A1E3F;
 font-weight:bold;
 
 }
