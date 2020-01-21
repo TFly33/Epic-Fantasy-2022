@@ -148,7 +148,7 @@ class draft extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">16</th>
-                                        <td className="easgles">Philadelphia Eagles</td>
+                                        <td className="eagles">Philadelphia Eagles</td>
                                         <td>Ben</td>
                                     </tr>
                                     <tr>
