@@ -266,17 +266,17 @@ class steids extends React.Component {
                                 <tbody>
                                     <tr>
                                         <th scope="row">8</th>
-                                        <td>Los Angeles Clippers</td>
+                                        <td className="clippers">Los Angeles Clippers</td>
                                         <td>{this.state.clippers}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">100</th>
-                                        <td>Atlanta Hawks</td>
+                                        <td className="hawks">Atlanta Hawks</td>
                                         <td>{this.state.hawks}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">112</th>
-                                        <td>Chicago Bulls</td>
+                                        <td className="bulls">Chicago Bulls</td>
                                         <td>{this.state.bulls}</td>
                                     </tr>
                                     <tr>
@@ -303,17 +303,17 @@ class steids extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">42</th>
-                                                <td>Cleveland Browns</td>
+                                                <td className="browns">Cleveland Browns</td>
                                                 <td>{this.state.browns}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">62</th>
-                                                <td>Pittsburgh Steelers</td>
+                                                <td className="steelers">Pittsburgh Steelers</td>
                                                 <td>{this.state.steelers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">107</th>
-                                                <td>Tampa Bay Buccaneers</td>
+                                                <td className="bucs">Tampa Bay Buccaneers</td>
                                                 <td>{this.state.buccaneers}</td>
                                             </tr>
                                             <tr>
@@ -343,12 +343,12 @@ class steids extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">13</th>
-                                                <td>Arsenal</td>
+                                                <td className="arsenal">Arsenal</td>
                                                 <td>{this.state.arsenal}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">81</th>
-                                                <td>Watford</td>
+                                                <td className="watford">Watford</td>
                                                 <td>{this.state.watford}</td>
                                             </tr>
                                             <tr>
@@ -379,17 +379,17 @@ class steids extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">33</th>
-                                                <td>Washington Capitals</td>
+                                                <td className="capitals">Washington Capitals</td>
                                                 <td>{this.state.caps}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">79</th>
-                                                <td>Florida Panthers</td>
+                                                <td className="fPanthers">Florida Panthers</td>
                                                 <td>{this.state.panthers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">129</th>
-                                                <td>Buffalo Sabres</td>
+                                                <td className="sabres">Buffalo Sabres</td>
                                                 <td>{this.state.sabres}</td>
                                             </tr>
                                             <tr>

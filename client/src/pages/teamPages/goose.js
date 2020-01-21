@@ -268,17 +268,17 @@ class goose extends React.Component {
                                 <tbody>
                                     <tr>
                                         <th scope="row">51</th>
-                                        <td>Toronto Raptors</td>
+                                        <td className="raptors">Toronto Raptors</td>
                                         <td>{this.state.raptors}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">78</th>
-                                        <td>Detroit Pistons</td>
+                                        <td className="pistons">Detroit Pistons</td>
                                         <td>{this.state.pistons}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">128</th>
-                                        <td>New York Knicks</td>
+                                        <td className="knicks">New York Knicks</td>
                                         <td>{this.state.knicks}</td>
                                     </tr>
                                     <tr>
@@ -305,17 +305,17 @@ class goose extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">7</th>
-                                                <td>Kansas City Chiefs</td>
+                                                <td className="chiefs">Kansas City Chiefs</td>
                                                 <td>{this.state.chiefs}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">88</th>
-                                                <td>Carolina Panthers</td>
+                                                <td className="panthers">Carolina Panthers</td>
                                                 <td>{this.state.panthers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">133</th>
-                                                <td>Cincinnati Bengals</td>
+                                                <td className="bengals">Cincinnati Bengals</td>
                                                 <td>{this.state.bengals}</td>
                                             </tr>
                                             <tr>
@@ -344,12 +344,12 @@ class goose extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">14</th>
-                                                <td>Manchester United</td>
+                                                <td className="manU">Manchester United</td>
                                                 <td>{this.state.manu}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">63</th>
-                                                <td>Westham United</td>
+                                                <td className="westHam">West Ham United</td>
                                                 <td>{this.state.westham}</td>
                                             </tr>
                                             <tr>
@@ -379,17 +379,17 @@ class goose extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">36</th>
-                                                <td>Nashville Predators</td>
+                                                <td className="predators">Nashville Predators</td>
                                                 <td>{this.state.preds}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">50</th>
-                                                <td>Dallas Stars</td>
+                                                <td className="stars">Dallas Stars</td>
                                                 <td>{this.state.stars}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">93</th>
-                                                <td>Montreal Canadians</td>
+                                                <td className="canadiens">Montreal Canadians</td>
                                                 <td>{this.state.canadians}</td>
                                             </tr>
                                             <tr>
