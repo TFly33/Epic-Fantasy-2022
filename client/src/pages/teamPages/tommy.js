@@ -37,9 +37,9 @@ class tommy extends React.Component {
         API.getScoresNHL()
             .then(res => {
                 // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
+                // var metroResults = res.data.records[0].teamRecords;
+                // // Atlantic Division
+                // var atlanticResults = res.data.records[1].teamRecords;
                 // Central Division
                 var centralResults = res.data.records[2].teamRecords;
                 // Pacific
@@ -221,11 +221,10 @@ class tommy extends React.Component {
                                 <a class="nav-link" href="/Home">Standings</a>
                             </li>
                             <li class="nav-item active">
-                                {/* <a class="nav-link" href="/MyTeams">My Teams</a> */}
                                 <div class="dropdown show">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
-                                    </a>
+                                    </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <a class="dropdown-item" href="tommy">Tommy</a>
                                         <a class="dropdown-item" href="patrick">Patrick</a>

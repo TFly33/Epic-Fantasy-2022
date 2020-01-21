@@ -36,13 +36,13 @@ class goose extends React.Component {
         API.getScoresNHL()
             .then(res => {
                 // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
+                // var metroResults = res.data.records[0].teamRecords;
                 // Atlantic Division
                 var atlanticResults = res.data.records[1].teamRecords;
                 // Central Division
                 var centralResults = res.data.records[2].teamRecords;
                 // central
-                var pacificResults = res.data.records[3].teamRecords;
+                // var pacificResults = res.data.records[3].teamRecords;
 
                 console.log(centralResults);
                 var predsWins;
@@ -117,45 +117,45 @@ class goose extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-                 //   Starting Goose EPL Here 
-                 var manuWin;
-                 var manuTie;
-                 var westhamWin;
-                 var westhamTie;
- 
-                 // running the for loop here. 
-                 var forLoopArray = res.data.api.standings[0];
-                 console.log(forLoopArray);
- 
-                 for (var i = 0; i < forLoopArray.length; i++) {
- 
-                     if (forLoopArray[i].team_id === 33) {
-                         manuWin = forLoopArray[i].all.win
-                         manuTie = forLoopArray[i].all.draw
-                         //then so something
-                         //return something here
-                         console.log("here are the wins" + manuWin);
-                         console.log("here are the ties" + manuTie);
-                     }
- 
-                     if (forLoopArray[i].team_id === 48) {
-                         westhamWin = forLoopArray[i].all.win
-                         westhamTie = forLoopArray[i].all.draw
-                         //then so something
-                         //return something here
-                         console.log("here are the wins" + westhamWin);
-                         console.log("here are the ties" + westhamTie);
-                     }
-                 }
- 
-                 var manuTotal = (manuWin * 4.25) + (manuTie);
-                 var westhamTotal = (westhamWin * 4.25) + (westhamTie);
- 
-                 // Here is the final result
-                 var goosePoints = manuTotal + westhamTotal;
-                 this.setState({ manu: manuTotal });
-                 this.setState({ westham: westhamTotal });
-                 this.setState({ gooseEPL: goosePoints });
+                //   Starting Goose EPL Here 
+                var manuWin;
+                var manuTie;
+                var westhamWin;
+                var westhamTie;
+
+                // running the for loop here. 
+                var forLoopArray = res.data.api.standings[0];
+                console.log(forLoopArray);
+
+                for (var i = 0; i < forLoopArray.length; i++) {
+
+                    if (forLoopArray[i].team_id === 33) {
+                        manuWin = forLoopArray[i].all.win
+                        manuTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + manuWin);
+                        console.log("here are the ties" + manuTie);
+                    }
+
+                    if (forLoopArray[i].team_id === 48) {
+                        westhamWin = forLoopArray[i].all.win
+                        westhamTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + westhamWin);
+                        console.log("here are the ties" + westhamTie);
+                    }
+                }
+
+                var manuTotal = (manuWin * 4.25) + (manuTie);
+                var westhamTotal = (westhamWin * 4.25) + (westhamTie);
+
+                // Here is the final result
+                var goosePoints = manuTotal + westhamTotal;
+                this.setState({ manu: manuTotal });
+                this.setState({ westham: westhamTotal });
+                this.setState({ gooseEPL: goosePoints });
 
             })
             .catch(error => {
@@ -217,11 +217,10 @@ class goose extends React.Component {
                                 <a class="nav-link" href="/Home">Standings <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
-                                {/* <a class="nav-link" href="/MyTeams">My Teams</a> */}
                                 <div class="dropdown show">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
-                                    </a>
+                                    </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <a class="dropdown-item" href="tommy">Tommy</a>
                                         <a class="dropdown-item" href="patrick">Patrick</a>

@@ -3,9 +3,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import draft from "./pages/draft";
 import points from "./pages/points";
-// import newLogin from "./pages/newLogin";
-import MyTeams from "./pages/MyTeams";
-// import Login from "./pages/Login";
 import tommy from "./pages/teamPages/tommy";
 import patrick from "./pages/teamPages/patrick";
 import james from "./pages/teamPages/james";
@@ -16,6 +13,8 @@ import al from "./pages/teamPages/al";
 import joe from "./pages/teamPages/joe";
 import steids from "./pages/teamPages/steids";
 import ben from "./pages/teamPages/ben";
+// css
+import "../src/pages/teamPages/css/teamPages.css";
 // This currently isn't working
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -27,7 +26,7 @@ class App extends Component {
         <Router>
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/home" component={Home}></Route>
-          <Route exact path="/MyTeams" component={MyTeams}></Route>
+          {/* <Route exact path="/MyTeams" component={MyTeams}></Route> */}
           <Route exact path="/draft" component={draft}></Route>
           <Route exact path="/points" component={points}></Route>
           <Route exact path="/tommy" component={tommy}></Route>
