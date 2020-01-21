@@ -3,13 +3,13 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const teamRoutes = require("./routes/TeamRoutes");
 const myTeamRoutes = require("./routes/MyTeams");
-const loginRoutes = require("./routes/login");
+// const loginRoutes = require("./routes/login");
 // Defining Passport here! 
 // const passport = require("./client/src/middleware/passport");
 // Might need to add this login route eventually. 
 // const loginRoutes = require("./routes/Login");
 const app = express();
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -32,9 +32,9 @@ app.use(myTeamRoutes);
 // app.use(loginRoutes);
 
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/EpicFantasyLeague";
+// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/EpicFantasyLeague";
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Send every other request to the React app
 // Define any API routes before this runs
