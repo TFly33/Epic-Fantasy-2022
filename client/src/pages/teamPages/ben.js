@@ -41,7 +41,7 @@ class ben extends React.Component {
                 // Central Division
                 var centralResults = res.data.records[2].teamRecords;
                 // central
-                var pacificResults = res.data.records[3].teamRecords;
+                // var pacificResults = res.data.records[3].teamRecords;
 
                 console.log(metroResults);
 
@@ -220,11 +220,10 @@ class ben extends React.Component {
                                 <a class="nav-link" href="/Home">Standings <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
-                                {/* <a class="nav-link" href="/MyTeams">My Teams</a> */}
                                 <div class="dropdown show">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
-                                    </a>
+                                    </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <a class="dropdown-item" href="tommy">Tommy</a>
                                         <a class="dropdown-item" href="patrick">Patrick</a>

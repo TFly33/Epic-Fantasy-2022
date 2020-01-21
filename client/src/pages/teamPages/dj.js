@@ -37,7 +37,7 @@ class dj extends React.Component {
                 // This is the Metro Division
                 var metroResults = res.data.records[0].teamRecords;
                 // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
+                // var atlanticResults = res.data.records[1].teamRecords;
                 // Central Division
                 var centralResults = res.data.records[2].teamRecords;
                 // central
@@ -120,45 +120,45 @@ class dj extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-               //   Starting Goose EPL Here 
-               var sheffieldWin;
-               var sheffieldTie;
-               var burnleyWin;
-               var burnleyTie;
+                //   Starting Goose EPL Here 
+                var sheffieldWin;
+                var sheffieldTie;
+                var burnleyWin;
+                var burnleyTie;
 
-               // running the for loop here. 
-               var forLoopArray = res.data.api.standings[0];
-               console.log(forLoopArray);
+                // running the for loop here. 
+                var forLoopArray = res.data.api.standings[0];
+                console.log(forLoopArray);
 
-               for (var i = 0; i < forLoopArray.length; i++) {
+                for (var i = 0; i < forLoopArray.length; i++) {
 
-                   if (forLoopArray[i].team_id === 62) {
-                       sheffieldWin = forLoopArray[i].all.win
-                       sheffieldTie = forLoopArray[i].all.draw
-                       //then so something
-                       //return something here
-                       console.log("here are the wins" + sheffieldWin);
-                       console.log("here are the ties" + sheffieldTie);
-                   }
+                    if (forLoopArray[i].team_id === 62) {
+                        sheffieldWin = forLoopArray[i].all.win
+                        sheffieldTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + sheffieldWin);
+                        console.log("here are the ties" + sheffieldTie);
+                    }
 
-                   if (forLoopArray[i].team_id === 44) {
-                       burnleyWin = forLoopArray[i].all.win
-                       burnleyTie = forLoopArray[i].all.draw
-                       //then so something
-                       //return something here
-                       console.log("here are the wins" + burnleyWin);
-                       console.log("here are the ties" + burnleyTie);
-                   }
-               }
+                    if (forLoopArray[i].team_id === 44) {
+                        burnleyWin = forLoopArray[i].all.win
+                        burnleyTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + burnleyWin);
+                        console.log("here are the ties" + burnleyTie);
+                    }
+                }
 
-               var sheffieldTotal = (sheffieldWin * 4.25) + (sheffieldTie);
-               var burnleyTotal = (burnleyWin * 4.25) + (burnleyTie);
+                var sheffieldTotal = (sheffieldWin * 4.25) + (sheffieldTie);
+                var burnleyTotal = (burnleyWin * 4.25) + (burnleyTie);
 
-               // Here is the final result
-               var djPoints = sheffieldTotal + burnleyTotal;
-               this.setState({ sheffield: sheffieldTotal });
-               this.setState({ burnley: burnleyTotal });
-               this.setState({ djEPL: djPoints });
+                // Here is the final result
+                var djPoints = sheffieldTotal + burnleyTotal;
+                this.setState({ sheffield: sheffieldTotal });
+                this.setState({ burnley: burnleyTotal });
+                this.setState({ djEPL: djPoints });
 
             })
             .catch(error => {
@@ -220,11 +220,10 @@ class dj extends React.Component {
                                 <a class="nav-link" href="/Home">Standings <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
-                                {/* <a class="nav-link" href="/MyTeams">My Teams</a> */}
                                 <div class="dropdown show">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
-                                    </a>
+                                    </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <a class="dropdown-item" href="tommy">Tommy</a>
                                         <a class="dropdown-item" href="patrick">Patrick</a>
