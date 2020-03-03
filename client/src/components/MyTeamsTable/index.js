@@ -1,4 +1,11 @@
 
+
+// I'm currently not using this page, but eventually might need this code, so keeping it here for now. I initially planned a "my teams" page but converted to the individual team pages instead for now. I may come back to this. 
+
+
+
+
+
 // import React, { Component } from 'react';
 // import "./MyTeamsTable.css";
 // import API from "../../utils/API"
