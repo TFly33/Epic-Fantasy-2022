@@ -112,6 +112,12 @@ class Table extends Component {
                     width: 150
                 },
                 {
+                    label: 'Bonus',
+                    field: 'bonus',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
                     label: 'Total',
                     field: 'total',
                     sort: 'asc',
@@ -126,6 +132,7 @@ class Table extends Component {
                     nba: this.state.tomNBA,
                     nhl: this.state.tomNHL,
                     mlb: 0,
+                    bonus: 200,
                     total: this.state.tomTotal
                 },
                 {
@@ -135,6 +142,7 @@ class Table extends Component {
                     nba: this.state.patrickNBA,
                     nhl: this.state.patNHL,
                     mlb: 0,
+                    bonus: 200,
                     total: this.state.patTotal
                 },
                 {
@@ -144,6 +152,7 @@ class Table extends Component {
                     nba: this.state.jamesNBA,
                     nhl: this.state.jamesNHL,
                     mlb: 0,
+                    bonus: 200,
                     total: this.state.jamesTotal
                 },
                 {
@@ -153,6 +162,7 @@ class Table extends Component {
                     nba: this.state.gooseNBA,
                     nhl: this.state.gooseNHL,
                     mlb: 0,
+                    bonus: 200,
                     total: this.state.gooseTotal
                 },
                 {
@@ -162,6 +172,7 @@ class Table extends Component {
                     nba: this.state.neptuneNBA,
                     nhl: this.state.neptuneNHL,
                     mlb: 0,
+                    bonus: 200,
                     total: this.state.neptuneTotal
                 },
                 {
@@ -171,6 +182,7 @@ class Table extends Component {
                     nba: this.state.joeNBA,
                     nhl: this.state.joeNHL,
                     mlb: 0,
+                    bonus: 200,
                     total: this.state.joeTotal
                 },
                 {
@@ -180,6 +192,7 @@ class Table extends Component {
                     nba: this.state.benNBA,
                     nhl: this.state.benNHL,
                     mlb: 0,
+                    bonus: 200,
                     total: this.state.benTotal
                 },
                 {
@@ -189,6 +202,7 @@ class Table extends Component {
                     nba: this.state.djNBA,
                     nhl: this.state.djNHL,
                     mlb: 0,
+                    bonus: 200,
                     total: this.state.djTotal
                 },
                 {
@@ -198,6 +212,7 @@ class Table extends Component {
                     nba: this.state.steidsNBA,
                     nhl: this.state.steidsNHL,
                     mlb: 0,
+                    bonus: 200,
                     total: this.state.steidsTotal
                 },
                 {
@@ -207,6 +222,7 @@ class Table extends Component {
                     nba: this.state.alNBA,
                     nhl: this.state.alNHL,
                     mlb: 0,
+                    bonus: 200,
                     total: this.state.alTotal
                 },
     
