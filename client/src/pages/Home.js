@@ -10,7 +10,7 @@ class Home extends React.Component {
         return (
             <div>
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <a class="navbar-brand" href="/Home">Epic Fantasy League</a>
+                    <a class="navbar-brand" href="/Home">Epic Fantasy League 2021</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -25,7 +25,7 @@ class Home extends React.Component {
                                         Teams
                                     </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="/tommy">Tommy</a>
+                                        <a class="dropdown-item" href="/tommy">Bommy</a>
                                         <a class="dropdown-item" href="/patrick">Patrick</a>
                                         <a class="dropdown-item" href="/james">James</a>
                                         <a class="dropdown-item" href="/neptune">Neptune</a>
@@ -59,7 +59,7 @@ class Home extends React.Component {
 
                 <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
                     <div class="container text-center footerText">
-                        <small>Copyright &copy; Epic Fantasy League 2020</small>
+                        <small>Copyright &copy; Epic Fantasy League 2021</small>
                     </div>
                 </footer>
 

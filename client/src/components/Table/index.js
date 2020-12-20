@@ -126,7 +126,7 @@ class Table extends Component {
             ],
             rows: [
                 {
-                    team: 'Tommy',
+                    team: 'Bommy',
                     epl: this.state.tomEPL,
                     nfl: this.state.tomNFL,
                     nba: this.state.tomNBA,

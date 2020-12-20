@@ -1003,3 +1003,42 @@ background: #000000;
 font-weight:bold;
 
 }
+
+.dolphins {
+color:orange;
+background:aqua;
+font-weight: bold;
+
+}
+
+.leeds {
+    color:white;
+    background:blue;
+    font-weight: bold;
+    
+    }
+
+    .fulham {
+        color:white;
+        background:black;
+        font-weight: bold;
+        
+        }
+
+.none {
+    font-weight: bold;
+}
+
+.wba {
+    color: white;
+    background: navy;
+    font-weight: bold;
+}
+
+.senators {
+    color: black;
+    background: red;
+    font-weight: bold;
+}
+    
+    

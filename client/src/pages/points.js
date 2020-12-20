@@ -12,7 +12,7 @@ class points extends React.Component {
         return (
             <div>
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <a class="navbar-brand" href="/Home">Epic Fantasy League</a>
+                    <a class="navbar-brand" href="/Home">Epic Fantasy League 2021</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -27,7 +27,7 @@ class points extends React.Component {
                                         Teams
                                     </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="tommy">Tommy</a>
+                                        <a class="dropdown-item" href="tommy">Bommy</a>
                                         <a class="dropdown-item" href="patrick">Patrick</a>
                                         <a class="dropdown-item" href="james">James</a>
                                         <a class="dropdown-item" href="neptune">Neptune</a>
@@ -89,10 +89,10 @@ class points extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">NBA</th>
-                                        <td>82</td>
-                                        <td>2</td>
+                                        <td>72</td>
+                                        <td>2.25</td>
                                         <td>-</td>
-                                        <td>164</td>
+                                        <td>162</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">NHL</th>
@@ -107,6 +107,20 @@ class points extends React.Component {
                                         <td>1</td>
                                         <td>-</td>
                                         <td>162</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Golf</th>
+                                        <td>?</td>
+                                        <td>?</td>
+                                        <td>?</td>
+                                        <td>?</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Gambling</th>
+                                        <td>$200 Starting Points</td>
+                                        <td>$20 Max Bet</td>
+                                        <td>?</td>
+                                        <td>?</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -128,7 +142,7 @@ class points extends React.Component {
                     </div>
                     <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
                         <div class="container text-center">
-                            <small>Copyright &copy; Epic Fantasy League 2020</small>
+                            <small>Copyright &copy; Epic Fantasy League 2021</small>
                         </div>
                     </footer>
                 </body>
