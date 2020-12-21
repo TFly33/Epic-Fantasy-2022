@@ -264,24 +264,24 @@ class al extends React.Component {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">56</th>
-                                        <td className="mavs">Dallas Mavericks</td>
-                                        <td>{this.state.mavericks}</td>
+                                        <th scope="row">26</th>
+                                        <td className="heat">Miami Heat</td>
+                                        {/* <td>{this.state.mavericks}</td> */}
                                     </tr>
                                     <tr>
-                                        <th scope="row">73</th>
-                                        <td className="magic">Orlando Magic</td>
-                                        <td>{this.state.magic}</td>
+                                        <th scope="row">104</th>
+                                        <td className="magic">Charlotte Hornets</td>
+                                        {/* <td>{this.state.magic}</td> */}
                                     </tr>
                                     <tr>
-                                        <th scope="row">124</th>
-                                        <td className="wiz">Washington Wizards</td>
-                                        <td>{this.state.wizards}</td>
+                                        <th scope="row">146</th>
+                                        <td className="wiz">Cleveland Cavaliers</td>
+                                        {/* <td>{this.state.wizards}</td> */}
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>
                                         <td></td>
-                                        <td>{this.state.alNBA}</td>
+                                        {/* <td>{this.state.alNBA}</td> */}
                                     </tr>
                                 </tbody>
                             </table>
@@ -301,24 +301,24 @@ class al extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">20</th>
-                                                <td className="chargers">Los Angeles Chargers</td>
-                                                <td>{this.state.chargers}</td>
+                                                <th scope="row">35</th>
+                                                <td className="browns">Cleveland Browns</td>
+                                                {/* <td>{this.state.chargers}</td> */}
                                             </tr>
                                             <tr>
-                                                <th scope="row">31</th>
-                                                <td className="packers">Green Bay Packers</td>
-                                                <td>{this.state.packers}</td>
+                                                <th scope="row">87</th>
+                                                <td className="panthers">Carolina Panthers</td>
+                                                {/* <td>{this.state.packers}</td> */}
                                             </tr>
                                             <tr>
-                                                <th scope="row">114</th>
-                                                <td className="bills">Buffalo Bills</td>
-                                                <td>{this.state.bills}</td>
+                                                <th scope="row">117</th>
+                                                <td className="lions">Detroit Lions</td>
+                                                {/* <td>{this.state.bills}</td> */}
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                <td>{this.state.totalNFL}</td>
+                                                {/* <td>{this.state.totalNFL}</td> */}
                                             </tr>
                                         </tbody>
                                     </table>
@@ -340,19 +340,19 @@ class al extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">45</th>
-                                                <td className="everton">Everton</td>
-                                                <td>{this.state.everton}</td>
+                                                <th scope="row">6</th>
+                                                <td className="chelsea">Chelsea</td>
+                                                {/* <td>{this.state.everton}</td> */}
                                             </tr>
                                             <tr>
-                                                <th scope="row">115</th>
-                                                <td className="southhampton">Southhampton</td>
-                                                <td>{this.state.southhampton}</td>
+                                                <th scope="row">67</th>
+                                                <td className="leeds">Leeds United</td>
+                                                {/* <td>{this.state.southhampton}</td> */}
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                <td>{this.state.alEPL}</td>
+                                                {/* <td>{this.state.alEPL}</td> */}
                                             </tr>
                                         </tbody>
                                     </table>
@@ -375,24 +375,64 @@ class al extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td className="lightning">Tampa Bay Lightning</td>
-                                                <td>{this.state.lightning}</td>
+                                                <th scope="row">53</th>
+                                                <td className="capitals">Washington Capitals</td>
+                                                {/* <td>{this.state.lightning}</td> */}
                                             </tr>
                                             <tr>
-                                                <th scope="row">30</th>
-                                                <td className="bruins">Boston Bruins</td>
-                                                <td>{this.state.bruins}</td>
+                                                <th scope="row">74</th>
+                                                <td className="hurricanes">Carolina Hurricanes</td>
+                                                {/* <td>{this.state.bruins}</td> */}
                                             </tr>
                                             <tr>
-                                                <th scope="row">137</th>
-                                                <td className="redwings">Detroit Red Wings</td>
-                                                <td>{this.state.wings}</td>
+                                                <th scope="row">94</th>
+                                                <td className="rangers">New York Rangers</td>
+                                                {/* <td>{this.state.wings}</td> */}
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                <td>{this.state.totalNHL}</td>
+                                                {/* <td>{this.state.totalNHL}</td> */}
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                         {/* Adding the MLB Table here*/}
+                         <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    {/* Here is MLB */}
+                                    <table class="table table-striped table-bordered table-hover text-center smallTable">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">MLB Team</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">15</th>
+                                                <td className="yankees">New York Yankees</td>
+                                                {/* <td>{this.state.lightning}</td> */}
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">48</th>
+                                                <td className="athletics">Oakland Athletics</td>
+                                                {/* <td>{this.state.bruins}</td> */}
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">127</th>
+                                                <td className="tigers">Detroit Tigers</td>
+                                                {/* <td>{this.state.wings}</td> */}
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                {/* <td>{this.state.totalNHL}</td> */}
                                             </tr>
                                         </tbody>
                                     </table>
@@ -418,7 +458,7 @@ class al extends React.Component {
                     </div>
                     <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
                         <div class="container text-center">
-                            <small>Copyright &copy; Epic Fantasy League 2020</small>
+                            <small>Copyright &copy; Epic Fantasy League 2021</small>
                         </div>
                     </footer>
                 </body>
