@@ -233,7 +233,7 @@ class joe extends React.Component {
                                         <a class="dropdown-item" href="al">Al</a>
                                         <a class="dropdown-item" href="joe">Joe</a>
                                         <a class="dropdown-item" href="steids">Steids</a>
-                                        <a class="dropdown-item" href="ben">Ben</a>
+                                        <a class="dropdown-item" href="ben">Eres/JMar</a>
                                     </div>
                                 </div>
                             </li>
@@ -461,7 +461,7 @@ class joe extends React.Component {
                     </div>
                     <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
                         <div class="container text-center">
-                            <small>Copyright &copy; Epic Fantasy League 2020</small>
+                            <small>Copyright &copy; Epic Fantasy League 2021</small>
                         </div>
                     </footer>
                 </body>

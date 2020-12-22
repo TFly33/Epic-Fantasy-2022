@@ -231,7 +231,7 @@ class goose extends React.Component {
                                         <a class="dropdown-item" href="al">Al</a>
                                         <a class="dropdown-item" href="joe">Joe</a>
                                         <a class="dropdown-item" href="steids">Steids</a>
-                                        <a class="dropdown-item" href="ben">Ben</a>
+                                        <a class="dropdown-item" href="ben">Eres/JMar</a>
                                     </div>
                                 </div>
                             </li>
