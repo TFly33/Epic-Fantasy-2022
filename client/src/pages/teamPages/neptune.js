@@ -12,10 +12,10 @@ class neptune extends React.Component {
         pacers: "",
         hornets: "",
         // NFL STARTING HERE 
-        rams: 90,
-        jaguars: 60,
-        giants: 40,
-        totalNFL: 190,
+        rams: "",
+        jaguars: "",
+        giants: "",
+        totalNFL: "",
         // EPL Starting HERE 
         leicester: "",
         norwich: "",
@@ -81,18 +81,18 @@ class neptune extends React.Component {
                     if (metroResults[i].team.id === 1) {
                         devilsWins = metroResults[i].leagueRecord.wins;
                         devilsOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(devilsWins);
-                        console.log(devilsOTLS);
-                        console.log("this loop is running")
+                        // console.log(devilsWins);
+                        // console.log(devilsOTLS);
+                        // console.log("this loop is running")
                     }
 
                     // rangers
                     if (metroResults[i].team.id === 3) {
                         rangersWins = metroResults[i].leagueRecord.wins;
                         rangersOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(rangersWins);
-                        console.log(rangersOTLS);
-                        console.log("this loop is running")
+                        // console.log(rangersWins);
+                        // console.log(rangersOTLS);
+                        // console.log("this loop is running")
                     }
                 }
 
@@ -125,23 +125,29 @@ class neptune extends React.Component {
                 var leicesterTie;
                 var norwichWin;
                 var norwichTie;
+                // console.log(res);
+                console.log(res.data.response[0].league.standings[0][1].team.id);
+                console.log(res.data.response[0].league.standings[0][1].all.win);
 
                 // running the for loop here. 
-                var forLoopArray = res.data.api.standings[0];
+                var forLoopArray = res.data.response[0].league.standings[0];
                 console.log(forLoopArray);
-
                 for (var i = 0; i < forLoopArray.length; i++) {
 
-                    if (forLoopArray[i].team_id === 46) {
+                    // I had to change all of this for 2021 version. 
+                    // These are no longer the correct teams, just the correct IDS. 
+
+                    if (forLoopArray[i].team.id === 40) {
                         leicesterWin = forLoopArray[i].all.win
                         leicesterTie = forLoopArray[i].all.draw
                         //then so something
                         //return something here
-                        console.log("here are the wins" + leicesterWin);
-                        console.log("here are the ties" + leicesterTie);
+                        console.log("This loop is running");
+                        console.log("here are the wins " + leicesterWin);
+                        console.log("here are the ties " + leicesterTie);
                     }
 
-                    if (forLoopArray[i].team_id === 71) {
+                    if (forLoopArray[i].team.id === 51) {
                         norwichWin = forLoopArray[i].all.win
                         norwichTie = forLoopArray[i].all.draw
                         //then so something
@@ -270,18 +276,18 @@ class neptune extends React.Component {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">24</th>
-                                        <td className="celtics">Boston Celtics</td>
+                                        <th scope="row">30</th>
+                                        <td className="sixers">Philadelphia 76ers</td>
                                         <td>{this.state.celtics}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">46</th>
-                                        <td className="pacers">Indiana Pacers</td>
+                                        <th scope="row">31</th>
+                                        <td className="mavs">Dallas Mavericks</td>
                                         <td>{this.state.pacers}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">122</th>
-                                        <td className="hornets">Charlotte Hornets</td>
+                                        <th scope="row">45</th>
+                                        <td className="blazers">Portland Trailblazers</td>
                                         <td>{this.state.hornets}</td>
                                     </tr>
                                     <tr>
@@ -307,18 +313,18 @@ class neptune extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">9</th>
-                                                <td className="rams">Los Angeles Rams</td>
+                                                <th scope="row">20</th>
+                                                <td className="bills">Buffalo Bills</td>
                                                 <td>{this.state.rams}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">90</th>
-                                                <td className="jaguars">Jacksonville Jaguars</td>
+                                                <th scope="row">56</th>
+                                                <td className="cardinals">Arizona Cardinals</td>
                                                 <td>{this.state.jaguars}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">139</th>
-                                                <td className="giants">New York Giants</td>
+                                                <th scope="row">106</th>
+                                                <td className="eagles">Philadelphia Eagles</td>
                                                 <td>{this.state.giants}</td>
                                             </tr>
                                             <tr>
@@ -346,13 +352,13 @@ class neptune extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">55</th>
-                                                <td className="leicester">Leicester City</td>
+                                                <th scope="row">1</th>
+                                                <td className="liverpool">Liverpool</td>
                                                 <td>{this.state.leicester}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">111</th>
-                                                <td className="norwich">Norwich City</td>
+                                                <th scope="row">68</th>
+                                                <td className="brighton">Brighton and Hove Albion</td>
                                                 <td>{this.state.norwich}</td>
                                             </tr>
                                             <tr>
@@ -381,17 +387,17 @@ class neptune extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">37</th>
-                                                <td className="sharks">San Jose Sharks</td>
+                                                <th scope="row">73</th>
+                                                <td className="stars">Dallas Stars</td>
                                                 <td>{this.state.sharks}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">91</th>
-                                                <td className="rangers">New York Rangers</td>
+                                                <th scope="row">115</th>
+                                                <td className="blueJackets">Columbus Blue Jackets</td>
                                                 <td>{this.state.rangers}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">108</th>
+                                                <th scope="row">137</th>
                                                 <td className="devils">New Jersey Devils</td>
                                                 <td>{this.state.devils}</td>
                                             </tr>
@@ -405,6 +411,47 @@ class neptune extends React.Component {
                                 </div>
                             </div>
                         </div>
+
+                    
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    {/* Here is MLB */}
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">MLB Team</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">83</th>
+                                                <td className="cardinals">St. Louis Cardinals</td>
+                                                <td>{this.state.sharks}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">98</th>
+                                                <td className="marlins">Miami Marlins</td>
+                                                <td>{this.state.rangers}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">124</th>
+                                                <td className="royals">Kansas City Royals</td>
+                                                <td>{this.state.devils}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalNHL}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>

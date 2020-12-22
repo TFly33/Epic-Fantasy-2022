@@ -25,18 +25,31 @@ export default {
 
   // Going to add the EPL API call here. This isn't working yet. 
 
+  // // Here is the old version of the EPL API call that worked. Going to set up the new one below. 
+  // getScoresEPL: function () {
+  //   return axios({
+  //     "method": "GET",
+  //     "url": "https://api-football-v1.p.rapidapi.com/v2/leagueTable/524",
+  //     "headers": {
+  //       "content-type": "application/octet-stream",
+  //       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
+  //       "x-rapidapi-key": "52aa6a2637mshdf98d5a291eb6cep182376jsnfb67836d7b3b"
+  //     }
+  //   })
+  // },
+
+  // 2021 Attempt at EPL API Grab 
   getScoresEPL: function () {
     return axios({
-      "method": "GET",
-      "url": "https://api-football-v1.p.rapidapi.com/v2/leagueTable/524",
-      "headers": {
-        "content-type": "application/octet-stream",
-        "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-        "x-rapidapi-key": "52aa6a2637mshdf98d5a291eb6cep182376jsnfb67836d7b3b"
+      method: 'GET',
+      url: 'https://api-football-beta.p.rapidapi.com/standings',
+      params: {season: '2020', league: '39'},
+      headers: {
+        'x-rapidapi-key': '52aa6a2637mshdf98d5a291eb6cep182376jsnfb67836d7b3b',
+        'x-rapidapi-host': 'api-football-beta.p.rapidapi.com'
       }
     })
   },
-
 
   // This one isn't working yet. 
   getScoresNFL: function () {
@@ -52,8 +65,8 @@ export default {
     })
   },
 
-   // This one isn't working yet. 
-   getScoresNHL: function () {
+  // This one isn't working yet. 
+  getScoresNHL: function () {
     // Sports API Search Here. 
     return axios.get("https://statsapi.web.nhl.com/api/v1/standings")
   },

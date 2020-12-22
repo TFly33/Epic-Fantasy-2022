@@ -11,10 +11,10 @@ class goose extends React.Component {
         raptors: "",
         pistons: "",
         knicks: "",
-        chiefs: 120,
-        panthers: 50,
-        bengals: 20,
-        totalNFL: 190,
+        chiefs: "",
+        panthers: "",
+        bengals: "",
+        totalNFL: "",
         // EPL
         manu: "",
         westham: "",
@@ -26,9 +26,9 @@ class goose extends React.Component {
 
     }
     componentDidMount = () => {
-        this.getScoresNBA();
-        this.getScoresEPL();
-        this.getScoresNHL();
+        // this.getScoresNBA();
+        // this.getScoresEPL();
+        // this.getScoresNHL();
     }
 
 
@@ -124,12 +124,12 @@ class goose extends React.Component {
                 var westhamTie;
 
                 // running the for loop here. 
-                var forLoopArray = res.data.api.standings[0];
+                var forLoopArray = res.data.response[0].league.standings[0];
                 console.log(forLoopArray);
 
                 for (var i = 0; i < forLoopArray.length; i++) {
 
-                    if (forLoopArray[i].team_id === 33) {
+                    if (forLoopArray[i].team.id === 41) {
                         manuWin = forLoopArray[i].all.win
                         manuTie = forLoopArray[i].all.draw
                         //then so something
@@ -138,7 +138,7 @@ class goose extends React.Component {
                         console.log("here are the ties" + manuTie);
                     }
 
-                    if (forLoopArray[i].team_id === 48) {
+                    if (forLoopArray[i].team.id === 44) {
                         westhamWin = forLoopArray[i].all.win
                         westhamTie = forLoopArray[i].all.draw
                         //then so something
@@ -266,18 +266,18 @@ class goose extends React.Component {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">51</th>
-                                        <td className="raptors">Toronto Raptors</td>
+                                        <th scope="row">69</th>
+                                        <td className="pacers">Indiana Pacers</td>
                                         <td>{this.state.raptors}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">78</th>
-                                        <td className="pistons">Detroit Pistons</td>
+                                        <th scope="row">71</th>
+                                        <td className="hawks">Atlanta Hawks</td>
                                         <td>{this.state.pistons}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">128</th>
-                                        <td className="knicks">New York Knicks</td>
+                                        <th scope="row">95</th>
+                                        <td className="kings">Sacramento Kings</td>
                                         <td>{this.state.knicks}</td>
                                     </tr>
                                     <tr>
@@ -303,18 +303,18 @@ class goose extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">7</th>
+                                                <th scope="row">5</th>
                                                 <td className="chiefs">Kansas City Chiefs</td>
                                                 <td>{this.state.chiefs}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">88</th>
-                                                <td className="panthers">Carolina Panthers</td>
+                                                <th scope="row">40</th>
+                                                <td className="seahawks">Seattle Seahawks</td>
                                                 <td>{this.state.panthers}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">133</th>
-                                                <td className="bengals">Cincinnati Bengals</td>
+                                                <th scope="row">52</th>
+                                                <td className="bucs">Tampa Bay Bucs</td>
                                                 <td>{this.state.bengals}</td>
                                             </tr>
                                             <tr>
@@ -342,13 +342,13 @@ class goose extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">14</th>
-                                                <td className="manU">Manchester United</td>
+                                                <th scope="row">21</th>
+                                                <td className="southhampton">Southhampton</td>
                                                 <td>{this.state.manu}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">63</th>
-                                                <td className="westHam">West Ham United</td>
+                                                <th scope="row">101</th>
+                                                <td className="burnley">Burnley</td>
                                                 <td>{this.state.westham}</td>
                                             </tr>
                                             <tr>
@@ -377,18 +377,18 @@ class goose extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">36</th>
-                                                <td className="predators">Nashville Predators</td>
+                                                <th scope="row">49</th>
+                                                <td className="leafs">Toronto Maple Leafs</td>
                                                 <td>{this.state.preds}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">50</th>
-                                                <td className="stars">Dallas Stars</td>
+                                                <th scope="row">126</th>
+                                                <td className="sharks">San Jose Sharks</td>
                                                 <td>{this.state.stars}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">93</th>
-                                                <td className="canadiens">Montreal Canadians</td>
+                                                <th scope="row">135</th>
+                                                <td className="coyotes">Arizona Coyotes</td>
                                                 <td>{this.state.canadians}</td>
                                             </tr>
                                             <tr>
@@ -401,6 +401,47 @@ class goose extends React.Component {
                                 </div>
                             </div>
                         </div>
+
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    {/* Here is mlb */}
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">MLB Team</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">16</th>
+                                                <td className="braves">Atlanta Braves</td>
+                                                <td>{this.state.preds}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">86</th>
+                                                <td className="cubs">Chicago Cubs</td>
+                                                <td>{this.state.stars}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">120</th>
+                                                <td className="mariners">Seattle Mariners</td>
+                                                <td>{this.state.canadians}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalNHL}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
 
@@ -418,7 +459,7 @@ class goose extends React.Component {
                     </div>
                     <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
                         <div class="container text-center">
-                            <small>Copyright &copy; Epic Fantasy League 2020</small>
+                            <small>Copyright &copy; Epic Fantasy League 2021</small>
                         </div>
                     </footer>
                 </body>

@@ -122,12 +122,12 @@ class al extends React.Component {
                var southhamptonTie;
 
                // running the for loop here. 
-               var forLoopArray = res.data.api.standings[0];
+               var forLoopArray = res.data.response[0].league.standings[0];
                console.log(forLoopArray);
 
                for (var i = 0; i < forLoopArray.length; i++) {
 
-                   if (forLoopArray[i].team_id === 45) {
+                   if (forLoopArray[i].team.id === 49) {
                        evertonWin = forLoopArray[i].all.win
                        evertonTie = forLoopArray[i].all.draw
                        //then so something
@@ -136,7 +136,7 @@ class al extends React.Component {
                        console.log("here are the ties" + evertonTie);
                    }
 
-                   if (forLoopArray[i].team_id === 41) {
+                   if (forLoopArray[i].team.id === 63) {
                        southhamptonWin = forLoopArray[i].all.win
                        southhamptonTie = forLoopArray[i].all.draw
                        //then so something
@@ -342,17 +342,17 @@ class al extends React.Component {
                                             <tr>
                                                 <th scope="row">6</th>
                                                 <td className="chelsea">Chelsea</td>
-                                                {/* <td>{this.state.everton}</td> */}
+                                                <td>{this.state.everton}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">67</th>
                                                 <td className="leeds">Leeds United</td>
-                                                {/* <td>{this.state.southhampton}</td> */}
+                                                <td>{this.state.southhampton}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                {/* <td>{this.state.alEPL}</td> */}
+                                                <td>{this.state.alEPL}</td>
                                             </tr>
                                         </tbody>
                                     </table>

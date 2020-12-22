@@ -11,10 +11,10 @@ class steids extends React.Component {
         clippers: "",
         hawks: "",
         bulls: "",
-        browns: 60,
-        steelers: 80,
-        buccaneers: 70,
-        totalNFL: 210,
+        browns: "",
+        steelers: "",
+        buccaneers: "",
+        totalNFL: "",
         // EPL Teams Here
         arsenal: "",
         watford: "",
@@ -26,9 +26,9 @@ class steids extends React.Component {
         totalNHL: "",
     }
     componentDidMount = () => {
-        this.getScoresNBA();
-        this.getScoresEPL();
-        this.getScoresNHL();
+        // this.getScoresNBA();
+        // this.getScoresEPL();
+        // this.getScoresNHL();
     };
 
     getScoresNHL = () => {
@@ -116,17 +116,17 @@ class steids extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-            //   Starting Steids EPL Here 
+                //   Starting Steids EPL Here 
                 var arsenalWin;
                 var arsenalTie;
                 var watfordWin;
                 var watfordTie;
 
                 // running the for loop here. 
-                var forLoopArray = res.data.api.standings[0]
+                var forLoopArray = res.data.response[0].league.standings[0]
                 for (var i = 0; i < forLoopArray.length; i++) {
 
-                    if (forLoopArray[i].team_id === 42) {
+                    if (forLoopArray[i].team.id === 33) {
                         arsenalWin = forLoopArray[i].all.win
                         arsenalTie = forLoopArray[i].all.draw
                         //then so something
@@ -135,7 +135,7 @@ class steids extends React.Component {
                         console.log("here are the ties" + arsenalTie);
                     }
 
-                    if (forLoopArray[i].team_id === 38) {
+                    if (forLoopArray[i].team.id === 34) {
                         watfordWin = forLoopArray[i].all.win
                         watfordTie = forLoopArray[i].all.draw
                         //then so something
@@ -215,7 +215,7 @@ class steids extends React.Component {
                             </li>
                             <li class="nav-item active">
                                 <div class="dropdown show">
-                                    <div class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
                                     </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -264,18 +264,18 @@ class steids extends React.Component {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">8</th>
-                                        <td className="clippers">Los Angeles Clippers</td>
+                                        <th scope="row">7</th>
+                                        <td className="lakers">LA Lakers</td>
                                         <td>{this.state.clippers}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">100</th>
-                                        <td className="hawks">Atlanta Hawks</td>
+                                        <th scope="row">36</th>
+                                        <td className="nets">Brooklyn Nets</td>
                                         <td>{this.state.hawks}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">112</th>
-                                        <td className="bulls">Chicago Bulls</td>
+                                        <th scope="row">144</th>
+                                        <td className="knicks">New York Knicks</td>
                                         <td>{this.state.bulls}</td>
                                     </tr>
                                     <tr>
@@ -301,18 +301,18 @@ class steids extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">42</th>
-                                                <td className="browns">Cleveland Browns</td>
+                                                <th scope="row">25</th>
+                                                <td className="ravens">Baltimore Ravens</td>
                                                 <td>{this.state.browns}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">62</th>
-                                                <td className="steelers">Pittsburgh Steelers</td>
+                                                <th scope="row">78</th>
+                                                <td className="cowboys">Dallas Cowboys</td>
                                                 <td>{this.state.steelers}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">107</th>
-                                                <td className="bucs">Tampa Bay Buccaneers</td>
+                                                <th scope="row">103</th>
+                                                <td className="chargers">LA Chargers</td>
                                                 <td>{this.state.buccaneers}</td>
                                             </tr>
                                             <tr>
@@ -341,13 +341,13 @@ class steids extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">13</th>
-                                                <td className="arsenal">Arsenal</td>
+                                                <th scope="row">14</th>
+                                                <td className="manU">Manchester United</td>
                                                 <td>{this.state.arsenal}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">81</th>
-                                                <td className="watford">Watford</td>
+                                                <th scope="row">63</th>
+                                                <td className="newcastle">Newcastle</td>
                                                 <td>{this.state.watford}</td>
                                             </tr>
                                             <tr>
@@ -377,18 +377,18 @@ class steids extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">33</th>
-                                                <td className="capitals">Washington Capitals</td>
-                                                <td>{this.state.caps}</td>
+                                                <th scope="row">51</th>
+                                                <td className="blues">St. Louis Blues</td>
+                                                <td>{this.state.blues}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">79</th>
-                                                <td className="fPanthers">Florida Panthers</td>
+                                                <th scope="row">88</th>
+                                                <td className="predators">Nashville Predators</td>
                                                 <td>{this.state.panthers}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">129</th>
-                                                <td className="sabres">Buffalo Sabres</td>
+                                                <th scope="row">118</th>
+                                                <td className="fPanthers">Florida Panthers</td>
                                                 <td>{this.state.sabres}</td>
                                             </tr>
                                             <tr>
@@ -401,6 +401,47 @@ class steids extends React.Component {
                                 </div>
                             </div>
                         </div>
+
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    {/* Here is MLB */}
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">MLB Team</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">50</th>
+                                                <td className="twins">Minnesota Twins</td>
+                                                <td>{this.state.knights}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">93</th>
+                                                <td className="angels">Los Angeles Angels</td>
+                                                <td>{this.state.blackhawks}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">128</th>
+                                                <td className="rockies">Colorado Rockies</td>
+                                                <td>{this.state.canucks}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalNHL}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
 
@@ -418,7 +459,7 @@ class steids extends React.Component {
                     </div>
                     <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
                         <div class="container text-center">
-                            <small>Copyright &copy; Epic Fantasy League 2020</small>
+                            <small>Copyright &copy; Epic Fantasy League 2021</small>
                         </div>
                     </footer>
                 </body>
