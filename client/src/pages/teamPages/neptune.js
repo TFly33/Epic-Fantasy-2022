@@ -28,9 +28,9 @@ class neptune extends React.Component {
 
     }
     componentDidMount = () => {
-        this.getScoresNBA();
-        this.getScoresEPL();
-        this.getScoresNHL();
+        // this.getScoresNBA();
+        // this.getScoresEPL();
+        // this.getScoresNHL();
     };
 
     getScoresNHL = () => {

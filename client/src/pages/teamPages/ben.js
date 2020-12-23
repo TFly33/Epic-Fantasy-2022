@@ -28,9 +28,9 @@ class ben extends React.Component {
         totalNHL: "",
     }
     componentDidMount = () => {
-        this.getScoresNBA();
-        this.getScoresEPL();
-        this.getScoresNHL();
+        // this.getScoresNBA();
+        // this.getScoresEPL();
+        // this.getScoresNHL();
     }
 
     getScoresNHL = () => {
