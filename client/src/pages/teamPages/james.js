@@ -27,7 +27,7 @@ class james extends React.Component {
     }
     componentDidMount = () => {
         // this.getScoresNBA();
-        // this.getScoresEPL();
+        this.getScoresEPL();
         // this.getScoresNHL();
     }
 
@@ -141,7 +141,7 @@ class james extends React.Component {
                         console.log("here are the ties" + newcastleTie);
                     }
 
-                    if (forLoopArray[i].team_id === 42) {
+                    if (forLoopArray[i].team.id === 42) {
                         palaceWin = forLoopArray[i].all.win
                         palaceTie = forLoopArray[i].all.draw
                         //then so something

@@ -30,7 +30,7 @@ class tommy extends React.Component {
     componentDidMount = () => {
         // this.getScoresNBA();
         // this.getScoresNHL();
-        // this.getScoresEPL();
+        this.getScoresEPL();
     }
 
     getScoresNHL = () => {

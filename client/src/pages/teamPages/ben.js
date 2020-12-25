@@ -29,7 +29,7 @@ class ben extends React.Component {
     }
     componentDidMount = () => {
         // this.getScoresNBA();
-        // this.getScoresEPL();
+        this.getScoresEPL();
         // this.getScoresNHL();
     }
 
@@ -254,7 +254,7 @@ class ben extends React.Component {
                 </nav>
                 <div class="card">
                     <div class="card-body text-center bg-light text-secondary">
-                        Ben
+                        Eres/JMar
   </div>
                 </div>
                 {/* Starting my new table here */}
