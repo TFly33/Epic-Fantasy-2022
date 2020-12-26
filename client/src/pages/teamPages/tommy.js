@@ -30,7 +30,7 @@ class tommy extends React.Component {
     componentDidMount = () => {
         this.getScoresNBA();
         // this.getScoresNHL();
-        this.getScoresEPL();
+        // this.getScoresEPL();
     }
 
     getScoresNHL = () => {
@@ -171,34 +171,13 @@ class tommy extends React.Component {
             .then(res => {
                 // HERE ARE NBA TEAMS FOR TOMMY. 
                 // THis is now warriors. 
-                console.log (res.data.api.standings);
+                // Empty variables to push the forloop into. 
                 var warriorsWin = res.data.api.standings[11].win;
-                // console.log(res.data.api.standings[2]);
-                // This is now Magic 
-                var magicWin = res.data.api.standings[26].win;
-                // This is now Timberwolves
-                var twolvesWin = res.data.api.standings[22].win;
-
-
-                var forLoopArray = res.data.api.standings;
-                for (var i = 0; i < forLoopArray.length; i++) {
-
-                    if (forLoopArray[i].teamId === 11) {
-                        warriorsWin = forLoopArray[i].all.win
-                        console.log("here are the Warriors wins" + warriorsWin);
-                    }
-
-                    if (forLoopArray[i].teamId === 26) {
-                        magicWin = forLoopArray[i].all.win
-                        console.log("here are the Magic wins" + magicWin);
-                    }
-
-                    if (forLoopArray[i].teamId === 22) {
-                        twolvesWin = forLoopArray[i].all.win
-                        console.log("here are the Twolves wins" + twolvesWin);
-                    }
-
-                }
+                console.log(warriorsWin)
+                var magicWin = res.data.api.standings[11].win;
+                var twolvesWin = res.data.api.standings[11].win;
+                var twolvesWin;
+                console.log(res.data.api.standings);
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
@@ -207,7 +186,6 @@ class tommy extends React.Component {
                 var doubletwolves = (twolvesWin * 2);
 
                 const tempTomNBA = this.state.allNBA;
-
                 tempTomNBA.push(warriorsWin);
                 tempTomNBA.push(magicWin);
                 tempTomNBA.push(twolvesWin);
