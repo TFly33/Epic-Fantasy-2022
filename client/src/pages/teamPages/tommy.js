@@ -8,9 +8,9 @@ class tommy extends React.Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         tomNBA: "",
-        heat: "",
-        nets: "",
-        spurs: "",
+        warriors: "",
+        magic: "",
+        twolves: "",
         // NFL Here
         fourtyNiners: "",
         seahawks: "",
@@ -28,7 +28,7 @@ class tommy extends React.Component {
     }
 
     componentDidMount = () => {
-        // this.getScoresNBA();
+        this.getScoresNBA();
         // this.getScoresNHL();
         this.getScoresEPL();
     }
@@ -170,23 +170,47 @@ class tommy extends React.Component {
         API.getScoresNBA()
             .then(res => {
                 // HERE ARE NBA TEAMS FOR TOMMY. 
-                // console.log(res);
-                // console.log(res.data.api.standings);
-                var heatWin = res.data.api.standings[2].win;
-                var netsWin = res.data.api.standings[8].win;
-                var spursWin = res.data.api.standings[16].win;
+                // THis is now warriors. 
+                console.log (res.data.api.standings);
+                var warriorsWin = res.data.api.standings[11].win;
+                // console.log(res.data.api.standings[2]);
+                // This is now Magic 
+                var magicWin = res.data.api.standings[26].win;
+                // This is now Timberwolves
+                var twolvesWin = res.data.api.standings[22].win;
+
+
+                var forLoopArray = res.data.api.standings;
+                for (var i = 0; i < forLoopArray.length; i++) {
+
+                    if (forLoopArray[i].teamId === 11) {
+                        warriorsWin = forLoopArray[i].all.win
+                        console.log("here are the Warriors wins" + warriorsWin);
+                    }
+
+                    if (forLoopArray[i].teamId === 26) {
+                        magicWin = forLoopArray[i].all.win
+                        console.log("here are the Magic wins" + magicWin);
+                    }
+
+                    if (forLoopArray[i].teamId === 22) {
+                        twolvesWin = forLoopArray[i].all.win
+                        console.log("here are the Twolves wins" + twolvesWin);
+                    }
+
+                }
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doubleHeat = (heatWin * 2);
-                var doubleNets = (netsWin * 2);
-                var doubleSpurs = (spursWin * 2);
+                var doubleWarriors = (warriorsWin * 2);
+                var doubleMagic = (magicWin * 2);
+                var doubletwolves = (twolvesWin * 2);
 
                 const tempTomNBA = this.state.allNBA;
 
-                tempTomNBA.push(heatWin);
-                tempTomNBA.push(netsWin);
-                tempTomNBA.push(spursWin);
+                tempTomNBA.push(warriorsWin);
+                tempTomNBA.push(magicWin);
+                tempTomNBA.push(twolvesWin);
 
                 var tomDoubledScores = tempTomNBA.map(team => team * 2);
 
@@ -197,9 +221,9 @@ class tommy extends React.Component {
                 }
                 console.log(TomPoints);
                 this.setState({ tomNBA: TomPoints });
-                this.setState({ heat: doubleHeat });
-                this.setState({ nets: doubleNets });
-                this.setState({ spurs: doubleSpurs });
+                this.setState({ magic: doubleMagic });
+                this.setState({ warriors: doubleWarriors });
+                this.setState({ twolves: doubletwolves });
             })
             .catch(error => {
                 console.log(error)
@@ -273,17 +297,17 @@ class tommy extends React.Component {
                                     <tr>
                                         <th scope="row">55</th>
                                         <td className="warriors">Golden State Warriors</td>
-                                        <td>{this.state.nets}</td>
+                                        <td>{this.state.warriors}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">90</th>
                                         <td className="magic">Orlando Magic</td>
-                                        <td>{this.state.spurs}</td>
+                                        <td>{this.state.magic}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">91</th>
                                         <td className="tWolves">Minnesota Timberwolves</td>
-                                        <td>{this.state.heat}</td>
+                                        <td>{this.state.twolves}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>

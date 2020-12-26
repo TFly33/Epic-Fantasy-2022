@@ -26,8 +26,8 @@ class steids extends React.Component {
         totalNHL: "",
     }
     componentDidMount = () => {
-        // this.getScoresNBA();
-        this.getScoresEPL();
+        this.getScoresNBA();
+        // this.getScoresEPL();
         // this.getScoresNHL();
     };
 
@@ -164,11 +164,13 @@ class steids extends React.Component {
         API.getScoresNBA()
             .then(res => {
                 // HERE ARE NBA TEAMS FOR TOMMY. 
-                // console.log(res);
-                // console.log(res.data.api.standings);
-                var clippersWin = res.data.api.standings[21].win;
-                var hawksWin = res.data.api.standings[4].win;
-                var bullsWin = res.data.api.standings[13].win;
+                // This is now Lakers
+                console.log (res.data.api.standings)
+                var clippersWin = res.data.api.standings[17].win;
+                // This is now Nets
+                var hawksWin = res.data.api.standings[5].win;
+                // This is now Knicks
+                var bullsWin = res.data.api.standings[6].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
