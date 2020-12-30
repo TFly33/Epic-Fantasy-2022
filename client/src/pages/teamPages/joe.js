@@ -8,11 +8,11 @@ class joe extends React.Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         joeNBA: "",
-        nuggets: "",
-        blazers: "",
-        kings: "",
+        bucks: "",
+        grizzlies: "",
+        bulls: "",
         colts: "",
-        vikings: "",
+        vibulls: "",
         raiders: "",
         totalNFL: "",
         // EPL HERE
@@ -25,7 +25,7 @@ class joe extends React.Component {
         oilers: "",
     }
     componentDidMount = () => {
-        // this.getScoresNBA();
+        this.getScoresNBA();
         this.getScoresEPL();
         // this.getScoresNHL();
     }
@@ -168,26 +168,25 @@ class joe extends React.Component {
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {
-                // HERE ARE NBA TEAMS FOR TOMMY. 
-                // console.log(res);
-                // console.log(res.data.api.standings);
-                var nuggetsWin = res.data.api.standings[25].win;
-                var blazersWin = res.data.api.standings[26].win;
-                var kingsWin = res.data.api.standings[22].win;
+                // 2021 Joe NBA Teams. 
+                // Bucks
+                var bucksWin = res.data.api.standings[13].win;
+                var grizzliesWin = res.data.api.standings[16].win;
+                var bullsWin = res.data.api.standings[10].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doublenuggets = (nuggetsWin * 2);
-                var doubleblazers = (blazersWin * 2);
-                var doublekings = (kingsWin * 2);
+                var doublebucks = (bucksWin * 2.25);
+                var doublegrizzlies = (grizzliesWin * 2.25);
+                var doublebulls = (bullsWin * 2.25);
 
                 const tempjoeNBA = this.state.allNBA;
 
-                tempjoeNBA.push(nuggetsWin);
-                tempjoeNBA.push(blazersWin);
-                tempjoeNBA.push(kingsWin);
+                tempjoeNBA.push(bucksWin);
+                tempjoeNBA.push(grizzliesWin);
+                tempjoeNBA.push(bullsWin);
 
-                var joeDoubledScores = tempjoeNBA.map(team => team * 2);
+                var joeDoubledScores = tempjoeNBA.map(team => team * 2.25);
 
                 var joePoints = 0;
 
@@ -196,9 +195,9 @@ class joe extends React.Component {
                 }
                 console.log(joePoints);
                 this.setState({ joeNBA: joePoints });
-                this.setState({ nuggets: doublenuggets });
-                this.setState({ blazers: doubleblazers });
-                this.setState({ kings: doublekings });
+                this.setState({ bucks: doublebucks });
+                this.setState({ grizzlies: doublegrizzlies });
+                this.setState({ bulls: doublebulls });
             })
             .catch(error => {
                 console.log(error)
@@ -270,17 +269,17 @@ class joe extends React.Component {
                                     <tr>
                                         <th scope="row">2</th>
                                         <td className="bucks">Milwaukee Bucks</td>
-                                        <td>{this.state.kings}</td>
+                                        <td>{this.state.bulls}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">75</th>
                                         <td className="grizzlies">Memphis Grizzlies</td>
-                                        <td>{this.state.nuggets}</td>
+                                        <td>{this.state.bucks}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">85</th>
                                         <td className="bulls">Chicago Bulls</td>
-                                        <td>{this.state.blazers}</td>
+                                        <td>{this.state.grizzlies}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>
@@ -312,7 +311,7 @@ class joe extends React.Component {
                                             <tr>
                                                 <th scope="row">110</th>
                                                 <td className="falcons">Atlanta Falcons</td>
-                                                <td>{this.state.vikings}</td>
+                                                <td>{this.state.vibulls}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">111</th>

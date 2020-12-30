@@ -30,7 +30,7 @@ class tommy extends React.Component {
     componentDidMount = () => {
         this.getScoresNBA();
         // this.getScoresNHL();
-        // this.getScoresEPL();
+        this.getScoresEPL();
     }
 
     getScoresNHL = () => {
@@ -169,28 +169,27 @@ class tommy extends React.Component {
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {
-                // HERE ARE NBA TEAMS FOR TOMMY. 
+                // HERE ARE NBA TEAMS FOR TOMMY 2021 
                 // THis is now warriors. 
-                // Empty variables to push the forloop into. 
-                var warriorsWin = res.data.api.standings[11].win;
-                console.log(warriorsWin)
-                var magicWin = res.data.api.standings[11].win;
-                var twolvesWin = res.data.api.standings[11].win;
-                var twolvesWin;
+                var warriorsWin = res.data.api.standings[24].win;
+                // And Magic
+                var magicWin = res.data.api.standings[2].win;
+                // and Twolves
+                var twolvesWin = res.data.api.standings[25].win;
                 console.log(res.data.api.standings);
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doubleWarriors = (warriorsWin * 2);
-                var doubleMagic = (magicWin * 2);
-                var doubletwolves = (twolvesWin * 2);
+                var doubleWarriors = (warriorsWin * 2.25);
+                var doubleMagic = (magicWin * 2.25);
+                var doubletwolves = (twolvesWin * 2.25);
 
                 const tempTomNBA = this.state.allNBA;
                 tempTomNBA.push(warriorsWin);
                 tempTomNBA.push(magicWin);
                 tempTomNBA.push(twolvesWin);
 
-                var tomDoubledScores = tempTomNBA.map(team => team * 2);
+                var tomDoubledScores = tempTomNBA.map(team => team * 2.25);
 
                 var TomPoints = 0;
 
@@ -435,7 +434,7 @@ class tommy extends React.Component {
                                                 <td>{this.state.blackhawks}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">12</th>
+                                                <th scope="row">122</th>
                                                 <td className="orioles">Baltimore Orioles</td>
                                                 <td>{this.state.canucks}</td>
                                             </tr>
@@ -466,7 +465,7 @@ class tommy extends React.Component {
                     </div>
                     <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
                         <div class="container text-center">
-                            <small>Copyright &copy; Epic Fantasy League 2020</small>
+                            <small>Copyright &copy; Epic Fantasy League 2021</small>
                         </div>
                     </footer>
                 </body>

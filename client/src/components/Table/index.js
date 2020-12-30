@@ -1205,7 +1205,7 @@ class Table extends Component {
                 // running the for loop here. 
                 var forLoopArray = res.data.response[0].league.standings[0];
 
-                console.log(forLoopArray)
+                // console.log(forLoopArray)
 
                 for (var i = 0; i < forLoopArray.length; i++) {
 
@@ -1245,7 +1245,7 @@ class Table extends Component {
                 //  James EPL here 
                 // running the for loop here. 
                 var forLoopArray = res.data.response[0].league.standings[0];;
-                console.log(forLoopArray);
+                // console.log(forLoopArray);
 
                 for (var i = 0; i < forLoopArray.length; i++) {
 
@@ -1283,7 +1283,7 @@ class Table extends Component {
 
                 // running the for loop here. 
                 var forLoopArray = res.data.response[0].league.standings[0];;
-                console.log(forLoopArray);
+                // console.log(forLoopArray);
 
                 for (var i = 0; i < forLoopArray.length; i++) {
 
@@ -1322,7 +1322,7 @@ class Table extends Component {
 
                 // running the for loop here. 
                 var forLoopArray = res.data.response[0].league.standings[0];
-                console.log(forLoopArray);
+                // console.log(forLoopArray);
 
                 for (var i = 0; i < forLoopArray.length; i++) {
 
@@ -1360,7 +1360,7 @@ class Table extends Component {
 
                 // running the for loop here. 
                 var forLoopArray = res.data.response[0].league.standings[0];
-                console.log(forLoopArray);
+                // console.log(forLoopArray);
 
                 for (var i = 0; i < forLoopArray.length; i++) {
 
@@ -1398,7 +1398,7 @@ class Table extends Component {
 
                 // running the for loop here. 
                 var forLoopArray = res.data.response[0].league.standings[0];
-                console.log(forLoopArray);
+                // console.log(forLoopArray);
 
                 for (var i = 0; i < forLoopArray.length; i++) {
 
@@ -1436,7 +1436,7 @@ class Table extends Component {
 
                 // running the for loop here. 
                 var forLoopArray = res.data.response[0].league.standings[0];
-                console.log(forLoopArray);
+                // console.log(forLoopArray);
 
                 for (var i = 0; i < forLoopArray.length; i++) {
 
@@ -1474,7 +1474,7 @@ class Table extends Component {
 
                 // running the for loop here. 
                 var forLoopArray = res.data.response[0].league.standings[0];
-                console.log(forLoopArray);
+                // console.log(forLoopArray);
 
                 for (var i = 0; i < forLoopArray.length; i++) {
 
@@ -1483,8 +1483,8 @@ class Table extends Component {
                         tottenhamTie = forLoopArray[i].all.draw
                         //then so something
                         //return something here
-                        console.log("here are the wins" + tottenhamWin);
-                        console.log("here are the ties" + tottenhamTie);
+                        // console.log("here are the wins" + tottenhamWin);
+                        // console.log("here are the ties" + tottenhamTie);
                     }
 
                     if (forLoopArray[i].team.id === 36) {
@@ -1492,8 +1492,8 @@ class Table extends Component {
                         bournemouthTie = forLoopArray[i].all.draw
                         //then so something
                         //return something here
-                        console.log("here are the wins" + bournemouthWin);
-                        console.log("here are the ties" + bournemouthTie);
+                        // console.log("here are the wins" + bournemouthWin);
+                        // console.log("here are the ties" + bournemouthTie);
                     }
                 }
 
@@ -1519,8 +1519,8 @@ class Table extends Component {
                         arsenalTie = forLoopArray[i].all.draw
                         //then so something
                         //return something here
-                        console.log("here are the wins" + arsenalWin);
-                        console.log("here are the ties" + arsenalTie);
+                        // console.log("here are the wins" + arsenalWin);
+                        // console.log("here are the ties" + arsenalTie);
                     }
 
                     if (forLoopArray[i].team.id === 34) {
@@ -1528,8 +1528,8 @@ class Table extends Component {
                         watfordTie = forLoopArray[i].all.draw
                         //then so something
                         //return something here
-                        console.log("here are the wins" + watfordWin);
-                        console.log("here are the ties" + watfordTie);
+                        // console.log("here are the wins" + watfordWin);
+                        // console.log("here are the ties" + watfordTie);
                     }
                 }
 

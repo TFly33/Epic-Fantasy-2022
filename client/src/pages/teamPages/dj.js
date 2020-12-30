@@ -8,9 +8,9 @@ class dj extends React.Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         djNBA: "",
-        sixers: "",
-        rockets: "",
-        timberwolves: "",
+        clippers: "",
+        nuggets: "",
+        raptors: "",
         bears: "",
         texans: "",
         broncos: "",
@@ -26,7 +26,7 @@ class dj extends React.Component {
         totalNHL: "",
     }
     componentDidMount = () => {
-        // this.getScoresNBA();
+        this.getScoresNBA();
         this.getScoresEPL();
         // this.getScoresNHL();
     }
@@ -169,26 +169,24 @@ class dj extends React.Component {
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {
-                // HERE ARE NBA TEAMS FOR TOMMY. 
-                // console.log(res);
-                // console.log(res.data.api.standings);
-                var sixersWin = res.data.api.standings[6].win;
-                var rocketsWin = res.data.api.standings[15].win;
-                var timberwolvesWin = res.data.api.standings[29].win;
+                // DJ 2021 NBA
+                var clippersWin = res.data.api.standings[20].win;
+                var nuggetsWin = res.data.api.standings[26].win;
+                var raptorsWin = res.data.api.standings[8].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doublesixers = (sixersWin * 2);
-                var doublerockets = (rocketsWin * 2);
-                var doubletimberwolves = (timberwolvesWin * 2);
+                var doubleclippers = (clippersWin * 2.25);
+                var doublenuggets = (nuggetsWin * 2.25);
+                var doubleraptors = (raptorsWin * 2.25);
 
                 const tempdjNBA = this.state.allNBA;
 
-                tempdjNBA.push(sixersWin);
-                tempdjNBA.push(rocketsWin);
-                tempdjNBA.push(timberwolvesWin);
+                tempdjNBA.push(clippersWin);
+                tempdjNBA.push(nuggetsWin);
+                tempdjNBA.push(raptorsWin);
 
-                var djDoubledScores = tempdjNBA.map(team => team * 2);
+                var djDoubledScores = tempdjNBA.map(team => team * 2.25);
 
                 var djPoints = 0;
 
@@ -197,9 +195,9 @@ class dj extends React.Component {
                 }
                 console.log(djPoints);
                 this.setState({ djNBA: djPoints });
-                this.setState({ sixers: doublesixers });
-                this.setState({ rockets: doublerockets });
-                this.setState({ timberwolves: doubletimberwolves });
+                this.setState({ clippers: doubleclippers });
+                this.setState({ nuggets: doublenuggets });
+                this.setState({ raptors: doubleraptors });
             })
             .catch(error => {
                 console.log(error)
@@ -271,17 +269,17 @@ class dj extends React.Component {
                                     <tr>
                                         <th scope="row">10</th>
                                         <td className="clippers">LA Clippers</td>
-                                        <td>{this.state.sixers}</td>
+                                        <td>{this.state.clippers}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">11</th>
                                         <td className="nuggets">Denver Nuggets</td>
-                                        <td>{this.state.rockets}</td>
+                                        <td>{this.state.nuggets}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">32</th>
                                         <td className="raptors">Toronto Raptors</td>
-                                        <td>{this.state.timberwolves}</td>
+                                        <td>{this.state.raptors}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>
@@ -382,8 +380,8 @@ class dj extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">47</th>
-                                                <td className="fliers">Philadelphia Fliers</td>
-                                                <td>{this.state.jets}</td>
+                                                <td className="flyers">Philadelphia Flyers</td>
+                                                <td>{this.state.flyers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">77</th>

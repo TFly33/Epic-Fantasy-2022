@@ -11,8 +11,8 @@ class ben extends React.Component {
         allNBA: [],
         benNBA: "",
         pelicans: "",
-        grizzlies: "",
-        cavs: "",
+        wizards: "",
+        pistons: "",
         eagles: "",
         cowboys: "",
         redskins: "",
@@ -28,7 +28,7 @@ class ben extends React.Component {
         totalNHL: "",
     }
     componentDidMount = () => {
-        // this.getScoresNBA();
+        this.getScoresNBA();
         this.getScoresEPL();
         // this.getScoresNHL();
     }
@@ -171,26 +171,24 @@ class ben extends React.Component {
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {
-                // HERE ARE NBA TEAMS FOR TOMMY. 
-                // console.log(res);
-                // console.log(res.data.api.standings);
-                var pelicansWin = res.data.api.standings[18].win;
-                var grizzliesWin = res.data.api.standings[17].win;
-                var cavsWin = res.data.api.standings[14].win;
+                // NBA Teams for Mark and Johnny. 
+                var pelicansWin = res.data.api.standings[19].win;
+                var wizardsWin = res.data.api.standings[4].win;
+                var pistonsWin = res.data.api.standings[12].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doublepelicans = (pelicansWin * 2);
-                var doublegrizzlies = (grizzliesWin * 2);
-                var doublecavs = (cavsWin * 2);
+                var doublepelicans = (pelicansWin * 2.25);
+                var doublewizards = (wizardsWin * 2.25);
+                var doublepistons = (pistonsWin * 2.25);
 
                 const tempbenNBA = this.state.allNBA;
 
                 tempbenNBA.push(pelicansWin);
-                tempbenNBA.push(grizzliesWin);
-                tempbenNBA.push(cavsWin);
+                tempbenNBA.push(wizardsWin);
+                tempbenNBA.push(pistonsWin);
 
-                var benDoubledScores = tempbenNBA.map(team => team * 2);
+                var benDoubledScores = tempbenNBA.map(team => team * 2.25);
 
                 var benPoints = 0;
 
@@ -200,8 +198,8 @@ class ben extends React.Component {
                 console.log(benPoints);
                 this.setState({ benNBA: benPoints });
                 this.setState({ pelicans: doublepelicans });
-                this.setState({ grizzlies: doublegrizzlies });
-                this.setState({ cavs: doublecavs });
+                this.setState({ wizards: doublewizards });
+                this.setState({ pistons: doublepistons });
             })
             .catch(error => {
                 console.log(error)
@@ -278,12 +276,12 @@ class ben extends React.Component {
                                     <tr>
                                         <th scope="row">79</th>
                                         <td className="wiz">Washington Wizards</td>
-                                        <td>{this.state.grizzlies}</td>
+                                        <td>{this.state.wizards}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">113</th>
                                         <td className="pistons">Detroit Pistons</td>
-                                        <td>{this.state.cavs}</td>
+                                        <td>{this.state.pistons}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>

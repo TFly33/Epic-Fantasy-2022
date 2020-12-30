@@ -8,9 +8,9 @@ class patrick extends React.Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         PatrickNBA: "",
-        lakers: "",
         jazz: "",
-        warriors: "",
+        rockets: "",
+        suns: "",
         ravens: "",
         titans: "",
         jets:"",
@@ -26,7 +26,7 @@ class patrick extends React.Component {
         totalNHL: "",
     }
     componentDidMount = () => {
-        // this.getScoresNBA();
+        this.getScoresNBA();
         this.getScoresEPL();
         // this.getScoresNHL();
     }
@@ -125,7 +125,7 @@ class patrick extends React.Component {
                 // running the for loop here. 
                 var forLoopArray = res.data.response[0].league.standings[0];
                 
-                console.log (forLoopArray)
+                // console.log (forLoopArray)
 
                 for (var i = 0; i < forLoopArray.length; i++) {
 
@@ -165,26 +165,24 @@ class patrick extends React.Component {
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {
-                // HERE ARE NBA TEAMS FOR TOMMY. 
-                // console.log(res);
-                // console.log(res.data.api.standings);
-                var lakersWin = res.data.api.standings[23].win;
-                var warriorsWin = res.data.api.standings[20].win;
-                var jazzWin = res.data.api.standings[27].win;
+                // Patricks Teams for 2021. 
+                var jazzWin = res.data.api.standings[25].win;
+                var sunsWin = res.data.api.standings[20].win;
+                var rocketsWin = res.data.api.standings[15].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doubleLakers = (lakersWin * 2);
-                var doubleWarriors = (warriorsWin * 2);
-                var doubleJazz = (jazzWin * 2);
+                var doublejazz = (jazzWin * 2.25);
+                var doublesuns = (sunsWin * 2.25);
+                var doublerockets= (rocketsWin * 2.25);
 
                 const tempPatrickNBA = this.state.allNBA;
 
-                tempPatrickNBA.push(lakersWin);
-                tempPatrickNBA.push(warriorsWin);
                 tempPatrickNBA.push(jazzWin);
+                tempPatrickNBA.push(sunsWin);
+                tempPatrickNBA.push(rocketsWin);
 
-                var PatrickDoubledScores = tempPatrickNBA.map(team => team * 2);
+                var PatrickDoubledScores = tempPatrickNBA.map(team => team * 2.25);
 
                 var PatrickPoints = 0;
 
@@ -193,9 +191,9 @@ class patrick extends React.Component {
                 }
                 console.log(PatrickPoints);
                 this.setState({ PatrickNBA: PatrickPoints });
-                this.setState({ lakers: doubleLakers });
-                this.setState({ jazz: doubleJazz });
-                this.setState({ warriors: doubleWarriors });
+                this.setState({ jazz: doublejazz });
+                this.setState({ rockets: doublerockets });
+                this.setState({ suns: doublesuns });
             })
             .catch(error => {
                 console.log(error)
@@ -268,17 +266,17 @@ class patrick extends React.Component {
                                     <tr>
                                         <th scope="row">34</th>
                                         <td className="jazz">Utah Jazz</td>
-                                        <td>{this.state.lakers}</td>
+                                        <td>{this.state.jazz}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">43</th>
                                         <td className="suns">Phoenix Suns</td>
-                                        <td>{this.state.jazz}</td>
+                                        <td>{this.state.suns}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">70</th>
                                         <td className="rockets">Houston Rockets</td>
-                                        <td>{this.state.warriors}</td>
+                                        <td>{this.state.rockets}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>
@@ -458,9 +456,9 @@ class patrick extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
+                <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
                         <div class="container text-center">
-                            <small>Copyright &copy; Epic Fantasy League 2020</small>
+                            <small>Copyright &copy; Epic Fantasy League 2021</small>
                         </div>
                     </footer>
                 </body>

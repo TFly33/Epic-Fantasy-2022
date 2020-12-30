@@ -8,9 +8,9 @@ class al extends React.Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         alNBA: "",
-        mavericks: "",
-        magic: "",
-        wizards: "",
+        heat: "",
+        hornets: "",
+        cavs: "",
         chargers: "",
         packers: "",
         bills: "",
@@ -27,8 +27,8 @@ class al extends React.Component {
     }
 
     componentDidMount = () => {
-        // this.getScoresNBA();
-        this.getScoresEPL();
+        this.getScoresNBA();
+        // this.getScoresEPL();
         // this.getScoresNHL();
     }
 
@@ -164,26 +164,24 @@ class al extends React.Component {
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {
-                // HERE ARE NBA TEAMS FOR TOMMY. 
-                // console.log(res);
-                // console.log(res.data.api.standings);
-                var mavericksWin = res.data.api.standings[19].win;
-                var magicWin = res.data.api.standings[0].win;
-                var wizardsWin = res.data.api.standings[3].win;
+                // Here are Al NBA points. 
+                var heatWin = res.data.api.standings[0].win;
+                var hornetsWin = res.data.api.standings[3].win;
+                var cavsWin = res.data.api.standings[14].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doubleMavericks = (mavericksWin * 2);
-                var doubleMagic = (magicWin * 2);
-                var doubleWizards = (wizardsWin * 2);
+                var doubleheat = (heatWin * 2.25);
+                var doublehornets = (hornetsWin * 2.25);
+                var doublecavs = (cavsWin * 2.25);
 
                 const tempAlNBA = this.state.allNBA;
 
-                tempAlNBA.push(mavericksWin);
-                tempAlNBA.push(magicWin);
-                tempAlNBA.push(wizardsWin);
+                tempAlNBA.push(heatWin);
+                tempAlNBA.push(hornetsWin);
+                tempAlNBA.push(cavsWin);
 
-                var AlDoubledScores = tempAlNBA.map(team => team * 2);
+                var AlDoubledScores = tempAlNBA.map(team => team * 2.25);
 
                 var AlPoints = 0;
 
@@ -192,9 +190,9 @@ class al extends React.Component {
                 }
                 console.log(AlPoints);
                 this.setState({ alNBA: AlPoints });
-                this.setState({ mavericks: doubleMavericks });
-                this.setState({ magic: doubleMagic });
-                this.setState({ wizards: doubleWizards });
+                this.setState({ heat: doubleheat });
+                this.setState({ hornets: doublehornets });
+                this.setState({ cavs: doublecavs });
             })
             .catch(error => {
                 console.log(error)
@@ -266,22 +264,22 @@ class al extends React.Component {
                                     <tr>
                                         <th scope="row">26</th>
                                         <td className="heat">Miami Heat</td>
-                                        {/* <td>{this.state.mavericks}</td> */}
+                                        <td>{this.state.heat}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">104</th>
-                                        <td className="magic">Charlotte Hornets</td>
-                                        {/* <td>{this.state.magic}</td> */}
+                                        <td className="hornets">Charlotte Hornets</td>
+                                        <td>{this.state.hornets}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">146</th>
                                         <td className="wiz">Cleveland Cavaliers</td>
-                                        {/* <td>{this.state.wizards}</td> */}
+                                        <td>{this.state.cavs}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>
                                         <td></td>
-                                        {/* <td>{this.state.alNBA}</td> */}
+                                        <td>{this.state.alNBA}</td>
                                     </tr>
                                 </tbody>
                             </table>

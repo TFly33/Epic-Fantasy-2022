@@ -10,7 +10,7 @@ class Home extends React.Component {
         return (
             <div>
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <a class="navbar-brand" href="/Home">Epic Fantasy League 2021</a>
+                    <a className="navbar-brand" href="/Home">Epic Fantasy League 2021</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

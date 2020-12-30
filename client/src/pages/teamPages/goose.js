@@ -8,9 +8,9 @@ class goose extends React.Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         gooseNBA: "",
-        raptors: "",
-        pistons: "",
-        knicks: "",
+        pacers: "",
+        hawks: "",
+        kings: "",
         chiefs: "",
         panthers: "",
         bengals: "",
@@ -26,7 +26,7 @@ class goose extends React.Component {
 
     }
     componentDidMount = () => {
-        // this.getScoresNBA();
+        this.getScoresNBA();
         this.getScoresEPL();
         // this.getScoresNHL();
     }
@@ -166,26 +166,24 @@ class goose extends React.Component {
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {
-                // HERE ARE NBA TEAMS FOR TOMMY. 
-                // console.log(res);
-                // console.log(res.data.api.standings);
-                var raptorsWin = res.data.api.standings[5].win;
-                var pistonsWin = res.data.api.standings[12].win;
-                var knicksWin = res.data.api.standings[9].win;
+                // HERE ARE NBA TEAMS FOR Goose 2021. 
+                var pacersWin = res.data.api.standings[11].win;
+                var hawksWin = res.data.api.standings[1].win;
+                var kingsWin = res.data.api.standings[20].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doubleRaptors = (raptorsWin * 2);
-                var doublePistons = (pistonsWin * 2);
-                var doubleKnicks = (knicksWin * 2);
+                var doublepacers = (pacersWin * 2.25);
+                var doublehawks = (hawksWin * 2.25);
+                var doublekings = (kingsWin * 2.25);
 
                 const tempGooseNBA = this.state.allNBA;
 
-                tempGooseNBA.push(raptorsWin);
-                tempGooseNBA.push(pistonsWin);
-                tempGooseNBA.push(knicksWin);
+                tempGooseNBA.push(pacersWin);
+                tempGooseNBA.push(hawksWin);
+                tempGooseNBA.push(kingsWin);
 
-                var GooseDoubledScores = tempGooseNBA.map(team => team * 2);
+                var GooseDoubledScores = tempGooseNBA.map(team => team * 2.25);
 
                 var GoosePoints = 0;
 
@@ -194,9 +192,9 @@ class goose extends React.Component {
                 }
                 console.log(GoosePoints);
                 this.setState({ gooseNBA: GoosePoints });
-                this.setState({ raptors: doubleRaptors });
-                this.setState({ pistons: doublePistons });
-                this.setState({ knicks: doubleKnicks });
+                this.setState({ pacers: doublepacers });
+                this.setState({ hawks: doublehawks });
+                this.setState({ kings: doublekings });
             })
             .catch(error => {
                 console.log(error)
@@ -268,17 +266,17 @@ class goose extends React.Component {
                                     <tr>
                                         <th scope="row">69</th>
                                         <td className="pacers">Indiana Pacers</td>
-                                        <td>{this.state.raptors}</td>
+                                        <td>{this.state.pacers}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">71</th>
                                         <td className="hawks">Atlanta Hawks</td>
-                                        <td>{this.state.pistons}</td>
+                                        <td>{this.state.hawks}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">95</th>
                                         <td className="kings">Sacramento Kings</td>
-                                        <td>{this.state.knicks}</td>
+                                        <td>{this.state.kings}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>

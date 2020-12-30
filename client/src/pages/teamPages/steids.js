@@ -8,9 +8,9 @@ class steids extends React.Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         steidsNBA: "",
-        clippers: "",
-        hawks: "",
-        bulls: "",
+        lakers: "",
+        nets: "",
+        knicks: "",
         browns: "",
         steelers: "",
         buccaneers: "",
@@ -163,28 +163,29 @@ class steids extends React.Component {
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {
-                // HERE ARE NBA TEAMS FOR TOMMY. 
+                // New Steids Teams for 2021
                 // This is now Lakers
                 console.log (res.data.api.standings)
-                var clippersWin = res.data.api.standings[17].win;
+                // This is now 
+                var lakersWin = res.data.api.standings[23].win;
                 // This is now Nets
-                var hawksWin = res.data.api.standings[5].win;
-                // This is now Knicks
-                var bullsWin = res.data.api.standings[6].win;
+                var netsWin = res.data.api.standings[5].win;
+                // This is now Knicks, but it still might be Boston. 
+                var knicksWin = res.data.api.standings[6].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doubleclippers = (clippersWin * 2);
-                var doublehawks = (hawksWin * 2);
-                var doublebulls = (bullsWin * 2);
+                var doublelakers = (lakersWin * 2.25);
+                var doublenets = (netsWin * 2.25);
+                var doubleknicks = (knicksWin * 2.25);
 
                 const tempsteidsNBA = this.state.allNBA;
 
-                tempsteidsNBA.push(clippersWin);
-                tempsteidsNBA.push(hawksWin);
-                tempsteidsNBA.push(bullsWin);
+                tempsteidsNBA.push(lakersWin);
+                tempsteidsNBA.push(netsWin);
+                tempsteidsNBA.push(knicksWin);
 
-                var steidsDoubledScores = tempsteidsNBA.map(team => team * 2);
+                var steidsDoubledScores = tempsteidsNBA.map(team => team * 2.25);
 
                 var steidsPoints = 0;
 
@@ -193,9 +194,9 @@ class steids extends React.Component {
                 }
                 // console.log(steidsPoints);
                 this.setState({ steidsNBA: steidsPoints });
-                this.setState({ clippers: doubleclippers });
-                this.setState({ hawks: doublehawks });
-                this.setState({ bulls: doublebulls });
+                this.setState({ lakers: doublelakers });
+                this.setState({ nets: doublenets });
+                this.setState({ knicks: doubleknicks });
             })
             .catch(error => {
                 console.log(error)
@@ -268,17 +269,17 @@ class steids extends React.Component {
                                     <tr>
                                         <th scope="row">7</th>
                                         <td className="lakers">LA Lakers</td>
-                                        <td>{this.state.clippers}</td>
+                                        <td>{this.state.lakers}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">36</th>
                                         <td className="nets">Brooklyn Nets</td>
-                                        <td>{this.state.hawks}</td>
+                                        <td>{this.state.nets}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">144</th>
                                         <td className="knicks">New York Knicks</td>
-                                        <td>{this.state.bulls}</td>
+                                        <td>{this.state.knicks}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>

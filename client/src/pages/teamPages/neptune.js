@@ -8,9 +8,9 @@ class neptune extends React.Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         neptuneNBA: "",
-        celtics: "",
-        pacers: "",
-        hornets: "",
+        sixers: "",
+        mavs: "",
+        blazers: "",
         // NFL STARTING HERE 
         rams: "",
         jaguars: "",
@@ -28,7 +28,7 @@ class neptune extends React.Component {
 
     }
     componentDidMount = () => {
-        // this.getScoresNBA();
+        this.getScoresNBA();
         this.getScoresEPL();
         // this.getScoresNHL();
     };
@@ -175,26 +175,27 @@ class neptune extends React.Component {
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {
-                // HERE ARE NBA TEAMS FOR TOMMY. 
-                // console.log(res);
-                // console.log(res.data.api.standings);
-                var celticsWin = res.data.api.standings[7].win;
-                var pacersWin = res.data.api.standings[11].win;
-                var hornetsWin = res.data.api.standings[1].win;
+                // 2021 Neptune NBA. 
+                // celtics becomes 76ers
+                var sixersWin = res.data.api.standings[9].win;
+                // pacers becomes Mavs 
+                var mavsWin = res.data.api.standings[16].win;
+                // Hornets becomes Blazers
+                var blazersWin = res.data.api.standings[25].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doubleCeltics = (celticsWin * 2);
-                var doublePacers = (pacersWin * 2);
-                var doubleHornets = (hornetsWin * 2);
+                var doublesixers = (sixersWin * 2.25);
+                var doublemavs = (mavsWin * 2.25);
+                var doubleblazers = (blazersWin * 2.25);
 
                 const tempNeptuneNBA = this.state.allNBA;
 
-                tempNeptuneNBA.push(celticsWin);
-                tempNeptuneNBA.push(pacersWin);
-                tempNeptuneNBA.push(hornetsWin);
+                tempNeptuneNBA.push(sixersWin);
+                tempNeptuneNBA.push(mavsWin);
+                tempNeptuneNBA.push(blazersWin);
 
-                var NeptuneDoubledScores = tempNeptuneNBA.map(team => team * 2);
+                var NeptuneDoubledScores = tempNeptuneNBA.map(team => team * 2.25);
 
                 var NeptunePoints = 0;
 
@@ -203,9 +204,9 @@ class neptune extends React.Component {
                 }
                 console.log(NeptunePoints);
                 this.setState({ neptuneNBA: NeptunePoints });
-                this.setState({ celtics: doubleCeltics });
-                this.setState({ pacers: doublePacers });
-                this.setState({ hornets: doubleHornets });
+                this.setState({ sixers: doublesixers });
+                this.setState({ mavs: doublemavs });
+                this.setState({ blazers: doubleblazers });
             })
             .catch(error => {
                 console.log(error)
@@ -278,17 +279,17 @@ class neptune extends React.Component {
                                     <tr>
                                         <th scope="row">30</th>
                                         <td className="sixers">Philadelphia 76ers</td>
-                                        <td>{this.state.celtics}</td>
+                                        <td>{this.state.sixers}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">31</th>
                                         <td className="mavs">Dallas Mavericks</td>
-                                        <td>{this.state.pacers}</td>
+                                        <td>{this.state.mavs}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">45</th>
                                         <td className="blazers">Portland Trailblazers</td>
-                                        <td>{this.state.hornets}</td>
+                                        <td>{this.state.blazers}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>
