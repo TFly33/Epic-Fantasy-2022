@@ -13,7 +13,7 @@ class Table extends Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         tomNBA: "",
-        patrickNBA: "",
+        patNBA: "",
         jamesNBA: "",
         neptuneNBA: "",
         djNBA: "",
@@ -151,7 +151,7 @@ class Table extends Component {
                     team: 'Patrick',
                     epl: this.state.patEPL,
                     nfl: this.state.patNFL,
-                    nba: this.state.patrickNBA,
+                    nba: this.state.patNBA,
                     nhl: this.state.patNHL,
                     mlb: 0,
                     bonus: this.state.patGamble,
@@ -255,7 +255,7 @@ class Table extends Component {
 
     componentDidMount() {
         // first we scrape. Inside the function, need to post to the Mongo DB. 
-        // this.getScoresNBA();
+        this.getScoresNBA();
         // Now, once the updates have applied, we call the getteams. This will show updated results. I'm gonna freeze this for the time being so I don't make a million API calls. 
         this.getScoresEPL();
         // I'm gonna run this as a function even though these are just dead numbers at this point (since the NFL regular season ended)
@@ -273,7 +273,7 @@ class Table extends Component {
 
         // Totals for Tom 
         var tomTotalPoints =
-            // parseInt((this.state.tomNBA)) + 
+            parseInt((this.state.tomNBA)) + 
             // parseInt((this.state.tomNHL)) + 
             // parseInt((this.state.tomNFL)) + 
             parseInt((this.state.tomEPL)) +
@@ -282,7 +282,7 @@ class Table extends Component {
 
         // Totals for Pat 
         var patTotalPoints =
-            // parseInt((this.state.patrickNBA)) + 
+            parseInt((this.state.patNBA)) + 
             // parseInt((this.state.patNHL)) + 
             // parseInt((this.state.patNFL)) + 
             parseInt((this.state.patEPL)) +
@@ -291,7 +291,7 @@ class Table extends Component {
 
         // Totals for JAmes
         var jamesTotalPoints =
-            // parseInt((this.state.jamesNBA)) + 
+            parseInt((this.state.jamesNBA)) + 
             // parseInt((this.state.jamesNHL)) + 
             // parseInt((this.state.jamesNFL)) + 
             parseInt((this.state.jamesEPL)) +
@@ -300,7 +300,7 @@ class Table extends Component {
 
         // Totals for Neptune
         var neptuneTotalPoints =
-            // parseInt((this.state.neptuneNBA)) + 
+            parseInt((this.state.neptuneNBA)) + 
             // parseInt((this.state.neptuneNHL)) + 
             // parseInt((this.state.neptuneNFL)) + 
             parseInt((this.state.neptuneEPL)) +
@@ -309,7 +309,7 @@ class Table extends Component {
 
         // Totals for DJ
         var djTotalPoints =
-            // parseInt((this.state.djNBA)) + 
+            parseInt((this.state.djNBA)) + 
             // parseInt((this.state.djNHL)) + 
             // parseInt((this.state.djNFL)) + 
             parseInt((this.state.djEPL)) +
@@ -318,7 +318,7 @@ class Table extends Component {
 
         // Totals for Goose 
         var gooseTotalPoints =
-            // parseInt((this.state.gooseNBA)) + 
+            parseInt((this.state.gooseNBA)) + 
             // parseInt((this.state.gooseNHL)) + 
             // parseInt((this.state.gooseNFL)) + 
             parseInt((this.state.gooseEPL)) +
@@ -327,7 +327,7 @@ class Table extends Component {
 
         // Totals for Al
         var alTotalPoints =
-            // parseInt((this.state.alNBA)) + 
+            parseInt((this.state.alNBA)) + 
             // parseInt((this.state.alNHL)) + 
             // parseInt((this.state.alNFL)) + 
             parseInt((this.state.alEPL)) +
@@ -336,7 +336,7 @@ class Table extends Component {
 
         // Totals for Joe
         var joeTotalPoints =
-            // parseInt((this.state.joeNBA)) + 
+            parseInt((this.state.joeNBA)) + 
             // parseInt((this.state.joeNHL)) + 
             // parseInt((this.state.joeNFL)) + 
             parseInt((this.state.joeEPL)) +
@@ -345,7 +345,7 @@ class Table extends Component {
 
         // Totals for Steids
         var steidsTotalPoints =
-            // parseInt((this.state.steidsNBA)) + 
+            parseInt((this.state.steidsNBA)) + 
             // parseInt((this.state.steidsNHL)) + 
             // parseInt((this.state.steidsNFL)) + 
             parseInt((this.state.steidsEPL)) +
@@ -354,7 +354,7 @@ class Table extends Component {
 
         // Totals for Ben
         var benTotalPoints =
-            // parseInt((this.state.benNBA)) + 
+            parseInt((this.state.benNBA)) + 
             // parseInt((this.state.benNHL)) + 
             // parseInt((this.state.benNFL)) + 
             parseInt((this.state.benEPL)) +
@@ -1552,219 +1552,98 @@ class Table extends Component {
     getScoresNBA = () => {
         API.getScoresNBA()
             .then(res => {
-                // HERE ARE NBA TEAMS FOR TOMMY. 
+               // HERE ARE NBA TEAMS FOR TOMMY 2021 I changed the way I did this for 2021,
+            //    so I'm gonna keep the old mapping approach in case i want to use it later. 
+            // But the 2021 approach is much simpler. 
                 // THis is now warriors. 
-                var heatWin = res.data.api.standings[11].win;
-                console.log(res.data.api.standings[2]);
-                // This is now Magic 
-                var netsWin = res.data.api.standings[26].win;
-                // This is now Timberwolves
-                var spursWin = res.data.api.standings[22].win;
+                var warriorsWin = res.data.api.standings[24].win;
+                // And Magic
+                var magicWin = res.data.api.standings[2].win;
+                // and Twolves
+                var twolvesWin = res.data.api.standings[25].win;
+
+                // I need to multiply the API result by 2 FIRST since we need them individually. 
 
                 const tempTomNBA = this.state.allNBA;
+                tempTomNBA.push(warriorsWin);
+                tempTomNBA.push(magicWin);
+                tempTomNBA.push(twolvesWin);
 
-                tempTomNBA.push(heatWin);
-                tempTomNBA.push(netsWin);
-                tempTomNBA.push(spursWin);
-
-                var tomDoubledScores = tempTomNBA.map(team => team * 2);
+                var tomDoubledScores = tempTomNBA.map(team => team * 2.25);
 
                 var TomPoints = 0;
 
                 for (var i = 0; i < tomDoubledScores.length; i++) {
                     TomPoints += tomDoubledScores[i];
                 }
-                // console.log(TomPoints);
+
                 this.setState({ tomNBA: TomPoints });
 
-                // PATRICK
-                var lakersWin = res.data.api.standings[23].win;
-                var warriorsWin = res.data.api.standings[20].win;
-                var jazzWin = res.data.api.standings[27].win;
+                // Now switching to the new way. 
+                // New Steids Teams for 2021
+                var lakersWin = res.data.api.standings[23].win * 2.25;
+                var netsWin = res.data.api.standings[5].win * 2.25;
+                var knicksWin = res.data.api.standings[6].win * 2.25;
+                var steidsPoints = knicksWin + netsWin + lakersWin;
+                this.setState({ steidsNBA: steidsPoints });
 
-                const tempPatrickNBA = [];
+                // Patricks Teams for 2021. 
+                var jazzWin = res.data.api.standings[25].win * 2.25;
+                var sunsWin = res.data.api.standings[20].win * 2.25;
+                var rocketsWin = res.data.api.standings[15].win * 2.25;
+                var patPoints = jazzWin + sunsWin + rocketsWin;
+                this.setState({ patNBA: patPoints });
 
-                tempPatrickNBA.push(lakersWin);
-                tempPatrickNBA.push(warriorsWin);
-                tempPatrickNBA.push(jazzWin);
+                // 2021 Neptune NBA. 
+                var sixersWin = res.data.api.standings[9].win * 2.25;
+                var mavsWin = res.data.api.standings[16].win * 2.25;
+                var blazersWin = res.data.api.standings[25].win * 2.25;
+                var neptunePoints = sixersWin + mavsWin + blazersWin;
+                this.setState({ neptuneNBA: neptunePoints });
 
-                var patDoubledScores = tempPatrickNBA.map(team => team * 2);
-
-                var PatrickPoints = 0;
-
-                for (var i = 0; i < patDoubledScores.length; i++) {
-                    PatrickPoints += patDoubledScores[i];
-                }
-                // console.log(PatrickPoints);
-                this.setState({ patrickNBA: PatrickPoints });
-
-                // James
-                var bucksWin = res.data.api.standings[10].win;
-                var thunderWin = res.data.api.standings[28].win;
-                var sunsWin = res.data.api.standings[24].win;
-
-                const tempJamesNBA = [];
-
-                tempJamesNBA.push(bucksWin);
-                tempJamesNBA.push(thunderWin);
-                tempJamesNBA.push(sunsWin);
-
-                var jamesDoubledScores = tempJamesNBA.map(team => team * 2);
-
-                var jamesPoints = 0;
-
-                for (var i = 0; i < jamesDoubledScores.length; i++) {
-                    jamesPoints += jamesDoubledScores[i];
-                }
-                // console.log(jamesPoints);
+                // James NBA 2021
+                var celticsWin = res.data.api.standings[7].win * 2.25;
+                var spursWin = res.data.api.standings[18].win * 2.25;
+                var thunderWin = res.data.api.standings[27].win * 2.25;
+                var jamesPoints = celticsWin + spursWin + thunderWin;
                 this.setState({ jamesNBA: jamesPoints });
 
-                // Neptune
-                var celticsWin = res.data.api.standings[7].win;
-                var pacersWin = res.data.api.standings[11].win;
-                var hornetsWin = res.data.api.standings[1].win;
+                // DJ NBA 2021
+                var clippersWin = res.data.api.standings[20].win * 2.25;
+                var nuggetsWin = res.data.api.standings[26].win * 2.25;
+                var raptorsWin = res.data.api.standings[8].win * 2.25;
+                var djPoints = clippersWin + nuggetsWin + raptorsWin;
+                this.setState({ djNBA: djPoints });
 
-                const tempNeptuneNBA = [];
-
-                tempNeptuneNBA.push(celticsWin);
-                tempNeptuneNBA.push(pacersWin);
-                tempNeptuneNBA.push(hornetsWin);
-
-                var NeptuneDoubledScores = tempNeptuneNBA.map(team => team * 2);
-
-                var NeptunePoints = 0;
-
-                for (var i = 0; i < NeptuneDoubledScores.length; i++) {
-                    NeptunePoints += NeptuneDoubledScores[i];
-                }
-                // console.log(NeptunePoints);
-                this.setState({ neptuneNBA: NeptunePoints });
-
-                // DJ
-                var sixersWin = res.data.api.standings[6].win;
-                var rocketsWin = res.data.api.standings[15].win;
-                var timberwolvesWin = res.data.api.standings[29].win;
-
-                const tempDJNBA = [];
-
-                tempDJNBA.push(sixersWin);
-                tempDJNBA.push(rocketsWin);
-                tempDJNBA.push(timberwolvesWin);
-
-                var DJDoubledScores = tempDJNBA.map(team => team * 2);
-
-                var DJPoints = 0;
-
-                for (var i = 0; i < DJDoubledScores.length; i++) {
-                    DJPoints += DJDoubledScores[i];
-                }
-                // console.log(DJPoints);
-                this.setState({ djNBA: DJPoints });
-
-                // Goose
-                var raptorsWin = res.data.api.standings[5].win;
-                var pistonsWin = res.data.api.standings[12].win;
-                var knicksWin = res.data.api.standings[9].win;
-
-                const tempGooseNBA = [];
-
-                tempGooseNBA.push(raptorsWin);
-                tempGooseNBA.push(pistonsWin);
-                tempGooseNBA.push(knicksWin);
-
-                var GooseDoubledScores = tempGooseNBA.map(team => team * 2);
-
-                var GoosePoints = 0;
-
-                for (var i = 0; i < GooseDoubledScores.length; i++) {
-                    GoosePoints += GooseDoubledScores[i];
-                }
-                // console.log(GoosePoints);
-                this.setState({ gooseNBA: GoosePoints });
+                // Goose NBA 2021
+                var pacersWin = res.data.api.standings[11].win * 2.25;
+                var hawksWin = res.data.api.standings[1].win * 2.25;
+                var kingsWin = res.data.api.standings[20].win * 2.25;
+                var goosePoints = pacersWin + hawksWin + kingsWin;
+                this.setState({ gooseNBA: goosePoints });
 
                 // Al
-                var mavericksWin = res.data.api.standings[19].win;
-                var magicWin = res.data.api.standings[0].win;
-                var wizardsWin = res.data.api.standings[3].win;
-
-                const tempAlNBA = [];
-
-                tempAlNBA.push(mavericksWin);
-                tempAlNBA.push(magicWin);
-                tempAlNBA.push(wizardsWin);
-
-                var AlDoubledScores = tempAlNBA.map(team => team * 2);
-
-                var AlPoints = 0;
-
-                for (var i = 0; i < AlDoubledScores.length; i++) {
-                    AlPoints += AlDoubledScores[i];
-                }
-                // console.log(AlPoints);
-                this.setState({ alNBA: AlPoints });
+                var heatWin = res.data.api.standings[0].win * 2.25;
+                var hornetsWin = res.data.api.standings[3].win * 2.25;
+                var cavsWin = res.data.api.standings[14].win * 2.25;
+                var alPoints = heatWin + hornetsWin + cavsWin;
+                this.setState({ alNBA: alPoints });
 
                 // Joe
-                var nuggetsWin = res.data.api.standings[25].win;
-                var blazersWin = res.data.api.standings[26].win;
-                var kingsWin = res.data.api.standings[22].win;
+                var bucksWin = res.data.api.standings[13].win * 2.25;
+                var grizzliesWin = res.data.api.standings[16].win * 2.25;
+                var bullsWin = res.data.api.standings[10].win * 2.25;
+                var joePoints = bucksWin + grizzliesWin + bullsWin;
+                this.setState({ joeNBA: joePoints });
 
-                const tempJoeNBA = [];
+                // Mark and Johnny 
+                var pelicansWin = res.data.api.standings[19].win * 2.25;
+                var wizardsWin = res.data.api.standings[4].win * 2.25;
+                var pistonsWin = res.data.api.standings[12].win * 2.25;
+                var benPoints = pelicansWin + wizardsWin + pistonsWin;
+                this.setState({ benNBA: benPoints });
 
-                tempJoeNBA.push(nuggetsWin);
-                tempJoeNBA.push(blazersWin);
-                tempJoeNBA.push(kingsWin);
-
-                var JoeDoubledScores = tempJoeNBA.map(team => team * 2);
-
-                var JoePoints = 0;
-
-                for (var i = 0; i < JoeDoubledScores.length; i++) {
-                    JoePoints += JoeDoubledScores[i];
-                }
-                // console.log(JoePoints);
-                this.setState({ joeNBA: JoePoints });
-
-                // Steids
-                var clippersWin = res.data.api.standings[21].win;
-                var hawksWin = res.data.api.standings[4].win;
-                var bullsWin = res.data.api.standings[13].win;
-
-                const tempSteidsNBA = [];
-
-                tempSteidsNBA.push(clippersWin);
-                tempSteidsNBA.push(hawksWin);
-                tempSteidsNBA.push(bullsWin);
-
-                var SteidsDoubledScores = tempSteidsNBA.map(team => team * 2);
-
-                var SteidsPoints = 0;
-
-                for (var i = 0; i < SteidsDoubledScores.length; i++) {
-                    SteidsPoints += SteidsDoubledScores[i];
-                }
-                // console.log(SteidsPoints);
-                this.setState({ steidsNBA: SteidsPoints });
-
-                // Ben
-                var pelicansWin = res.data.api.standings[18].win;
-                var grizzliesWin = res.data.api.standings[17].win;
-                var cavsWin = res.data.api.standings[14].win;
-
-                const tempBenNBA = [];
-
-                tempBenNBA.push(pelicansWin);
-                tempBenNBA.push(grizzliesWin);
-                tempBenNBA.push(cavsWin);
-
-                var BenDoubledScores = tempBenNBA.map(team => team * 2);
-
-                var BenPoints = 0;
-
-                for (var i = 0; i < BenDoubledScores.length; i++) {
-                    BenPoints += BenDoubledScores[i];
-                }
-                // console.log(BenPoints);
-                this.setState({ benNBA: BenPoints });
+                // And finally, the total scores function needs to run. 
                 this.totalScores();
             })
             .catch(error => {
