@@ -170,6 +170,7 @@ class dj extends React.Component {
         API.getScoresNBA()
             .then(res => {
                 // DJ 2021 NBA
+                console.log(res.data.api.standings);
                 var clippersWin = res.data.api.standings[20].win;
                 var nuggetsWin = res.data.api.standings[26].win;
                 var raptorsWin = res.data.api.standings[8].win;

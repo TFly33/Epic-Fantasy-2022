@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { MDBDataTable } from 'mdbreact';
 import "./Table.css";
 import API from "../../utils/API";
-// import { al, totalNHL, } from "../../pages/teamPages/al";
 
 // This table is being used for the Home Page currently, but not for the My Teams page. I am going to create that table separately. 
 class Table extends Component {
@@ -148,7 +147,7 @@ class Table extends Component {
                     total: this.state.tomTotal
                 },
                 {
-                    team: 'Patrick',
+                    team: 'JP and that Dipshit Pat',
                     epl: this.state.patEPL,
                     nfl: this.state.patNFL,
                     nba: this.state.patNBA,

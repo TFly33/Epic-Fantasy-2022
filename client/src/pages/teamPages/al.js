@@ -28,7 +28,7 @@ class al extends React.Component {
 
     componentDidMount = () => {
         this.getScoresNBA();
-        // this.getScoresEPL();
+        this.getScoresEPL();
         // this.getScoresNHL();
     }
 
