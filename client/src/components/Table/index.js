@@ -256,7 +256,7 @@ class Table extends Component {
         // first we scrape. Inside the function, need to post to the Mongo DB. 
         this.getScoresNBA();
         // Now, once the updates have applied, we call the getteams. This will show updated results. I'm gonna freeze this for the time being so I don't make a million API calls. 
-        // this.getScoresEPL();
+        this.getScoresEPL();
         // I'm gonna run this as a function even though these are just dead numbers at this point (since the NFL regular season ended)
         // this.getScoresNFL();
         // // running NHL here
@@ -1495,7 +1495,7 @@ class Table extends Component {
 
                 this.setState({ tomNBA: TomPoints });
 
-                console.log(res.data.api.standings);
+                // console.log(res.data.api.standings);
                 // Now switching to the new way. 
                 // New Steids Teams for 2021
                 var lakersWin = res.data.api.standings[23].win * 2.25;
@@ -1535,7 +1535,7 @@ class Table extends Component {
                 // Goose NBA 2021
                 var pacersWin = res.data.api.standings[11].win * 2.25;
                 var hawksWin = res.data.api.standings[1].win * 2.25;
-                var kingsWin = res.data.api.standings[20].win * 2.25;
+                var kingsWin = res.data.api.standings[22].win * 2.25;
                 var goosePoints = pacersWin + hawksWin + kingsWin;
                 this.setState({ gooseNBA: goosePoints });
 

@@ -202,58 +202,58 @@ class al extends React.Component {
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
         return (
             <div>
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <a class="navbar-brand" href="/Home">Epic Fantasy League</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a className="navbar-brand" href="/Home">Epic Fantasy League</a>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Home">Standings <span class="sr-only">(current)</span></a>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link" href="/Home">Standings <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item active">
-                                <div class="dropdown show">
-                                    <div class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <li className="nav-item active">
+                                <div className="dropdown show">
+                                    <div className="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
                                     </div>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="tommy">Tommy</a>
-                                        <a class="dropdown-item" href="patrick">Patrick</a>
-                                        <a class="dropdown-item" href="james">James</a>
-                                        <a class="dropdown-item" href="neptune">Neptune</a>
-                                        <a class="dropdown-item" href="dj">DJ</a>
-                                        <a class="dropdown-item" href="goose">Goose</a>
-                                        <a class="dropdown-item" href="al">Al</a>
-                                        <a class="dropdown-item" href="joe">Joe</a>
-                                        <a class="dropdown-item" href="steids">Steids</a>
-                                        <a class="dropdown-item" href="ben">Eres/JMar</a>
+                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a className="dropdown-item" href="tommy">Tommy</a>
+                                        <a className="dropdown-item" href="patrick">Patrick</a>
+                                        <a className="dropdown-item" href="james">James</a>
+                                        <a className="dropdown-item" href="neptune">Neptune</a>
+                                        <a className="dropdown-item" href="dj">DJ</a>
+                                        <a className="dropdown-item" href="goose">Goose</a>
+                                        <a className="dropdown-item" href="al">Al</a>
+                                        <a className="dropdown-item" href="joe">Joe</a>
+                                        <a className="dropdown-item" href="steids">Steids</a>
+                                        <a className="dropdown-item" href="ben">Eres/JMar</a>
                                     </div>
                                 </div>
                             </li>
-                            {/* <li class="nav-item">
-                                <a class="nav-link" href="/Login">Login</a>
+                            {/* <li className="nav-item">
+                                <a className="nav-link" href="/Login">Login</a>
                             </li> */}
-                            <li class="nav-item">
-                                <a class="nav-link" href="/draft">Draft Results</a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/draft">Draft Results</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/points">Points System</a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/points">Points System</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
-                <div class="card">
-                    <div class="card-body text-center bg-light text-secondary">
+                <div className="card">
+                    <div className="card-body text-center bg-light text-secondary">
                         Al
                 </div>
                 </div>
                 {/* Starting my new table here */}
-                <div class="container smallTable">
-                    <div class="row">
-                        <div class="col">
-                            <table class="table table-striped table-bordered table-hover text-center ">
-                                <thead class="thead-dark">
+                <div className="container smallTable">
+                    <div className="row">
+                        <div className="col">
+                            <table className="table table-striped table-bordered table-hover text-center ">
+                                <thead className="thead-dark">
                                     <tr>
                                         <th scope="col-6">Draft Pick</th>
                                         <th scope="col-6">NBA Team</th>
@@ -285,12 +285,12 @@ class al extends React.Component {
                             </table>
                         </div>
 
-                        <div class="container">
-                            <div class="row">
+                        <div className="container">
+                            <div className="row">
                                 {/* Here is NFL */}
-                                <div class="col">
-                                    <table class="table table-striped table-bordered table-hover text-center smallTable">
-                                        <thead class="thead-dark">
+                                <div className="col">
+                                    <table className="table table-striped table-bordered table-hover text-center smallTable">
+                                        <thead className="thead-dark">
                                             <tr>
                                                 <th scope="col-6">Draft Pick</th>
                                                 <th scope="col-6">NFL Team</th>
@@ -301,22 +301,22 @@ class al extends React.Component {
                                             <tr>
                                                 <th scope="row">35</th>
                                                 <td className="browns">Cleveland Browns</td>
-                                                {/* <td>{this.state.chargers}</td> */}
+                                                <td>{this.state.chargers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">87</th>
                                                 <td className="panthers">Carolina Panthers</td>
-                                                {/* <td>{this.state.packers}</td> */}
+                                                <td>{this.state.packers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">117</th>
                                                 <td className="lions">Detroit Lions</td>
-                                                {/* <td>{this.state.bills}</td> */}
+                                                <td>{this.state.bills}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                {/* <td>{this.state.totalNFL}</td> */}
+                                                <td>{this.state.totalNFL}</td>
                                             </tr>
                                         </tbody>
                                     </table>

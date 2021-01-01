@@ -169,7 +169,7 @@ class goose extends React.Component {
                 // HERE ARE NBA TEAMS FOR Goose 2021. 
                 var pacersWin = res.data.api.standings[11].win;
                 var hawksWin = res.data.api.standings[1].win;
-                var kingsWin = res.data.api.standings[20].win;
+                var kingsWin = res.data.api.standings[22].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 

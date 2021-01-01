@@ -71,6 +71,11 @@ export default {
     return axios.get("https://statsapi.web.nhl.com/api/v1/standings")
   },
 
+  // Attempting to make the golf API here. 
+  getScoresPGA: function () {
+    return axios.get("https://scores.nbcsports.com/golf/averages.asp?tour=")
+  },
+
   // Gets the teams with the given id
   getMyTeams: function (id) {
     return axios.get("/api/myteam/" + id);

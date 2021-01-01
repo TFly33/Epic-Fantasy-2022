@@ -30,7 +30,50 @@ class tommy extends React.Component {
     componentDidMount = () => {
         this.getScoresNBA();
         // this.getScoresNHL();
-        this.getScoresEPL();
+        // this.getScoresEPL();
+        this.getScoresPGA();
+    }
+
+    getScoresPGA = () => {
+        API.getScoresPGA()
+            .then(res => {
+                console.log(res)
+                // HERE ARE NBA TEAMS FOR TOMMY 2021 
+                // THis is now warriors. 
+                // var warriorsWin = res.data.api.standings[24].win;
+                // // And Magic
+                // var magicWin = res.data.api.standings[2].win;
+                // // and Twolves
+                // var twolvesWin = res.data.api.standings[25].win;
+                // // console.log(res.data.api.standings);
+
+                // // I need to multiply the API result by 2 FIRST since we need them individually. 
+
+                // var doubleWarriors = (warriorsWin * 2.25);
+                // var doubleMagic = (magicWin * 2.25);
+                // var doubletwolves = (twolvesWin * 2.25);
+
+                // const tempTomNBA = this.state.allNBA;
+                // tempTomNBA.push(warriorsWin);
+                // tempTomNBA.push(magicWin);
+                // tempTomNBA.push(twolvesWin);
+
+                // var tomDoubledScores = tempTomNBA.map(team => team * 2.25);
+
+                // var TomPoints = 0;
+
+                // for (var i = 0; i < tomDoubledScores.length; i++) {
+                //     TomPoints += tomDoubledScores[i];
+                // }
+                // console.log(TomPoints);
+                // this.setState({ tomNBA: TomPoints });
+                // this.setState({ magic: doubleMagic });
+                // this.setState({ warriors: doubleWarriors });
+                // this.setState({ twolves: doubletwolves });
+            })
+            .catch(error => {
+                console.log(error)
+            });
     }
 
     getScoresNHL = () => {
@@ -176,7 +219,7 @@ class tommy extends React.Component {
                 var magicWin = res.data.api.standings[2].win;
                 // and Twolves
                 var twolvesWin = res.data.api.standings[25].win;
-                console.log(res.data.api.standings);
+                // console.log(res.data.api.standings);
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
@@ -210,60 +253,60 @@ class tommy extends React.Component {
 
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
         return (
-            <div class="text-center">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <a class="navbar-brand" href="/Home">Epic Fantasy League</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+            <div className="text-center">
+                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a className="navbar-brand" href="/Home">Epic Fantasy League</a>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Home">Standings</a>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link" href="/Home">Standings</a>
                             </li>
-                            <li class="nav-item active">
-                                <div class="dropdown show">
-                                    <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <li className="nav-item active">
+                                <div className="dropdown show">
+                                    <div className="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
                                     </div>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="tommy">Tommy</a>
-                                        <a class="dropdown-item" href="patrick">Patrick</a>
-                                        <a class="dropdown-item" href="james">James</a>
-                                        <a class="dropdown-item" href="neptune">Neptune</a>
-                                        <a class="dropdown-item" href="dj">DJ</a>
-                                        <a class="dropdown-item" href="goose">Goose</a>
-                                        <a class="dropdown-item" href="al">Al</a>
-                                        <a class="dropdown-item" href="joe">Joe</a>
-                                        <a class="dropdown-item" href="steids">Steids</a>
-                                        <a class="dropdown-item" href="ben">Eres/JMar</a>
+                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a className="dropdown-item" href="tommy">Tommy</a>
+                                        <a className="dropdown-item" href="patrick">Patrick</a>
+                                        <a className="dropdown-item" href="james">James</a>
+                                        <a className="dropdown-item" href="neptune">Neptune</a>
+                                        <a className="dropdown-item" href="dj">DJ</a>
+                                        <a className="dropdown-item" href="goose">Goose</a>
+                                        <a className="dropdown-item" href="al">Al</a>
+                                        <a className="dropdown-item" href="joe">Joe</a>
+                                        <a className="dropdown-item" href="steids">Steids</a>
+                                        <a className="dropdown-item" href="ben">Eres/JMar</a>
                                     </div>
                                 </div>
                             </li>
-                            {/* <li class="nav-item">
-                                <a class="nav-link" href="/Login">Login</a>
+                            {/* <li className="nav-item">
+                                <a className="nav-link" href="/Login">Login</a>
                             </li> */}
-                            <li class="nav-item">
-                                <a class="nav-link" href="/draft">Draft Results</a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/draft">Draft Results</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/points">Points System</a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/points">Points System</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
-                <div class="card">
-                    <div class="card-body text-center bg-light text-secondary">
+                <div className="card">
+                    <div className="card-body text-center bg-light text-secondary">
                         Tommy
                      </div>
                 </div>
                 {/* Starting my new tables here */}
-                <div class="container smallTable">
-                    <div class="row">
-                        <div class="col">
+                <div className="container smallTable">
+                    <div className="row">
+                        <div className="col">
                             {/* Here is NBA */}
-                            <table class="table table-striped table-bordered table-hover">
-                                <thead class="thead-dark">
+                            <table className="table table-striped table-bordered table-hover">
+                                <thead className="thead-dark">
                                     <tr>
                                         <th scope="col-6">Draft Pick</th>
                                         <th scope="col-6">NBA Team</th>
@@ -295,9 +338,9 @@ class tommy extends React.Component {
                             </table>
                         </div>
 
-                        <div class="container smallTable">
-                            <div class="row">
-                                <div class="col">
+                        <div className="container smallTable">
+                            <div className="row">
+                                <div className="col">
                                     {/* Here is NFL */}
                                     <table class="table table-striped table-bordered table-hover">
                                         <thead class="thead-dark">
@@ -334,12 +377,12 @@ class tommy extends React.Component {
                             </div>
                         </div>
 
-                        <div class="container smallTable">
-                            <div class="row">
-                                <div class="col">
+                        <div className="container smallTable">
+                            <div className="row">
+                                <div className="col">
                                     {/* Here is EPL */}
-                                    <table class="table table-striped table-bordered table-hover">
-                                        <thead class="thead-dark">
+                                    <table className="table table-striped table-bordered table-hover">
+                                        <thead className="thead-dark">
                                             <tr>
                                                 <th scope="col-6">Draft Pick</th>
                                                 <th scope="col-6">EPL Team</th>
@@ -371,12 +414,12 @@ class tommy extends React.Component {
 
                         {/* Adding the NHL Table here */}
 
-                        <div class="container smallTable">
-                            <div class="row">
-                                <div class="col">
+                        <div className="container smallTable">
+                            <div className="row">
+                                <div className="col">
                                     {/* Here is NFL */}
-                                    <table class="table table-striped table-bordered table-hover">
-                                        <thead class="thead-dark">
+                                    <table className="table table-striped table-bordered table-hover">
+                                        <thead className="thead-dark">
                                             <tr>
                                                 <th scope="col-6">Draft Pick</th>
                                                 <th scope="col-6">NHL Team</th>
@@ -410,12 +453,12 @@ class tommy extends React.Component {
                             </div>
                         </div>
 
-                        <div class="container smallTable">
-                            <div class="row">
-                                <div class="col">
+                        <div className="container smallTable">
+                            <div className="row">
+                                <div className="col">
                                     {/* Here is MLB */}
-                                    <table class="table table-striped table-bordered table-hover">
-                                        <thead class="thead-dark">
+                                    <table className="table table-striped table-bordered table-hover">
+                                        <thead className="thead-dark">
                                             <tr>
                                                 <th scope="col-6">Draft Pick</th>
                                                 <th scope="col-6">MLB Team</th>
@@ -451,20 +494,20 @@ class tommy extends React.Component {
                     </div>
                 </div>
 
-                <body class="d-flex flex-column">
+                <body className="d-flex flex-column">
                     <div id="page-content">
-                        <div class="container text-center">
+                        <div className="container text-center">
                             <div class="row justify-content-center">
-                                <div class="col-md-7">
+                                <div className="col-md-7">
                                     {/* Adding this custom footer I found online. Requires some fake text. Here it is below.  */}
-                                    <h1 class="font-weight-light mt-4 text-white">Sticky Footer using Flexbox</h1>
-                                    <p class="lead text-white-50">Use just two Bootstrap 4 utility classes and three custom CSS rules and you will have a flexbox enabled sticky footer for your website!</p>
+                                    <h1 className="font-weight-light mt-4 text-white">Sticky Footer using Flexbox</h1>
+                                    <p className="lead text-white-50">Use just two Bootstrap 4 utility classes and three custom CSS rules and you will have a flexbox enabled sticky footer for your website!</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
-                        <div class="container text-center">
+                        <div className="container text-center">
                             <small>Copyright &copy; Epic Fantasy League 2021</small>
                         </div>
                     </footer>
