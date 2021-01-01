@@ -147,7 +147,7 @@ class Table extends Component {
                     total: this.state.tomTotal
                 },
                 {
-                    team: 'JP and that Dipshit Pat',
+                    team: 'JP/Pat',
                     epl: this.state.patEPL,
                     nfl: this.state.patNFL,
                     nba: this.state.patNBA,
@@ -217,7 +217,7 @@ class Table extends Component {
                     total: this.state.djTotal
                 },
                 {
-                    team: 'Steids',
+                    team: 'Steids/Ben/Adam',
                     epl: this.state.steidsEPL,
                     nfl: this.state.steidsNFL,
                     nba: this.state.steidsNBA,
@@ -256,7 +256,7 @@ class Table extends Component {
         // first we scrape. Inside the function, need to post to the Mongo DB. 
         this.getScoresNBA();
         // Now, once the updates have applied, we call the getteams. This will show updated results. I'm gonna freeze this for the time being so I don't make a million API calls. 
-        this.getScoresEPL();
+        // this.getScoresEPL();
         // I'm gonna run this as a function even though these are just dead numbers at this point (since the NFL regular season ended)
         // this.getScoresNFL();
         // // running NHL here
@@ -1169,19 +1169,11 @@ class Table extends Component {
                     if (forLoopArray[i].team.id === 47) {
                         chelseaWin = forLoopArray[i].all.win
                         chelseaTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        // console.log("here are the wins" + chelseaWin);
-                        // console.log("here are the ties" + chelseaTie);
                     }
 
                     if (forLoopArray[i].team.id === 46) {
                         brightonWin = forLoopArray[i].all.win
                         brightonTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        // console.log("here are the wins" + brightonWin);
-                        // console.log("here are the ties" + brightonTie);
                     }
                 }
 
@@ -1211,19 +1203,11 @@ class Table extends Component {
                     if (forLoopArray[i].team.id === 50) {
                         manCityWin = forLoopArray[i].all.win
                         manCityTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        // console.log("here are the wins" + manCityWin);
-                        // console.log("here are the ties" + manCityTie);
                     }
 
                     if (forLoopArray[i].team.id === 66) {
                         wolvesWin = forLoopArray[i].all.win
                         wolvesTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        // console.log("here are the wins" + wolvesWin);
-                        // console.log("here are the ties" + wolvesTie);
                     }
                 }
 
@@ -1233,8 +1217,6 @@ class Table extends Component {
                 // Here is the final result
                 var patPoints = manCityTotal + wolvesTotal;
                 this.setState({ patEPL: patPoints });
-
-
 
                 var newcastleWin;
                 var newcastleTie;
@@ -1251,19 +1233,11 @@ class Table extends Component {
                     if (forLoopArray[i].team.id === 39) {
                         newcastleWin = forLoopArray[i].all.win
                         newcastleTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        //  console.log("here are the wins" + newcastleWin);
-                        //  console.log("here are the ties" + newcastleTie);
                     }
 
                     if (forLoopArray[i].team.id === 42) {
                         palaceWin = forLoopArray[i].all.win
                         palaceTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        //  console.log("here are the wins" + palaceWin);
-                        //  console.log("here are the ties" + palaceTie);
                     }
                 }
 
@@ -1289,19 +1263,11 @@ class Table extends Component {
                     if (forLoopArray[i].team.id === 40) {
                         leicesterWin = forLoopArray[i].all.win
                         leicesterTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        // console.log("here are the wins" + leicesterWin);
-                        // console.log("here are the ties" + leicesterTie);
                     }
 
                     if (forLoopArray[i].team.id === 51) {
                         norwichWin = forLoopArray[i].all.win
                         norwichTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        // console.log("here are the wins" + norwichWin);
-                        // console.log("here are the ties" + norwichTie);
                     }
                 }
 
@@ -1328,19 +1294,11 @@ class Table extends Component {
                     if (forLoopArray[i].team.id === 60) {
                         sheffieldWin = forLoopArray[i].all.win
                         sheffieldTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        //    console.log("here are the wins" + sheffieldWin);
-                        //    console.log("here are the ties" + sheffieldTie);
                     }
 
                     if (forLoopArray[i].team.id === 62) {
                         burnleyWin = forLoopArray[i].all.win
                         burnleyTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        //    console.log("here are the wins" + burnleyWin);
-                        //    console.log("here are the ties" + burnleyTie);
                     }
                 }
 
@@ -1366,19 +1324,11 @@ class Table extends Component {
                     if (forLoopArray[i].team.id === 41) {
                         manuWin = forLoopArray[i].all.win
                         manuTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        // console.log("here are the wins" + manuWin);
-                        // console.log("here are the ties" + manuTie);
                     }
 
                     if (forLoopArray[i].team.id === 44) {
                         westhamWin = forLoopArray[i].all.win
                         westhamTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        // console.log("here are the wins" + westhamWin);
-                        // console.log("here are the ties" + westhamTie);
                     }
                 }
 
@@ -1404,19 +1354,11 @@ class Table extends Component {
                     if (forLoopArray[i].team.id === 49) {
                         evertonWin = forLoopArray[i].all.win
                         evertonTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        //    console.log("here are the wins" + evertonWin);
-                        //    console.log("here are the ties" + evertonTie);
                     }
 
                     if (forLoopArray[i].team.id === 63) {
                         southhamptonWin = forLoopArray[i].all.win
                         southhamptonTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        //    console.log("here are the wins" + southhamptonWin);
-                        //    console.log("here are the ties" + southhamptonTie);
                     }
                 }
 
@@ -1442,19 +1384,11 @@ class Table extends Component {
                     if (forLoopArray[i].team.id === 45) {
                         liverpoolWin = forLoopArray[i].all.win
                         liverpoolTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        //    console.log("here are the wins" + liverpoolWin);
-                        //    console.log("here are the ties" + liverpoolTie);
                     }
 
                     if (forLoopArray[i].team.id === 48) {
                         astonWin = forLoopArray[i].all.win
                         astonTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        //    console.log("here are the wins" + astonWin);
-                        //    console.log("here are the ties" + astonTie);
                     }
                 }
 
@@ -1480,19 +1414,11 @@ class Table extends Component {
                     if (forLoopArray[i].team.id === 52) {
                         tottenhamWin = forLoopArray[i].all.win
                         tottenhamTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        // console.log("here are the wins" + tottenhamWin);
-                        // console.log("here are the ties" + tottenhamTie);
                     }
 
                     if (forLoopArray[i].team.id === 36) {
                         bournemouthWin = forLoopArray[i].all.win
                         bournemouthTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        // console.log("here are the wins" + bournemouthWin);
-                        // console.log("here are the ties" + bournemouthTie);
                     }
                 }
 
@@ -1516,19 +1442,11 @@ class Table extends Component {
                     if (forLoopArray[i].team.id === 33) {
                         arsenalWin = forLoopArray[i].all.win
                         arsenalTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        // console.log("here are the wins" + arsenalWin);
-                        // console.log("here are the ties" + arsenalTie);
                     }
 
                     if (forLoopArray[i].team.id === 34) {
                         watfordWin = forLoopArray[i].all.win
                         watfordTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        // console.log("here are the wins" + watfordWin);
-                        // console.log("here are the ties" + watfordTie);
                     }
                 }
 
@@ -1561,8 +1479,7 @@ class Table extends Component {
                 // and Twolves
                 var twolvesWin = res.data.api.standings[25].win;
 
-                // I need to multiply the API result by 2 FIRST since we need them individually. 
-
+                // Gonna use the old temp approach for Tom, so I have it for later. 
                 const tempTomNBA = this.state.allNBA;
                 tempTomNBA.push(warriorsWin);
                 tempTomNBA.push(magicWin);
@@ -1578,11 +1495,12 @@ class Table extends Component {
 
                 this.setState({ tomNBA: TomPoints });
 
+                console.log(res.data.api.standings);
                 // Now switching to the new way. 
                 // New Steids Teams for 2021
                 var lakersWin = res.data.api.standings[23].win * 2.25;
                 var netsWin = res.data.api.standings[5].win * 2.25;
-                var knicksWin = res.data.api.standings[6].win * 2.25;
+                var knicksWin = res.data.api.standings[7].win * 2.25;
                 var steidsPoints = knicksWin + netsWin + lakersWin;
                 this.setState({ steidsNBA: steidsPoints });
 
@@ -1601,7 +1519,7 @@ class Table extends Component {
                 this.setState({ neptuneNBA: neptunePoints });
 
                 // James NBA 2021
-                var celticsWin = res.data.api.standings[7].win * 2.25;
+                var celticsWin = res.data.api.standings[6].win * 2.25;
                 var spursWin = res.data.api.standings[18].win * 2.25;
                 var thunderWin = res.data.api.standings[27].win * 2.25;
                 var jamesPoints = celticsWin + spursWin + thunderWin;
@@ -1658,132 +1576,6 @@ class Table extends Component {
             <div>
                 {this.datatablePage()}
             </div>
-            // THIS IS THE OLD TABLE IF I END UP NEEDING IT BACK. 
-            // <div class="container">
-            //     <table class="table table-bordered table-striped table-hover">
-            //         <thead class="thead-dark">
-            //             <tr>
-            //                 <th scope="col">Team</th>
-            //                 <th scope="col">EPL</th>
-            //                 <th scope="col">NFL</th>
-            //                 <th scope="col">NHL</th>
-            //                 <th scope="col">NBA</th>
-            //                 <th scope="col">MLB</th>
-            //                 <th scope="col">Total Points</th>
-            //             </tr>
-            //         </thead>
-            //         <tbody>
-            //             <tr>
-            //                 <th scope="col">Tommy</th>
-            //                 <th scope="col">{this.state.tomEPL}</th>
-            //                 <th scope="col">{this.state.tomNFL}</th>
-            //                 <th scope="col">{this.state.tomNHL}</th>
-            //                 <th scope="col">{this.state.tomNBA}</th>
-            //                 <th scope="col">0</th>
-            //                 <th scope="col">{this.state.tomTotal}</th>
-            //             </tr>
-            //         </tbody>
-            //         <tbody>
-            //             <tr>
-            //                 <th scope="col">Patrick</th>
-            //                 <th scope="col">{this.state.patEPL}</th>
-            //                 <th scope="col">{this.state.patNFL}</th>
-            //                 <th scope="col">{this.state.patNHL}</th>
-            //                 <th scope="col">{this.state.patrickNBA}</th>
-            //                 <th scope="col">0</th>
-            //                 <th scope="col">{this.state.patTotal}</th>
-            //             </tr>
-            //         </tbody>
-            //         <tbody>
-            //             <tr>
-            //                 <th scope="col">James</th>
-            //                 <th scope="col">{this.state.jamesEPL}</th>
-            //                 <th scope="col">{this.state.jamesNFL}</th>
-            //                 <th scope="col">{this.state.jamesNHL}</th>
-            //                 <th scope="col">{this.state.jamesNBA}</th>
-            //                 <th scope="col">0</th>
-            //                 <th scope="col">{this.state.jamesTotal}</th>
-            //             </tr>
-            //         </tbody>
-            //         <tbody>
-            //             <tr>
-            //                 <th scope="col">Neptune</th>
-            //                 <th scope="col">{this.state.neptuneEPL}</th>
-            //                 <th scope="col">{this.state.neptuneNFL}</th>
-            //                 <th scope="col">{this.state.neptuneNHL}</th>
-            //                 <th scope="col">{this.state.neptuneNBA}</th>
-            //                 <th scope="col">0</th>
-            //                 <th scope="col">{this.state.neptuneTotal}</th>
-            //             </tr>
-            //         </tbody>
-            //         <tbody>
-            //             <tr>
-            //                 <th scope="col">DJ</th>
-            //                 <th scope="col">{this.state.djEPL}</th>
-            //                 <th scope="col">{this.state.djNFL}</th>
-            //                 <th scope="col">{this.state.djNHL}</th>
-            //                 <th scope="col">{this.state.djNBA}</th>
-            //                 <th scope="col">0</th>
-            //                 <th scope="col">{this.state.djTotal}</th>
-            //             </tr>
-            //         </tbody>
-            //         <tbody>
-            //             <tr>
-            //                 <th scope="col">Goose</th>
-            //                 <th scope="col">{this.state.gooseEPL}</th>
-            //                 <th scope="col">{this.state.gooseNFL}</th>
-            //                 <th scope="col">{this.state.gooseNHL}</th>
-            //                 <th scope="col">{this.state.gooseNBA}</th>
-            //                 <th scope="col">0</th>
-            //                 <th scope="col">{this.state.gooseTotal}</th>
-            //             </tr>
-            //         </tbody>
-            //         <tbody>
-            //             <tr>
-            //                 <th scope="col">Al</th>
-            //                 <th scope="col">{this.state.alEPL}</th>
-            //                 <th scope="col">{this.state.alNFL}</th>
-            //                 <th scope="col">{this.state.alNHL}</th>
-            //                 <th scope="col">{this.state.alNBA}</th>
-            //                 <th scope="col">0</th>
-            //                 <th scope="col">{this.state.alTotal}</th>
-            //             </tr>
-            //         </tbody>
-            //         <tbody>
-            //             <tr>
-            //                 <th scope="col">Joe</th>
-            //                 <th scope="col">{this.state.joeEPL}</th>
-            //                 <th scope="col">{this.state.joeNFL}</th>
-            //                 <th scope="col">{this.state.joeNHL}</th>
-            //                 <th scope="col">{this.state.joeNBA}</th>
-            //                 <th scope="col">0</th>
-            //                 <th scope="col">{this.state.joeTotal}</th>
-            //             </tr>
-            //         </tbody>
-            //         <tbody>
-            //             <tr>
-            //                 <th scope="col">Steids</th>
-            //                 <th scope="col">{this.state.steidsEPL}</th>
-            //                 <th scope="col">{this.state.steidsNFL}</th>
-            //                 <th scope="col">{this.state.steidsNHL}</th>
-            //                 <th scope="col">{this.state.steidsNBA}</th>
-            //                 <th scope="col">0</th>
-            //                 <th scope="col">{this.state.steidsTotal}</th>
-            //             </tr>
-            //         </tbody>
-            //         <tbody>
-            //             <tr>
-            //                 <th scope="col">Ben</th>
-            //                 <th scope="col">{this.state.benEPL}</th>
-            //                 <th scope="col">{this.state.benNFL}</th>
-            //                 <th scope="col">{this.state.benNHL}</th>
-            //                 <th scope="col">{this.state.benNBA}</th>
-            //                 <th scope="col">0</th>
-            //                 <th scope="col">{this.state.benTotal}</th>
-            //             </tr>
-            //         </tbody>
-            //     </table>
-            // </div>
         )
     }
 }

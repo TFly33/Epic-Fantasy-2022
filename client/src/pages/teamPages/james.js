@@ -169,7 +169,7 @@ class james extends React.Component {
         API.getScoresNBA()
             .then(res => {
                 // James NBA 2021
-                var celticsWin = res.data.api.standings[7].win;
+                var celticsWin = res.data.api.standings[6].win;
                 var spursWin = res.data.api.standings[18].win;
                 var thunderWin = res.data.api.standings[27].win;
 

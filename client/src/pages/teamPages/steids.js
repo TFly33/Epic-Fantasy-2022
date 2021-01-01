@@ -170,8 +170,8 @@ class steids extends React.Component {
                 var lakersWin = res.data.api.standings[23].win;
                 // This is now Nets
                 var netsWin = res.data.api.standings[5].win;
-                // This is now Knicks, but it still might be Boston. 
-                var knicksWin = res.data.api.standings[6].win;
+                // This is now Knicks. 
+                var knicksWin = res.data.api.standings[7].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
