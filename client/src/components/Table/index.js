@@ -90,7 +90,7 @@ class Table extends Component {
                     label: 'Team',
                     field: 'team',
                     sort: 'asc',
-                    width: 150
+                    width: 125
                 },
                 {
                     label: 'EPL',
