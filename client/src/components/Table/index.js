@@ -217,7 +217,7 @@ class Table extends Component {
                     total: this.state.djTotal
                 },
                 {
-                    team: 'Steids/Ben/Adam',
+                    team: 'Steids/B/A',
                     epl: this.state.steidsEPL,
                     nfl: this.state.steidsNFL,
                     nba: this.state.steidsNBA,
