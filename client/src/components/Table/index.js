@@ -76,7 +76,7 @@ class Table extends Component {
         neptuneGamble: 173,
         djGamble: 200,
         gooseGamble: 203,
-        alGamble: 200,
+        alGamble: 210,
         joeGamble: 195,
         steidsGamble: 205,
         eresGamble: 210

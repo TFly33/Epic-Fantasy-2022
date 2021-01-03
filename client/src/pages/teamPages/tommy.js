@@ -29,7 +29,7 @@ class tommy extends React.Component {
 
     componentDidMount = () => {
         this.getScoresNBA();
-        // this.getScoresNHL();
+        this.getScoresNHL();
         // this.getScoresEPL();
         this.getScoresPGA();
     }
@@ -175,19 +175,11 @@ class tommy extends React.Component {
                     if (forLoopArray[i].team.id === 47) {
                         chelseaWin = forLoopArray[i].all.win
                         chelseaTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        console.log("here are the wins" + chelseaWin);
-                        console.log("here are the ties" + chelseaTie);
                     }
 
                     if (forLoopArray[i].team.id === 46) {
                         brightonWin = forLoopArray[i].all.win
                         brightonTie = forLoopArray[i].all.draw
-                        //then so something
-                        //return something here
-                        console.log("here are the wins" + brightonWin);
-                        console.log("here are the ties" + brightonTie);
                     }
                 }
 
@@ -239,7 +231,6 @@ class tommy extends React.Component {
                 for (var i = 0; i < tomDoubledScores.length; i++) {
                     TomPoints += tomDoubledScores[i];
                 }
-                console.log(TomPoints);
                 this.setState({ tomNBA: TomPoints });
                 this.setState({ magic: doubleMagic });
                 this.setState({ warriors: doubleWarriors });
