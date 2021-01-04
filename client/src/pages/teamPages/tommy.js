@@ -24,56 +24,37 @@ class tommy extends React.Component {
         blackhawks: "",
         knights: "",
         canucks: "",
-        totalNHL: ""
+        totalNHL: "",
+        // PGA States here
+        koepka: "",
+        matsuyama: "",
+        english: "",
+        kokrak: "",
+        lowry: "",
+        totalPGA: ""
     }
 
     componentDidMount = () => {
         this.getScoresNBA();
-        this.getScoresNHL();
-        // this.getScoresEPL();
+        // this.getScoresNHL();
+        this.getScoresEPL();
         this.getScoresPGA();
     }
 
     getScoresPGA = () => {
-        API.getScoresPGA()
-            .then(res => {
-                console.log(res)
-                // HERE ARE NBA TEAMS FOR TOMMY 2021 
-                // THis is now warriors. 
-                // var warriorsWin = res.data.api.standings[24].win;
-                // // And Magic
-                // var magicWin = res.data.api.standings[2].win;
-                // // and Twolves
-                // var twolvesWin = res.data.api.standings[25].win;
-                // // console.log(res.data.api.standings);
-
-                // // I need to multiply the API result by 2 FIRST since we need them individually. 
-
-                // var doubleWarriors = (warriorsWin * 2.25);
-                // var doubleMagic = (magicWin * 2.25);
-                // var doubletwolves = (twolvesWin * 2.25);
-
-                // const tempTomNBA = this.state.allNBA;
-                // tempTomNBA.push(warriorsWin);
-                // tempTomNBA.push(magicWin);
-                // tempTomNBA.push(twolvesWin);
-
-                // var tomDoubledScores = tempTomNBA.map(team => team * 2.25);
-
-                // var TomPoints = 0;
-
-                // for (var i = 0; i < tomDoubledScores.length; i++) {
-                //     TomPoints += tomDoubledScores[i];
-                // }
-                // console.log(TomPoints);
-                // this.setState({ tomNBA: TomPoints });
-                // this.setState({ magic: doubleMagic });
-                // this.setState({ warriors: doubleWarriors });
-                // this.setState({ twolves: doubletwolves });
-            })
-            .catch(error => {
-                console.log(error)
-            });
+        // Tom's PGA Here. Golf Team 8. 
+        var Koepka = 11.2
+        var Matsuyama = 21.25
+        var English = 22
+        var Kokrak = 29.8
+        var Lowry = 7.3
+        var pgaTotal = Koepka + Matsuyama + English + Kokrak + Lowry
+        this.setState({ totalPGA: pgaTotal });
+        this.setState({ koepka: Koepka });
+        this.setState({ matsuyama: Matsuyama });
+        this.setState({ english: English });
+        this.setState({ kokrak: Kokrak });
+        this.setState({ lowry: Lowry });
     }
 
     getScoresNHL = () => {
@@ -210,8 +191,8 @@ class tommy extends React.Component {
                 // And Magic
                 var magicWin = res.data.api.standings[2].win;
                 // and Twolves
-                var twolvesWin = res.data.api.standings[25].win;
-                // console.log(res.data.api.standings);
+                var twolvesWin = res.data.api.standings[28].win;
+                console.log(res.data.api.standings);
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
@@ -475,13 +456,63 @@ class tommy extends React.Component {
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                <td>{this.state.totalNHL}</td>
+                                                <td>{this.state.totalMLB}</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
+
+                        <div className="container smallTable">
+                            <div className="row">
+                                <div className="col">
+                                    {/* Here is MLB */}
+                                    <table className="table table-striped table-bordered table-hover">
+                                        <thead className="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">Golfer</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">141</th>
+                                                <td className="">Brooks Koepka</td>
+                                                <td>{this.state.koepka}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Matsuyama</td>
+                                                <td>{this.state.matsuyama}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Harris English</td>
+                                                <td>{this.state.english}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Jason Kokrak</td>
+                                                <td>{this.state.kokrak}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Shane Lowry</td>
+                                                <td>{this.state.lowry}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalPGA}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 

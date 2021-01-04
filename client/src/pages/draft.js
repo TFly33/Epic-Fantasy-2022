@@ -769,7 +769,7 @@ class draft extends React.Component {
                                     <tr>
                                         <th scope="row">140</th>
                                         <td className="none">GT2 Dechambeau/Rose/Scott/Kisner/Kim </td>
-                                        <td>Patrick</td>
+                                        <td>Big Dog</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">141</th>

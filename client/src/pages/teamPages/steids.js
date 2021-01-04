@@ -24,12 +24,37 @@ class steids extends React.Component {
         sabres: "",
         panthers: "",
         totalNHL: "",
+        // PGA States here
+        schauffele: "",
+        finau: "",
+        woods: "",
+        ancer: "",
+        griffin: "",
+        totalPGA: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
-        // this.getScoresEPL();
+        this.getScoresPGA();
+        this.getScoresEPL();
         // this.getScoresNHL();
     };
+
+    getScoresPGA = () => {
+        // Tom's PGA Here. Golf Team 8. 
+        // Steids's PGA Here. Golf Team 6. 
+        var Schauffele = 25.9
+        var Finau = 13.8
+        var Woods = 1
+        var Ancer = 15.3
+        var Griffin = 8.5
+        var pgaTotal = Schauffele + Finau + Woods + Ancer + Griffin
+        this.setState({ totalPGA: pgaTotal });
+        this.setState({ schauffele: Schauffele });
+        this.setState({ finau: Finau });
+        this.setState({ woods: Woods });
+        this.setState({ ancer: Ancer });
+        this.setState({ griffin: Griffin });
+    }
 
     getScoresNHL = () => {
         API.getScoresNHL()
@@ -165,7 +190,7 @@ class steids extends React.Component {
             .then(res => {
                 // New Steids Teams for 2021
                 // This is now Lakers
-                console.log (res.data.api.standings)
+                console.log(res.data.api.standings)
                 // This is now 
                 var lakersWin = res.data.api.standings[23].win;
                 // This is now Nets
@@ -443,6 +468,56 @@ class steids extends React.Component {
                                 </div>
                             </div>
                         </div>
+
+                        <div className="container smallTable">
+                            <div className="row">
+                                <div className="col">
+                                    {/* Here is MLB */}
+                                    <table className="table table-striped table-bordered table-hover">
+                                        <thead className="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">Golfer</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">133</th>
+                                                <td className="">Xander Schauffele</td>
+                                                <td>{this.state.schauffele}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Tony Finau</td>
+                                                <td>{this.state.finau}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Tiger Woods</td>
+                                                <td>{this.state.woods}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Abraham Ancer</td>
+                                                <td>{this.state.ancer}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Lanto Griffin</td>
+                                                <td>{this.state.griffin}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalPGA}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
 
 
                     </div>

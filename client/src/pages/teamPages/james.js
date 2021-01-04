@@ -23,13 +23,36 @@ class james extends React.Component {
         flames: "",
         pens: "",
         wild: "",
-        totalNHL: ""
+        totalNHL: "",
+        // PGA Here
+        cantlay: "",
+        reed: "",
+        fowler: "",
+        woodland: "",
+        mickelson: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
+        this.getScoresPGA();
         // this.getScoresNHL();
     }
+
+    getScoresPGA = () => {
+        // James's PGA Here. Golf Team 2. 
+        var Cantlay = 33
+        var Reed = 9.75
+        var Fowler = 3.5
+        var Woodland = 0
+        var Mickelson = 1.05
+        var pgaTotal = Cantlay + Reed + Fowler + Woodland + Mickelson
+        this.setState({ totalPGA: pgaTotal });
+        this.setState({ cantlay: Cantlay });
+        this.setState({ reed: Reed });
+        this.setState({ fowler: Fowler });
+        this.setState({ woodland: Woodland });
+        this.setState({ mickelson: Mickelson });
+    };
 
     getScoresNHL = () => {
         API.getScoresNHL()
@@ -219,7 +242,7 @@ class james extends React.Component {
                             </li>
                             <li class="nav-item active">
                                 <div class="dropdown show">
-                                    <div class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
                                     </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -261,7 +284,7 @@ class james extends React.Component {
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col-6">Draft Pick</th>
-                                        <th scope="col-6">NBA Team</th> 
+                                        <th scope="col-6">NBA Team</th>
                                         <th scope="col-6">Points</th>
                                     </tr>
                                 </thead>
@@ -442,6 +465,56 @@ class james extends React.Component {
                                 </div>
                             </div>
                         </div>
+
+                        <div className="container smallTable">
+                            <div className="row">
+                                <div className="col">
+                                    {/* Here is MLB */}
+                                    <table className="table table-striped table-bordered table-hover">
+                                        <thead className="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">Golfer</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">149</th>
+                                                <td className="">Patrick Cantlay</td>
+                                                <td>{this.state.cantlay}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Patrick Reed</td>
+                                                <td>{this.state.reed}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Rickie Fowler</td>
+                                                <td>{this.state.fowler}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Gary Woodland</td>
+                                                <td>{this.state.woodland}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Phil Mickelson</td>
+                                                <td>{this.state.mickelson}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalPGA}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
 
 
 

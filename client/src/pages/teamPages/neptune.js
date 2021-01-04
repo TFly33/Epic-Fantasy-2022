@@ -25,13 +25,36 @@ class neptune extends React.Component {
         rangers: "",
         devils: "",
         totalNHL: "",
-
+        // PGA Going here.
+        rahm: "",
+        scheffler: "",
+        spieth: "",
+        casey: "",
+        watson: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
+        this.getScoresPGA();
         // this.getScoresNHL();
     };
+
+    getScoresPGA = () => {
+        // Pat's PGA Here. Golf Team 10. 
+        var Rahm = 21.3
+        var Scheffler = 6.85
+        var Spieth = 2
+        var Casey = 4.6
+        var Watson = 11.55
+        var pgaTotal = Rahm + Scheffler + Spieth + Casey + Watson
+
+        this.setState({ totalPGA: pgaTotal });
+        this.setState({ rahm: Rahm });
+        this.setState({ scheffler: Scheffler });
+        this.setState({ spieth: Spieth });
+        this.setState({ casey: Casey });
+        this.setState({ watson: Watson });
+    }
 
     getScoresNHL = () => {
         API.getScoresNHL()
@@ -181,7 +204,7 @@ class neptune extends React.Component {
                 // pacers becomes Mavs 
                 var mavsWin = res.data.api.standings[16].win;
                 // Hornets becomes Blazers
-                var blazersWin = res.data.api.standings[25].win;
+                var blazersWin = res.data.api.standings[29].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
@@ -228,7 +251,7 @@ class neptune extends React.Component {
                             </li>
                             <li class="nav-item active">
                                 <div class="dropdown show">
-                                    <div class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
                                     </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -413,7 +436,7 @@ class neptune extends React.Component {
                             </div>
                         </div>
 
-                    
+
                         <div class="container smallTable">
                             <div class="row">
                                 <div class="col">
@@ -446,6 +469,55 @@ class neptune extends React.Component {
                                                 <th scope="row">Total</th>
                                                 <td></td>
                                                 <td>{this.state.totalNHL}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="container smallTable">
+                            <div className="row">
+                                <div className="col">
+                                    {/* Here is MLB */}
+                                    <table className="table table-striped table-bordered table-hover">
+                                        <thead className="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">Golfer</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">148</th>
+                                                <td className="">Jon Rahm</td>
+                                                <td>{this.state.rahm}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Scottie Scheffler</td>
+                                                <td>{this.state.scheffler}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Jordan Spieth</td>
+                                                <td>{this.state.spieth}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Paul Casey</td>
+                                                <td>{this.state.casey}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Bubba Watson</td>
+                                                <td>{this.state.watson}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalPGA}</td>
                                             </tr>
                                         </tbody>
                                     </table>

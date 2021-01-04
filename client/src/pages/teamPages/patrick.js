@@ -13,7 +13,7 @@ class patrick extends React.Component {
         suns: "",
         ravens: "",
         titans: "",
-        jets:"",
+        jets: "",
         totalNFL: "",
         // EPL HERE
         city: "",
@@ -24,11 +24,35 @@ class patrick extends React.Component {
         ducks: "",
         kings: "",
         totalNHL: "",
+        // PGA Here
+        hovland: "",
+        wolff: "",
+        champ: "",
+        munoz: "",
+        henley: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
+        this.getScoresPGA();
         // this.getScoresNHL();
+    }
+
+    getScoresPGA = () => {
+        // Pat's PGA Here. Golf Team 10. 
+        var Hovland = 34.1
+        var Wolff = 29.25
+        var Champ = 7.15
+        var Munoz = 12.7
+        var Henley = 17.55
+        var pgaTotal = Hovland + Wolff + Champ + Munoz + Henley
+
+        this.setState({ totalPGA: pgaTotal });
+        this.setState({ hovland: Hovland });
+        this.setState({ wolff: Wolff });
+        this.setState({ champ: Champ });
+        this.setState({ munoz: Munoz });
+        this.setState({ henley: Henley });
     }
 
     getScoresNHL = () => {
@@ -124,7 +148,7 @@ class patrick extends React.Component {
 
                 // running the for loop here. 
                 var forLoopArray = res.data.response[0].league.standings[0];
-                
+
                 // console.log (forLoopArray)
 
                 for (var i = 0; i < forLoopArray.length; i++) {
@@ -174,7 +198,7 @@ class patrick extends React.Component {
 
                 var doublejazz = (jazzWin * 2.25);
                 var doublesuns = (sunsWin * 2.25);
-                var doublerockets= (rocketsWin * 2.25);
+                var doublerockets = (rocketsWin * 2.25);
 
                 const tempPatrickNBA = this.state.allNBA;
 
@@ -216,7 +240,7 @@ class patrick extends React.Component {
                             </li>
                             <li class="nav-item active">
                                 <div class="dropdown show">
-                                    <div class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
                                     </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -439,6 +463,57 @@ class patrick extends React.Component {
                             </div>
                         </div>
 
+                        <div className="container smallTable">
+                            <div className="row">
+                                <div className="col">
+                                    {/* Here is MLB */}
+                                    <table className="table table-striped table-bordered table-hover">
+                                        <thead className="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">Golfer</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">131</th>
+                                                <td className="">Viktor Hovland</td>
+                                                <td>{this.state.hovland}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Matthew Wolff</td>
+                                                <td>{this.state.wolff}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Cameron Champ</td>
+                                                <td>{this.state.champ}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Sebastian Munoz</td>
+                                                <td>{this.state.munoz}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Russell Henley</td>
+                                                <td>{this.state.henley}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalPGA}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+
 
 
                     </div>
@@ -456,7 +531,7 @@ class patrick extends React.Component {
                             </div>
                         </div>
                     </div>
-                <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
+                    <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
                         <div class="container text-center">
                             <small>Copyright &copy; Epic Fantasy League 2021</small>
                         </div>
