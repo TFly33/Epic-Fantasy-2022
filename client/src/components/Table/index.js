@@ -107,33 +107,33 @@ class Table extends Component {
                 {
                     label: 'EPL',
                     field: 'epl',
-                    sort: 'asc',
+                    sort: 'val',
                     width: 150
                 },
-                {
-                    label: 'NFL',
-                    field: 'nfl',
-                    sort: 'asc',
-                    width: 150
-                },
+                // {
+                //     label: 'NFL',
+                //     field: 'nfl',
+                //     sort: 'asc',
+                //     width: 150
+                // },
                 {
                     label: 'NBA',
                     field: 'nba',
                     sort: 'asc',
                     width: 150
                 },
-                {
-                    label: 'NHL',
-                    field: 'nhl',
-                    sort: 'asc',
-                    width: 150
-                },
-                {
-                    label: 'MLB',
-                    field: 'mlb',
-                    sort: 'asc',
-                    width: 150
-                },
+                // {
+                //     label: 'NHL',
+                //     field: 'nhl',
+                //     sort: 'asc',
+                //     width: 150
+                // },
+                // {
+                //     label: 'MLB',
+                //     field: 'mlb',
+                //     sort: 'asc',
+                //     width: 150
+                // },
                 {
                     label: 'Golf',
                     field: 'pga',

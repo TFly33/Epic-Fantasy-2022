@@ -26,12 +26,36 @@ class ben extends React.Component {
         avalanche: "",
         flyers: "",
         totalNHL: "",
+        // PGA
+        thomas: "",
+        berger: "",
+        fitzpatrick: "",
+        todd: "",
+        kuchar: "",
+        totalPGA: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
+        this.getScoresPGA();
         // this.getScoresNHL();
-    }
+    };
+
+    getScoresPGA = () => {
+        // DJ's PGA Here. Golf Team 1. 
+        var Thomas = 29.7
+        var Berger = 6.25
+        var Fitzpatrick = 5.1
+        var Todd = 7.4
+        var Kuchar = 2.3
+        var pgaTotal = Thomas + Berger + Fitzpatrick + Todd + Kuchar
+        this.setState({ totalPGA: pgaTotal });
+        this.setState({ thomas: Thomas });
+        this.setState({ berger: Berger });
+        this.setState({ fitzpatrick: Fitzpatrick });
+        this.setState({ todd: Todd });
+        this.setState({ kuchar: Kuchar });
+    };
 
     getScoresNHL = () => {
         API.getScoresNHL()
@@ -437,6 +461,55 @@ class ben extends React.Component {
                                                 <th scope="row">Total</th>
                                                 <td></td>
                                                 <td>{this.state.totalNHL}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="container smallTable">
+                            <div className="row">
+                                <div className="col">
+                                    {/* Here is MLB */}
+                                    <table className="table table-striped table-bordered table-hover">
+                                        <thead className="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">Golfer</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">132</th>
+                                                <td className="">Justin Thomas</td>
+                                                <td>{this.state.thomas}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Daniel Berger</td>
+                                                <td>{this.state.berger}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Matthew Fitzpatrick</td>
+                                                <td>{this.state.fitzpatrick}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Brenden Todd</td>
+                                                <td>{this.state.todd}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Matt Kuchar</td>
+                                                <td>{this.state.kuchar}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalPGA}</td>
                                             </tr>
                                         </tbody>
                                     </table>

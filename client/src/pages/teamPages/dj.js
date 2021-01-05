@@ -24,12 +24,36 @@ class dj extends React.Component {
         canes: "",
         coyotes: "",
         totalNHL: "",
+        // PGA 
+        johnson: "",
+        day: "",
+        niemann: "",
+        oosthuizen: "",
+        garcia: "",
+        totalPGA: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
+        this.getScoresPGA();
         // this.getScoresNHL();
     }
+
+    getScoresPGA = () => {
+        // DJ's PGA Here. Golf Team 1. 
+        var Johnson = 47.5
+        var Day = 8.3
+        var Niemann = 14.05
+        var Oosthuizen = 15.25
+        var Garcia = 27.4
+        var pgaTotal = Johnson + Day + Niemann + Oosthuizen + Garcia
+        this.setState({ totalPGA: pgaTotal });
+        this.setState({ johnson: Johnson });
+        this.setState({ day: Day });
+        this.setState({ niemann: Niemann });
+        this.setState({ oosthuizen: Oosthuizen });
+        this.setState({ garcia: Garcia });
+    };
 
     getScoresNHL = () => {
         API.getScoresNHL()
@@ -443,7 +467,55 @@ class dj extends React.Component {
                                 </div>
                             </div>
                         </div>
-
+                    
+                        <div className="container smallTable">
+                            <div className="row">
+                                <div className="col">
+                                    {/* Here is MLB */}
+                                    <table className="table table-striped table-bordered table-hover">
+                                        <thead className="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">Golfer</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">107</th>
+                                                <td className="">Dustin Johnson</td>
+                                                <td>{this.state.johnson}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Jason Day</td>
+                                                <td>{this.state.day}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Joaquinn Niemann</td>
+                                                <td>{this.state.niemann}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Louis Oosthuizen</td>
+                                                <td>{this.state.oosthuizen}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Sergio Garcia</td>
+                                                <td>{this.state.garcia}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalPGA}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
 
 
 

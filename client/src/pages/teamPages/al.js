@@ -24,13 +24,37 @@ class al extends React.Component {
         bruins: "",
         wings: "",
         totalNHL: "",
+        // PGA here
+        morikawa: "",
+        simpson: "",
+        hatton: "",
+        smith: "",
+        conners: "",
+        totalPGA: ""
     }
 
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
+        this.getScoresPGA();
         // this.getScoresNHL();
     }
+
+    getScoresPGA = () => {
+        // Al's PGA Here. Golf Team 1. 
+        var Morikawa = 3.95
+        var Simpson = 13.65
+        var Hatton = 15.3
+        var Smith = 25.1
+        var Conners = 18.15
+        var pgaTotal = Morikawa + Simpson + Hatton + Smith + Conners
+        this.setState({ totalPGA: pgaTotal });
+        this.setState({ morikawa: Morikawa });
+        this.setState({ simpson: Simpson });
+        this.setState({ hatton: Hatton });
+        this.setState({ smith: Smith });
+        this.setState({ conners: Conners });
+    };
 
     getScoresNHL = () => {
         API.getScoresNHL()
@@ -115,45 +139,45 @@ class al extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-                 //   Starting Goose EPL Here 
-               var evertonWin;
-               var evertonTie;
-               var southhamptonWin;
-               var southhamptonTie;
+                //   Starting Goose EPL Here 
+                var evertonWin;
+                var evertonTie;
+                var southhamptonWin;
+                var southhamptonTie;
 
-               // running the for loop here. 
-               var forLoopArray = res.data.response[0].league.standings[0];
-               console.log(forLoopArray);
+                // running the for loop here. 
+                var forLoopArray = res.data.response[0].league.standings[0];
+                console.log(forLoopArray);
 
-               for (var i = 0; i < forLoopArray.length; i++) {
+                for (var i = 0; i < forLoopArray.length; i++) {
 
-                   if (forLoopArray[i].team.id === 49) {
-                       evertonWin = forLoopArray[i].all.win
-                       evertonTie = forLoopArray[i].all.draw
-                       //then so something
-                       //return something here
-                       console.log("here are the wins" + evertonWin);
-                       console.log("here are the ties" + evertonTie);
-                   }
+                    if (forLoopArray[i].team.id === 49) {
+                        evertonWin = forLoopArray[i].all.win
+                        evertonTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + evertonWin);
+                        console.log("here are the ties" + evertonTie);
+                    }
 
-                   if (forLoopArray[i].team.id === 63) {
-                       southhamptonWin = forLoopArray[i].all.win
-                       southhamptonTie = forLoopArray[i].all.draw
-                       //then so something
-                       //return something here
-                       console.log("here are the wins" + southhamptonWin);
-                       console.log("here are the ties" + southhamptonTie);
-                   }
-               }
+                    if (forLoopArray[i].team.id === 63) {
+                        southhamptonWin = forLoopArray[i].all.win
+                        southhamptonTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + southhamptonWin);
+                        console.log("here are the ties" + southhamptonTie);
+                    }
+                }
 
-               var evertonTotal = (evertonWin * 4.25) + (evertonTie);
-               var southhamptonTotal = (southhamptonWin * 4.25) + (southhamptonTie);
+                var evertonTotal = (evertonWin * 4.25) + (evertonTie);
+                var southhamptonTotal = (southhamptonWin * 4.25) + (southhamptonTie);
 
-               // Here is the final result
-               var alPoints = evertonTotal + southhamptonTotal;
-               this.setState({ everton: evertonTotal });
-               this.setState({ southhampton: southhamptonTotal });
-               this.setState({ alEPL: alPoints });
+                // Here is the final result
+                var alPoints = evertonTotal + southhamptonTotal;
+                this.setState({ everton: evertonTotal });
+                this.setState({ southhampton: southhamptonTotal });
+                this.setState({ alEPL: alPoints });
 
             })
             .catch(error => {
@@ -214,7 +238,7 @@ class al extends React.Component {
                             </li>
                             <li className="nav-item active">
                                 <div className="dropdown show">
-                                    <div className="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div className="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
                                     </div>
                                     <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -375,22 +399,22 @@ class al extends React.Component {
                                             <tr>
                                                 <th scope="row">53</th>
                                                 <td className="capitals">Washington Capitals</td>
-                                                {/* <td>{this.state.lightning}</td> */}
+                                                <td>{this.state.lightning}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">74</th>
                                                 <td className="hurricanes">Carolina Hurricanes</td>
-                                                {/* <td>{this.state.bruins}</td> */}
+                                                <td>{this.state.bruins}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">94</th>
                                                 <td className="rangers">New York Rangers</td>
-                                                {/* <td>{this.state.wings}</td> */}
+                                                <td>{this.state.wings}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                {/* <td>{this.state.totalNHL}</td> */}
+                                                <td>{this.state.totalNHL}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -398,8 +422,8 @@ class al extends React.Component {
                             </div>
                         </div>
 
-                         {/* Adding the MLB Table here*/}
-                         <div class="container">
+                        {/* Adding the MLB Table here*/}
+                        <div class="container">
                             <div class="row">
                                 <div class="col">
                                     {/* Here is MLB */}
@@ -415,22 +439,71 @@ class al extends React.Component {
                                             <tr>
                                                 <th scope="row">15</th>
                                                 <td className="yankees">New York Yankees</td>
-                                                {/* <td>{this.state.lightning}</td> */}
+                                                <td>{this.state.lightning}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">48</th>
                                                 <td className="athletics">Oakland Athletics</td>
-                                                {/* <td>{this.state.bruins}</td> */}
+                                                <td>{this.state.bruins}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">127</th>
                                                 <td className="tigers">Detroit Tigers</td>
-                                                {/* <td>{this.state.wings}</td> */}
+                                                <td>{this.state.wings}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                {/* <td>{this.state.totalNHL}</td> */}
+                                                <td>{this.state.totalNHL}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="container smallTable">
+                            <div className="row">
+                                <div className="col">
+                                    {/* Here is PGA */}
+                                    <table className="table table-striped table-bordered table-hover">
+                                        <thead className="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">Golfer</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">134</th>
+                                                <td className="">Colin Morikawa</td>
+                                                <td>{this.state.morikawa}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Webb Simpson</td>
+                                                <td>{this.state.simpson}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Tyrell Hatton</td>
+                                                <td>{this.state.hatton}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Cameron Smith</td>
+                                                <td>{this.state.smith}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td className="">Corey Conners</td>
+                                                <td>{this.state.conners}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalPGA}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -439,8 +512,10 @@ class al extends React.Component {
                         </div>
 
 
+
                     </div>
                 </div>
+
 
                 <body class="d-flex flex-column">
                     <div id="page-content">
