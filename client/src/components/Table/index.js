@@ -1637,7 +1637,7 @@ class Table extends Component {
 
                 this.setState({ tomNBA: TomPoints });
 
-                // console.log(res.data.api.standings);
+                console.log(res.data.api.standings);
                 // Now switching to the new way. 
                 // New Steids Teams for 2021
                 var lakersWin = res.data.api.standings[23].win * 2.25;
@@ -1690,7 +1690,7 @@ class Table extends Component {
 
                 // Joe
                 var bucksWin = res.data.api.standings[13].win * 2.25;
-                var grizzliesWin = res.data.api.standings[16].win * 2.25;
+                var grizzliesWin = res.data.api.standings[17].win * 2.25;
                 var bullsWin = res.data.api.standings[10].win * 2.25;
                 var joePoints = bucksWin + grizzliesWin + bullsWin;
                 this.setState({ joeNBA: joePoints });

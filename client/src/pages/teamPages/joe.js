@@ -196,7 +196,7 @@ class joe extends React.Component {
                 // 2021 Joe NBA Teams. 
                 // Bucks
                 var bucksWin = res.data.api.standings[13].win;
-                var grizzliesWin = res.data.api.standings[16].win;
+                var grizzliesWin = res.data.api.standings[17].win;
                 var bullsWin = res.data.api.standings[10].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
