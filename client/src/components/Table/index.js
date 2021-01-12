@@ -70,10 +70,10 @@ class Table extends Component {
         eresPGA: "",
 
         // Gambling points here: 
-        tomGamble: 190,
+        tomGamble: 185,
         patGamble: 214,
         jamesGamble: 200,
-        neptuneGamble: 173,
+        neptuneGamble: 178,
         djGamble: 200,
         gooseGamble: 203,
         alGamble: 210,
