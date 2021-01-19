@@ -40,11 +40,11 @@ class james extends React.Component {
 
     getScoresPGA = () => {
         // James's PGA Here. Golf Team 2. 
-        var Cantlay = 33
-        var Reed = 9.75
+        var Cantlay = 36
+        var Reed = 12
         var Fowler = 3.5
         var Woodland = 0
-        var Mickelson = 1.05
+        var Mickelson = 1
         var pgaTotal = Cantlay + Reed + Fowler + Woodland + Mickelson
         this.setState({ totalPGA: pgaTotal });
         this.setState({ cantlay: Cantlay });

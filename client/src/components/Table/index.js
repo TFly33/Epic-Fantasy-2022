@@ -122,12 +122,12 @@ class Table extends Component {
                     sort: 'asc',
                     width: 150
                 },
-                // {
-                //     label: 'NHL',
-                //     field: 'nhl',
-                //     sort: 'asc',
-                //     width: 150
-                // },
+                {
+                    label: 'NHL',
+                    field: 'nhl',
+                    sort: 'asc',
+                    width: 150
+                },
                 // {
                 //     label: 'MLB',
                 //     field: 'mlb',
@@ -284,11 +284,11 @@ class Table extends Component {
         // first we scrape. Inside the function, need to post to the Mongo DB. 
         this.getScoresNBA();
         // Now, once the updates have applied, we call the getteams. This will show updated results. I'm gonna freeze this for the time being so I don't make a million API calls. 
-        this.getScoresEPL();
+        // this.getScoresEPL();
         // I'm gonna run this as a function even though these are just dead numbers at this point (since the NFL regular season ended)
         // this.getScoresNFL();
         // // running NHL here
-        // this.getScoresNHL();
+        this.getScoresNHL();
         // MLB Here 
         // this.getScoresMLB(); 
         // PGA Golf here. Gonna do it by hand for now and then potentially change it later if I can get the API to work. 
@@ -302,7 +302,7 @@ class Table extends Component {
         // Totals for Tom 
         var tomTotalPoints =
             parseInt((this.state.tomNBA)) +
-            // parseInt((this.state.tomNHL)) + 
+            parseInt((this.state.tomNHL)) + 
             // parseInt((this.state.tomNFL)) + 
             parseInt((this.state.tomEPL)) +
             parseInt((this.state.tomPGA)) +
@@ -312,7 +312,7 @@ class Table extends Component {
         // Totals for Pat 
         var patTotalPoints =
             parseInt((this.state.patNBA)) +
-            // parseInt((this.state.patNHL)) + 
+            parseInt((this.state.patNHL)) + 
             // parseInt((this.state.patNFL)) + 
             parseInt((this.state.patEPL)) +
             parseInt((this.state.patPGA)) +
@@ -322,7 +322,7 @@ class Table extends Component {
         // Totals for JAmes
         var jamesTotalPoints =
             parseInt((this.state.jamesNBA)) +
-            // parseInt((this.state.jamesNHL)) + 
+            parseInt((this.state.jamesNHL)) + 
             // parseInt((this.state.jamesNFL)) + 
             parseInt((this.state.jamesEPL)) +
             parseInt((this.state.jamesPGA)) +
@@ -332,7 +332,7 @@ class Table extends Component {
         // Totals for Neptune
         var neptuneTotalPoints =
             parseInt((this.state.neptuneNBA)) +
-            // parseInt((this.state.neptuneNHL)) + 
+            parseInt((this.state.neptuneNHL)) + 
             // parseInt((this.state.neptuneNFL)) + 
             parseInt((this.state.neptuneEPL)) +
             parseInt((this.state.neptunePGA)) +
@@ -342,7 +342,7 @@ class Table extends Component {
         // Totals for DJ
         var djTotalPoints =
             parseInt((this.state.djNBA)) +
-            // parseInt((this.state.djNHL)) + 
+            parseInt((this.state.djNHL)) + 
             // parseInt((this.state.djNFL)) + 
             parseInt((this.state.djEPL)) +
             parseInt((this.state.djPGA)) +
@@ -352,7 +352,7 @@ class Table extends Component {
         // Totals for Goose 
         var gooseTotalPoints =
             parseInt((this.state.gooseNBA)) +
-            // parseInt((this.state.gooseNHL)) + 
+            parseInt((this.state.gooseNHL)) + 
             // parseInt((this.state.gooseNFL)) + 
             parseInt((this.state.gooseEPL)) +
             parseInt((this.state.goosePGA)) +
@@ -362,7 +362,7 @@ class Table extends Component {
         // Totals for Al
         var alTotalPoints =
             parseInt((this.state.alNBA)) +
-            // parseInt((this.state.alNHL)) + 
+            parseInt((this.state.alNHL)) + 
             // parseInt((this.state.alNFL)) + 
             parseInt((this.state.alEPL)) +
             parseInt((this.state.alPGA)) +
@@ -372,7 +372,7 @@ class Table extends Component {
         // Totals for Joe
         var joeTotalPoints =
             parseInt((this.state.joeNBA)) +
-            // parseInt((this.state.joeNHL)) + 
+            parseInt((this.state.joeNHL)) + 
             // parseInt((this.state.joeNFL)) + 
             parseInt((this.state.joeEPL)) +
             parseInt((this.state.joePGA)) +
@@ -382,7 +382,7 @@ class Table extends Component {
         // Totals for Steids
         var steidsTotalPoints =
             parseInt((this.state.steidsNBA)) +
-            // parseInt((this.state.steidsNHL)) + 
+            parseInt((this.state.steidsNHL)) + 
             // parseInt((this.state.steidsNFL)) + 
             parseInt((this.state.steidsEPL)) +
             parseInt((this.state.steidsPGA)) +
@@ -392,7 +392,7 @@ class Table extends Component {
         // Totals for Ben
         var benTotalPoints =
             parseInt((this.state.benNBA)) +
-            // parseInt((this.state.benNHL)) + 
+            parseInt((this.state.benNHL)) + 
             // parseInt((this.state.benNFL)) + 
             parseInt((this.state.benEPL)) +
             parseInt((this.state.eresPGA)) +
@@ -404,104 +404,104 @@ class Table extends Component {
 
     getScoresPGA = () => {
         // Tom's PGA Here. Golf Team 8. 
-        var Koepka = 11.2
-        var Matsuyama = 21.25
-        var English = 22
-        var Kokrak = 29.8
-        var Lowry = 7.3
+        var Koepka = 11
+        var Matsuyama = 24
+        var English = 48
+        var Kokrak = 31
+        var Lowry = 7
         var tomPGATotal = Koepka + Matsuyama + English + Kokrak + Lowry
         this.setState({ tomPGA: tomPGATotal });
-        console.log(tomPGATotal);
+        // console.log(tomPGATotal);
 
         // Pat's PGA Here. Golf Team 10. 
-        var Hovland = 34.1
-        var Wolff = 29.25
-        var Champ = 7.15
-        var Munoz = 12.7
-        var Henley = 17.55
+        var Hovland = 35
+        var Wolff = 29
+        var Champ = 8
+        var Munoz = 15
+        var Henley = 21
         var patPGATotal = Hovland + Wolff + Champ + Munoz + Henley
         this.setState({ patPGA: patPGATotal });
-        console.log(patPGATotal);
+        // console.log(patPGATotal);
 
         // James's PGA Here. Golf Team 7. 
-        var Cantlay = 33
-        var Reed = 9.75
+        var Cantlay = 36
+        var Reed = 12
         var Fowler = 3.5
         var Woodland = 0
-        var Mickelson = 1.05
+        var Mickelson = 1
         var jamesPGATotal = Cantlay + Reed + Fowler + Woodland + Mickelson
         this.setState({ jamesPGA: jamesPGATotal });
-        console.log(jamesPGATotal);
+        // console.log(jamesPGATotal);
 
         // Neptune's PGA Here. Golf Team 3. 
-        var Rahm = 21.3
-        var Scheffler = 6.85
+        var Rahm = 26
+        var Scheffler = 10
         var Spieth = 2
-        var Casey = 4.6
-        var Watson = 11.55
+        var Casey = 5
+        var Watson = 12
         var neptunePGATotal = Rahm + Scheffler + Spieth + Casey + Watson
         this.setState({ neptunePGA: neptunePGATotal });
-        console.log(neptunePGATotal);
+        // console.log(neptunePGATotal);
 
         // DJ's PGA Here. Golf Team 1. 
-        var Johnson = 47.5
-        var Day = 8.3
-        var Niemann = 14.05
-        var Oosthuizen = 15.25
-        var Garcia = 27.4
+        var Johnson = 51
+        var Day = 8
+        var Niemann = 41
+        var Oosthuizen = 15
+        var Garcia = 31
         var djPGATotal = Johnson + Day + Niemann + Oosthuizen + Garcia
         this.setState({ djPGA: djPGATotal });
-        console.log(djPGATotal);
+        // console.log(djPGATotal);
 
         // Goose's PGA Here. Golf Team 5. 
-        var McIlroy = 13.9
-        var Im = 21.45
+        var McIlroy = 14
+        var Im = 27
         var Fleetwood = 3.8
-        var Leishman = 3.6
-        var Horschel = 8.15
+        var Leishman = 11
+        var Horschel = 14
         var goosePGATotal = McIlroy + Im + Fleetwood + Leishman + Horschel
         this.setState({ goosePGA: goosePGATotal });
-        console.log(goosePGATotal);
+        // console.log(goosePGATotal);
 
         // Al's PGA Here. Golf Team 9. 
-        var Morikawa = 3.95
-        var Simpson = 13.65
-        var Hatton = 15.3
-        var Smith = 25.1
-        var Conners = 18.15
+        var Morikawa = 12
+        var Simpson = 22
+        var Hatton = 15
+        var Smith = 27
+        var Conners = 18
         var alPGATotal = Morikawa + Simpson + Hatton + Smith + Conners
         this.setState({ alPGA: alPGATotal });
-        console.log(alPGATotal);
+        // console.log(alPGATotal);
 
         // Joe's PGA Here. Golf Team 2. 
-        var Dechambeau = 34.9
-        var Rose = 4.6
-        var Scott = 3.15
-        var Kisner = 18.3
-        var Kim = 8.7
+        var Dechambeau = 39
+        var Rose = 4
+        var Scott = 6
+        var Kisner = 21
+        var Kim = 10
         var joePGATotal = Dechambeau + Rose + Scott + Kisner + Kim
         this.setState({ joePGA: joePGATotal });
-        console.log(joePGATotal);
+        // console.log(joePGATotal);
 
         // Steids's PGA Here. Golf Team 6. 
-        var Schauffele = 25.9
-        var Finau = 13.8
+        var Schauffele = 31
+        var Finau = 15
         var Woods = 1
-        var Ancer = 15.3
-        var Griffin = 8.5
+        var Ancer = 18
+        var Griffin = 12
         var steidsPGATotal = Schauffele + Finau + Woods + Ancer + Griffin
         this.setState({ steidsPGA: steidsPGATotal });
-        console.log(steidsPGATotal);
+        // console.log(steidsPGATotal);
 
         // Eres's PGA Here. Golf Team 4. 
-        var Thomas = 29.7
-        var Berger = 6.25
-        var Fitzpatrick = 5.1
-        var Todd = 7.4
-        var Kuchar = 2.3
+        var Thomas = 39
+        var Berger = 14
+        var Fitzpatrick = 5
+        var Todd = 11
+        var Kuchar = 2
         var eresPGATotal = Thomas + Berger + Fitzpatrick + Todd + Kuchar
         this.setState({ eresPGA: eresPGATotal });
-        console.log(eresPGATotal);
+        // console.log(eresPGATotal);
     };
     // This one I get to hard code because the season ended. 
 
@@ -525,6 +525,7 @@ class Table extends Component {
                 // NHL FOR TOM 
                 // This is the Metro Division
                 var metroResults = res.data.records[0].teamRecords;
+                console.log (metroResults + " Here are Metro Results")
                 // Atlantic Division
                 var atlanticResults = res.data.records[1].teamRecords;
                 // Central Division
@@ -589,6 +590,7 @@ class Table extends Component {
                 console.log(canucksTotal);
 
                 var allNHL = knightsTotal + canucksTotal + blackhawksTotal
+                console.log(allNHL + " Here is Tom NHL")
 
                 this.setState({ tomNHL: allNHL });
                 this.setState({ knights: knightsTotal });
