@@ -284,7 +284,7 @@ class Table extends Component {
         // first we scrape. Inside the function, need to post to the Mongo DB. 
         this.getScoresNBA();
         // Now, once the updates have applied, we call the getteams. This will show updated results. I'm gonna freeze this for the time being so I don't make a million API calls. 
-        // this.getScoresEPL();
+        this.getScoresEPL();
         // I'm gonna run this as a function even though these are just dead numbers at this point (since the NFL regular season ended)
         // this.getScoresNFL();
         // // running NHL here
@@ -302,7 +302,7 @@ class Table extends Component {
         // Totals for Tom 
         var tomTotalPoints =
             parseInt((this.state.tomNBA)) +
-            parseInt((this.state.tomNHL)) + 
+            parseInt((this.state.tomNHL)) +
             // parseInt((this.state.tomNFL)) + 
             parseInt((this.state.tomEPL)) +
             parseInt((this.state.tomPGA)) +
@@ -312,7 +312,7 @@ class Table extends Component {
         // Totals for Pat 
         var patTotalPoints =
             parseInt((this.state.patNBA)) +
-            parseInt((this.state.patNHL)) + 
+            parseInt((this.state.patNHL)) +
             // parseInt((this.state.patNFL)) + 
             parseInt((this.state.patEPL)) +
             parseInt((this.state.patPGA)) +
@@ -322,7 +322,7 @@ class Table extends Component {
         // Totals for JAmes
         var jamesTotalPoints =
             parseInt((this.state.jamesNBA)) +
-            parseInt((this.state.jamesNHL)) + 
+            parseInt((this.state.jamesNHL)) +
             // parseInt((this.state.jamesNFL)) + 
             parseInt((this.state.jamesEPL)) +
             parseInt((this.state.jamesPGA)) +
@@ -332,7 +332,7 @@ class Table extends Component {
         // Totals for Neptune
         var neptuneTotalPoints =
             parseInt((this.state.neptuneNBA)) +
-            parseInt((this.state.neptuneNHL)) + 
+            parseInt((this.state.neptuneNHL)) +
             // parseInt((this.state.neptuneNFL)) + 
             parseInt((this.state.neptuneEPL)) +
             parseInt((this.state.neptunePGA)) +
@@ -342,7 +342,7 @@ class Table extends Component {
         // Totals for DJ
         var djTotalPoints =
             parseInt((this.state.djNBA)) +
-            parseInt((this.state.djNHL)) + 
+            parseInt((this.state.djNHL)) +
             // parseInt((this.state.djNFL)) + 
             parseInt((this.state.djEPL)) +
             parseInt((this.state.djPGA)) +
@@ -352,7 +352,7 @@ class Table extends Component {
         // Totals for Goose 
         var gooseTotalPoints =
             parseInt((this.state.gooseNBA)) +
-            parseInt((this.state.gooseNHL)) + 
+            parseInt((this.state.gooseNHL)) +
             // parseInt((this.state.gooseNFL)) + 
             parseInt((this.state.gooseEPL)) +
             parseInt((this.state.goosePGA)) +
@@ -362,7 +362,7 @@ class Table extends Component {
         // Totals for Al
         var alTotalPoints =
             parseInt((this.state.alNBA)) +
-            parseInt((this.state.alNHL)) + 
+            parseInt((this.state.alNHL)) +
             // parseInt((this.state.alNFL)) + 
             parseInt((this.state.alEPL)) +
             parseInt((this.state.alPGA)) +
@@ -372,7 +372,7 @@ class Table extends Component {
         // Totals for Joe
         var joeTotalPoints =
             parseInt((this.state.joeNBA)) +
-            parseInt((this.state.joeNHL)) + 
+            parseInt((this.state.joeNHL)) +
             // parseInt((this.state.joeNFL)) + 
             parseInt((this.state.joeEPL)) +
             parseInt((this.state.joePGA)) +
@@ -382,7 +382,7 @@ class Table extends Component {
         // Totals for Steids
         var steidsTotalPoints =
             parseInt((this.state.steidsNBA)) +
-            parseInt((this.state.steidsNHL)) + 
+            parseInt((this.state.steidsNHL)) +
             // parseInt((this.state.steidsNFL)) + 
             parseInt((this.state.steidsEPL)) +
             parseInt((this.state.steidsPGA)) +
@@ -392,7 +392,7 @@ class Table extends Component {
         // Totals for Ben
         var benTotalPoints =
             parseInt((this.state.benNBA)) +
-            parseInt((this.state.benNHL)) + 
+            parseInt((this.state.benNHL)) +
             // parseInt((this.state.benNFL)) + 
             parseInt((this.state.benEPL)) +
             parseInt((this.state.eresPGA)) +
@@ -522,725 +522,367 @@ class Table extends Component {
     getScoresNHL = () => {
         API.getScoresNHL()
             .then(res => {
-                // NHL FOR TOM 
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                console.log (metroResults + " Here are Metro Results")
-                // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // Pacific
-                var pacificResults = res.data.records[3].teamRecords;
+                // NHL FOR TOM. Let's try and create this properly for 2021.The Divisions got changed for 2021, so need to change this a bit. 
+                // console.log(res.data.records[0].teamRecords);
+                var westResults = res.data.records[0].teamRecords;
+                var northResults = res.data.records[1].teamRecords;
+                var eastResults = res.data.records[2].teamRecords;
+                var centralResults = res.data.records[3].teamRecords;
+                // console.log(res.data.records[2].teamRecords)
 
-                console.log(pacificResults)
-                var knightsWins;
-                var knightsOTLS;
-                var knightsTotal;
-                var blackhawksWins;
-                var blackhawksOTLS;
-                var blackhawksTotal;
-                var canucksWins;
-                var canucksOTLS;
-                var canucksTotal;
-                var totalNHL;
+                // For the Canucks: 
+                for (var i = 0; i < northResults.length; i++) {
 
-                // Here is the Blackhawks for loop. 
-                for (var i = 0; i < centralResults.length; i++) {
-
-                    if (centralResults[i].team.id === 16) {
-                        blackhawksWins = centralResults[i].leagueRecord.wins;
-                        blackhawksOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(blackhawksWins);
-                        console.log(blackhawksOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-                // blackhawks total
-                blackhawksTotal = (blackhawksWins * 2) + blackhawksOTLS;
-                // console.log(blackhawksTotal)
-
-                // Here is the loop for the Canucks and Knights, who are in the same division. 
-                for (var i = 0; i < pacificResults.length; i++) {
-
-                    // Knights
-                    if (pacificResults[i].team.id === 54) {
-                        knightsWins = pacificResults[i].leagueRecord.wins;
-                        knightsOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(knightsWins);
-                        console.log(knightsOTLS);
-                        console.log("this loop is running")
-                    }
                     // Canucks
-                    if (pacificResults[i].team.id === 23) {
-                        canucksWins = pacificResults[i].leagueRecord.wins;
-                        canucksOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(canucksWins);
-                        console.log(canucksOTLS);
-                        console.log("this loop is running")
+                    if (northResults[i].team.id === 23) {
+                        canucksWins = northResults[i].leagueRecord.wins;
+                        canucksOTLS = northResults[i].leagueRecord.ot;
+                        // console.log("Canucks Wins: " + canucksWins);
+                        // console.log("Canucks ties: " + canucksOTLS);
+                        // console.log("this loop is running");
                     }
                 }
 
-                // knights total
-                knightsTotal = (knightsWins * 2) + knightsOTLS;
-                console.log(knightsTotal);
+                for (var i = 0; i < northResults.length; i++) {
 
-                // canucks total
-                canucksTotal = (canucksWins * 2) + canucksOTLS;
-                console.log(canucksTotal);
-
-                var allNHL = knightsTotal + canucksTotal + blackhawksTotal
-                console.log(allNHL + " Here is Tom NHL")
-
-                this.setState({ tomNHL: allNHL });
-                this.setState({ knights: knightsTotal });
-                this.setState({ canucks: canucksTotal });
-                this.setState({ blackhawks: blackhawksTotal });
-
-                // start of Patrick NHL: 
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // Pacific
-                var pacificResults = res.data.records[3].teamRecords;
-
-                console.log(metroResults);
-                var islandersWins;
-                var islandersOTLS;
-                var islandersTotal;
-                var ducksWins;
-                var ducksOTLS;
-                var ducksTotal;
-                var kingsWins;
-                var kingsOTLS;
-                var kingsTotal;
-                var allNHL;
+                    // canadians
+                    if (northResults[i].team.id === 8) {
+                        canadiansWins = northResults[i].leagueRecord.wins;
+                        canadiansOTLS = northResults[i].leagueRecord.ot;
+                        // console.log("Canadians Wins " + canadiansWins);
+                        // console.log("Canadians ties " + canadiansOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
 
                 // Here is the ducks/kings for loop. 
-                for (var i = 0; i < pacificResults.length; i++) {
+                for (var i = 0; i < westResults.length; i++) {
                     // ducks
-                    if (pacificResults[i].team.id === 24) {
-                        ducksWins = pacificResults[i].leagueRecord.wins;
-                        ducksOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(ducksWins);
-                        console.log(ducksOTLS);
-                        console.log("this loop is running")
+                    if (westResults[i].team.id === 24) {
+                        ducksWins = westResults[i].leagueRecord.wins;
+                        ducksOTLS = westResults[i].leagueRecord.ot;
+                        // console.log(ducksWins);
+                        // console.log(ducksOTLS);
+                        // console.log("this loop is running")
                     }
 
-                    // kings
-                    if (pacificResults[i].team.id === 26) {
-                        kingsWins = pacificResults[i].leagueRecord.wins;
-                        kingsOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(kingsWins);
-                        console.log(kingsOTLS);
-                        console.log("this loop is running")
-                    }
                 }
                 // ducks total
                 ducksTotal = (ducksWins * 2) + ducksOTLS;
-                console.log(ducksTotal)
+                // console.log(ducksTotal)
+                var canucksWins;
+                var canucksOTLS;
+                var canucksTotal;
+                var canadiansWins;
+                var canadiansOTLS;
+                var canadiansTotal;
+                var ducksWins;
+                var ducksOTLS;
+                var ducksTotal;
+
+                // canucks total
+                canucksTotal = (canucksWins * 2) + canucksOTLS;
+                // console.log(canucksTotal);
+
+                // canadians total
+                canadiansTotal = (canadiansWins * 2) + canadiansOTLS;
+                // console.log(canadiansTotal);
+
+                // ducks total
+                ducksTotal = (ducksWins * 2) + ducksOTLS;
+                //  console.log(ducksTotal);
+
+                var allNHL = canucksTotal + canadiansTotal + ducksTotal
+                // console.log(allNHL + " Here is Tom NHL")
+
+                this.setState({ tomNHL: allNHL });
+                this.setState({ canadians: canadiansTotal });
+                this.setState({ canucks: canucksTotal });
+                this.setState({ ducks: ducksTotal });
+
+                // start of Patrick NHL: 
+                var islandersWins;
+                var islandersOTLS;
+                var islandersTotal;
+                var wildWins;
+                var wildOTLS;
+                var wildTotal;
+                var blackhawksWins;
+                var blackhawksOTLS;
+                var blackhawksTotal;
+                var allNHL;
+
+                // Here is the wild/blackhawks for loop. 
+                for (var i = 0; i < westResults.length; i++) {
+                    // wild
+                    if (westResults[i].team.id === 30) {
+                        wildWins = westResults[i].leagueRecord.wins;
+                        wildOTLS = westResults[i].leagueRecord.ot;
+                        // console.log("Wild Wins: " + wildWins);
+                        // console.log("Wild OTs: " + wildOTLS);
+                        // console.log("this loop is running");
+                    }
+                }
+                // wild total
+                wildTotal = (wildWins * 2) + wildOTLS;
+                // console.log(wildTotal)
 
                 // Here is the loop for the islanders
-                for (var i = 0; i < metroResults.length; i++) {
+                for (var i = 0; i < eastResults.length; i++) {
 
                     // islanders
-                    if (metroResults[i].team.id === 2) {
-                        islandersWins = metroResults[i].leagueRecord.wins;
-                        islandersOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(islandersWins);
-                        console.log(islandersOTLS);
-                        console.log("this loop is running")
+                    if (eastResults[i].team.id === 2) {
+                        islandersWins = eastResults[i].leagueRecord.wins;
+                        islandersOTLS = eastResults[i].leagueRecord.ot;
+                        // console.log(islandersWins);
+                        // console.log(islandersOTLS);
+                        // console.log("this loop is running")
                     }
                 }
 
                 // islanders total
                 islandersTotal = (islandersWins * 2) + islandersOTLS;
-                console.log(islandersTotal);
+                // console.log(islandersTotal);
 
-                // ducks total
-                kingsTotal = (kingsWins * 2) + kingsOTLS;
-                console.log(kingsTotal);
+                // blackhawks total
+                for (var i = 0; i < centralResults.length; i++) {
 
-                var allNHL = islandersTotal + ducksTotal + kingsTotal
+                    // islanders
+                    if (centralResults[i].team.id === 16) {
+                        blackhawksWins = centralResults[i].leagueRecord.wins;
+                        blackhawksOTLS = centralResults[i].leagueRecord.ot;
+                        // console.log("blackhawks wins: " + blackhawksWins);
+                        // console.log(blackhawksOTLS);
+                        // console.log("this loop is running");
+                    }
+                }
+
+                blackhawksTotal = (blackhawksWins * 2) + blackhawksOTLS;
+                console.log(blackhawksTotal);
+
+                var allNHL = islandersTotal + wildTotal + blackhawksTotal
 
                 this.setState({ patNHL: allNHL });
                 this.setState({ islanders: islandersTotal });
-                this.setState({ ducks: ducksTotal });
-                this.setState({ kings: kingsTotal });
+                this.setState({ wild: wildTotal });
+                this.setState({ blackhawks: blackhawksTotal });
 
                 // Start of James NHL here
-
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // central
-                var pacificResults = res.data.records[3].teamRecords;
-
-                console.log(centralResults);
-                var flamesWins;
-                var flamesOTLS;
-                var flamesTotal;
+                var avalancheWins;
+                var avalancheOTLS;
+                var avalancheTotal;
                 var pensWins;
                 var pensOTLS;
                 var pensTotal;
-                var wildWins;
-                var wildOTLS;
-                var wildTotal;
+                var kingsWins;
+                var kingsOTLS;
+                var kingsTotal;
                 var allNHL;
 
-                // Here is the flames loop. 
-                for (var i = 0; i < pacificResults.length; i++) {
-                    // flames
-                    if (pacificResults[i].team.id === 20) {
-                        flamesWins = pacificResults[i].leagueRecord.wins;
-                        flamesOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(flamesWins);
-                        console.log(flamesOTLS);
-                        console.log("this loop is running")
+                // Here is the avalanche loop. 
+                for (var i = 0; i < westResults.length; i++) {
+                    // avalanche
+                    if (westResults[i].team.id === 21) {
+                        avalancheWins = westResults[i].leagueRecord.wins;
+                        avalancheOTLS = westResults[i].leagueRecord.ot;
+                        // console.log(avalancheWins);
+                        // console.log(avalancheOTLS);
+                        // console.log("this loop is running")
                     }
                 }
 
-                // flames total
-                flamesTotal = (flamesWins * 2) + flamesOTLS;
-                console.log(flamesTotal);
+                // avalanche total
+                avalancheTotal = (avalancheWins * 2) + avalancheOTLS;
+                console.log(avalancheTotal);
 
                 // Here is the loop for the pens
-                for (var i = 0; i < metroResults.length; i++) {
+                for (var i = 0; i < eastResults.length; i++) {
 
                     // pens
-                    if (metroResults[i].team.id === 5) {
-                        pensWins = metroResults[i].leagueRecord.wins;
-                        pensOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(pensWins);
-                        console.log(pensOTLS);
-                        console.log("this loop is running")
+                    if (eastResults[i].team.id === 5) {
+                        pensWins = eastResults[i].leagueRecord.wins;
+                        pensOTLS = eastResults[i].leagueRecord.ot;
+                        // console.log(pensWins);
+                        // console.log(pensOTLS);
+                        // console.log("this loop is running")
                     }
                 }
 
-                for (var i = 0; i < centralResults.length; i++) {
+                for (var i = 0; i < westResults.length; i++) {
 
-                    // wild
-                    if (centralResults[i].team.id === 30) {
-                        wildWins = centralResults[i].leagueRecord.wins;
-                        wildOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(wildWins);
-                        console.log(wildOTLS);
-                        console.log("this loop is running")
+                    // kings
+                    if (westResults[i].team.id === 26) {
+                        kingsWins = westResults[i].leagueRecord.wins;
+                        kingsOTLS = westResults[i].leagueRecord.ot;
+                        // console.log(kingsWins);
+                        // console.log(kingsOTLS);
+                        // console.log("this loop is running")
                     }
                 }
 
                 // pens total
                 pensTotal = (pensWins * 2) + pensOTLS;
-                console.log(pensTotal)
+                // console.log(pensTotal)
 
-                // wild total
-                wildTotal = (wildWins * 2) + wildOTLS;
-                console.log(wildTotal);
+                // kings total
+                kingsTotal = (kingsWins * 2) + kingsOTLS;
+                // console.log(kingsTotal);
 
-                var allNHL = flamesTotal + pensTotal + wildTotal
+                var allNHL = avalancheTotal + pensTotal + kingsTotal
 
                 this.setState({ jamesNHL: allNHL });
-                this.setState({ flames: flamesTotal });
+                this.setState({ avalanche: avalancheTotal });
                 this.setState({ pens: pensTotal });
-                this.setState({ wild: wildTotal });
+                this.setState({ kings: kingsTotal });
 
                 //  starting Neptune NHL here
-
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // Pacific
-                var pacificResults = res.data.records[3].teamRecords;
-
-                console.log(metroResults);
-                var sharksWins;
-                var sharksOTLS;
-                var sharksTotal;
-                var rangersWins;
-                var rangersOTLS;
-                var rangersTotal;
+                var starsWins;
+                var starsOTLS;
+                var starsTotal;
+                var blueJacketsWins;
+                var blueJacketsOTLS;
+                var blueJacketsTotal;
                 var devilsWins;
                 var devilsOTLS;
                 var devilsTotal;
                 var allNHL;
 
-                // Here is the sharks loop. 
-                for (var i = 0; i < pacificResults.length; i++) {
-                    // sharks
-                    if (pacificResults[i].team.id === 28) {
-                        sharksWins = pacificResults[i].leagueRecord.wins;
-                        sharksOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(sharksWins);
-                        console.log(sharksOTLS);
-                        console.log("this loop is running")
+                // Here is the stars loop. 
+                for (var i = 0; i < centralResults.length; i++) {
+                    // stars
+                    if (centralResults[i].team.id === 25) {
+                        starsWins = centralResults[i].leagueRecord.wins;
+                        starsOTLS = centralResults[i].leagueRecord.ot;
+                        // console.log(starsWins);
+                        // console.log(starsOTLS);
+                        // console.log("this loop is running")
                     }
 
                 }
 
-                // sharks total
-                sharksTotal = (sharksWins * 2) + sharksOTLS;
-                console.log(sharksTotal);
+                // stars total
+                starsTotal = (starsWins * 2) + starsOTLS;
+                console.log(starsTotal);
 
-                // Here is the loop for the sharks
-                for (var i = 0; i < metroResults.length; i++) {
+                // Here is the loop for the blue jackets
+                for (var i = 0; i < centralResults.length; i++) {
 
+                    // blueJackets
+                    if (centralResults[i].team.id === 29) {
+                        blueJacketsWins = centralResults[i].leagueRecord.wins;
+                        blueJacketsOTLS = centralResults[i].leagueRecord.ot;
+                        // console.log(blueJacketsWins);
+                        // console.log(blueJacketsOTLS);
+                        // console.log("this loop is running")
+                    }
+                };
+
+                // blueJackets total
+                blueJacketsTotal = (blueJacketsWins * 2) + blueJacketsOTLS;
+                console.log(blueJacketsTotal)
+
+                // Here is the loop for the Devils
+                for (var i = 0; i < eastResults.length; i++) {
                     // devils
-                    if (metroResults[i].team.id === 1) {
-                        devilsWins = metroResults[i].leagueRecord.wins;
-                        devilsOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(devilsWins);
-                        console.log(devilsOTLS);
-                        console.log("this loop is running")
+                    if (eastResults[i].team.id === 1) {
+                        devilsWins = eastResults[i].leagueRecord.wins;
+                        devilsOTLS = eastResults[i].leagueRecord.ot;
+                        // console.log(devilsWins);
+                        // console.log(devilsOTLS);
+                        // console.log("this loop is running")
                     }
+                };
 
-                    // rangers
-                    if (metroResults[i].team.id === 3) {
-                        rangersWins = metroResults[i].leagueRecord.wins;
-                        rangersOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(rangersWins);
-                        console.log(rangersOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // rangers total
-                rangersTotal = (rangersWins * 2) + rangersOTLS;
-                console.log(rangersTotal)
-
-                // rangers total
+                // Devils total
                 devilsTotal = (devilsWins * 2) + devilsOTLS;
                 console.log(devilsTotal);
 
-                var allNHL = sharksTotal + rangersTotal + devilsTotal
+                var allNHL = starsTotal + blueJacketsTotal + devilsTotal
 
                 this.setState({ neptuneNHL: allNHL });
-                this.setState({ sharks: sharksTotal });
-                this.setState({ rangers: rangersTotal });
+                this.setState({ stars: starsTotal });
+                this.setState({ blueJackets: blueJacketsTotal });
                 this.setState({ devils: devilsTotal });
 
                 // Starting DJ NHL Here 
-
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // central
-                var pacificResults = res.data.records[3].teamRecords;
-
-                console.log(metroResults);
-
+                var flyersWins;
+                var flyersOTLS;
+                var flyersTotal;
+                var oilersWins;
+                var oilersOTLS;
+                var oilersTotal;
                 var jetsWins;
                 var jetsOTLS;
                 var jetsTotal;
-                var canesWins;
-                var canesOTLS;
-                var canesTotal;
-                var coyotesWins;
-                var coyotesOTLS;
-                var coyotesTotal;
                 var allNHL;
 
-                // Here is the jets loop. 
-                for (var i = 0; i < centralResults.length; i++) {
-                    // jets
-                    if (centralResults[i].team.id === 52) {
-                        jetsWins = centralResults[i].leagueRecord.wins;
-                        jetsOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(jetsWins);
-                        console.log(jetsOTLS);
-                        console.log("this loop is running")
+                // Here is the flyers loop. 
+                for (var i = 0; i < eastResults.length; i++) {
+                    // flyers
+                    if (eastResults[i].team.id === 4) {
+                        flyersWins = eastResults[i].leagueRecord.wins;
+                        flyersOTLS = eastResults[i].leagueRecord.ot;
                     }
                 }
+
+                // flyers total
+                flyersTotal = (flyersWins * 2) + flyersOTLS;
+                console.log(flyersTotal);
+
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // jets
+                    if (northResults[i].team.id === 52) {
+                        jetsWins = northResults[i].leagueRecord.wins;
+                        jetsOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // oilers
+                    if (northResults[i].team.id === 22) {
+                        oilersWins = northResults[i].leagueRecord.wins;
+                        oilersOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // oilers total
+                oilersTotal = (oilersWins * 2) + oilersOTLS;
+                console.log(oilersTotal)
 
                 // jets total
                 jetsTotal = (jetsWins * 2) + jetsOTLS;
                 console.log(jetsTotal);
 
-                for (var i = 0; i < pacificResults.length; i++) {
-
-                    // coyotes
-                    if (pacificResults[i].team.id === 53) {
-                        coyotesWins = pacificResults[i].leagueRecord.wins;
-                        coyotesOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(coyotesWins);
-                        console.log(coyotesOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                for (var i = 0; i < metroResults.length; i++) {
-
-                    // canes
-                    if (metroResults[i].team.id === 12) {
-                        canesWins = metroResults[i].leagueRecord.wins;
-                        canesOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(canesWins);
-                        console.log(canesOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // canes total
-                canesTotal = (canesWins * 2) + canesOTLS;
-                console.log(canesTotal)
-
-                // coyotes total
-                coyotesTotal = (coyotesWins * 2) + coyotesOTLS;
-                console.log(coyotesTotal);
-
-                var allNHL = jetsTotal + canesTotal + coyotesTotal
+                var allNHL = flyersTotal + oilersTotal + jetsTotal
 
                 this.setState({ djNHL: allNHL });
+                this.setState({ flyers: flyersTotal });
+                this.setState({ oilers: oilersTotal });
                 this.setState({ jets: jetsTotal });
-                this.setState({ canes: canesTotal });
-                this.setState({ coyotes: coyotesTotal });
 
                 // starting Goose NHL here 
-
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // central
-                var pacificResults = res.data.records[3].teamRecords;
-
-                console.log(centralResults);
-                var predsWins;
-                var predsOTLS;
-                var predsTotal;
-                var starsWins;
-                var starsOTLS;
-                var starsTotal;
-                var canadiansWins;
-                var canadiansOTLS;
-                var canadiansTotal;
-                var allNHL;
-
-                // Here is the preds and Stars loop. 
-                for (var i = 0; i < centralResults.length; i++) {
-                    // preds
-                    if (centralResults[i].team.id === 18) {
-                        predsWins = centralResults[i].leagueRecord.wins;
-                        predsOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(predsWins);
-                        console.log(predsOTLS);
-                        console.log("this loop is running")
-                    }
-
-                    // stars
-                    if (centralResults[i].team.id === 25) {
-                        starsWins = centralResults[i].leagueRecord.wins;
-                        starsOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(starsWins);
-                        console.log(starsOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // preds total
-                predsTotal = (predsWins * 2) + predsOTLS;
-                console.log(predsTotal);
-
-                for (var i = 0; i < atlanticResults.length; i++) {
-
-                    // canadians
-                    if (atlanticResults[i].team.id === 8) {
-                        canadiansWins = atlanticResults[i].leagueRecord.wins;
-                        canadiansOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(canadiansWins);
-                        console.log(canadiansOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // stars total
-                starsTotal = (starsWins * 2) + starsOTLS;
-                console.log(starsTotal)
-
-                // canadians total
-                canadiansTotal = (canadiansWins * 2) + canadiansOTLS;
-                console.log(canadiansTotal);
-
-                var allNHL = predsTotal + starsTotal + canadiansTotal
-
-                this.setState({ gooseNHL: allNHL });
-                this.setState({ preds: predsTotal });
-                this.setState({ stars: starsTotal });
-                this.setState({ canadians: canadiansTotal });
-
-                // starting Al NHL here 
-
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // central
-                var pacificResults = res.data.records[3].teamRecords;
-
-                console.log(atlanticResults);
-
-                var lightningWins;
-                var lightningOTLS;
-                var lightningTotal;
-                var bruinsWins;
-                var bruinsOTLS;
-                var bruinsTotal;
-                var wingsWins;
-                var wingsOTLS;
-                var wingsTotal;
-                var allNHL;
-
-                // Here is the lightning loop. 
-                for (var i = 0; i < atlanticResults.length; i++) {
-                    // lightning
-                    if (atlanticResults[i].team.id === 14) {
-                        lightningWins = atlanticResults[i].leagueRecord.wins;
-                        lightningOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(lightningWins);
-                        console.log(lightningOTLS);
-                        console.log("this loop is running")
-                    }
-
-                    // wings
-                    if (atlanticResults[i].team.id === 17) {
-                        wingsWins = atlanticResults[i].leagueRecord.wins;
-                        wingsOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(wingsWins);
-                        console.log(wingsOTLS);
-                        console.log("this loop is running")
-                    }
-
-                    // bruins
-                    if (atlanticResults[i].team.id === 6) {
-                        bruinsWins = atlanticResults[i].leagueRecord.wins;
-                        bruinsOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(bruinsWins);
-                        console.log(bruinsOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // lightning total
-                lightningTotal = (lightningWins * 2) + lightningOTLS;
-                console.log(lightningTotal);
-
-                // bruins total
-                bruinsTotal = (bruinsWins * 2) + bruinsOTLS;
-                console.log(bruinsTotal)
-
-                // wings total
-                wingsTotal = (wingsWins * 2) + wingsOTLS;
-                console.log(wingsTotal);
-
-                var allNHL = lightningTotal + bruinsTotal + wingsTotal
-
-                this.setState({ alNHL: allNHL });
-                this.setState({ lightning: lightningTotal });
-                this.setState({ bruins: bruinsTotal });
-                this.setState({ wings: wingsTotal });
-
-                // starting Joe NHL here 
-
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // central
-                var pacificResults = res.data.records[3].teamRecords;
-
-                console.log(metroResults);
-                var bluesWins;
-                var bluesOTLS;
-                var bluesTotal;
-                var jacketsWins;
-                var jacketsOTLS;
-                var jacketsTotal;
-                var oilersWins;
-                var oilersOTLS;
-                var oilersTotal;
-                var allNHL;
-
-                // Here is the blues loop. 
-                for (var i = 0; i < centralResults.length; i++) {
-                    // blues
-                    if (centralResults[i].team.id === 19) {
-                        bluesWins = centralResults[i].leagueRecord.wins;
-                        bluesOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(bluesWins);
-                        console.log(bluesOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // blues total
-                bluesTotal = (bluesWins * 2) + bluesOTLS;
-                console.log(bluesTotal);
-
-                // Here is the loop for the jackets
-                for (var i = 0; i < metroResults.length; i++) {
-
-                    // jackets
-                    if (metroResults[i].team.id === 29) {
-                        jacketsWins = metroResults[i].leagueRecord.wins;
-                        jacketsOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(jacketsWins);
-                        console.log(jacketsOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                for (var i = 0; i < pacificResults.length; i++) {
-
-                    // oilers
-                    if (pacificResults[i].team.id === 22) {
-                        oilersWins = pacificResults[i].leagueRecord.wins;
-                        oilersOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(oilersWins);
-                        console.log(oilersOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // jackets total
-                jacketsTotal = (jacketsWins * 2) + jacketsOTLS;
-                console.log(jacketsTotal)
-
-                // oilers total
-                oilersTotal = (oilersWins * 2) + oilersOTLS;
-                console.log(oilersTotal);
-
-                var allNHL = bluesTotal + jacketsTotal + oilersTotal
-
-                this.setState({ joeNHL: allNHL });
-                this.setState({ blues: bluesTotal });
-                this.setState({ jackets: jacketsTotal });
-                this.setState({ oilers: oilersTotal });
-
-                // starting Steids NHL here
-
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // Pacific
-                var pacificResults = res.data.records[3].teamRecords;
-
-                console.log(atlanticResults)
-                var capsWins;
-                var capsOTLS;
-                var capsTotal;
-                var panthersWins;
-                var panthersOTLS;
-                var panthersTotal;
-                var sabresWins;
-                var sabresOTLS;
-                var sabresTotal;
-                var allNHL;
-
-                // Here is the panthers for loop. 
-                for (var i = 0; i < centralResults.length; i++) {
-
-                    if (atlanticResults[i].team.id === 13) {
-                        panthersWins = atlanticResults[i].leagueRecord.wins;
-                        panthersOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(panthersWins);
-                        console.log(panthersOTLS);
-                        console.log("this loop is running")
-                    }
-
-                    // sabres
-                    if (atlanticResults[i].team.id === 7) {
-                        sabresWins = atlanticResults[i].leagueRecord.wins;
-                        sabresOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(sabresWins);
-                        console.log(sabresOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-                // panthers total
-                panthersTotal = (panthersWins * 2) + panthersOTLS;
-                console.log(panthersTotal)
-
-                // Here is the loop for the caps
-                for (var i = 0; i < metroResults.length; i++) {
-
-                    // caps
-                    if (metroResults[i].team.id === 15) {
-                        capsWins = metroResults[i].leagueRecord.wins;
-                        capsOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(capsWins);
-                        console.log(capsOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // caps total
-                capsTotal = (capsWins * 2) + capsOTLS;
-                console.log(capsTotal);
-
-                // sabres total
-                sabresTotal = (sabresWins * 2) + sabresOTLS;
-                console.log(sabresTotal);
-
-                var allNHL = capsTotal + sabresTotal + panthersTotal
-
-                this.setState({ steidsNHL: allNHL });
-                this.setState({ caps: capsTotal });
-                this.setState({ sabres: sabresTotal });
-                this.setState({ panthers: panthersTotal });
-
-                // starting Ben NHL here
-
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // central
-                var pacificResults = res.data.records[3].teamRecords;
-
-                console.log(metroResults);
-
                 var leafsWins;
                 var leafsOTLS;
                 var leafsTotal;
-                var avalancheWins;
-                var avalancheOTLS;
-                var avalancheTotal;
-                var flyersWins;
-                var flyersOTLS;
-                var flyersTotal;
+                var sharksWins;
+                var sharksOTLS;
+                var sharksTotal;
+                var coyotesWins;
+                var coyotesOTLS;
+                var coyotesTotal;
                 var allNHL;
 
-                // Here is the leafs loop. 
-                for (var i = 0; i < atlanticResults.length; i++) {
+                // Here is the leafs loop
+                for (var i = 0; i < northResults.length; i++) {
                     // leafs
-                    if (atlanticResults[i].team.id === 10) {
-                        leafsWins = atlanticResults[i].leagueRecord.wins;
-                        leafsOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(leafsWins);
-                        console.log(leafsOTLS);
-                        console.log("this loop is running")
+                    if (northResults[i].team.id === 10) {
+                        leafsWins = northResults[i].leagueRecord.wins;
+                        leafsOTLS = northResults[i].leagueRecord.ot;
+                        // console.log(leafsWins);
+                        // console.log(leafsOTLS);
+                        // console.log("this loop is running")
                     }
                 }
 
@@ -1248,44 +890,297 @@ class Table extends Component {
                 leafsTotal = (leafsWins * 2) + leafsOTLS;
                 console.log(leafsTotal);
 
-                for (var i = 0; i < metroResults.length; i++) {
-
-                    // flyers
-                    if (metroResults[i].team.id === 4) {
-                        flyersWins = metroResults[i].leagueRecord.wins;
-                        flyersOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(flyersWins);
-                        console.log(flyersOTLS);
-                        console.log("this loop is running")
+                // Sharks Loop 
+                for (var i = 0; i < westResults.length; i++) {
+                    // sharks
+                    if (westResults[i].team.id === 28) {
+                        sharksWins = westResults[i].leagueRecord.wins;
+                        sharksOTLS = westResults[i].leagueRecord.ot;
+                        // console.log(sharksWins);
+                        // console.log(sharksOTLS);
+                        // console.log("this loop is running")
                     }
                 }
 
+                // sharks total
+                sharksTotal = (sharksWins * 2) + sharksOTLS;
+                console.log(sharksTotal);
+
+                for (var i = 0; i < westResults.length; i++) {
+
+                    // coyotes
+                    if (westResults[i].team.id === 53) {
+                        coyotesWins = westResults[i].leagueRecord.wins;
+                        coyotesOTLS = westResults[i].leagueRecord.ot;
+                        // console.log(coyotesWins);
+                        // console.log(coyotesOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+                // coyotes total
+                sharksTotal = (sharksWins * 2) + sharksOTLS;
+                console.log(sharksTotal)
+
+                // coyotes total
+                coyotesTotal = (coyotesWins * 2) + coyotesOTLS;
+                console.log(coyotesTotal);
+
+                var allNHL = leafsTotal + sharksTotal + coyotesTotal
+
+                this.setState({ gooseNHL: allNHL });
+                this.setState({ leafs: leafsTotal });
+                this.setState({ sharks: sharksTotal });
+                this.setState({ coyotes: coyotesTotal });
+
+                // starting Al NHL here 
+                var capsWins;
+                var capsOTLS;
+                var capsTotal;
+                var canesWins;
+                var canesOTLS;
+                var canesTotal;
+                var rangersWins;
+                var rangersOTLS;
+                var rangersTotal;
+                var allNHL;
+
+                // Here is the caps loop. 
+                for (var i = 0; i < eastResults.length; i++) {
+                    // caps
+                    if (eastResults[i].team.id === 15) {
+                        capsWins = eastResults[i].leagueRecord.wins;
+                        capsOTLS = eastResults[i].leagueRecord.ot;
+                        // console.log(capsWins);
+                        // console.log(capsOTLS);
+                        // console.log("this loop is running")
+                    }
+
+                    // rangers
+                    if (eastResults[i].team.id === 3) {
+                        rangersWins = eastResults[i].leagueRecord.wins;
+                        rangersOTLS = eastResults[i].leagueRecord.ot;
+                        // console.log(rangersWins);
+                        // console.log(rangersOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+                // Canes
+                for (var i = 0; i < eastResults.length; i++) {
+                    // canes
+                    if (centralResults[i].team.id === 12) {
+                        canesWins = centralResults[i].leagueRecord.wins;
+                        canesOTLS = centralResults[i].leagueRecord.ot;
+                        // console.log(canesWins);
+                        // console.log(canesOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+                // caps total
+                capsTotal = (capsWins * 2) + capsOTLS;
+                console.log(capsTotal);
+
+                // canes total
+                canesTotal = (canesWins * 2) + canesOTLS;
+                console.log(canesTotal)
+
+                // rangers total
+                rangersTotal = (rangersWins * 2) + rangersOTLS;
+                console.log(rangersTotal);
+
+                var allNHL = capsTotal + canesTotal + rangersTotal
+
+                this.setState({ alNHL: allNHL });
+                this.setState({ caps: capsTotal });
+                this.setState({ canes: canesTotal });
+                this.setState({ rangers: rangersTotal });
+
+                // starting Joe NHL here 
+                var knightsWins;
+                var knightsOTLS;
+                var knightsTotal;
+                var sabresWins;
+                var sabresOTLS;
+                var sabresTotal;
+                var senatorsWins;
+                var senatorsOTLS;
+                var senatorsTotal;
+                var allNHL;
+
+                // Here is the knights loop. 
+                for (var i = 0; i < westResults.length; i++) {
+                    // knights
+                    if (westResults[i].team.id === 54) {
+                        knightsWins = westResults[i].leagueRecord.wins;
+                        knightsOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // knights total
+                knightsTotal = (knightsWins * 2) + knightsOTLS;
+                console.log(knightsTotal);
+
+                // Here is the loop for the sabres
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // sabres
+                    if (eastResults[i].team.id === 7) {
+                        sabresWins = eastResults[i].leagueRecord.wins;
+                        sabresOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // senators
+                    if (northResults[i].team.id === 9) {
+                        senatorsWins = northResults[i].leagueRecord.wins;
+                        senatorsOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // sabres total
+                sabresTotal = (sabresWins * 2) + sabresOTLS;
+                console.log(sabresTotal)
+
+                // senators total
+                senatorsTotal = (senatorsWins * 2) + senatorsOTLS;
+                console.log(senatorsTotal);
+
+                var allNHL = knightsTotal + sabresTotal + senatorsTotal
+
+                this.setState({ joeNHL: allNHL });
+                this.setState({ knights: knightsTotal });
+                this.setState({ sabres: sabresTotal });
+                this.setState({ senators: senatorsTotal });
+
+                // starting Steids NHL here
+                var bluesWins;
+                var bluesOTLS;
+                var bluesTotal;
+                var predatorsWins;
+                var predatorsOTLS;
+                var predatorsTotal;
+                var panthersWins;
+                var panthersOTLS;
+                var panthersTotal;
+                var allNHL;
+
+                // Here is the loop for the blues
+                for (var i = 0; i < westResults.length; i++) {
+
+                    // blues
+                    if (westResults[i].team.id === 19) {
+                        bluesWins = westResults[i].leagueRecord.wins;
+                        bluesOTLS = westResults[i].leagueRecord.ot;
+                    };
+                };
+
+                // predators total
+                bluesTotal = (bluesWins * 2) + bluesOTLS;
+                console.log(bluesTotal);
+
+                // Here is the predators for loop. 
                 for (var i = 0; i < centralResults.length; i++) {
 
-                    // avalanche
-                    if (centralResults[i].team.id === 21) {
-                        avalancheWins = centralResults[i].leagueRecord.wins;
-                        avalancheOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(avalancheWins);
-                        console.log(avalancheOTLS);
+                    if (centralResults[i].team.id === 18) {
+                        predatorsWins = centralResults[i].leagueRecord.wins;
+                        predatorsOTLS = centralResults[i].leagueRecord.ot;
+                        console.log(predatorsWins);
+                        console.log(predatorsOTLS);
+                        console.log("this loop is running")
+                    }
+
+                    // panthers
+                    if (centralResults[i].team.id === 13) {
+                        panthersWins = centralResults[i].leagueRecord.wins;
+                        panthersOTLS = centralResults[i].leagueRecord.ot;
+                        console.log(panthersWins);
+                        console.log(panthersOTLS);
                         console.log("this loop is running")
                     }
                 }
 
-                // avalanche total
-                avalancheTotal = (avalancheWins * 2) + avalancheOTLS;
-                console.log(avalancheTotal)
+                // predators total
+                predatorsTotal = (predatorsWins * 2) + predatorsOTLS;
+                console.log(predatorsTotal);
 
-                // flyers total
-                flyersTotal = (flyersWins * 2) + flyersOTLS;
-                console.log(flyersTotal);
+                // panthers total
+                panthersTotal = (panthersWins * 2) + panthersOTLS;
+                console.log(panthersTotal);
 
-                var allNHL = leafsTotal + avalancheTotal + flyersTotal
+                // steids total
+                bluesTotal = (bluesWins * 2) + bluesOTLS;
+                console.log(bluesTotal);
+
+                var allNHL = bluesTotal + panthersTotal + predatorsTotal
+
+                this.setState({ steidsNHL: allNHL });
+                this.setState({ blues: bluesTotal });
+                this.setState({ panthers: panthersTotal });
+                this.setState({ predators: predatorsTotal });
+
+                // starting Mark Eres Here: 
+                var lightningWins;
+                var lightningOTLS;
+                var lightningTotal;
+                var bruinsWins;
+                var bruinsOTLS;
+                var bruinsTotal;
+                var flamesWins;
+                var flamesOTLS;
+                var flamesTotal;
+                var allNHL;
+
+                // Here is the lightning loop. 
+                for (var i = 0; i < centralResults.length; i++) {
+                    // lightning
+                    if (centralResults[i].team.id === 14) {
+                        lightningWins = centralResults[i].leagueRecord.wins;
+                        lightningOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // lightning total
+                lightningTotal = (lightningWins * 2) + lightningOTLS;
+                console.log(lightningTotal);
+
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // flames
+                    if (northResults[i].team.id === 20) {
+                        flamesWins = northResults[i].leagueRecord.wins;
+                        flamesOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // flames total
+                flamesTotal = (flamesWins * 2) + flamesOTLS;
+                console.log(flamesTotal);
+
+                // Bruins
+
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // bruins
+                    if (eastResults[i].team.id === 6) {
+                        bruinsWins = eastResults[i].leagueRecord.wins;
+                        bruinsOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // bruins total
+                bruinsTotal = (bruinsWins * 2) + bruinsOTLS;
+                console.log(bruinsTotal)
+
+                var allNHL = lightningTotal + bruinsTotal + flamesTotal
 
                 this.setState({ benNHL: allNHL });
-                this.setState({ leafs: leafsTotal });
-                this.setState({ avalanche: avalancheTotal });
-                this.setState({ flyers: flyersTotal });
+                this.setState({ lightning: lightningTotal });
+                this.setState({ bruins: bruinsTotal });
+                this.setState({ flames: flamesTotal });
 
                 // and now I need to run the totalscore function to grab all of these inputs. 
                 this.totalScores();
