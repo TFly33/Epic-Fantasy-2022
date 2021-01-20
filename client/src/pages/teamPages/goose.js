@@ -35,7 +35,7 @@ class goose extends React.Component {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresPGA();
-        // this.getScoresNHL();
+        this.getScoresNHL();
     }
 
     getScoresPGA = () => {
@@ -58,78 +58,66 @@ class goose extends React.Component {
     getScoresNHL = () => {
         API.getScoresNHL()
             .then(res => {
-                // This is the Metro Division
-                // var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // central
-                // var pacificResults = res.data.records[3].teamRecords;
+                // starting Goose NHL here 
+                var westResults = res.data.records[0].teamRecords;
+                var northResults = res.data.records[1].teamRecords;
+                var eastResults = res.data.records[2].teamRecords;
+                var centralResults = res.data.records[3].teamRecords;
 
-                console.log(centralResults);
-                var predsWins;
-                var predsOTLS;
-                var predsTotal;
-                var starsWins;
-                var starsOTLS;
-                var starsTotal;
-                var canadiansWins;
-                var canadiansOTLS;
-                var canadiansTotal;
+                var leafsWins;
+                var leafsOTLS;
+                var leafsTotal;
+                var sharksWins;
+                var sharksOTLS;
+                var sharksTotal;
+                var coyotesWins;
+                var coyotesOTLS;
+                var coyotesTotal;
                 var allNHL;
 
-                // Here is the preds and Stars loop. 
-                for (var i = 0; i < centralResults.length; i++) {
-                    // preds
-                    if (centralResults[i].team.id === 18) {
-                        predsWins = centralResults[i].leagueRecord.wins;
-                        predsOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(predsWins);
-                        console.log(predsOTLS);
-                        console.log("this loop is running")
-                    }
-
-                    // stars
-                    if (centralResults[i].team.id === 25) {
-                        starsWins = centralResults[i].leagueRecord.wins;
-                        starsOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(starsWins);
-                        console.log(starsOTLS);
-                        console.log("this loop is running")
+                // Here is the leafs loop
+                for (var i = 0; i < northResults.length; i++) {
+                    // leafs
+                    if (northResults[i].team.id === 10) {
+                        leafsWins = northResults[i].leagueRecord.wins;
+                        leafsOTLS = northResults[i].leagueRecord.ot;
                     }
                 }
 
-                // preds total
-                predsTotal = (predsWins * 2) + predsOTLS;
-                console.log(predsTotal);
+                // leafs total
+                leafsTotal = (leafsWins * 2.9) + leafsOTLS;
 
-                for (var i = 0; i < atlanticResults.length; i++) {
-
-                    // canadians
-                    if (atlanticResults[i].team.id === 8) {
-                        canadiansWins = atlanticResults[i].leagueRecord.wins;
-                        canadiansOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(canadiansWins);
-                        console.log(canadiansOTLS);
-                        console.log("this loop is running")
+                // Sharks Loop 
+                for (var i = 0; i < westResults.length; i++) {
+                    // sharks
+                    if (westResults[i].team.id === 28) {
+                        sharksWins = westResults[i].leagueRecord.wins;
+                        sharksOTLS = westResults[i].leagueRecord.ot;
                     }
                 }
 
-                // stars total
-                starsTotal = (starsWins * 2) + starsOTLS;
-                console.log(starsTotal)
+                // sharks total
+                sharksTotal = (sharksWins * 2.9) + sharksOTLS;
 
-                // canadians total
-                canadiansTotal = (canadiansWins * 2) + canadiansOTLS;
-                console.log(canadiansTotal);
+                for (var i = 0; i < westResults.length; i++) {
 
-                var allNHL = predsTotal + starsTotal + canadiansTotal
+                    // coyotes
+                    if (westResults[i].team.id === 53) {
+                        coyotesWins = westResults[i].leagueRecord.wins;
+                        coyotesOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // coyotes total
+                coyotesTotal = (coyotesWins * 2.9) + coyotesOTLS;
+
+                var allNHL = leafsTotal + sharksTotal + coyotesTotal
 
                 this.setState({ totalNHL: allNHL });
-                this.setState({ preds: predsTotal });
-                this.setState({ stars: starsTotal });
-                this.setState({ canadians: canadiansTotal });
+                this.setState({ leafs: leafsTotal });
+                this.setState({ sharks: sharksTotal });
+                this.setState({ coyotes: coyotesTotal });
+
 
             })
             .catch(error => {
@@ -400,17 +388,17 @@ class goose extends React.Component {
                                             <tr>
                                                 <th scope="row">49</th>
                                                 <td className="leafs">Toronto Maple Leafs</td>
-                                                <td>{this.state.preds}</td>
+                                                <td>{this.state.leafs}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">126</th>
                                                 <td className="sharks">San Jose Sharks</td>
-                                                <td>{this.state.stars}</td>
+                                                <td>{this.state.sharks}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">135</th>
                                                 <td className="coyotes">Arizona Coyotes</td>
-                                                <td>{this.state.canadians}</td>
+                                                <td>{this.state.coyotes}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
@@ -454,7 +442,7 @@ class goose extends React.Component {
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                <td>{this.state.totalNHL}</td>
+                                                {/* <td>{this.state.totalNHL}</td> */}
                                             </tr>
                                         </tbody>
                                     </table>

@@ -35,7 +35,7 @@ class james extends React.Component {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresPGA();
-        // this.getScoresNHL();
+        this.getScoresNHL();
     }
 
     getScoresPGA = () => {
@@ -57,82 +57,78 @@ class james extends React.Component {
     getScoresNHL = () => {
         API.getScoresNHL()
             .then(res => {
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                // var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // central
-                var pacificResults = res.data.records[3].teamRecords;
+                 // Start of James NHL here
+                 var westResults = res.data.records[0].teamRecords;
+                 var northResults = res.data.records[1].teamRecords;
+                 var eastResults = res.data.records[2].teamRecords;
+                 var centralResults = res.data.records[3].teamRecords;
 
-                console.log(centralResults);
-                var flamesWins;
-                var flamesOTLS;
-                var flamesTotal;
-                var pensWins;
-                var pensOTLS;
-                var pensTotal;
-                var wildWins;
-                var wildOTLS;
-                var wildTotal;
-                var allNHL;
-
-                // Here is the flames loop. 
-                for (var i = 0; i < pacificResults.length; i++) {
-                    // flames
-                    if (pacificResults[i].team.id === 20) {
-                        flamesWins = pacificResults[i].leagueRecord.wins;
-                        flamesOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(flamesWins);
-                        console.log(flamesOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // flames total
-                flamesTotal = (flamesWins * 2) + flamesOTLS;
-                console.log(flamesTotal);
-
-                // Here is the loop for the pens
-                for (var i = 0; i < metroResults.length; i++) {
-
-                    // pens
-                    if (metroResults[i].team.id === 5) {
-                        pensWins = metroResults[i].leagueRecord.wins;
-                        pensOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(pensWins);
-                        console.log(pensOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                for (var i = 0; i < centralResults.length; i++) {
-
-                    // wild
-                    if (centralResults[i].team.id === 30) {
-                        wildWins = centralResults[i].leagueRecord.wins;
-                        wildOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(wildWins);
-                        console.log(wildOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // pens total
-                pensTotal = (pensWins * 2) + pensOTLS;
-                console.log(pensTotal)
-
-                // wild total
-                wildTotal = (wildWins * 2) + wildOTLS;
-                console.log(wildTotal);
-
-                var allNHL = flamesTotal + pensTotal + wildTotal
-
-                this.setState({ totalNHL: allNHL });
-                this.setState({ flames: flamesTotal });
-                this.setState({ pens: pensTotal });
-                this.setState({ wild: wildTotal });
+                 var avalancheWins;
+                 var avalancheOTLS;
+                 var avalancheTotal;
+                 var pensWins;
+                 var pensOTLS;
+                 var pensTotal;
+                 var kingsWins;
+                 var kingsOTLS;
+                 var kingsTotal;
+                 var allNHL;
+ 
+                 // Here is the avalanche loop. 
+                 for (var i = 0; i < westResults.length; i++) {
+                     // avalanche
+                     if (westResults[i].team.id === 21) {
+                         avalancheWins = westResults[i].leagueRecord.wins;
+                         avalancheOTLS = westResults[i].leagueRecord.ot;
+                         // console.log(avalancheWins);
+                         // console.log(avalancheOTLS);
+                         // console.log("this loop is running")
+                     }
+                 }
+ 
+                 // avalanche total
+                 avalancheTotal = (avalancheWins * 2.9) + avalancheOTLS;
+                 console.log(avalancheTotal);
+ 
+                 // Here is the loop for the pens
+                 for (var i = 0; i < eastResults.length; i++) {
+ 
+                     // pens
+                     if (eastResults[i].team.id === 5) {
+                         pensWins = eastResults[i].leagueRecord.wins;
+                         pensOTLS = eastResults[i].leagueRecord.ot;
+                         // console.log(pensWins);
+                         // console.log(pensOTLS);
+                         // console.log("this loop is running")
+                     }
+                 }
+ 
+                 for (var i = 0; i < westResults.length; i++) {
+ 
+                     // kings
+                     if (westResults[i].team.id === 26) {
+                         kingsWins = westResults[i].leagueRecord.wins;
+                         kingsOTLS = westResults[i].leagueRecord.ot;
+                         // console.log(kingsWins);
+                         // console.log(kingsOTLS);
+                         // console.log("this loop is running")
+                     }
+                 }
+ 
+                 // pens total
+                 pensTotal = (pensWins * 2.9) + pensOTLS;
+                 // console.log(pensTotal)
+ 
+                 // kings total
+                 kingsTotal = (kingsWins * 2.9) + kingsOTLS;
+                 // console.log(kingsTotal);
+ 
+                 var allNHL = avalancheTotal + pensTotal + kingsTotal
+ 
+                 this.setState({ totalNHL: allNHL });
+                 this.setState({ avalanche: avalancheTotal });
+                 this.setState({ pens: pensTotal });
+                 this.setState({ kings: kingsTotal });
 
             })
             .catch(error => {
@@ -404,7 +400,7 @@ class james extends React.Component {
                                             <tr>
                                                 <th scope="row">17</th>
                                                 <td className="avalanche">Colorado Avalanche</td>
-                                                <td>{this.state.flames}</td>
+                                                <td>{this.state.avalanche}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">60</th>
@@ -414,7 +410,7 @@ class james extends React.Component {
                                             <tr>
                                                 <th scope="row">136</th>
                                                 <td className="lakings">LA Kings</td>
-                                                <td>{this.state.wild}</td>
+                                                <td>{this.state.kings}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
@@ -458,7 +454,7 @@ class james extends React.Component {
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                <td>{this.state.totalNHL}</td>
+                                                {/* <td>{this.state.totalNHL}</td> */}
                                             </tr>
                                         </tbody>
                                     </table>

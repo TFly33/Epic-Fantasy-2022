@@ -33,8 +33,8 @@ class joe extends React.Component {
     }
     componentDidMount = () => {
         this.getScoresNBA();
-        // this.getScoresEPL();
-        // this.getScoresNHL();
+        this.getScoresEPL();
+        this.getScoresNHL();
         this.getScoresEPL();
         this.getScoresPGA();
     };
@@ -58,83 +58,66 @@ class joe extends React.Component {
     getScoresNHL = () => {
         API.getScoresNHL()
             .then(res => {
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                // var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // central
-                var pacificResults = res.data.records[3].teamRecords;
+                 // starting Joe NHL here 
+                 var westResults = res.data.records[0].teamRecords;
+                 var northResults = res.data.records[1].teamRecords;
+                 var eastResults = res.data.records[2].teamRecords;
+                 var centralResults = res.data.records[3].teamRecords;
 
-                console.log(metroResults);
-                var bluesWins;
-                var bluesOTLS;
-                var bluesTotal;
-                var jacketsWins;
-                var jacketsOTLS;
-                var jacketsTotal;
-                var oilersWins;
-                var oilersOTLS;
-                var oilersTotal;
-                var allNHL;
-
-                // Here is the blues loop. 
-                for (var i = 0; i < centralResults.length; i++) {
-                    // blues
-                    if (centralResults[i].team.id === 19) {
-                        bluesWins = centralResults[i].leagueRecord.wins;
-                        bluesOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(bluesWins);
-                        console.log(bluesOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // blues total
-                bluesTotal = (bluesWins * 2) + bluesOTLS;
-                console.log(bluesTotal);
-
-                // Here is the loop for the jackets
-                for (var i = 0; i < metroResults.length; i++) {
-
-                    // jackets
-                    if (metroResults[i].team.id === 29) {
-                        jacketsWins = metroResults[i].leagueRecord.wins;
-                        jacketsOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(jacketsWins);
-                        console.log(jacketsOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                for (var i = 0; i < pacificResults.length; i++) {
-
-                    // oilers
-                    if (pacificResults[i].team.id === 22) {
-                        oilersWins = pacificResults[i].leagueRecord.wins;
-                        oilersOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(oilersWins);
-                        console.log(oilersOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // jackets total
-                jacketsTotal = (jacketsWins * 2) + jacketsOTLS;
-                console.log(jacketsTotal)
-
-                // oilers total
-                oilersTotal = (oilersWins * 2) + oilersOTLS;
-                console.log(oilersTotal);
-
-                var allNHL = bluesTotal + jacketsTotal + oilersTotal
-
-                this.setState({ totalNHL: allNHL });
-                this.setState({ blues: bluesTotal });
-                this.setState({ jackets: jacketsTotal });
-                this.setState({ oilers: oilersTotal });
-
+                 var knightsWins;
+                 var knightsOTLS;
+                 var knightsTotal;
+                 var sabresWins;
+                 var sabresOTLS;
+                 var sabresTotal;
+                 var senatorsWins;
+                 var senatorsOTLS;
+                 var senatorsTotal;
+                 var allNHL;
+ 
+                 // Here is the knights loop. 
+                 for (var i = 0; i < westResults.length; i++) {
+                     // knights
+                     if (westResults[i].team.id === 54) {
+                         knightsWins = westResults[i].leagueRecord.wins;
+                         knightsOTLS = westResults[i].leagueRecord.ot;
+                     }
+                 }
+ 
+                 // knights total
+                 knightsTotal = (knightsWins * 2.9) + knightsOTLS;
+ 
+                 // Here is the loop for the sabres
+                 for (var i = 0; i < eastResults.length; i++) {
+ 
+                     // sabres
+                     if (eastResults[i].team.id === 7) {
+                         sabresWins = eastResults[i].leagueRecord.wins;
+                         sabresOTLS = eastResults[i].leagueRecord.ot;
+                     }
+                 }
+ 
+                 for (var i = 0; i < northResults.length; i++) {
+ 
+                     // senators
+                     if (northResults[i].team.id === 9) {
+                         senatorsWins = northResults[i].leagueRecord.wins;
+                         senatorsOTLS = northResults[i].leagueRecord.ot;
+                     }
+                 }
+ 
+                 // sabres total
+                 sabresTotal = (sabresWins * 2.9) + sabresOTLS;
+ 
+                 // senators total
+                 senatorsTotal = (senatorsWins * 2.9) + senatorsOTLS;
+ 
+                 var allNHL = knightsTotal + sabresTotal + senatorsTotal
+ 
+                 this.setState({ totalNHL: allNHL });
+                 this.setState({ knights: knightsTotal });
+                 this.setState({ sabres: sabresTotal });
+                 this.setState({ senators: senatorsTotal });
             })
             .catch(error => {
                 console.log(error)
@@ -405,17 +388,17 @@ class joe extends React.Component {
                                             <tr>
                                                 <th scope="row">23</th>
                                                 <td className="knights">Vegas Knights</td>
-                                                <td>{this.state.blues}</td>
+                                                <td>{this.state.knights}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">121</th>
                                                 <td className="sabres">Buffalo Sabres</td>
-                                                <td>{this.state.jackets}</td>
+                                                <td>{this.state.sabres}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">145</th>
                                                 <td className="senators">Ottawa Senators</td>
-                                                <td>{this.state.oilers}</td>
+                                                <td>{this.state.senators}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
@@ -459,7 +442,7 @@ class joe extends React.Component {
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                <td>{this.state.totalNHL}</td>
+                                                {/* <td>{this.state.totalNHL}</td> */}
                                             </tr>
                                         </tbody>
                                     </table>

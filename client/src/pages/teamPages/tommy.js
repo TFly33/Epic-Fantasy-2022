@@ -36,7 +36,7 @@ class tommy extends React.Component {
 
     componentDidMount = () => {
         this.getScoresNBA();
-        // this.getScoresNHL();
+        this.getScoresNHL();
         this.getScoresEPL();
         this.getScoresPGA();
     }
@@ -60,78 +60,70 @@ class tommy extends React.Component {
     getScoresNHL = () => {
         API.getScoresNHL()
             .then(res => {
-                // This is the Metro Division
-                // var metroResults = res.data.records[0].teamRecords;
-                // // Atlantic Division
-                // var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // Pacific
-                var pacificResults = res.data.records[3].teamRecords;
+                // NHL FOR TOM. Let's try and create this properly for 2021.The Divisions got changed for 2021, so need to change this a bit. 
+                var westResults = res.data.records[0].teamRecords;
+                var northResults = res.data.records[1].teamRecords;
+                var eastResults = res.data.records[2].teamRecords;
+                var centralResults = res.data.records[3].teamRecords;
 
-                console.log(pacificResults)
-                var knightsWins;
-                var knightsOTLS;
-                var knightsTotal;
-                var blackhawksWins;
-                var blackhawksOTLS;
-                var blackhawksTotal;
                 var canucksWins;
                 var canucksOTLS;
                 var canucksTotal;
-                var totalNHL;
+                var canadiansWins;
+                var canadiansOTLS;
+                var canadiansTotal;
+                var ducksWins;
+                var ducksOTLS;
+                var ducksTotal;
+            
+                // For the Canucks: 
+                for (var i = 0; i < northResults.length; i++) {
 
-                // Here is the Blackhawks for loop. 
-                for (var i = 0; i < centralResults.length; i++) {
-
-                    if (centralResults[i].team.id === 16) {
-                        blackhawksWins = centralResults[i].leagueRecord.wins;
-                        blackhawksOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(blackhawksWins);
-                        console.log(blackhawksOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-                // blackhawks total
-                blackhawksTotal = (blackhawksWins * 2) + blackhawksOTLS;
-                console.log(blackhawksTotal)
-
-                // Here is the loop for the Canucks and Knights, who are in the same division. 
-                for (var i = 0; i < pacificResults.length; i++) {
-
-                    // Knights
-                    if (pacificResults[i].team.id === 54) {
-                        knightsWins = pacificResults[i].leagueRecord.wins;
-                        knightsOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(knightsWins);
-                        console.log(knightsOTLS);
-                        console.log("this loop is running")
-                    }
                     // Canucks
-                    if (pacificResults[i].team.id === 23) {
-                        canucksWins = pacificResults[i].leagueRecord.wins;
-                        canucksOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(canucksWins);
-                        console.log(canucksOTLS);
-                        console.log("this loop is running")
+                    if (northResults[i].team.id === 23) {
+                        canucksWins = northResults[i].leagueRecord.wins;
+                        canucksOTLS = northResults[i].leagueRecord.ot;
                     }
                 }
 
-                // knights total
-                knightsTotal = (knightsWins * 2) + knightsOTLS;
-                console.log(knightsTotal);
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // canadians
+                    if (northResults[i].team.id === 8) {
+                        canadiansWins = northResults[i].leagueRecord.wins;
+                        canadiansOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Here is the ducks/kings for loop. 
+                for (var i = 0; i < westResults.length; i++) {
+                    // ducks
+                    if (westResults[i].team.id === 24) {
+                        ducksWins = westResults[i].leagueRecord.wins;
+                        ducksOTLS = westResults[i].leagueRecord.ot;
+                    }
+
+                }
 
                 // canucks total
-                canucksTotal = (canucksWins * 2) + canucksOTLS;
-                console.log(canucksTotal);
+                canucksTotal = (canucksWins * 2.9) + canucksOTLS;
+                // console.log(canucksTotal);
 
-                var allNHL = knightsTotal + canucksTotal + blackhawksTotal
+                // canadians total
+                canadiansTotal = (canadiansWins * 2.9) + canadiansOTLS;
+                // console.log(canadiansTotal);
+
+                // ducks total
+                ducksTotal = (ducksWins *2.9) + ducksOTLS;
+                //  console.log(ducksTotal);
+
+                var allNHL = canucksTotal + canadiansTotal + ducksTotal
+                // console.log(allNHL + " Here is Tom NHL")
 
                 this.setState({ totalNHL: allNHL });
-                this.setState({ knights: knightsTotal });
+                this.setState({ canadians: canadiansTotal });
                 this.setState({ canucks: canucksTotal });
-                this.setState({ blackhawks: blackhawksTotal });
-
+                this.setState({ ducks: ducksTotal });
             })
             .catch(error => {
                 console.log(error)
@@ -402,17 +394,17 @@ class tommy extends React.Component {
                                             <tr>
                                                 <th scope="row">109</th>
                                                 <td className="canucks">Vancouver Canucks</td>
-                                                <td>{this.state.knights}</td>
+                                                <td>{this.state.canucks}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">112</th>
                                                 <td className="canadiens">Montreal Canadiens</td>
-                                                <td>{this.state.blackhawks}</td>
+                                                <td>{this.state.canadians}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">139</th>
                                                 <td className="ducks">Anaheim Mighty Ducks</td>
-                                                <td>{this.state.canucks}</td>
+                                                <td>{this.state.ducks}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
@@ -451,7 +443,7 @@ class tommy extends React.Component {
                                             <tr>
                                                 <th scope="row">122</th>
                                                 <td className="orioles">Baltimore Orioles</td>
-                                                <td>{this.state.canucks}</td>
+                                                <td>{this.state.orioles}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>

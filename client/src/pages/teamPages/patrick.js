@@ -35,7 +35,7 @@ class patrick extends React.Component {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresPGA();
-        // this.getScoresNHL();
+        this.getScoresNHL();
     }
 
     getScoresPGA = () => {
@@ -58,78 +58,76 @@ class patrick extends React.Component {
     getScoresNHL = () => {
         API.getScoresNHL()
             .then(res => {
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                // var atlanticResults = res.data.records[1].teamRecords;
-                // // Central Division
-                // var centralResults = res.data.records[2].teamRecords;
-                // Pacific
-                var pacificResults = res.data.records[3].teamRecords;
+                // start of Patrick NHL: 
+                var westResults = res.data.records[0].teamRecords;
+                var northResults = res.data.records[1].teamRecords;
+                var eastResults = res.data.records[2].teamRecords;
+                var centralResults = res.data.records[3].teamRecords;
 
-                console.log(metroResults);
                 var islandersWins;
                 var islandersOTLS;
                 var islandersTotal;
-                var ducksWins;
-                var ducksOTLS;
-                var ducksTotal;
-                var kingsWins;
-                var kingsOTLS;
-                var kingsTotal;
+                var wildWins;
+                var wildOTLS;
+                var wildTotal;
+                var blackhawksWins;
+                var blackhawksOTLS;
+                var blackhawksTotal;
                 var allNHL;
 
-                // Here is the ducks/kings for loop. 
-                for (var i = 0; i < pacificResults.length; i++) {
-                    // ducks
-                    if (pacificResults[i].team.id === 24) {
-                        ducksWins = pacificResults[i].leagueRecord.wins;
-                        ducksOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(ducksWins);
-                        console.log(ducksOTLS);
-                        console.log("this loop is running")
-                    }
-
-                    // kings
-                    if (pacificResults[i].team.id === 26) {
-                        kingsWins = pacificResults[i].leagueRecord.wins;
-                        kingsOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(kingsWins);
-                        console.log(kingsOTLS);
-                        console.log("this loop is running")
+                // Here is the wild/blackhawks for loop. 
+                for (var i = 0; i < westResults.length; i++) {
+                    // wild
+                    if (westResults[i].team.id === 30) {
+                        wildWins = westResults[i].leagueRecord.wins;
+                        wildOTLS = westResults[i].leagueRecord.ot;
+                        // console.log("Wild Wins: " + wildWins);
+                        // console.log("Wild OTs: " + wildOTLS);
+                        // console.log("this loop is running");
                     }
                 }
-                // ducks total
-                ducksTotal = (ducksWins * 2) + ducksOTLS;
-                console.log(ducksTotal)
+                // wild total
+                wildTotal = (wildWins * 2.9) + wildOTLS;
+                // console.log(wildTotal)
 
                 // Here is the loop for the islanders
-                for (var i = 0; i < metroResults.length; i++) {
+                for (var i = 0; i < eastResults.length; i++) {
 
                     // islanders
-                    if (metroResults[i].team.id === 2) {
-                        islandersWins = metroResults[i].leagueRecord.wins;
-                        islandersOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(islandersWins);
-                        console.log(islandersOTLS);
-                        console.log("this loop is running")
+                    if (eastResults[i].team.id === 2) {
+                        islandersWins = eastResults[i].leagueRecord.wins;
+                        islandersOTLS = eastResults[i].leagueRecord.ot;
+                        // console.log(islandersWins);
+                        // console.log(islandersOTLS);
+                        // console.log("this loop is running")
                     }
                 }
 
                 // islanders total
-                islandersTotal = (islandersWins * 2) + islandersOTLS;
-                console.log(islandersTotal);
+                islandersTotal = (islandersWins * 2.9) + islandersOTLS;
+                // console.log(islandersTotal);
 
-                // ducks total
-                kingsTotal = (kingsWins * 2) + kingsOTLS;
-                console.log(kingsTotal);
+                // blackhawks total
+                for (var i = 0; i < centralResults.length; i++) {
 
-                var allNHL = islandersTotal + ducksTotal + kingsTotal
+                    // islanders
+                    if (centralResults[i].team.id === 16) {
+                        blackhawksWins = centralResults[i].leagueRecord.wins;
+                        blackhawksOTLS = centralResults[i].leagueRecord.ot;
+                        // console.log("blackhawks wins: " + blackhawksWins);
+                        // console.log(blackhawksOTLS);
+                        // console.log("this loop is running");
+                    }
+                }
+
+                blackhawksTotal = (blackhawksWins * 2.9) + blackhawksOTLS;
+
+                var allNHL = islandersTotal + wildTotal + blackhawksTotal
 
                 this.setState({ totalNHL: allNHL });
                 this.setState({ islanders: islandersTotal });
-                this.setState({ ducks: ducksTotal });
-                this.setState({ kings: kingsTotal });
+                this.setState({ wild: wildTotal });
+                this.setState({ blackhawks: blackhawksTotal });
 
             })
             .catch(error => {
@@ -406,12 +404,12 @@ class patrick extends React.Component {
                                             <tr>
                                                 <th scope="row">119</th>
                                                 <td className="wild">Minnesota Wild</td>
-                                                <td>{this.state.ducks}</td>
+                                                <td>{this.state.wild}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">130</th>
                                                 <td className="blackhawks">Chicago Blackhawks</td>
-                                                <td>{this.state.kings}</td>
+                                                <td>{this.state.blackhawks}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
@@ -455,7 +453,7 @@ class patrick extends React.Component {
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                <td>{this.state.totalNHL}</td>
+                                                {/* <td>{this.state.totalNHL}</td> */}
                                             </tr>
                                         </tbody>
                                     </table>

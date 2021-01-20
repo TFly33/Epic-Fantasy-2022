@@ -36,7 +36,7 @@ class steids extends React.Component {
         this.getScoresNBA();
         this.getScoresPGA();
         this.getScoresEPL();
-        // this.getScoresNHL();
+        this.getScoresNHL();
     };
 
     getScoresPGA = () => {
@@ -59,79 +59,70 @@ class steids extends React.Component {
     getScoresNHL = () => {
         API.getScoresNHL()
             .then(res => {
-                // This is the Metro Division
-                var metroResults = res.data.records[0].teamRecords;
-                // Atlantic Division
-                var atlanticResults = res.data.records[1].teamRecords;
-                // Central Division
-                var centralResults = res.data.records[2].teamRecords;
-                // Pacific
-                // var pacificResults = res.data.records[3].teamRecords;
+                // starting Steids NHL here
+                var westResults = res.data.records[0].teamRecords;
+                var northResults = res.data.records[1].teamRecords;
+                var eastResults = res.data.records[2].teamRecords;
+                var centralResults = res.data.records[3].teamRecords;
 
-                console.log(atlanticResults)
-                var capsWins;
-                var capsOTLS;
-                var capsTotal;
+                var bluesWins;
+                var bluesOTLS;
+                var bluesTotal;
+                var predatorsWins;
+                var predatorsOTLS;
+                var predatorsTotal;
                 var panthersWins;
                 var panthersOTLS;
                 var panthersTotal;
-                var sabresWins;
-                var sabresOTLS;
-                var sabresTotal;
                 var allNHL;
 
-                // Here is the panthers for loop. 
+                // Here is the loop for the blues
+                for (var i = 0; i < westResults.length; i++) {
+
+                    // blues
+                    if (westResults[i].team.id === 19) {
+                        bluesWins = westResults[i].leagueRecord.wins;
+                        bluesOTLS = westResults[i].leagueRecord.ot;
+                    };
+                };
+
+                // predators total
+                bluesTotal = (bluesWins * 2) + bluesOTLS;
+                console.log(bluesTotal);
+
+                // Here is the predators for loop. 
                 for (var i = 0; i < centralResults.length; i++) {
 
-                    if (atlanticResults[i].team.id === 13) {
-                        panthersWins = atlanticResults[i].leagueRecord.wins;
-                        panthersOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(panthersWins);
-                        console.log(panthersOTLS);
-                        console.log("this loop is running")
+                    if (centralResults[i].team.id === 18) {
+                        predatorsWins = centralResults[i].leagueRecord.wins;
+                        predatorsOTLS = centralResults[i].leagueRecord.ot;
                     }
 
-                    // sabres
-                    if (atlanticResults[i].team.id === 7) {
-                        sabresWins = atlanticResults[i].leagueRecord.wins;
-                        sabresOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(sabresWins);
-                        console.log(sabresOTLS);
-                        console.log("this loop is running")
+                    // panthers
+                    if (centralResults[i].team.id === 13) {
+                        panthersWins = centralResults[i].leagueRecord.wins;
+                        panthersOTLS = centralResults[i].leagueRecord.ot;
                     }
                 }
+
+                // predators total
+                predatorsTotal = (predatorsWins * 2.9) + predatorsOTLS;
+                console.log(predatorsTotal);
+
                 // panthers total
-                panthersTotal = (panthersWins * 2) + panthersOTLS;
-                console.log(panthersTotal)
+                panthersTotal = (panthersWins * 2.9) + panthersOTLS;
+                console.log(panthersTotal);
 
-                // Here is the loop for the caps
-                for (var i = 0; i < metroResults.length; i++) {
+                // steids total
+                bluesTotal = (bluesWins * 2.9) + bluesOTLS;
+                console.log(bluesTotal);
 
-                    // caps
-                    if (metroResults[i].team.id === 15) {
-                        capsWins = metroResults[i].leagueRecord.wins;
-                        capsOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(capsWins);
-                        console.log(capsOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // caps total
-                capsTotal = (capsWins * 2) + capsOTLS;
-                console.log(capsTotal);
-
-                // sabres total
-                sabresTotal = (sabresWins * 2) + sabresOTLS;
-                console.log(sabresTotal);
-
-                var allNHL = capsTotal + sabresTotal + panthersTotal
+                var allNHL = bluesTotal + panthersTotal + predatorsTotal
 
                 this.setState({ totalNHL: allNHL });
-                this.setState({ caps: capsTotal });
-                this.setState({ sabres: sabresTotal });
+                this.setState({ blues: bluesTotal });
                 this.setState({ panthers: panthersTotal });
-
+                this.setState({ predators: predatorsTotal });
             })
             .catch(error => {
                 console.log(error)
@@ -412,12 +403,12 @@ class steids extends React.Component {
                                             <tr>
                                                 <th scope="row">88</th>
                                                 <td className="predators">Nashville Predators</td>
-                                                <td>{this.state.panthers}</td>
+                                                <td>{this.state.predators}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">118</th>
                                                 <td className="fPanthers">Florida Panthers</td>
-                                                <td>{this.state.sabres}</td>
+                                                <td>{this.state.panthers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
@@ -461,7 +452,7 @@ class steids extends React.Component {
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                <td>{this.state.totalNHL}</td>
+                                                {/* <td>{this.state.totalNHL}</td> */}
                                             </tr>
                                         </tbody>
                                     </table>
