@@ -60,8 +60,8 @@ class dj extends React.Component {
             .then(res => {
                 // Starting DJ NHL Here 
                 var westResults = res.data.records[0].teamRecords;
-                var northResults = res.data.records[1].teamRecords;
-                var eastResults = res.data.records[2].teamRecords;
+                var northResults = res.data.records[2].teamRecords;
+                var eastResults = res.data.records[1].teamRecords;
                 var centralResults = res.data.records[3].teamRecords;
 
                 var flyersWins;
