@@ -90,7 +90,7 @@ class neptune extends React.Component {
                 }
 
                 // stars total
-                starsTotal = (starsWins * 2.9) + starsOTLS;
+                starsTotal = (starsWins * 2.9) + (starsOTLS * 1.45);
               
 
                 // Here is the loop for the blue jackets
@@ -107,7 +107,7 @@ class neptune extends React.Component {
                 };
 
                 // blueJackets total
-                blueJacketsTotal = (blueJacketsWins * 2.9) + blueJacketsOTLS;
+                blueJacketsTotal = (blueJacketsWins * 2.9) + (blueJacketsOTLS * 1.45);
            
 
                 // Here is the loop for the Devils
@@ -122,10 +122,23 @@ class neptune extends React.Component {
                     }
                 };
 
-                // Devils total
-                devilsTotal = (devilsWins * 2.9) + devilsOTLS;
+    
+                // Here is the loop for the Devils
+                for (var i = 0; i < northResults.length; i++) {
+                    // devils
+                    if (northResults[i].team.id === 1) {
+                        devilsWins = northResults[i].leagueRecord.wins;
+                        devilsOTLS = northResults[i].leagueRecord.ot;
+                        // console.log(devilsWins);
+                        // console.log(devilsOTLS);
+                        // console.log("this loop is running")
+                    }
+                };
 
-                var allNHL = starsTotal + blueJacketsTotal + devilsTotal
+                // Devils total
+                devilsTotal = (devilsWins * 2.9) + (devilsOTLS * 1.45);
+
+                var allNHL = (starsTotal + blueJacketsTotal + devilsTotal).toFixed(1);
 
                 this.setState({ totalNHL: allNHL });
                 this.setState({ stars: starsTotal });

@@ -87,8 +87,8 @@ class ben extends React.Component {
                 }
 
                 // lightning total
-                lightningTotal = (lightningWins * 2.9) + lightningOTLS;
-                console.log(lightningTotal);
+                lightningTotal = (lightningWins * 2.9) + (lightningOTLS * 1.45);
+                // console.log(lightningTotal);
 
                 for (var i = 0; i < northResults.length; i++) {
 
@@ -99,9 +99,18 @@ class ben extends React.Component {
                     }
                 }
 
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // flames
+                    if (eastResults[i].team.id === 20) {
+                        flamesWins = eastResults[i].leagueRecord.wins;
+                        flamesOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
                 // flames total
-                flamesTotal = (flamesWins * 2.9) + flamesOTLS;
-                console.log(flamesTotal);
+                flamesTotal = (flamesWins * 2.9) + (flamesOTLS * 1.45);
+                // console.log(flamesTotal);
 
                 // Bruins
 
@@ -114,11 +123,20 @@ class ben extends React.Component {
                     }
                 }
 
-                // bruins total
-                bruinsTotal = (bruinsWins * 2.9) + bruinsOTLS;
-                console.log(bruinsTotal)
+                for (var i = 0; i < northResults.length; i++) {
 
-                var allNHL = lightningTotal + bruinsTotal + flamesTotal
+                    // bruins
+                    if (northResults[i].team.id === 6) {
+                        bruinsWins = northResults[i].leagueRecord.wins;
+                        bruinsOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // bruins total
+                bruinsTotal = (bruinsWins * 2.9) + (bruinsOTLS * 1.45);
+                // console.log(bruinsTotal)
+
+                var allNHL = (lightningTotal + bruinsTotal + flamesTotal).toFixed(1);
 
                 this.setState({ totalNHL: allNHL });
                 this.setState({ lightning: lightningTotal });

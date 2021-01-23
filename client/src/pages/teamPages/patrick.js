@@ -87,7 +87,7 @@ class patrick extends React.Component {
                     }
                 }
                 // wild total
-                wildTotal = (wildWins * 2.9) + wildOTLS;
+                wildTotal = (wildWins * 2.9) + (wildOTLS * 1.45);
                 // console.log(wildTotal)
 
                 // Here is the loop for the islanders
@@ -103,8 +103,21 @@ class patrick extends React.Component {
                     }
                 }
 
+                // Here is the loop for the islanders
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // islanders
+                    if (northResults[i].team.id === 2) {
+                        islandersWins = northResults[i].leagueRecord.wins;
+                        islandersOTLS = northResults[i].leagueRecord.ot;
+                        // console.log(islandersWins);
+                        // console.log(islandersOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
                 // islanders total
-                islandersTotal = (islandersWins * 2.9) + islandersOTLS;
+                islandersTotal = (islandersWins * 2.9) + (islandersOTLS * 1.45);
                 // console.log(islandersTotal);
 
                 // blackhawks total
@@ -120,9 +133,9 @@ class patrick extends React.Component {
                     }
                 }
 
-                blackhawksTotal = (blackhawksWins * 2.9) + blackhawksOTLS;
+                blackhawksTotal = (blackhawksWins * 2.9) + (blackhawksOTLS * 1.45);
 
-                var allNHL = islandersTotal + wildTotal + blackhawksTotal
+                var allNHL = (islandersTotal + wildTotal + blackhawksTotal).toFixed(1);
 
                 this.setState({ totalNHL: allNHL });
                 this.setState({ islanders: islandersTotal });

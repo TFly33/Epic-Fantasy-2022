@@ -91,8 +91,32 @@ class al extends React.Component {
                     }
                 }
 
+                  // Here is the caps loop. 
+                  for (var i = 0; i < northResults.length; i++) {
+                    // caps
+                    if (northResults[i].team.id === 15) {
+                        capsWins = northResults[i].leagueRecord.wins;
+                        capsOTLS = northResults[i].leagueRecord.ot;
+                    }
+
+                    // rangers
+                    if (northResults[i].team.id === 3) {
+                        rangersWins = northResults[i].leagueRecord.wins;
+                        rangersOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
                 // Canes
-                for (var i = 0; i < eastResults.length; i++) {
+                for (var i = 0; i <eastResults.length; i++) {
+                    // canes
+                    if (centralResults[i].team.id === 12) {
+                        canesWins = centralResults[i].leagueRecord.wins;
+                        canesOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
+                 // Canes
+                 for (var i = 0; i <northResults.length; i++) {
                     // canes
                     if (centralResults[i].team.id === 12) {
                         canesWins = centralResults[i].leagueRecord.wins;
@@ -101,18 +125,18 @@ class al extends React.Component {
                 }
 
                 // caps total
-                capsTotal = (capsWins * 2.9) + capsOTLS;
+                capsTotal = ((capsWins * 2.9) + (capsOTLS * 1.45));
                 console.log(capsTotal);
 
                 // canes total
-                canesTotal = (canesWins * 2.9) + canesOTLS;
+                canesTotal = ((canesWins * 2.9) + (canesOTLS * 1.45));
                 console.log(canesTotal)
 
                 // rangers total
-                rangersTotal = (rangersWins * 2.9) + rangersOTLS;
+                rangersTotal = ((rangersWins * 2.9) + (rangersOTLS * 1.45));
                 console.log(rangersTotal);
 
-                var allNHL = capsTotal + canesTotal + rangersTotal
+                var allNHL = (capsTotal + canesTotal + rangersTotal).toFixed(1);
 
                 this.setState({ totalNHL: allNHL });
                 this.setState({ caps: capsTotal });

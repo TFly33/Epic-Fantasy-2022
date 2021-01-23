@@ -87,7 +87,7 @@ class james extends React.Component {
                  }
  
                  // avalanche total
-                 avalancheTotal = (avalancheWins * 2.9) + avalancheOTLS;
+                 avalancheTotal = (avalancheWins * 2.9) + (avalancheOTLS * 1.45);
                  console.log(avalancheTotal);
  
                  // Here is the loop for the pens
@@ -102,6 +102,19 @@ class james extends React.Component {
                          // console.log("this loop is running")
                      }
                  }
+
+                   // Here is the loop for the pens
+                   for (var i = 0; i < northResults.length; i++) {
+ 
+                    // pens
+                    if (northResults[i].team.id === 5) {
+                        pensWins = northResults[i].leagueRecord.wins;
+                        pensOTLS = northResults[i].leagueRecord.ot;
+                        // console.log(pensWins);
+                        // console.log(pensOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
  
                  for (var i = 0; i < westResults.length; i++) {
  
@@ -116,14 +129,14 @@ class james extends React.Component {
                  }
  
                  // pens total
-                 pensTotal = (pensWins * 2.9) + pensOTLS;
+                 pensTotal = (pensWins * 2.9) + (pensOTLS * 1.45);
                  // console.log(pensTotal)
  
                  // kings total
-                 kingsTotal = (kingsWins * 2.9) + kingsOTLS;
+                 kingsTotal = (kingsWins * 2.9) + (kingsOTLS * 1.45);
                  // console.log(kingsTotal);
  
-                 var allNHL = avalancheTotal + pensTotal + kingsTotal
+                 var allNHL = (avalancheTotal + pensTotal + kingsTotal).toFixed(1);
  
                  this.setState({ totalNHL: allNHL });
                  this.setState({ avalanche: avalancheTotal });

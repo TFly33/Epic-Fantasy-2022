@@ -85,7 +85,7 @@ class joe extends React.Component {
                  }
  
                  // knights total
-                 knightsTotal = (knightsWins * 2.9) + knightsOTLS;
+                 knightsTotal = (knightsWins * 2.9) + (knightsOTLS * 1.45);
  
                  // Here is the loop for the sabres
                  for (var i = 0; i < eastResults.length; i++) {
@@ -96,6 +96,16 @@ class joe extends React.Component {
                          sabresOTLS = eastResults[i].leagueRecord.ot;
                      }
                  }
+
+                   // Here is the loop for the sabres
+                   for (var i = 0; i < northResults.length; i++) {
+ 
+                    // sabres
+                    if (northResults[i].team.id === 7) {
+                        sabresWins = northResults[i].leagueRecord.wins;
+                        sabresOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
  
                  for (var i = 0; i < northResults.length; i++) {
  
@@ -105,14 +115,23 @@ class joe extends React.Component {
                          senatorsOTLS = northResults[i].leagueRecord.ot;
                      }
                  }
+
+                 for (var i = 0; i < eastResults.length; i++) {
+ 
+                    // senators
+                    if (eastResults[i].team.id === 9) {
+                        senatorsWins = eastResults[i].leagueRecord.wins;
+                        senatorsOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
  
                  // sabres total
-                 sabresTotal = (sabresWins * 2.9) + sabresOTLS;
+                 sabresTotal = (sabresWins * 2.9) + (sabresOTLS * 1.45);
  
                  // senators total
-                 senatorsTotal = (senatorsWins * 2.9) + senatorsOTLS;
+                 senatorsTotal = (senatorsWins * 2.9) + (senatorsOTLS * 1.45);
  
-                 var allNHL = knightsTotal + sabresTotal + senatorsTotal
+                 var allNHL = (knightsTotal + sabresTotal + senatorsTotal).toFixed(1);
  
                  this.setState({ totalNHL: allNHL });
                  this.setState({ knights: knightsTotal });

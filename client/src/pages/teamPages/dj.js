@@ -84,9 +84,17 @@ class dj extends React.Component {
                     }
                 }
 
+                // Here is the flyers loop. 
+                for (var i = 0; i < northResults.length; i++) {
+                    // flyers
+                    if (northResults[i].team.id === 4) {
+                        flyersWins = northResults[i].leagueRecord.wins;
+                        flyersOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
                 // flyers total
-                flyersTotal = (flyersWins * 2.9) + flyersOTLS;
-                console.log(flyersTotal);
+                flyersTotal = (flyersWins * 2.9) + (flyersOTLS * 1.45);
 
                 for (var i = 0; i < northResults.length; i++) {
 
@@ -94,6 +102,15 @@ class dj extends React.Component {
                     if (northResults[i].team.id === 52) {
                         jetsWins = northResults[i].leagueRecord.wins;
                         jetsOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // jets
+                    if (eastResults[i].team.id === 52) {
+                        jetsWins = eastResults[i].leagueRecord.wins;
+                        jetsOTLS = eastResults[i].leagueRecord.ot;
                     }
                 }
 
@@ -106,15 +123,22 @@ class dj extends React.Component {
                     }
                 }
 
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // oilers
+                    if (eastResults[i].team.id === 22) {
+                        oilersWins = eastResults[i].leagueRecord.wins;
+                        oilersOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
                 // oilers total
-                oilersTotal = (oilersWins * 2.9) + oilersOTLS;
-                console.log(oilersTotal)
+                oilersTotal = (oilersWins * 2.9) + (oilersOTLS * 1.45);
 
                 // jets total
-                jetsTotal = (jetsWins * 2.9) + jetsOTLS;
-                console.log(jetsTotal);
+                jetsTotal = (jetsWins * 2.9) + (jetsOTLS * 1.45);
 
-                var allNHL = flyersTotal + oilersTotal + jetsTotal
+                var allNHL = (flyersTotal + oilersTotal + jetsTotal).toFixed(1);
 
                 this.setState({ totalNHL: allNHL });
                 this.setState({ flyers: flyersTotal });

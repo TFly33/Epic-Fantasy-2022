@@ -86,10 +86,6 @@ class steids extends React.Component {
                     };
                 };
 
-                // predators total
-                bluesTotal = (bluesWins * 2) + bluesOTLS;
-                console.log(bluesTotal);
-
                 // Here is the predators for loop. 
                 for (var i = 0; i < centralResults.length; i++) {
 
@@ -106,18 +102,15 @@ class steids extends React.Component {
                 }
 
                 // predators total
-                predatorsTotal = (predatorsWins * 2.9) + predatorsOTLS;
-                console.log(predatorsTotal);
+                predatorsTotal = (predatorsWins * 2.9) + (predatorsOTLS * 1.45);
 
                 // panthers total
-                panthersTotal = (panthersWins * 2.9) + panthersOTLS;
-                console.log(panthersTotal);
+                panthersTotal = (panthersWins * 2.9) + (panthersOTLS * 1.45);
 
                 // steids total
-                bluesTotal = (bluesWins * 2.9) + bluesOTLS;
-                console.log(bluesTotal);
+                bluesTotal = (bluesWins * 2.9) + (bluesOTLS * 1.45);
 
-                var allNHL = bluesTotal + panthersTotal + predatorsTotal
+                var allNHL = (bluesTotal + panthersTotal + predatorsTotal).toFixed(1);
 
                 this.setState({ totalNHL: allNHL });
                 this.setState({ blues: bluesTotal });

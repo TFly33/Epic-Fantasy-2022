@@ -84,8 +84,17 @@ class goose extends React.Component {
                     }
                 }
 
+                  // Here is the leafs loop
+                  for (var i = 0; i < eastResults.length; i++) {
+                    // leafs
+                    if (eastResults[i].team.id === 10) {
+                        leafsWins = eastResults[i].leagueRecord.wins;
+                        leafsOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
                 // leafs total
-                leafsTotal = (leafsWins * 2.9) + leafsOTLS;
+                leafsTotal = (leafsWins * 2.9) + (leafsOTLS * 1.45);
 
                 // Sharks Loop 
                 for (var i = 0; i < westResults.length; i++) {
@@ -97,7 +106,7 @@ class goose extends React.Component {
                 }
 
                 // sharks total
-                sharksTotal = (sharksWins * 2.9) + sharksOTLS;
+                sharksTotal = (sharksWins * 2.9) + (sharksOTLS * 1.45);
 
                 for (var i = 0; i < westResults.length; i++) {
 
@@ -109,16 +118,14 @@ class goose extends React.Component {
                 }
 
                 // coyotes total
-                coyotesTotal = (coyotesWins * 2.9) + coyotesOTLS;
+                coyotesTotal = (coyotesWins * 2.9) + (coyotesOTLS * 1.45);
 
-                var allNHL = leafsTotal + sharksTotal + coyotesTotal
+                var allNHL = (leafsTotal + sharksTotal + coyotesTotal).toFixed(1);
 
                 this.setState({ totalNHL: allNHL });
                 this.setState({ leafs: leafsTotal });
                 this.setState({ sharks: sharksTotal });
                 this.setState({ coyotes: coyotesTotal });
-
-
             })
             .catch(error => {
                 console.log(error)

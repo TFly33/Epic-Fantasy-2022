@@ -144,7 +144,7 @@ class Table extends Component {
                     label: 'Bonus',
                     field: 'bonus',
                     sort: 'asc',
-                    width: 150
+                    width: 100
                 },
                 {
                     label: 'Total',
@@ -529,6 +529,9 @@ class Table extends Component {
                 var northResults = res.data.records[2].teamRecords;
                 var centralResults = res.data.records[3].teamRecords;
 
+                // Weird issue caused me to have to repeat every for loop for east and north each time. The index changes each day apparently. 
+                var canucksWins;
+                var canadiansOTLS;
                 var canucksWins;
                 var canucksOTLS;
                 var canucksTotal;
@@ -539,8 +542,6 @@ class Table extends Component {
                 var ducksOTLS;
                 var ducksTotal;
 
-                console.log(northResults);
-
                 // For the Canucks: 
                 for (var i = 0; i < northResults.length; i++) {
 
@@ -548,7 +549,18 @@ class Table extends Component {
                     if (northResults[i].team.id === 23) {
                         canucksWins = northResults[i].leagueRecord.wins;
                         canucksOTLS = northResults[i].leagueRecord.ot;
-                        console.log("This loop is running.");
+                        // console.log("This loop is running.");
+                    }
+                }
+
+                // For the Canucks: 
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // Canucks
+                    if (eastResults[i].team.id === 23) {
+                        canucksWins = eastResults[i].leagueRecord.wins;
+                        canucksOTLS = eastResults[i].leagueRecord.ot;
+                        // console.log("This loop is running.");
                     }
                 }
 
@@ -558,6 +570,15 @@ class Table extends Component {
                     if (northResults[i].team.id === 8) {
                         canadiansWins = northResults[i].leagueRecord.wins;
                         canadiansOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // canadians
+                    if (eastResults[i].team.id === 8) {
+                        canadiansWins = eastResults[i].leagueRecord.wins;
+                        canadiansOTLS = eastResults[i].leagueRecord.ot;
                     }
                 }
 
@@ -571,14 +592,6 @@ class Table extends Component {
 
                 }
 
-                console.log("Ducks Wins: " + ducksWins);
-                console.log("Ducks OTLS: " + ducksOTLS);
-                console.log("canucks Wins: " + canucksWins);
-                console.log("canucks OTLS: " + canucksOTLS);
-                console.log("canadians Wins: " + canadiansWins);
-                console.log("canadians OTLS: " + canadiansOTLS);
-
-
                 // canucks total
                 canucksTotal = (canucksWins * 2.9) + (canucksOTLS * 1.45);
                 // console.log(canucksTotal);
@@ -591,7 +604,7 @@ class Table extends Component {
                 ducksTotal = (ducksWins * 2.9) + (ducksOTLS * 1.45);
                 //  console.log(ducksTotal);
 
-                var allNHL = canucksTotal + canadiansTotal + ducksTotal
+                var allNHL = (canucksTotal + canadiansTotal + ducksTotal).toFixed(1)
                 // console.log(allNHL + " Here is Tom NHL")
 
                 this.setState({ tomNHL: allNHL });
@@ -599,11 +612,7 @@ class Table extends Component {
                 this.setState({ canucks: canucksTotal });
                 this.setState({ ducks: ducksTotal });
 
-                console.log("Ducks totals: " + ducksTotal);
-                console.log("canucks totals: " + canucksTotal);
-                console.log("canadians totals: " + canadiansTotal);
-             
-        
+
                 // start of Patrick NHL: 
                 var islandersWins;
                 var islandersOTLS;
@@ -628,13 +637,24 @@ class Table extends Component {
                 wildTotal = (wildWins * 2.9) + (wildOTLS * 1.45);
                 // console.log(wildTotal)
 
-                // Here is the loop for the islanders
+                // Here is the east loop for the islanders
                 for (var i = 0; i < eastResults.length; i++) {
 
                     // islanders
                     if (eastResults[i].team.id === 2) {
                         islandersWins = eastResults[i].leagueRecord.wins;
                         islandersOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+
+                // Here is the north loop for the islanders
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // islanders
+                    if (northResults[i].team.id === 2) {
+                        islandersWins = northResults[i].leagueRecord.wins;
+                        islandersOTLS = northResults[i].leagueRecord.ot;
                     }
                 }
 
@@ -654,7 +674,7 @@ class Table extends Component {
 
                 blackhawksTotal = (blackhawksWins * 2.9) + (blackhawksOTLS * 1.45);
 
-                var allNHL = islandersTotal + wildTotal + blackhawksTotal
+                var allNHL = (islandersTotal + wildTotal + blackhawksTotal).toFixed(1)
 
                 this.setState({ patNHL: allNHL });
                 this.setState({ islanders: islandersTotal });
@@ -692,6 +712,17 @@ class Table extends Component {
                     if (eastResults[i].team.id === 5) {
                         pensWins = eastResults[i].leagueRecord.wins;
                         pensOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+
+                // Here is the north loop for the pens
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // pens
+                    if (northResults[i].team.id === 5) {
+                        pensWins = northResults[i].leagueRecord.wins;
+                        pensOTLS = northResults[i].leagueRecord.ot;
                     }
                 }
 
@@ -742,7 +773,7 @@ class Table extends Component {
 
                 // stars total
                 starsTotal = (starsWins * 2.9) + (starsOTLS * 1.45);
-     
+
                 // Here is the loop for the blue jackets
                 for (var i = 0; i < centralResults.length; i++) {
 
@@ -765,10 +796,19 @@ class Table extends Component {
                     }
                 };
 
+                // Here is the north loop for the Devils
+                for (var i = 0; i < northResults.length; i++) {
+                    // devils
+                    if (northResults[i].team.id === 1) {
+                        devilsWins = northResults[i].leagueRecord.wins;
+                        devilsOTLS = northResults[i].leagueRecord.ot;
+                    }
+                };
+
                 // Devils total
                 devilsTotal = (devilsWins * 2.9) + (devilsOTLS * 1.45);
 
-                var allNHL = starsTotal + blueJacketsTotal + devilsTotal
+                var allNHL = (starsTotal + blueJacketsTotal + devilsTotal).toFixed(1);
 
                 this.setState({ neptuneNHL: allNHL });
                 this.setState({ stars: starsTotal });
@@ -796,9 +836,18 @@ class Table extends Component {
                     }
                 }
 
+                // Here is the north flyers loop. 
+                for (var i = 0; i < northResults.length; i++) {
+                    // flyers
+                    if (northResults[i].team.id === 4) {
+                        flyersWins = northResults[i].leagueRecord.wins;
+                        flyersOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
                 // flyers total
                 flyersTotal = (flyersWins * 2.9) + (flyersOTLS * 1.45);
-           
+
 
                 for (var i = 0; i < northResults.length; i++) {
 
@@ -806,6 +855,16 @@ class Table extends Component {
                     if (northResults[i].team.id === 52) {
                         jetsWins = northResults[i].leagueRecord.wins;
                         jetsOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // jets
+                    if (eastResults[i].team.id === 52) {
+                        jetsWins = eastResults[i].leagueRecord.wins;
+                        jetsOTLS = eastResults[i].leagueRecord.ot;
                     }
                 }
 
@@ -818,13 +877,22 @@ class Table extends Component {
                     }
                 }
 
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // oilers
+                    if (eastResults[i].team.id === 22) {
+                        oilersWins = eastResults[i].leagueRecord.wins;
+                        oilersOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
                 // oilers total
                 oilersTotal = (oilersWins * 2.9) + (oilersOTLS * 1.45);
-                
+
                 // jets total
                 jetsTotal = (jetsWins * 2.9) + (jetsOTLS * 1.45);
-              
-                var allNHL = flyersTotal + oilersTotal + jetsTotal
+
+                var allNHL = (flyersTotal + oilersTotal + jetsTotal).toFixed(1);
 
                 this.setState({ djNHL: allNHL });
                 this.setState({ flyers: flyersTotal });
@@ -849,6 +917,15 @@ class Table extends Component {
                     if (northResults[i].team.id === 10) {
                         leafsWins = northResults[i].leagueRecord.wins;
                         leafsOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Here is the east leafs loop
+                for (var i = 0; i < eastResults.length; i++) {
+                    // leafs
+                    if (eastResults[i].team.id === 10) {
+                        leafsWins = eastResults[i].leagueRecord.wins;
+                        leafsOTLS = eastResults[i].leagueRecord.ot;
                     }
                 }
 
@@ -879,8 +956,8 @@ class Table extends Component {
 
                 // coyotes total
                 coyotesTotal = (coyotesWins * 2.9) + (coyotesOTLS * 1.45);
-                
-                var allNHL = leafsTotal + sharksTotal + coyotesTotal;
+
+                var allNHL = (leafsTotal + sharksTotal + coyotesTotal).toFixed(1);
 
                 this.setState({ gooseNHL: allNHL });
                 this.setState({ leafs: leafsTotal });
@@ -899,7 +976,7 @@ class Table extends Component {
                 var rangersTotal;
                 var allNHL;
 
-                // Here is the caps loop. 
+                // Here is the caps and rangers east loop. 
                 for (var i = 0; i < eastResults.length; i++) {
                     // caps
                     if (eastResults[i].team.id === 15) {
@@ -914,8 +991,23 @@ class Table extends Component {
                     }
                 }
 
+                // Here is the north caps and rangers loop. 
+                for (var i = 0; i < northResults.length; i++) {
+                    // caps
+                    if (northResults[i].team.id === 15) {
+                        capsWins = northResults[i].leagueRecord.wins;
+                        capsOTLS = northResults[i].leagueRecord.ot;
+                    }
+
+                    // rangers
+                    if (northResults[i].team.id === 3) {
+                        rangersWins = northResults[i].leagueRecord.wins;
+                        rangersOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
                 // Canes
-                for (var i = 0; i < eastResults.length; i++) {
+                for (var i = 0; i < centralResults.length; i++) {
                     // canes
                     if (centralResults[i].team.id === 12) {
                         canesWins = centralResults[i].leagueRecord.wins;
@@ -932,7 +1024,7 @@ class Table extends Component {
                 // rangers total
                 rangersTotal = (rangersWins * 2.9) + (rangersOTLS * 1.45);
 
-                var allNHL = capsTotal + canesTotal + rangersTotal
+                var allNHL = (capsTotal + canesTotal + rangersTotal).toFixed(1);
 
                 this.setState({ alNHL: allNHL });
                 this.setState({ caps: capsTotal });
@@ -973,6 +1065,16 @@ class Table extends Component {
                     }
                 }
 
+                 // Here is the north loop for the sabres
+                 for (var i = 0; i < northResults.length; i++) {
+
+                    // sabres
+                    if (northResults[i].team.id === 7) {
+                        sabresWins = northResults[i].leagueRecord.wins;
+                        sabresOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
                 for (var i = 0; i < northResults.length; i++) {
 
                     // senators
@@ -982,13 +1084,22 @@ class Table extends Component {
                     }
                 }
 
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // senators
+                    if (eastResults[i].team.id === 9) {
+                        senatorsWins = eastResults[i].leagueRecord.wins;
+                        senatorsOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
                 // sabres total
                 sabresTotal = (sabresWins * 2.9) + (sabresOTLS * 1.45);
-       
+
                 // senators total
                 senatorsTotal = (senatorsWins * 2.9) + (senatorsOTLS * 1.45);
 
-                var allNHL = knightsTotal + sabresTotal + senatorsTotal
+                var allNHL = (knightsTotal + sabresTotal + senatorsTotal).toFixed(1);
 
                 this.setState({ joeNHL: allNHL });
                 this.setState({ knights: knightsTotal });
@@ -1034,14 +1145,14 @@ class Table extends Component {
 
                 // predators total
                 predatorsTotal = (predatorsWins * 2.9) + (predatorsOTLS * 1.45);
-        
+
                 // panthers total
                 panthersTotal = (panthersWins * 2.9) + (panthersOTLS * 1.45);
 
                 // steids total
                 bluesTotal = (bluesWins * 2.9) + (bluesOTLS * 1.45);
 
-                var allNHL = bluesTotal + panthersTotal + predatorsTotal
+                var allNHL = (bluesTotal + panthersTotal + predatorsTotal).toFixed(1);
 
                 this.setState({ steidsNHL: allNHL });
                 this.setState({ blues: bluesTotal });
@@ -1081,6 +1192,16 @@ class Table extends Component {
                     }
                 }
 
+                
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // flames
+                    if (eastResults[i].team.id === 20) {
+                        flamesWins = eastResults[i].leagueRecord.wins;
+                        flamesOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
                 // flames total
                 flamesTotal = (flamesWins * 2.9) + (flamesOTLS * 1.45);
 
@@ -1094,10 +1215,20 @@ class Table extends Component {
                     }
                 }
 
+                  // Bruins
+                  for (var i = 0; i < northResults.length; i++) {
+
+                    // bruins
+                    if (northResults[i].team.id === 6) {
+                        bruinsWins = northResults[i].leagueRecord.wins;
+                        bruinsOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
                 // bruins total
                 bruinsTotal = (bruinsWins * 2.9) + (bruinsOTLS * 1.45);
 
-                var allNHL = lightningTotal + bruinsTotal + flamesTotal
+                var allNHL = (lightningTotal + bruinsTotal + flamesTotal).toFixed(1);
 
                 this.setState({ benNHL: allNHL });
                 this.setState({ lightning: lightningTotal });
@@ -1462,63 +1593,63 @@ class Table extends Component {
                 var lakersWin = res.data.api.standings[23].win * 2.25;
                 var netsWin = res.data.api.standings[5].win * 2.25;
                 var knicksWin = res.data.api.standings[7].win * 2.25;
-                var steidsPoints = knicksWin + netsWin + lakersWin;
+                var steidsPoints = (knicksWin + netsWin + lakersWin).toFixed(1);
                 this.setState({ steidsNBA: steidsPoints });
 
                 // Patricks Teams for 2021. 
                 var jazzWin = res.data.api.standings[25].win * 2.25;
                 var sunsWin = res.data.api.standings[20].win * 2.25;
                 var rocketsWin = res.data.api.standings[15].win * 2.25;
-                var patPoints = jazzWin + sunsWin + rocketsWin;
+                var patPoints = (jazzWin + sunsWin + rocketsWin).toFixed(1);
                 this.setState({ patNBA: patPoints });
 
                 // 2021 Neptune NBA. 
                 var sixersWin = res.data.api.standings[9].win * 2.25;
                 var mavsWin = res.data.api.standings[16].win * 2.25;
                 var blazersWin = res.data.api.standings[29].win * 2.25;
-                var neptunePoints = sixersWin + mavsWin + blazersWin;
+                var neptunePoints = (sixersWin + mavsWin + blazersWin).toFixed(1);
                 this.setState({ neptuneNBA: neptunePoints });
 
                 // James NBA 2021
                 var celticsWin = res.data.api.standings[6].win * 2.25;
                 var spursWin = res.data.api.standings[18].win * 2.25;
                 var thunderWin = res.data.api.standings[27].win * 2.25;
-                var jamesPoints = celticsWin + spursWin + thunderWin;
+                var jamesPoints = (celticsWin + spursWin + thunderWin).toFixed(1);
                 this.setState({ jamesNBA: jamesPoints });
 
                 // DJ NBA 2021
                 var clippersWin = res.data.api.standings[20].win * 2.25;
                 var nuggetsWin = res.data.api.standings[26].win * 2.25;
                 var raptorsWin = res.data.api.standings[8].win * 2.25;
-                var djPoints = clippersWin + nuggetsWin + raptorsWin;
+                var djPoints = (clippersWin + nuggetsWin + raptorsWin).toFixed(1);
                 this.setState({ djNBA: djPoints });
 
                 // Goose NBA 2021
                 var pacersWin = res.data.api.standings[11].win * 2.25;
                 var hawksWin = res.data.api.standings[1].win * 2.25;
                 var kingsWin = res.data.api.standings[22].win * 2.25;
-                var goosePoints = pacersWin + hawksWin + kingsWin;
+                var goosePoints = (pacersWin + hawksWin + kingsWin).toFixed(1);
                 this.setState({ gooseNBA: goosePoints });
 
                 // Al
                 var heatWin = res.data.api.standings[0].win * 2.25;
                 var hornetsWin = res.data.api.standings[3].win * 2.25;
                 var cavsWin = res.data.api.standings[14].win * 2.25;
-                var alPoints = heatWin + hornetsWin + cavsWin;
+                var alPoints = (heatWin + hornetsWin + cavsWin).toFixed(1);
                 this.setState({ alNBA: alPoints });
 
                 // Joe
                 var bucksWin = res.data.api.standings[13].win * 2.25;
                 var grizzliesWin = res.data.api.standings[17].win * 2.25;
                 var bullsWin = res.data.api.standings[10].win * 2.25;
-                var joePoints = bucksWin + grizzliesWin + bullsWin;
+                var joePoints = (bucksWin + grizzliesWin + bullsWin).toFixed(1);
                 this.setState({ joeNBA: joePoints });
 
                 // Mark and Johnny 
                 var pelicansWin = res.data.api.standings[19].win * 2.25;
                 var wizardsWin = res.data.api.standings[4].win * 2.25;
                 var pistonsWin = res.data.api.standings[12].win * 2.25;
-                var benPoints = pelicansWin + wizardsWin + pistonsWin;
+                var benPoints = (pelicansWin + wizardsWin + pistonsWin).toFixed(1);
                 this.setState({ benNBA: benPoints });
 
                 // And finally, the total scores function needs to run. 

@@ -86,12 +86,31 @@ class tommy extends React.Component {
                     }
                 }
 
+                 // For the Canucks: 
+                 for (var i = 0; i < eastResults.length; i++) {
+
+                    // Canucks
+                    if (eastResults[i].team.id === 23) {
+                        canucksWins = eastResults[i].leagueRecord.wins;
+                        canucksOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
                 for (var i = 0; i < northResults.length; i++) {
 
                     // canadians
                     if (northResults[i].team.id === 8) {
                         canadiansWins = northResults[i].leagueRecord.wins;
                         canadiansOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // canadians
+                    if (eastResults[i].team.id === 8) {
+                        canadiansWins = eastResults[i].leagueRecord.wins;
+                        canadiansOTLS = eastResults[i].leagueRecord.ot;
                     }
                 }
 
@@ -106,18 +125,18 @@ class tommy extends React.Component {
                 }
 
                 // canucks total
-                canucksTotal = (canucksWins * 2.9) + canucksOTLS;
+                canucksTotal = (canucksWins * 2.9) + (canucksOTLS * 1.45);
                 // console.log(canucksTotal);
 
                 // canadians total
-                canadiansTotal = (canadiansWins * 2.9) + canadiansOTLS;
+                canadiansTotal = (canadiansWins * 2.9) + (canadiansOTLS * 1.45);
                 // console.log(canadiansTotal);
 
                 // ducks total
-                ducksTotal = (ducksWins *2.9) + ducksOTLS;
+                ducksTotal = (ducksWins *2.9) + (ducksOTLS * 1.45);
                 //  console.log(ducksTotal);
 
-                var allNHL = canucksTotal + canadiansTotal + ducksTotal
+                var allNHL = (canucksTotal + canadiansTotal + ducksTotal).toFixed(1);
                 // console.log(allNHL + " Here is Tom NHL")
 
                 this.setState({ totalNHL: allNHL });
