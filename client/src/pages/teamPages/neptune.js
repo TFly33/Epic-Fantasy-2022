@@ -89,8 +89,45 @@ class neptune extends React.Component {
 
                 }
 
-                // stars total
-                starsTotal = (starsWins * 2.9) + (starsOTLS * 1.45);
+                       // Here is the stars loop. 
+                       for (var i = 0; i < eastResults.length; i++) {
+                        // stars
+                        if (eastResults[i].team.id === 25) {
+                            starsWins = eastResults[i].leagueRecord.wins;
+                            starsOTLS = eastResults[i].leagueRecord.ot;
+                            // console.log(starsWins);
+                            // console.log(starsOTLS);
+                            // console.log("this loop is running")
+                        }
+    
+                    }
+
+                           // Here is the stars loop. 
+                for (var i = 0; i < westResults.length; i++) {
+                    // stars
+                    if (westResults[i].team.id === 25) {
+                        starsWins = westResults[i].leagueRecord.wins;
+                        starsOTLS = westResults[i].leagueRecord.ot;
+                        // console.log(starsWins);
+                        // console.log(starsOTLS);
+                        // console.log("this loop is running")
+                    }
+
+                }
+
+                       // Here is the stars loop. 
+                       for (var i = 0; i < northResults.length; i++) {
+                        // stars
+                        if (northResults[i].team.id === 25) {
+                            starsWins = northResults[i].leagueRecord.wins;
+                            starsOTLS = northResults[i].leagueRecord.ot;
+                            // console.log(starsWins);
+                            // console.log(starsOTLS);
+                            // console.log("this loop is running")
+                        }
+    
+                    }
+
               
 
                 // Here is the loop for the blue jackets
@@ -106,10 +143,46 @@ class neptune extends React.Component {
                     }
                 };
 
-                // blueJackets total
-                blueJacketsTotal = (blueJacketsWins * 2.9) + (blueJacketsOTLS * 1.45);
-           
+                  // Here is the loop for the blue jackets
+                  for (var i = 0; i < westResults.length; i++) {
 
+                    // blueJackets
+                    if (westResults[i].team.id === 29) {
+                        blueJacketsWins = westResults[i].leagueRecord.wins;
+                        blueJacketsOTLS = westResults[i].leagueRecord.ot;
+                        // console.log(blueJacketsWins);
+                        // console.log(blueJacketsOTLS);
+                        // console.log("this loop is running")
+                    }
+                };
+
+                  // Here is the loop for the blue jackets
+                  for (var i = 0; i < northResults.length; i++) {
+
+                    // blueJackets
+                    if (northResults[i].team.id === 29) {
+                        blueJacketsWins = northResults[i].leagueRecord.wins;
+                        blueJacketsOTLS = northResults[i].leagueRecord.ot;
+                        // console.log(blueJacketsWins);
+                        // console.log(blueJacketsOTLS);
+                        // console.log("this loop is running")
+                    }
+                };
+
+                  // Here is the loop for the blue jackets
+                  for (var i = 0; i < eastResults.length; i++) {
+
+                    // blueJackets
+                    if (eastResults[i].team.id === 29) {
+                        blueJacketsWins = eastResults[i].leagueRecord.wins;
+                        blueJacketsOTLS = eastResults[i].leagueRecord.ot;
+                        // console.log(blueJacketsWins);
+                        // console.log(blueJacketsOTLS);
+                        // console.log("this loop is running")
+                    }
+                };
+
+    
                 // Here is the loop for the Devils
                 for (var i = 0; i < eastResults.length; i++) {
                     // devils
@@ -135,8 +208,42 @@ class neptune extends React.Component {
                     }
                 };
 
+                
+                // Here is the loop for the Devils
+                for (var i = 0; i < westResults.length; i++) {
+                    // devils
+                    if (westResults[i].team.id === 1) {
+                        devilsWins = westResults[i].leagueRecord.wins;
+                        devilsOTLS = westResults[i].leagueRecord.ot;
+                        // console.log(devilsWins);
+                        // console.log(devilsOTLS);
+                        // console.log("this loop is running")
+                    }
+                };
+
+                
+                // Here is the loop for the Devils
+                for (var i = 0; i < centralResults.length; i++) {
+                    // devils
+                    if (centralResults[i].team.id === 1) {
+                        devilsWins = centralResults[i].leagueRecord.wins;
+                        devilsOTLS = centralResults[i].leagueRecord.ot;
+                        // console.log(devilsWins);
+                        // console.log(devilsOTLS);
+                        // console.log("this loop is running")
+                    }
+                };
+
                 // Devils total
                 devilsTotal = (devilsWins * 2.9) + (devilsOTLS * 1.45);
+
+                  // stars total
+                  starsTotal = (starsWins * 2.9) + (starsOTLS * 1.45);
+
+                  
+                // blueJackets total
+                blueJacketsTotal = (blueJacketsWins * 2.9) + (blueJacketsOTLS * 1.45);
+           
 
                 var allNHL = (starsTotal + blueJacketsTotal + devilsTotal).toFixed(1);
 

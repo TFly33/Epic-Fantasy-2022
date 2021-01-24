@@ -86,9 +86,44 @@ class patrick extends React.Component {
                         // console.log("this loop is running");
                     }
                 }
-                // wild total
-                wildTotal = (wildWins * 2.9) + (wildOTLS * 1.45);
-                // console.log(wildTotal)
+
+                  // Here is the wild/blackhawks for loop. 
+                  for (var i = 0; i < eastResults.length; i++) {
+                    // wild
+                    if (eastResults[i].team.id === 30) {
+                        wildWins = eastResults[i].leagueRecord.wins;
+                        wildOTLS = eastResults[i].leagueRecord.ot;
+                        // console.log("Wild Wins: " + wildWins);
+                        // console.log("Wild OTs: " + wildOTLS);
+                        // console.log("this loop is running");
+                    }
+                }
+
+                  // Here is the wild/blackhawks for loop. 
+                  for (var i = 0; i < northResults.length; i++) {
+                    // wild
+                    if (northResults[i].team.id === 30) {
+                        wildWins = northResults[i].leagueRecord.wins;
+                        wildOTLS = northResults[i].leagueRecord.ot;
+                        // console.log("Wild Wins: " + wildWins);
+                        // console.log("Wild OTs: " + wildOTLS);
+                        // console.log("this loop is running");
+                    }
+                }
+
+                  // Here is the wild/blackhawks for loop. 
+                  for (var i = 0; i < centralResults.length; i++) {
+                    // wild
+                    if (centralResults[i].team.id === 30) {
+                        wildWins = centralResults[i].leagueRecord.wins;
+                        wildOTLS = centralResults[i].leagueRecord.ot;
+                        // console.log("Wild Wins: " + wildWins);
+                        // console.log("Wild OTs: " + wildOTLS);
+                        // console.log("this loop is running");
+                    }
+                }
+
+
 
                 // Here is the loop for the islanders
                 for (var i = 0; i < eastResults.length; i++) {
@@ -116,9 +151,34 @@ class patrick extends React.Component {
                     }
                 }
 
-                // islanders total
-                islandersTotal = (islandersWins * 2.9) + (islandersOTLS * 1.45);
-                // console.log(islandersTotal);
+                
+                // Here is the loop for the islanders
+                for (var i = 0; i < westResults.length; i++) {
+
+                    // islanders
+                    if (westResults[i].team.id === 2) {
+                        islandersWins = westResults[i].leagueRecord.wins;
+                        islandersOTLS = westResults[i].leagueRecord.ot;
+                        // console.log(islandersWins);
+                        // console.log(islandersOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+                
+                // Here is the loop for the islanders
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // islanders
+                    if (centralResults[i].team.id === 2) {
+                        islandersWins = centralResults[i].leagueRecord.wins;
+                        islandersOTLS = centralResults[i].leagueRecord.ot;
+                        // console.log(islandersWins);
+                        // console.log(islandersOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
 
                 // blackhawks total
                 for (var i = 0; i < centralResults.length; i++) {
@@ -132,6 +192,55 @@ class patrick extends React.Component {
                         // console.log("this loop is running");
                     }
                 }
+
+                    // blackhawks total
+                    for (var i = 0; i < westResults.length; i++) {
+
+                        // islanders
+                        if (westResults[i].team.id === 16) {
+                            blackhawksWins = westResults[i].leagueRecord.wins;
+                            blackhawksOTLS = westResults[i].leagueRecord.ot;
+                            // console.log("blackhawks wins: " + blackhawksWins);
+                            // console.log(blackhawksOTLS);
+                            // console.log("this loop is running");
+                        }
+                    }
+
+                    
+                        // blackhawks total
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // islanders
+                    if (northResults[i].team.id === 16) {
+                        blackhawksWins = northResults[i].leagueRecord.wins;
+                        blackhawksOTLS = northResults[i].leagueRecord.ot;
+                        // console.log("blackhawks wins: " + blackhawksWins);
+                        // console.log(blackhawksOTLS);
+                        // console.log("this loop is running");
+                    }
+                }
+
+
+                    // blackhawks total
+                    for (var i = 0; i < eastResults.length; i++) {
+
+                        // islanders
+                        if (eastResults[i].team.id === 16) {
+                            blackhawksWins = eastResults[i].leagueRecord.wins;
+                            blackhawksOTLS = eastResults[i].leagueRecord.ot;
+                            // console.log("blackhawks wins: " + blackhawksWins);
+                            // console.log(blackhawksOTLS);
+                            // console.log("this loop is running");
+                        }
+                    }
+    
+                // wild total
+                wildTotal = (wildWins * 2.9) + (wildOTLS * 1.45);
+                // console.log(wildTotal);
+
+                  // islanders total
+                  islandersTotal = (islandersWins * 2.9) + (islandersOTLS * 1.45);
+                  // console.log(islandersTotal);
 
                 blackhawksTotal = (blackhawksWins * 2.9) + (blackhawksOTLS * 1.45);
 

@@ -96,6 +96,28 @@ class tommy extends React.Component {
                     }
                 }
 
+                        // For the Canucks: 
+                        for (var i = 0; i < westResults.length; i++) {
+
+                            // Canucks
+                            if (westResults[i].team.id === 23) {
+                                canucksWins = westResults[i].leagueRecord.wins;
+                                canucksOTLS = westResults[i].leagueRecord.ot;
+                            }
+                        }
+
+                                // For the Canucks: 
+                 for (var i = 0; i < centralResults.length; i++) {
+
+                    // Canucks
+                    if (centralResults[i].team.id === 23) {
+                        canucksWins = centralResults[i].leagueRecord.wins;
+                        canucksOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Canadians
+
                 for (var i = 0; i < northResults.length; i++) {
 
                     // canadians
@@ -114,12 +136,60 @@ class tommy extends React.Component {
                     }
                 }
 
+                for (var i = 0; i < westResults.length; i++) {
+
+                    // canadians
+                    if (westResults[i].team.id === 8) {
+                        canadiansWins = westResults[i].leagueRecord.wins;
+                        canadiansOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // canadians
+                    if (centralResults[i].team.id === 8) {
+                        canadiansWins = centralResults[i].leagueRecord.wins;
+                        canadiansOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
                 // Here is the ducks/kings for loop. 
                 for (var i = 0; i < westResults.length; i++) {
                     // ducks
                     if (westResults[i].team.id === 24) {
                         ducksWins = westResults[i].leagueRecord.wins;
                         ducksOTLS = westResults[i].leagueRecord.ot;
+                    }
+
+                }
+
+                // Here is the ducks/kings for loop. 
+                for (var i = 0; i < eastResults.length; i++) {
+                    // ducks
+                    if (eastResults[i].team.id === 24) {
+                        ducksWins = eastResults[i].leagueRecord.wins;
+                        ducksOTLS = eastResults[i].leagueRecord.ot;
+                    }
+
+                }
+
+                // Here is the ducks/kings for loop. 
+                for (var i = 0; i < centralResults.length; i++) {
+                    // ducks
+                    if (centralResults[i].team.id === 24) {
+                        ducksWins = centralResults[i].leagueRecord.wins;
+                        ducksOTLS = centralResults[i].leagueRecord.ot;
+                    }
+
+                }
+
+                // Here is the ducks/kings for loop. 
+                for (var i = 0; i < northResults.length; i++) {
+                    // ducks
+                    if (northResults[i].team.id === 24) {
+                        ducksWins = northResults[i].leagueRecord.wins;
+                        ducksOTLS = northResults[i].leagueRecord.ot;
                     }
 
                 }

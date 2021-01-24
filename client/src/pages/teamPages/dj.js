@@ -93,8 +93,25 @@ class dj extends React.Component {
                     }
                 }
 
-                // flyers total
-                flyersTotal = (flyersWins * 2.9) + (flyersOTLS * 1.45);
+                // Here is the flyers loop. 
+                for (var i = 0; i < westResults.length; i++) {
+                    // flyers
+                    if (westResults[i].team.id === 4) {
+                        flyersWins = westResults[i].leagueRecord.wins;
+                        flyersOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Here is the flyers loop. 
+                for (var i = 0; i < centralResults.length; i++) {
+                    // flyers
+                    if (centralResults[i].team.id === 4) {
+                        flyersWins = centralResults[i].leagueRecord.wins;
+                        flyersOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
+
 
                 for (var i = 0; i < northResults.length; i++) {
 
@@ -114,6 +131,28 @@ class dj extends React.Component {
                     }
                 }
 
+                
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // jets
+                    if (centralResults[i].team.id === 52) {
+                        jetsWins = centralResults[i].leagueRecord.wins;
+                        jetsOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
+                
+                for (var i = 0; i < westResults.length; i++) {
+
+                    // jets
+                    if (westResults[i].team.id === 52) {
+                        jetsWins = westResults[i].leagueRecord.wins;
+                        jetsOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+
+
                 for (var i = 0; i < northResults.length; i++) {
 
                     // oilers
@@ -132,8 +171,29 @@ class dj extends React.Component {
                     }
                 }
 
+                for (var i = 0; i < westResults.length; i++) {
+
+                    // oilers
+                    if (westResults[i].team.id === 22) {
+                        oilersWins = westResults[i].leagueRecord.wins;
+                        oilersOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // oilers
+                    if (centralResults[i].team.id === 22) {
+                        oilersWins = centralResults[i].leagueRecord.wins;
+                        oilersOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
                 // oilers total
                 oilersTotal = (oilersWins * 2.9) + (oilersOTLS * 1.45);
+
+                // flyers total
+                flyersTotal = (flyersWins * 2.9) + (flyersOTLS * 1.45);
 
                 // jets total
                 jetsTotal = (jetsWins * 2.9) + (jetsOTLS * 1.45);
@@ -455,7 +515,7 @@ class dj extends React.Component {
                                             <tr>
                                                 <th scope="row">29</th>
                                                 <td className="padres">San Diego Padres</td>
-                                                <td>{this.state.jets}</td>
+                                                {/* <td>{this.state.jets}</td> */}
                                             </tr>
                                             <tr>
                                                 <th scope="row">89</th>
@@ -477,7 +537,7 @@ class dj extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div className="container smallTable">
                             <div className="row">
                                 <div className="col">

@@ -83,22 +83,38 @@ class al extends React.Component {
                         capsWins = eastResults[i].leagueRecord.wins;
                         capsOTLS = eastResults[i].leagueRecord.ot;
                     }
+                }
 
-                    // rangers
-                    if (eastResults[i].team.id === 3) {
-                        rangersWins = eastResults[i].leagueRecord.wins;
-                        rangersOTLS = eastResults[i].leagueRecord.ot;
+                   // Here is the caps loop. 
+                   for (var i = 0; i < westResults.length; i++) {
+                    // caps
+                    if (westResults[i].team.id === 15) {
+                        capsWins = westResults[i].leagueRecord.wins;
+                        capsOTLS = westResults[i].leagueRecord.ot;
                     }
                 }
 
-                  // Here is the caps loop. 
-                  for (var i = 0; i < northResults.length; i++) {
+                   // Here is the caps loop. 
+                   for (var i = 0; i < centralResults.length; i++) {
+                    // caps
+                    if (centralResults[i].team.id === 15) {
+                        capsWins = centralResults[i].leagueRecord.wins;
+                        capsOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
+                   // Here is the caps loop. 
+                   for (var i = 0; i < northResults.length; i++) {
                     // caps
                     if (northResults[i].team.id === 15) {
                         capsWins = northResults[i].leagueRecord.wins;
                         capsOTLS = northResults[i].leagueRecord.ot;
                     }
+                }
 
+                  // Here is the rangers loop. 
+                  for (var i = 0; i < northResults.length; i++) {
+                 
                     // rangers
                     if (northResults[i].team.id === 3) {
                         rangersWins = northResults[i].leagueRecord.wins;
@@ -106,8 +122,49 @@ class al extends React.Component {
                     }
                 }
 
+                    // Here is the rangers loop. 
+                    for (var i = 0; i < eastResults.length; i++) {
+                 
+                        // rangers
+                        if (eastResults[i].team.id === 3) {
+                            rangersWins = eastResults[i].leagueRecord.wins;
+                            rangersOTLS = eastResults[i].leagueRecord.ot;
+                        }
+                    }
+
+                        // Here is the rangers loop. 
+                  for (var i = 0; i < westResults.length; i++) {
+                 
+                    // rangers
+                    if (westResults[i].team.id === 3) {
+                        rangersWins = westResults[i].leagueRecord.wins;
+                        rangersOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                    // Here is the rangers loop. 
+                    for (var i = 0; i < centralResults.length; i++) {
+                 
+                        // rangers
+                        if (centralResults[i].team.id === 3) {
+                            rangersWins = centralResults[i].leagueRecord.wins;
+                            rangersOTLS = centralResults[i].leagueRecord.ot;
+                        }
+                    }
+    
+
+
                 // Canes
                 for (var i = 0; i <eastResults.length; i++) {
+                    // canes
+                    if (eastResults[i].team.id === 12) {
+                        canesWins = eastResults[i].leagueRecord.wins;
+                        canesOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+                 // Canes
+                 for (var i = 0; i <centralResults.length; i++) {
                     // canes
                     if (centralResults[i].team.id === 12) {
                         canesWins = centralResults[i].leagueRecord.wins;
@@ -115,12 +172,21 @@ class al extends React.Component {
                     }
                 }
 
-                 // Canes
-                 for (var i = 0; i <northResults.length; i++) {
+                   // Canes
+                   for (var i = 0; i <northResults.length; i++) {
                     // canes
-                    if (centralResults[i].team.id === 12) {
-                        canesWins = centralResults[i].leagueRecord.wins;
-                        canesOTLS = centralResults[i].leagueRecord.ot;
+                    if (northResults[i].team.id === 12) {
+                        canesWins = northResults[i].leagueRecord.wins;
+                        canesOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                   // Canes
+                   for (var i = 0; i <westResults.length; i++) {
+                    // canes
+                    if (westResults[i].team.id === 12) {
+                        canesWins = westResults[i].leagueRecord.wins;
+                        canesOTLS = westResults[i].leagueRecord.ot;
                     }
                 }
 

@@ -57,55 +57,87 @@ class james extends React.Component {
     getScoresNHL = () => {
         API.getScoresNHL()
             .then(res => {
-                 // Start of James NHL here
-                 var westResults = res.data.records[0].teamRecords;
-                 var northResults = res.data.records[2].teamRecords;
-                 var eastResults = res.data.records[1].teamRecords;
-                 var centralResults = res.data.records[3].teamRecords;
+                // Start of James NHL here
+                var westResults = res.data.records[0].teamRecords;
+                var northResults = res.data.records[2].teamRecords;
+                var eastResults = res.data.records[1].teamRecords;
+                var centralResults = res.data.records[3].teamRecords;
 
-                 var avalancheWins;
-                 var avalancheOTLS;
-                 var avalancheTotal;
-                 var pensWins;
-                 var pensOTLS;
-                 var pensTotal;
-                 var kingsWins;
-                 var kingsOTLS;
-                 var kingsTotal;
-                 var allNHL;
- 
-                 // Here is the avalanche loop. 
-                 for (var i = 0; i < westResults.length; i++) {
-                     // avalanche
-                     if (westResults[i].team.id === 21) {
-                         avalancheWins = westResults[i].leagueRecord.wins;
-                         avalancheOTLS = westResults[i].leagueRecord.ot;
-                         // console.log(avalancheWins);
-                         // console.log(avalancheOTLS);
-                         // console.log("this loop is running")
-                     }
-                 }
- 
-                 // avalanche total
-                 avalancheTotal = (avalancheWins * 2.9) + (avalancheOTLS * 1.45);
-                 console.log(avalancheTotal);
- 
-                 // Here is the loop for the pens
-                 for (var i = 0; i < eastResults.length; i++) {
- 
-                     // pens
-                     if (eastResults[i].team.id === 5) {
-                         pensWins = eastResults[i].leagueRecord.wins;
-                         pensOTLS = eastResults[i].leagueRecord.ot;
-                         // console.log(pensWins);
-                         // console.log(pensOTLS);
-                         // console.log("this loop is running")
-                     }
-                 }
+                var avalancheWins;
+                var avalancheOTLS;
+                var avalancheTotal;
+                var pensWins;
+                var pensOTLS;
+                var pensTotal;
+                var kingsWins;
+                var kingsOTLS;
+                var kingsTotal;
+                var allNHL;
 
-                   // Here is the loop for the pens
-                   for (var i = 0; i < northResults.length; i++) {
- 
+                // Here is the avalanche loop. 
+                for (var i = 0; i < westResults.length; i++) {
+                    // avalanche
+                    if (westResults[i].team.id === 21) {
+                        avalancheWins = westResults[i].leagueRecord.wins;
+                        avalancheOTLS = westResults[i].leagueRecord.ot;
+                        // console.log(avalancheWins);
+                        // console.log(avalancheOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+                // Here is the avalanche loop. 
+                for (var i = 0; i < eastResults.length; i++) {
+                    // avalanche
+                    if (eastResults[i].team.id === 21) {
+                        avalancheWins = eastResults[i].leagueRecord.wins;
+                        avalancheOTLS = eastResults[i].leagueRecord.ot;
+                        // console.log(avalancheWins);
+                        // console.log(avalancheOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+                // Here is the avalanche loop. 
+                for (var i = 0; i < centralResults.length; i++) {
+                    // avalanche
+                    if (centralResults[i].team.id === 21) {
+                        avalancheWins = centralResults[i].leagueRecord.wins;
+                        avalancheOTLS = centralResults[i].leagueRecord.ot;
+                        // console.log(avalancheWins);
+                        // console.log(avalancheOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+                // Here is the avalanche loop. 
+                for (var i = 0; i < northResults.length; i++) {
+                    // avalanche
+                    if (northResults[i].team.id === 21) {
+                        avalancheWins = northResults[i].leagueRecord.wins;
+                        avalancheOTLS = northResults[i].leagueRecord.ot;
+                        // console.log(avalancheWins);
+                        // console.log(avalancheOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+                // Here is the loop for the pens
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // pens
+                    if (eastResults[i].team.id === 5) {
+                        pensWins = eastResults[i].leagueRecord.wins;
+                        pensOTLS = eastResults[i].leagueRecord.ot;
+                        // console.log(pensWins);
+                        // console.log(pensOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+                // Here is the loop for the pens
+                for (var i = 0; i < northResults.length; i++) {
+
                     // pens
                     if (northResults[i].team.id === 5) {
                         pensWins = northResults[i].leagueRecord.wins;
@@ -115,33 +147,102 @@ class james extends React.Component {
                         // console.log("this loop is running")
                     }
                 }
- 
+
+                 // Here is the loop for the pens
                  for (var i = 0; i < westResults.length; i++) {
- 
-                     // kings
-                     if (westResults[i].team.id === 26) {
-                         kingsWins = westResults[i].leagueRecord.wins;
-                         kingsOTLS = westResults[i].leagueRecord.ot;
-                         // console.log(kingsWins);
-                         // console.log(kingsOTLS);
-                         // console.log("this loop is running")
-                     }
-                 }
- 
-                 // pens total
-                 pensTotal = (pensWins * 2.9) + (pensOTLS * 1.45);
-                 // console.log(pensTotal)
- 
-                 // kings total
-                 kingsTotal = (kingsWins * 2.9) + (kingsOTLS * 1.45);
-                 // console.log(kingsTotal);
- 
-                 var allNHL = (avalancheTotal + pensTotal + kingsTotal).toFixed(1);
- 
-                 this.setState({ totalNHL: allNHL });
-                 this.setState({ avalanche: avalancheTotal });
-                 this.setState({ pens: pensTotal });
-                 this.setState({ kings: kingsTotal });
+
+                    // pens
+                    if (westResults[i].team.id === 5) {
+                        pensWins = westResults[i].leagueRecord.wins;
+                        pensOTLS = westResults[i].leagueRecord.ot;
+                        // console.log(pensWins);
+                        // console.log(pensOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+                 // Here is the loop for the pens
+                 for (var i = 0; i < centralResults.length; i++) {
+
+                    // pens
+                    if (centralResults[i].team.id === 5) {
+                        pensWins = centralResults[i].leagueRecord.wins;
+                        pensOTLS = centralResults[i].leagueRecord.ot;
+                        // console.log(pensWins);
+                        // console.log(pensOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+
+                for (var i = 0; i < westResults.length; i++) {
+
+                    // kings
+                    if (westResults[i].team.id === 26) {
+                        kingsWins = westResults[i].leagueRecord.wins;
+                        kingsOTLS = westResults[i].leagueRecord.ot;
+                        // console.log(kingsWins);
+                        // console.log(kingsOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // kings
+                    if (eastResults[i].team.id === 26) {
+                        kingsWins = eastResults[i].leagueRecord.wins;
+                        kingsOTLS = eastResults[i].leagueRecord.ot;
+                        // console.log(kingsWins);
+                        // console.log(kingsOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // kings
+                    if (centralResults[i].team.id === 26) {
+                        kingsWins = centralResults[i].leagueRecord.wins;
+                        kingsOTLS = centralResults[i].leagueRecord.ot;
+                        // console.log(kingsWins);
+                        // console.log(kingsOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // kings
+                    if (northResults[i].team.id === 26) {
+                        kingsWins = northResults[i].leagueRecord.wins;
+                        kingsOTLS = northResults[i].leagueRecord.ot;
+                        // console.log(kingsWins);
+                        // console.log(kingsOTLS);
+                        // console.log("this loop is running")
+                    }
+                }
+
+
+                // avalanche total
+                avalancheTotal = (avalancheWins * 2.9) + (avalancheOTLS * 1.45);
+                console.log(avalancheTotal);
+
+                // pens total
+                pensTotal = (pensWins * 2.9) + (pensOTLS * 1.45);
+                // console.log(pensTotal)
+
+                // kings total
+                kingsTotal = (kingsWins * 2.9) + (kingsOTLS * 1.45);
+                // console.log(kingsTotal);
+
+                var allNHL = (avalancheTotal + pensTotal + kingsTotal).toFixed(1);
+
+                this.setState({ totalNHL: allNHL });
+                this.setState({ avalanche: avalancheTotal });
+                this.setState({ pens: pensTotal });
+                this.setState({ kings: kingsTotal });
 
             })
             .catch(error => {
@@ -462,7 +563,7 @@ class james extends React.Component {
                                             <tr>
                                                 <th scope="row">116</th>
                                                 <td className="sfGiants">San Francisco Giants</td>
-                                                <td>{this.state.pens}</td>
+                                                {/* <td>{this.state.pens}</td> */}
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>

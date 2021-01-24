@@ -76,6 +76,8 @@ class steids extends React.Component {
                 var panthersTotal;
                 var allNHL;
 
+                // Blues: 
+
                 // Here is the loop for the blues
                 for (var i = 0; i < westResults.length; i++) {
 
@@ -86,6 +88,37 @@ class steids extends React.Component {
                     };
                 };
 
+                // Here is the loop for the blues
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // blues
+                    if (eastResults[i].team.id === 19) {
+                        bluesWins = eastResults[i].leagueRecord.wins;
+                        bluesOTLS = eastResults[i].leagueRecord.ot;
+                    };
+                };
+
+                // Here is the loop for the blues
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // blues
+                    if (northResults[i].team.id === 19) {
+                        bluesWins = northResults[i].leagueRecord.wins;
+                        bluesOTLS = northResults[i].leagueRecord.ot;
+                    };
+                };
+
+                // Here is the loop for the blues
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // blues
+                    if (centralResults[i].team.id === 19) {
+                        bluesWins = centralResults[i].leagueRecord.wins;
+                        bluesOTLS = centralResults[i].leagueRecord.ot;
+                    };
+                };
+
+
                 // Here is the predators for loop. 
                 for (var i = 0; i < centralResults.length; i++) {
 
@@ -93,11 +126,72 @@ class steids extends React.Component {
                         predatorsWins = centralResults[i].leagueRecord.wins;
                         predatorsOTLS = centralResults[i].leagueRecord.ot;
                     }
+                }
 
+
+                // Here is the predators for loop. 
+                for (var i = 0; i < westResults.length; i++) {
+
+                    if (westResults[i].team.id === 18) {
+                        predatorsWins = westResults[i].leagueRecord.wins;
+                        predatorsOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+
+                // Here is the predators for loop. 
+                for (var i = 0; i < northResults.length; i++) {
+
+                    if (northResults[i].team.id === 18) {
+                        predatorsWins = northResults[i].leagueRecord.wins;
+                        predatorsOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+
+                // Here is the predators for loop. 
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    if (eastResults[i].team.id === 18) {
+                        predatorsWins = eastResults[i].leagueRecord.wins;
+                        predatorsOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+
+                // Here is the panthers for loop. 
+                for (var i = 0; i < centralResults.length; i++) {
                     // panthers
                     if (centralResults[i].team.id === 13) {
                         panthersWins = centralResults[i].leagueRecord.wins;
                         panthersOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
+                   // Here is the panthers for loop. 
+                   for (var i = 0; i < eastResults.length; i++) {
+                    // panthers
+                    if (eastResults[i].team.id === 13) {
+                        panthersWins = eastResults[i].leagueRecord.wins;
+                        panthersOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+                   // Here is the panthers for loop. 
+                   for (var i = 0; i < northResults.length; i++) {
+                    // panthers
+                    if (northResults[i].team.id === 13) {
+                        panthersWins = northResults[i].leagueRecord.wins;
+                        panthersOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                   // Here is the panthers for loop. 
+                   for (var i = 0; i < westResults.length; i++) {
+                    // panthers
+                    if (westResults[i].team.id === 13) {
+                        panthersWins = westResults[i].leagueRecord.wins;
+                        panthersOTLS = westResults[i].leagueRecord.ot;
                     }
                 }
 

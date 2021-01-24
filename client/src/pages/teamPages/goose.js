@@ -84,8 +84,8 @@ class goose extends React.Component {
                     }
                 }
 
-                  // Here is the leafs loop
-                  for (var i = 0; i < eastResults.length; i++) {
+                // Here is the leafs loop
+                for (var i = 0; i < eastResults.length; i++) {
                     // leafs
                     if (eastResults[i].team.id === 10) {
                         leafsWins = eastResults[i].leagueRecord.wins;
@@ -93,8 +93,24 @@ class goose extends React.Component {
                     }
                 }
 
-                // leafs total
-                leafsTotal = (leafsWins * 2.9) + (leafsOTLS * 1.45);
+                // Here is the leafs loop
+                for (var i = 0; i < westResults.length; i++) {
+                    // leafs
+                    if (westResults[i].team.id === 10) {
+                        leafsWins = westResults[i].leagueRecord.wins;
+                        leafsOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Here is the leafs loop
+                for (var i = 0; i < centralResults.length; i++) {
+                    // leafs
+                    if (centralResults[i].team.id === 10) {
+                        leafsWins = centralResults[i].leagueRecord.wins;
+                        leafsOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
 
                 // Sharks Loop 
                 for (var i = 0; i < westResults.length; i++) {
@@ -105,8 +121,35 @@ class goose extends React.Component {
                     }
                 }
 
-                // sharks total
-                sharksTotal = (sharksWins * 2.9) + (sharksOTLS * 1.45);
+                // Sharks Loop 
+                for (var i = 0; i < eastResults.length; i++) {
+                    // sharks
+                    if (eastResults[i].team.id === 28) {
+                        sharksWins = eastResults[i].leagueRecord.wins;
+                        sharksOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Sharks Loop 
+                for (var i = 0; i < northResults.length; i++) {
+                    // sharks
+                    if (northResults[i].team.id === 28) {
+                        sharksWins = northResults[i].leagueRecord.wins;
+                        sharksOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Sharks Loop 
+                for (var i = 0; i < centralResults.length; i++) {
+                    // sharks
+                    if (centralResults[i].team.id === 28) {
+                        sharksWins = centralResults[i].leagueRecord.wins;
+                        sharksOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
+
+
 
                 for (var i = 0; i < westResults.length; i++) {
 
@@ -117,8 +160,44 @@ class goose extends React.Component {
                     }
                 }
 
+                
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // coyotes
+                    if (eastResults[i].team.id === 53) {
+                        coyotesWins = eastResults[i].leagueRecord.wins;
+                        coyotesOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+                
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // coyotes
+                    if (centralResults[i].team.id === 53) {
+                        coyotesWins = centralResults[i].leagueRecord.wins;
+                        coyotesOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
+                
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // coyotes
+                    if (northResults[i].team.id === 53) {
+                        coyotesWins = northResults[i].leagueRecord.wins;
+                        coyotesOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // leafs total
+                leafsTotal = (leafsWins * 2.9) + (leafsOTLS * 1.45);
+
                 // coyotes total
                 coyotesTotal = (coyotesWins * 2.9) + (coyotesOTLS * 1.45);
+
+                // sharks total
+                sharksTotal = (sharksWins * 2.9) + (sharksOTLS * 1.45);
 
                 var allNHL = (leafsTotal + sharksTotal + coyotesTotal).toFixed(1);
 

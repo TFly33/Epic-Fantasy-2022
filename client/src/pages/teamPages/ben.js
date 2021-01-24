@@ -86,9 +86,36 @@ class ben extends React.Component {
                     }
                 }
 
-                // lightning total
-                lightningTotal = (lightningWins * 2.9) + (lightningOTLS * 1.45);
-                // console.log(lightningTotal);
+                   // Here is the lightning loop. 
+                   for (var i = 0; i < westResults.length; i++) {
+                    // lightning
+                    if (westResults[i].team.id === 14) {
+                        lightningWins = westResults[i].leagueRecord.wins;
+                        lightningOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                   // Here is the lightning loop. 
+                   for (var i = 0; i < eastResults.length; i++) {
+                    // lightning
+                    if (eastResults[i].team.id === 14) {
+                        lightningWins = eastResults[i].leagueRecord.wins;
+                        lightningOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+                   // Here is the lightning loop. 
+                   for (var i = 0; i < northResults.length; i++) {
+                    // lightning
+                    if (northResults[i].team.id === 14) {
+                        lightningWins = northResults[i].leagueRecord.wins;
+                        lightningOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+
+
+
 
                 for (var i = 0; i < northResults.length; i++) {
 
@@ -108,9 +135,23 @@ class ben extends React.Component {
                     }
                 }
 
-                // flames total
-                flamesTotal = (flamesWins * 2.9) + (flamesOTLS * 1.45);
-                // console.log(flamesTotal);
+                for (var i = 0; i < westResults.length; i++) {
+
+                    // flames
+                    if (westResults[i].team.id === 20) {
+                        flamesWins = westResults[i].leagueRecord.wins;
+                        flamesOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // flames
+                    if (centralResults[i].team.id === 20) {
+                        flamesWins = centralResults[i].leagueRecord.wins;
+                        flamesOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
 
                 // Bruins
 
@@ -131,6 +172,32 @@ class ben extends React.Component {
                         bruinsOTLS = northResults[i].leagueRecord.ot;
                     }
                 }
+
+                for (var i = 0; i < westResults.length; i++) {
+
+                    // bruins
+                    if (westResults[i].team.id === 6) {
+                        bruinsWins = westResults[i].leagueRecord.wins;
+                        bruinsOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // bruins
+                    if (centralResults[i].team.id === 6) {
+                        bruinsWins = centralResults[i].leagueRecord.wins;
+                        bruinsOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // flames total
+                flamesTotal = (flamesWins * 2.9) + (flamesOTLS * 1.45);
+                // console.log(flamesTotal);
+
+                // lightning total
+                lightningTotal = (lightningWins * 2.9) + (lightningOTLS * 1.45);
+                // console.log(lightningTotal);
 
                 // bruins total
                 bruinsTotal = (bruinsWins * 2.9) + (bruinsOTLS * 1.45);
@@ -154,44 +221,44 @@ class ben extends React.Component {
         API.getScoresEPL()
             .then(res => {
                 //   Starting Goose EPL Here 
-               var tottenhamWin;
-               var tottenhamTie;
-               var bournemouthWin;
-               var bournemouthTie;
+                var tottenhamWin;
+                var tottenhamTie;
+                var bournemouthWin;
+                var bournemouthTie;
 
-               // running the for loop here. 
-               var forLoopArray = res.data.response[0].league.standings[0];
-               console.log(forLoopArray);
+                // running the for loop here. 
+                var forLoopArray = res.data.response[0].league.standings[0];
+                console.log(forLoopArray);
 
-               for (var i = 0; i < forLoopArray.length; i++) {
+                for (var i = 0; i < forLoopArray.length; i++) {
 
-                   if (forLoopArray[i].team.id === 52) {
-                       tottenhamWin = forLoopArray[i].all.win
-                       tottenhamTie = forLoopArray[i].all.draw
-                       //then so something
-                       //return something here
-                       console.log("here are the wins" + tottenhamWin);
-                       console.log("here are the ties" + tottenhamTie);
-                   }
+                    if (forLoopArray[i].team.id === 52) {
+                        tottenhamWin = forLoopArray[i].all.win
+                        tottenhamTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + tottenhamWin);
+                        console.log("here are the ties" + tottenhamTie);
+                    }
 
-                   if (forLoopArray[i].team.id === 36) {
-                       bournemouthWin = forLoopArray[i].all.win
-                       bournemouthTie = forLoopArray[i].all.draw
-                       //then so something
-                       //return something here
-                       console.log("here are the wins" + bournemouthWin);
-                       console.log("here are the ties" + bournemouthTie);
-                   }
-               }
+                    if (forLoopArray[i].team.id === 36) {
+                        bournemouthWin = forLoopArray[i].all.win
+                        bournemouthTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + bournemouthWin);
+                        console.log("here are the ties" + bournemouthTie);
+                    }
+                }
 
-               var tottenhamTotal = (tottenhamWin * 4.25) + (tottenhamTie);
-               var bournemouthTotal = (bournemouthWin * 4.25) + (bournemouthTie);
+                var tottenhamTotal = (tottenhamWin * 4.25) + (tottenhamTie);
+                var bournemouthTotal = (bournemouthWin * 4.25) + (bournemouthTie);
 
-               // Here is the final result
-               var benPoints = tottenhamTotal + bournemouthTotal;
-               this.setState({ tottenham: tottenhamTotal });
-               this.setState({ bournemouth: bournemouthTotal });
-               this.setState({ benEPL: benPoints });
+                // Here is the final result
+                var benPoints = tottenhamTotal + bournemouthTotal;
+                this.setState({ tottenham: tottenhamTotal });
+                this.setState({ bournemouth: bournemouthTotal });
+                this.setState({ benEPL: benPoints });
 
             })
             .catch(error => {
@@ -252,7 +319,7 @@ class ben extends React.Component {
                             </li>
                             <li class="nav-item active">
                                 <div class="dropdown show">
-                                    <div class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
                                     </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">

@@ -83,9 +83,33 @@ class joe extends React.Component {
                          knightsOTLS = westResults[i].leagueRecord.ot;
                      }
                  }
- 
-                 // knights total
-                 knightsTotal = (knightsWins * 2.9) + (knightsOTLS * 1.45);
+
+                   // Here is the knights loop. 
+                   for (var i = 0; i < eastResults.length; i++) {
+                    // knights
+                    if (eastResults[i].team.id === 54) {
+                        knightsWins = eastResults[i].leagueRecord.wins;
+                        knightsOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+                  // Here is the knights loop. 
+                  for (var i = 0; i < centralResults.length; i++) {
+                    // knights
+                    if (centralResults[i].team.id === 54) {
+                        knightsWins = centralResults[i].leagueRecord.wins;
+                        knightsOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
+                  // Here is the knights loop. 
+                  for (var i = 0; i < northResults.length; i++) {
+                    // knights
+                    if (northResults[i].team.id === 54) {
+                        knightsWins = northResults[i].leagueRecord.wins;
+                        knightsOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
  
                  // Here is the loop for the sabres
                  for (var i = 0; i < eastResults.length; i++) {
@@ -106,6 +130,26 @@ class joe extends React.Component {
                         sabresOTLS = northResults[i].leagueRecord.ot;
                     }
                 }
+
+                  // Here is the loop for the sabres
+                  for (var i = 0; i < westResults.length; i++) {
+ 
+                    // sabres
+                    if (westResults[i].team.id === 7) {
+                        sabresWins = westResults[i].leagueRecord.wins;
+                        sabresOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                  // Here is the loop for the sabres
+                  for (var i = 0; i < centralResults.length; i++) {
+ 
+                    // sabres
+                    if (centralResults[i].team.id === 7) {
+                        sabresWins = centralResults[i].leagueRecord.wins;
+                        sabresOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
  
                  for (var i = 0; i < northResults.length; i++) {
  
@@ -124,12 +168,33 @@ class joe extends React.Component {
                         senatorsOTLS = eastResults[i].leagueRecord.ot;
                     }
                 }
+
+                for (var i = 0; i < westResults.length; i++) {
+ 
+                    // senators
+                    if (westResults[i].team.id === 9) {
+                        senatorsWins = westResults[i].leagueRecord.wins;
+                        senatorsOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < centralResults.length; i++) {
+ 
+                    // senators
+                    if (centralResults[i].team.id === 9) {
+                        senatorsWins = centralResults[i].leagueRecord.wins;
+                        senatorsOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
  
                  // sabres total
                  sabresTotal = (sabresWins * 2.9) + (sabresOTLS * 1.45);
  
                  // senators total
                  senatorsTotal = (senatorsWins * 2.9) + (senatorsOTLS * 1.45);
+
+                 // knights total
+                 knightsTotal = (knightsWins * 2.9) + (knightsOTLS * 1.45);
  
                  var allNHL = (knightsTotal + sabresTotal + senatorsTotal).toFixed(1);
  
@@ -296,17 +361,17 @@ class joe extends React.Component {
                                     <tr>
                                         <th scope="row">2</th>
                                         <td className="bucks">Milwaukee Bucks</td>
-                                        <td>{this.state.bulls}</td>
+                                        <td>{this.state.bucks}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">75</th>
                                         <td className="grizzlies">Memphis Grizzlies</td>
-                                        <td>{this.state.bucks}</td>
+                                        <td>{this.state.grizzlies}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">85</th>
                                         <td className="bulls">Chicago Bulls</td>
-                                        <td>{this.state.grizzlies}</td>
+                                        <td>{this.state.bulls}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>
