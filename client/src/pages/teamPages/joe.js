@@ -24,7 +24,7 @@ class joe extends React.Component {
         jackets: "",
         oilers: "",
         // PGA Here
-        dechambeau:"",
+        dechambeau: "",
         rose: "",
         scott: "",
         kisner: "",
@@ -42,10 +42,10 @@ class joe extends React.Component {
     getScoresPGA = () => {
         // Joe's PGA Here. Golf Team 2. 
         var Dechambeau = 39
-        var Rose = 4
+        var Rose = 4.6
         var Scott = 6
         var Kisner = 21
-        var Kim = 10
+        var Kim = 35
         var pgaTotal = Dechambeau + Rose + Scott + Kisner + Kim
         this.setState({ totalPGA: pgaTotal });
         this.setState({ dechambeau: Dechambeau });
@@ -58,34 +58,34 @@ class joe extends React.Component {
     getScoresNHL = () => {
         API.getScoresNHL()
             .then(res => {
-                 // starting Joe NHL here 
-                 var westResults = res.data.records[0].teamRecords;
-                 var northResults = res.data.records[2].teamRecords;
-                 var eastResults = res.data.records[1].teamRecords;
-                 var centralResults = res.data.records[3].teamRecords;
+                // starting Joe NHL here 
+                var westResults = res.data.records[0].teamRecords;
+                var northResults = res.data.records[2].teamRecords;
+                var eastResults = res.data.records[1].teamRecords;
+                var centralResults = res.data.records[3].teamRecords;
 
-                 var knightsWins;
-                 var knightsOTLS;
-                 var knightsTotal;
-                 var sabresWins;
-                 var sabresOTLS;
-                 var sabresTotal;
-                 var senatorsWins;
-                 var senatorsOTLS;
-                 var senatorsTotal;
-                 var allNHL;
- 
-                 // Here is the knights loop. 
-                 for (var i = 0; i < westResults.length; i++) {
-                     // knights
-                     if (westResults[i].team.id === 54) {
-                         knightsWins = westResults[i].leagueRecord.wins;
-                         knightsOTLS = westResults[i].leagueRecord.ot;
-                     }
-                 }
+                var knightsWins;
+                var knightsOTLS;
+                var knightsTotal;
+                var sabresWins;
+                var sabresOTLS;
+                var sabresTotal;
+                var senatorsWins;
+                var senatorsOTLS;
+                var senatorsTotal;
+                var allNHL;
 
-                   // Here is the knights loop. 
-                   for (var i = 0; i < eastResults.length; i++) {
+                // Here is the knights loop. 
+                for (var i = 0; i < westResults.length; i++) {
+                    // knights
+                    if (westResults[i].team.id === 54) {
+                        knightsWins = westResults[i].leagueRecord.wins;
+                        knightsOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Here is the knights loop. 
+                for (var i = 0; i < eastResults.length; i++) {
                     // knights
                     if (eastResults[i].team.id === 54) {
                         knightsWins = eastResults[i].leagueRecord.wins;
@@ -93,8 +93,8 @@ class joe extends React.Component {
                     }
                 }
 
-                  // Here is the knights loop. 
-                  for (var i = 0; i < centralResults.length; i++) {
+                // Here is the knights loop. 
+                for (var i = 0; i < centralResults.length; i++) {
                     // knights
                     if (centralResults[i].team.id === 54) {
                         knightsWins = centralResults[i].leagueRecord.wins;
@@ -102,28 +102,28 @@ class joe extends React.Component {
                     }
                 }
 
-                  // Here is the knights loop. 
-                  for (var i = 0; i < northResults.length; i++) {
+                // Here is the knights loop. 
+                for (var i = 0; i < northResults.length; i++) {
                     // knights
                     if (northResults[i].team.id === 54) {
                         knightsWins = northResults[i].leagueRecord.wins;
                         knightsOTLS = northResults[i].leagueRecord.ot;
                     }
                 }
- 
-                 // Here is the loop for the sabres
-                 for (var i = 0; i < eastResults.length; i++) {
- 
-                     // sabres
-                     if (eastResults[i].team.id === 7) {
-                         sabresWins = eastResults[i].leagueRecord.wins;
-                         sabresOTLS = eastResults[i].leagueRecord.ot;
-                     }
-                 }
 
-                   // Here is the loop for the sabres
-                   for (var i = 0; i < northResults.length; i++) {
- 
+                // Here is the loop for the sabres
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // sabres
+                    if (eastResults[i].team.id === 7) {
+                        sabresWins = eastResults[i].leagueRecord.wins;
+                        sabresOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Here is the loop for the sabres
+                for (var i = 0; i < northResults.length; i++) {
+
                     // sabres
                     if (northResults[i].team.id === 7) {
                         sabresWins = northResults[i].leagueRecord.wins;
@@ -131,9 +131,9 @@ class joe extends React.Component {
                     }
                 }
 
-                  // Here is the loop for the sabres
-                  for (var i = 0; i < westResults.length; i++) {
- 
+                // Here is the loop for the sabres
+                for (var i = 0; i < westResults.length; i++) {
+
                     // sabres
                     if (westResults[i].team.id === 7) {
                         sabresWins = westResults[i].leagueRecord.wins;
@@ -141,27 +141,27 @@ class joe extends React.Component {
                     }
                 }
 
-                  // Here is the loop for the sabres
-                  for (var i = 0; i < centralResults.length; i++) {
- 
+                // Here is the loop for the sabres
+                for (var i = 0; i < centralResults.length; i++) {
+
                     // sabres
                     if (centralResults[i].team.id === 7) {
                         sabresWins = centralResults[i].leagueRecord.wins;
                         sabresOTLS = centralResults[i].leagueRecord.ot;
                     }
                 }
- 
-                 for (var i = 0; i < northResults.length; i++) {
- 
-                     // senators
-                     if (northResults[i].team.id === 9) {
-                         senatorsWins = northResults[i].leagueRecord.wins;
-                         senatorsOTLS = northResults[i].leagueRecord.ot;
-                     }
-                 }
 
-                 for (var i = 0; i < eastResults.length; i++) {
- 
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // senators
+                    if (northResults[i].team.id === 9) {
+                        senatorsWins = northResults[i].leagueRecord.wins;
+                        senatorsOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < eastResults.length; i++) {
+
                     // senators
                     if (eastResults[i].team.id === 9) {
                         senatorsWins = eastResults[i].leagueRecord.wins;
@@ -170,7 +170,7 @@ class joe extends React.Component {
                 }
 
                 for (var i = 0; i < westResults.length; i++) {
- 
+
                     // senators
                     if (westResults[i].team.id === 9) {
                         senatorsWins = westResults[i].leagueRecord.wins;
@@ -179,29 +179,29 @@ class joe extends React.Component {
                 }
 
                 for (var i = 0; i < centralResults.length; i++) {
- 
+
                     // senators
                     if (centralResults[i].team.id === 9) {
                         senatorsWins = centralResults[i].leagueRecord.wins;
                         senatorsOTLS = centralResults[i].leagueRecord.ot;
                     }
                 }
- 
-                 // sabres total
-                 sabresTotal = (sabresWins * 2.9) + (sabresOTLS * 1.45);
- 
-                 // senators total
-                 senatorsTotal = (senatorsWins * 2.9) + (senatorsOTLS * 1.45);
 
-                 // knights total
-                 knightsTotal = (knightsWins * 2.9) + (knightsOTLS * 1.45);
- 
-                 var allNHL = (knightsTotal + sabresTotal + senatorsTotal).toFixed(1);
- 
-                 this.setState({ totalNHL: allNHL });
-                 this.setState({ knights: knightsTotal });
-                 this.setState({ sabres: sabresTotal });
-                 this.setState({ senators: senatorsTotal });
+                // sabres total
+                sabresTotal = (sabresWins * 2.9) + (sabresOTLS * 1.45);
+
+                // senators total
+                senatorsTotal = (senatorsWins * 2.9) + (senatorsOTLS * 1.45);
+
+                // knights total
+                knightsTotal = (knightsWins * 2.9) + (knightsOTLS * 1.45);
+
+                var allNHL = (knightsTotal + sabresTotal + senatorsTotal).toFixed(1);
+
+                this.setState({ totalNHL: allNHL });
+                this.setState({ knights: knightsTotal });
+                this.setState({ sabres: sabresTotal });
+                this.setState({ senators: senatorsTotal });
             })
             .catch(error => {
                 console.log(error)

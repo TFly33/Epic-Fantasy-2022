@@ -424,10 +424,10 @@ class Table extends Component {
         // console.log(patPGATotal);
 
         // James's PGA Here. Golf Team 7. 
-        var Cantlay = 36
+        var Cantlay = 50.58
         var Reed = 12
-        var Fowler = 3.5
-        var Woodland = 0
+        var Fowler = 5.2
+        var Woodland = 2.6
         var Mickelson = 1
         var jamesPGATotal = Cantlay + Reed + Fowler + Woodland + Mickelson
         this.setState({ jamesPGA: jamesPGATotal });
@@ -437,7 +437,7 @@ class Table extends Component {
         var Rahm = 26
         var Scheffler = 10
         var Spieth = 2
-        var Casey = 5
+        var Casey = 8.5
         var Watson = 12
         var neptunePGATotal = Rahm + Scheffler + Spieth + Casey + Watson
         this.setState({ neptunePGA: neptunePGATotal });
@@ -455,7 +455,7 @@ class Table extends Component {
 
         // Goose's PGA Here. Golf Team 5. 
         var McIlroy = 14
-        var Im = 27
+        var Im = 29.95
         var Fleetwood = 3.8
         var Leishman = 11
         var Horschel = 14
@@ -475,10 +475,10 @@ class Table extends Component {
 
         // Joe's PGA Here. Golf Team 2. 
         var Dechambeau = 39
-        var Rose = 4
+        var Rose = 4.6
         var Scott = 6
         var Kisner = 21
-        var Kim = 10
+        var Kim = 35
         var joePGATotal = Dechambeau + Rose + Scott + Kisner + Kim
         this.setState({ joePGA: joePGATotal });
         // console.log(joePGATotal);
@@ -1042,7 +1042,7 @@ class Table extends Component {
                 kingsTotal = (kingsWins * 2.9) + (kingsOTLS * 1.45);
                 // console.log(kingsTotal);
 
-                var allNHL = avalancheTotal + pensTotal + kingsTotal
+                var allNHL = (avalancheTotal + pensTotal + kingsTotal).toFixed(1);
 
                 this.setState({ jamesNHL: allNHL });
                 this.setState({ avalanche: avalancheTotal });

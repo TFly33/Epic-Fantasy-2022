@@ -43,9 +43,9 @@ class steids extends React.Component {
         // Tom's PGA Here. Golf Team 8. 
         // Steids's PGA Here. Golf Team 6. 
         var Schauffele = 31
-        var Finau = 15
+        var Finau = 22
         var Woods = 1
-        var Ancer = 18
+        var Ancer = 23
         var Griffin = 12
         var pgaTotal = Schauffele + Finau + Woods + Ancer + Griffin
         this.setState({ totalPGA: pgaTotal });
@@ -168,8 +168,8 @@ class steids extends React.Component {
                     }
                 }
 
-                   // Here is the panthers for loop. 
-                   for (var i = 0; i < eastResults.length; i++) {
+                // Here is the panthers for loop. 
+                for (var i = 0; i < eastResults.length; i++) {
                     // panthers
                     if (eastResults[i].team.id === 13) {
                         panthersWins = eastResults[i].leagueRecord.wins;
@@ -177,8 +177,8 @@ class steids extends React.Component {
                     }
                 }
 
-                   // Here is the panthers for loop. 
-                   for (var i = 0; i < northResults.length; i++) {
+                // Here is the panthers for loop. 
+                for (var i = 0; i < northResults.length; i++) {
                     // panthers
                     if (northResults[i].team.id === 13) {
                         panthersWins = northResults[i].leagueRecord.wins;
@@ -186,8 +186,8 @@ class steids extends React.Component {
                     }
                 }
 
-                   // Here is the panthers for loop. 
-                   for (var i = 0; i < westResults.length; i++) {
+                // Here is the panthers for loop. 
+                for (var i = 0; i < westResults.length; i++) {
                     // panthers
                     if (westResults[i].team.id === 13) {
                         panthersWins = westResults[i].leagueRecord.wins;

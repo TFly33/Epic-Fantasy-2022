@@ -44,7 +44,7 @@ class neptune extends React.Component {
         var Rahm = 26
         var Scheffler = 10
         var Spieth = 2
-        var Casey = 5
+        var Casey = 8.5
         var Watson = 12
         var pgaTotal = Rahm + Scheffler + Spieth + Casey + Watson
 
