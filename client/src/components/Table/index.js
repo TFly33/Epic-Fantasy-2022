@@ -2425,27 +2425,27 @@ class Table extends Component {
                 //    so I'm gonna keep the old mapping approach in case i want to use it later. 
                 // But the 2021 approach is much simpler. 
                 // THis is now warriors. 
-                var warriorsWin = res.data.api.standings[24].win;
+                var warriorsWin = res.data.api.standings[24].win * 2.25;
                 // And Magic
-                var magicWin = res.data.api.standings[2].win;
+                var magicWin = res.data.api.standings[2].win * 2.25;
                 // and Twolves
-                var twolvesWin = res.data.api.standings[28].win;
+                var twolvesWin = res.data.api.standings[28].win * 2.25;
 
-                // Gonna use the old temp approach for Tom, so I have it for later. 
-                const tempTomNBA = this.state.allNBA;
-                tempTomNBA.push(warriorsWin);
-                tempTomNBA.push(magicWin);
-                tempTomNBA.push(twolvesWin);
+                // // Gonna use the old temp approach for Tom, so I have it for later. 
+                // const tempTomNBA = this.state.allNBA;
+                // tempTomNBA.push(warriorsWin);
+                // tempTomNBA.push(magicWin);
+                // tempTomNBA.push(twolvesWin);
 
-                var tomDoubledScores = tempTomNBA.map(team => team * 2.25);
+                // var tomDoubledScores = tempTomNBA.map(team => team * 2.25);
 
-                var TomPoints = 0;
+                // var TomPoints = 0;
 
-                for (var i = 0; i < tomDoubledScores.length; i++) {
-                    TomPoints += tomDoubledScores[i];
-                }
-
-                this.setState({ tomNBA: TomPoints });
+                // for (var i = 0; i < tomDoubledScores.length; i++) {
+                //     TomPoints += tomDoubledScores[i];
+                // }
+                var tomPoints = (twolvesWin + magicWin + warriorsWin).toFixed(1);
+                this.setState({ tomNBA: tomPoints });
 
                 console.log(res.data.api.standings);
                 // Now switching to the new way. 
