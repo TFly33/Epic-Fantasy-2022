@@ -70,13 +70,13 @@ class Table extends Component {
         eresPGA: "",
 
         // Gambling points here: 
-        tomGamble: 185,
+        tomGamble: 190,
         patGamble: 214,
         jamesGamble: 200,
         neptuneGamble: 178,
         djGamble: 200,
         gooseGamble: 203,
-        alGamble: 210,
+        alGamble: 205,
         joeGamble: 195,
         steidsGamble: 205,
         eresGamble: 210,
@@ -485,9 +485,9 @@ class Table extends Component {
 
         // Steids's PGA Here. Golf Team 6. 
         var Schauffele = 31
-        var Finau = 15
+        var Finau = 22
         var Woods = 1
-        var Ancer = 18
+        var Ancer = 23
         var Griffin = 12
         var steidsPGATotal = Schauffele + Finau + Woods + Ancer + Griffin
         this.setState({ steidsPGA: steidsPGATotal });
