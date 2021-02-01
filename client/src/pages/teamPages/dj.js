@@ -44,7 +44,7 @@ class dj extends React.Component {
         var Johnson = 51
         var Day = 8
         var Niemann = 41
-        var Oosthuizen = 15
+        var Oosthuizen = 17
         var Garcia = 31
         var pgaTotal = Johnson + Day + Niemann + Oosthuizen + Garcia
         this.setState({ totalPGA: pgaTotal });

@@ -46,7 +46,7 @@ class tommy extends React.Component {
         var Koepka = 11
         var Matsuyama = 24
         var English = 48
-        var Kokrak = 31
+        var Kokrak = 33
         var Lowry = 7
         var pgaTotal = Koepka + Matsuyama + English + Kokrak + Lowry
         this.setState({ totalPGA: pgaTotal });
