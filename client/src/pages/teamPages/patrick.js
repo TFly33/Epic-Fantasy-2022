@@ -310,8 +310,9 @@ class patrick extends React.Component {
         API.getScoresNBA()
             .then(res => {
                 // Patricks Teams for 2021. 
+                console.log(res)
                 var jazzWin = res.data.api.standings[25].win;
-                var sunsWin = res.data.api.standings[20].win;
+                var sunsWin = res.data.api.standings[21].win;
                 var rocketsWin = res.data.api.standings[15].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
