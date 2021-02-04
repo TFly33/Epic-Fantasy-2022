@@ -2458,7 +2458,7 @@ class Table extends Component {
 
                 // Patricks Teams for 2021. 
                 var jazzWin = res.data.api.standings[25].win * 2.25;
-                var sunsWin = res.data.api.standings[20].win * 2.25;
+                var sunsWin = res.data.api.standings[21].win * 2.25;
                 var rocketsWin = res.data.api.standings[15].win * 2.25;
                 var patPoints = (jazzWin + sunsWin + rocketsWin).toFixed(1);
                 this.setState({ patNBA: patPoints });
