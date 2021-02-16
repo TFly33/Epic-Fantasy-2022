@@ -73,10 +73,10 @@ class Table extends Component {
         tomGamble: 195,
         patGamble: 207.5,
         jamesGamble: 200,
-        neptuneGamble: 178,
+        neptuneGamble: 188,
         djGamble: 200,
         gooseGamble: 203,
-        alGamble: 201.5,
+        alGamble: 191.5,
         joeGamble: 200,
         steidsGamble: 205,
         eresGamble: 210,
@@ -424,7 +424,7 @@ class Table extends Component {
         // console.log(patPGATotal);
 
         // James's PGA Here. Golf Team 7. 
-        var Cantlay = 51
+        var Cantlay = 59
         var Reed = 37
         var Fowler = 6
         var Woodland = 3
@@ -434,10 +434,10 @@ class Table extends Component {
         // console.log(jamesPGATotal);
 
         // Neptune's PGA Here. Golf Team 3. 
-        var Rahm = 37
+        var Rahm = 33
         var Scheffler = 14
-        var Spieth = 8
-        var Casey = 8.5
+        var Spieth = 16
+        var Casey = 14
         var Watson = 13
         var neptunePGATotal = Rahm + Scheffler + Spieth + Casey + Watson
         this.setState({ neptunePGA: neptunePGATotal });
@@ -445,7 +445,7 @@ class Table extends Component {
 
         // DJ's PGA Here. Golf Team 1. 
         var Johnson = 51
-        var Day = 8
+        var Day = 12
         var Niemann = 41
         var Oosthuizen = 20
         var Garcia = 31
@@ -495,7 +495,7 @@ class Table extends Component {
 
         // Eres's PGA Here. Golf Team 4. 
         var Thomas = 42
-        var Berger = 14
+        var Berger = 39
         var Fitzpatrick = 5
         var Todd = 13
         var Kuchar = 3
