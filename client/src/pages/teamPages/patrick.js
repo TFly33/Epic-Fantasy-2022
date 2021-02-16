@@ -561,17 +561,17 @@ class patrick extends React.Component {
                                             <tr>
                                                 <th scope="row">82</th>
                                                 <td className="blueJays">Toronto Blue Jays</td>
-                                                <td>{this.state.knights}</td>
+                                                {/* <td>{this.state.knights}</td> */}
                                             </tr>
                                             <tr>
                                                 <th scope="row">99</th>
                                                 <td className="diamondbacks">Arizona Diamondbacks</td>
-                                                <td>{this.state.blackhawks}</td>
+                                                {/* <td>{this.state.blackhawks}</td> */}
                                             </tr>
                                             <tr>
                                                 <th scope="row">143</th>
                                                 <td className="pirates">Pittsburgh Pirates</td>
-                                                <td>{this.state.canucks}</td>
+                                                {/* <td>{this.state.canucks}</td> */}
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
