@@ -70,16 +70,16 @@ class Table extends Component {
         eresPGA: "",
 
         // Gambling points here: 
-        tomGamble: 195,
+        tomGamble: 190,
         patGamble: 207.5,
         jamesGamble: 200,
-        neptuneGamble: 188,
+        neptuneGamble: 175,
         djGamble: 200,
         gooseGamble: 203,
-        alGamble: 191.5,
-        joeGamble: 200,
+        alGamble: 196.5,
+        joeGamble: 208,
         steidsGamble: 205,
-        eresGamble: 210,
+        eresGamble: 215,
 
         // Total Points here. 
         tomTotal: "",
