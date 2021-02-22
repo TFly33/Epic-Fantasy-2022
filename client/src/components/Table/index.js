@@ -72,11 +72,11 @@ class Table extends Component {
         // Gambling points here: 
         tomGamble: 190,
         patGamble: 207.5,
-        jamesGamble: 200,
+        jamesGamble: 205,
         neptuneGamble: 175,
         djGamble: 200,
         gooseGamble: 203,
-        alGamble: 196.5,
+        alGamble: 191.5,
         joeGamble: 208,
         steidsGamble: 205,
         eresGamble: 215,
@@ -404,7 +404,7 @@ class Table extends Component {
 
     getScoresPGA = () => {
         // Tom's PGA Here. Golf Team 8. 
-        var Koepka = 36
+        var Koepka = 37
         var Matsuyama = 25
         var English = 48
         var Kokrak = 33
@@ -414,19 +414,19 @@ class Table extends Component {
         // console.log(tomPGATotal);
 
         // Pat's PGA Here. Golf Team 10. 
-        var Hovland = 44
+        var Hovland = 49
         var Wolff = 31
         var Champ = 8
-        var Munoz = 15
-        var Henley = 22
+        var Munoz = 16
+        var Henley = 23
         var patPGATotal = Hovland + Wolff + Champ + Munoz + Henley
         this.setState({ patPGA: patPGATotal });
         // console.log(patPGATotal);
 
         // James's PGA Here. Golf Team 7. 
-        var Cantlay = 59
+        var Cantlay = 62
         var Reed = 37
-        var Fowler = 6
+        var Fowler = 8
         var Woodland = 3
         var Mickelson = 1
         var jamesPGATotal = Cantlay + Reed + Fowler + Woodland + Mickelson
@@ -434,9 +434,9 @@ class Table extends Component {
         // console.log(jamesPGATotal);
 
         // Neptune's PGA Here. Golf Team 3. 
-        var Rahm = 33
-        var Scheffler = 14
-        var Spieth = 16
+        var Rahm = 38
+        var Scheffler = 16
+        var Spieth = 19
         var Casey = 14
         var Watson = 13
         var neptunePGATotal = Rahm + Scheffler + Spieth + Casey + Watson
@@ -444,9 +444,9 @@ class Table extends Component {
         // console.log(neptunePGATotal);
 
         // DJ's PGA Here. Golf Team 1. 
-        var Johnson = 51
+        var Johnson = 55
         var Day = 12
-        var Niemann = 41
+        var Niemann = 42
         var Oosthuizen = 20
         var Garcia = 31
         var djPGATotal = Johnson + Day + Niemann + Oosthuizen + Garcia
@@ -457,17 +457,17 @@ class Table extends Component {
         var McIlroy = 19
         var Im = 33
         var Fleetwood = 4
-        var Leishman = 13
+        var Leishman = 14
         var Horschel = 14
         var goosePGATotal = McIlroy + Im + Fleetwood + Leishman + Horschel
         this.setState({ goosePGA: goosePGATotal });
         // console.log(goosePGATotal);
 
         // Al's PGA Here. Golf Team 9. 
-        var Morikawa = 12
+        var Morikawa = 13
         var Simpson = 22
         var Hatton = 15
-        var Smith = 27
+        var Smith = 34
         var Conners = 21
         var alPGATotal = Morikawa + Simpson + Hatton + Smith + Conners
         this.setState({ alPGA: alPGATotal });
@@ -476,19 +476,19 @@ class Table extends Component {
         // Joe's PGA Here. Golf Team 2. 
         var Dechambeau = 39
         var Rose = 5
-        var Scott = 9
+        var Scott = 10
         var Kisner = 21
-        var Kim = 35
+        var Kim = 36
         var joePGATotal = Dechambeau + Rose + Scott + Kisner + Kim
         this.setState({ joePGA: joePGATotal });
         // console.log(joePGATotal);
 
         // Steids's PGA Here. Golf Team 6. 
-        var Schauffele = 52
-        var Finau = 30
+        var Schauffele = 55
+        var Finau = 46
         var Woods = 1
         var Ancer = 23
-        var Griffin = 16
+        var Griffin = 18
         var steidsPGATotal = Schauffele + Finau + Woods + Ancer + Griffin
         this.setState({ steidsPGA: steidsPGATotal });
         // console.log(steidsPGATotal);
@@ -496,7 +496,7 @@ class Table extends Component {
         // Eres's PGA Here. Golf Team 4. 
         var Thomas = 42
         var Berger = 39
-        var Fitzpatrick = 5
+        var Fitzpatrick = 10
         var Todd = 13
         var Kuchar = 3
         var eresPGATotal = Thomas + Berger + Fitzpatrick + Todd + Kuchar
