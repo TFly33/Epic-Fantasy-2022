@@ -405,9 +405,9 @@ class Table extends Component {
     getScoresPGA = () => {
         // Tom's PGA Here. Golf Team 8. 
         var Koepka = 48
-        var Matsuyama = 28
-        var English = 48
-        var Kokrak = 38
+        var Matsuyama = 30
+        var English = 50
+        var Kokrak = 42
         var Lowry = 8
         var tomPGATotal = Koepka + Matsuyama + English + Kokrak + Lowry
         this.setState({ tomPGA: tomPGATotal });
@@ -427,7 +427,7 @@ class Table extends Component {
         var Cantlay = 62
         var Reed = 41
         var Fowler = 8
-        var Woodland = 3
+        var Woodland = 4
         var Mickelson = 1
         var jamesPGATotal = Cantlay + Reed + Fowler + Woodland + Mickelson
         this.setState({ jamesPGA: jamesPGATotal });
@@ -436,8 +436,8 @@ class Table extends Component {
         // Neptune's PGA Here. Golf Team 3. 
         var Rahm = 39
         var Scheffler = 22
-        var Spieth = 19
-        var Casey = 14
+        var Spieth = 25
+        var Casey = 17
         var Watson = 14
         var neptunePGATotal = Rahm + Scheffler + Spieth + Casey + Watson
         this.setState({ neptunePGA: neptunePGATotal });
@@ -445,8 +445,8 @@ class Table extends Component {
 
         // DJ's PGA Here. Golf Team 1. 
         var Johnson = 55
-        var Day = 15
-        var Niemann = 43.5
+        var Day = 16
+        var Niemann = 44
         var Oosthuizen = 25
         var Garcia = 33
         var djPGATotal = Johnson + Day + Niemann + Oosthuizen + Garcia
@@ -454,9 +454,9 @@ class Table extends Component {
         // console.log(djPGATotal);
 
         // Goose's PGA Here. Golf Team 5. 
-        var McIlroy = 24
-        var Im = 35
-        var Fleetwood = 4
+        var McIlroy = 27
+        var Im = 37
+        var Fleetwood = 8
         var Leishman = 15
         var Horschel = 25
         var goosePGATotal = McIlroy + Im + Fleetwood + Leishman + Horschel
@@ -466,18 +466,18 @@ class Table extends Component {
         // Al's PGA Here. Golf Team 9. 
         var Morikawa = 40
         var Simpson = 27
-        var Hatton = 17
+        var Hatton = 19
         var Smith = 38
-        var Conners = 21
+        var Conners = 31
         var alPGATotal = Morikawa + Simpson + Hatton + Smith + Conners
         this.setState({ alPGA: alPGATotal });
         // console.log(alPGATotal);
 
         // Joe's PGA Here. Golf Team 2. 
-        var Dechambeau = 41
+        var Dechambeau = 69
         var Rose = 5
         var Scott = 10
-        var Kisner = 22
+        var Kisner = 23
         var Kim = 36
         var joePGATotal = Dechambeau + Rose + Scott + Kisner + Kim
         this.setState({ joePGA: joePGATotal });
@@ -488,7 +488,7 @@ class Table extends Component {
         var Finau = 49
         var Woods = 1
         var Ancer = 25
-        var Griffin = 20
+        var Griffin = 22
         var steidsPGATotal = Schauffele + Finau + Woods + Ancer + Griffin
         this.setState({ steidsPGA: steidsPGATotal });
         // console.log(steidsPGATotal);
@@ -496,7 +496,7 @@ class Table extends Component {
         // Eres's PGA Here. Golf Team 4. 
         var Thomas = 45
         var Berger = 40
-        var Fitzpatrick = 14
+        var Fitzpatrick = 17
         var Todd = 15
         var Kuchar = 4
         var eresPGATotal = Thomas + Berger + Fitzpatrick + Todd + Kuchar

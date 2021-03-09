@@ -40,9 +40,9 @@ class goose extends React.Component {
 
     getScoresPGA = () => {
         // Goose's PGA Here. Golf Team 5. 
-        var McIlroy = 24
-        var Im = 35
-        var Fleetwood = 4
+        var McIlroy = 27
+        var Im = 37
+        var Fleetwood = 8
         var Leishman = 15
         var Horschel = 25
         var pgaTotal = McIlroy + Im + Fleetwood + Leishman + Horschel

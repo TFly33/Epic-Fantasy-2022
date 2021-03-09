@@ -44,9 +44,9 @@ class al extends React.Component {
         // Al's PGA Here. Golf Team 1. 
         var Morikawa = 40
         var Simpson = 27
-        var Hatton = 17
+        var Hatton = 19
         var Smith = 38
-        var Conners = 21
+        var Conners = 31
         var pgaTotal = Morikawa + Simpson + Hatton + Smith + Conners
         this.setState({ totalPGA: pgaTotal });
         this.setState({ morikawa: Morikawa });
