@@ -42,11 +42,11 @@ class steids extends React.Component {
     getScoresPGA = () => {
         // Tom's PGA Here. Golf Team 8. 
         // Steids's PGA Here. Golf Team 6. 
-        var Schauffele = 56
-        var Finau = 49
+        var Schauffele = 58
+        var Finau = 50
         var Woods = 1
-        var Ancer = 27
-        var Griffin = 23
+        var Ancer = 30
+        var Griffin = 24
         var pgaTotal = Schauffele + Finau + Woods + Ancer + Griffin
         this.setState({ totalPGA: pgaTotal });
         this.setState({ schauffele: Schauffele });
