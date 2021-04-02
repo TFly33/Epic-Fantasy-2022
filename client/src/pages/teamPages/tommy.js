@@ -31,7 +31,13 @@ class tommy extends React.Component {
         english: "",
         kokrak: "",
         lowry: "",
-        totalPGA: ""
+        totalPGA: "",
+
+        // MLB States here 
+        astros: "",
+        reds: "",
+        orioles: "",
+        totalMLB: ""
     }
 
     componentDidMount = () => {
@@ -39,6 +45,7 @@ class tommy extends React.Component {
         this.getScoresNHL();
         this.getScoresEPL();
         this.getScoresPGA();
+        this.getScoresMLB();
     }
 
     getScoresPGA = () => {
@@ -56,6 +63,23 @@ class tommy extends React.Component {
         this.setState({ kokrak: Kokrak });
         this.setState({ lowry: Lowry });
     }
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+        .then(res => {
+            console.log(res.data.response[0]);
+            var astrosWin = res.data.response[0][6].games.win.total;
+            var redsWin = res.data.response[0][28].games.win.total;
+            var oriolesWin = res.data.response[0][8].games.win.total;
+            var allMLB = astrosWin + redsWin + oriolesWin ; 
+            
+            this.setState({ totalMLB: allMLB });
+            this.setState({ astros: astrosWin});
+            this.setState({ reds: redsWin });
+            this.setState({ orioles: oriolesWin });
+
+        });
+    };
 
     getScoresNHL = () => {
         API.getScoresNHL()
@@ -522,12 +546,12 @@ class tommy extends React.Component {
                                             <tr>
                                                 <th scope="row">65</th>
                                                 <td className="astros">Houston Astros</td>
-                                                <td>{this.state.knights}</td>
+                                                <td>{this.state.astros}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">76</th>
                                                 <td className="reds">Cincinnati Reds</td>
-                                                <td>{this.state.blackhawks}</td>
+                                                <td>{this.state.reds}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">122</th>

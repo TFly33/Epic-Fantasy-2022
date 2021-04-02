@@ -3,7 +3,6 @@ import axios from "axios";
 // import cheerio from "cheerio";
 
 export default {
-  // Gets all books
   getTeams: function () {
     return axios.get("/api/team");
   },
@@ -43,7 +42,7 @@ export default {
     return axios({
       method: 'GET',
       url: 'https://api-football-beta.p.rapidapi.com/standings',
-      params: {season: '2020', league: '39'},
+      params: { season: '2020', league: '39' },
       headers: {
         'x-rapidapi-key': '52aa6a2637mshdf98d5a291eb6cep182376jsnfb67836d7b3b',
         'x-rapidapi-host': 'api-football-beta.p.rapidapi.com'
@@ -76,8 +75,18 @@ export default {
     return axios.get("http://philly.stats.com/golf/averages.asp?tour=PGA")
   },
 
-  // Gets the teams with the given id
-  getMyTeams: function (id) {
-    return axios.get("/api/myteam/" + id);
-  },
+  // MLB API here. 
+  getScoresMLB: function () {
+    return axios({
+      method: 'GET',
+      url: 'https://api-baseball.p.rapidapi.com/standings',
+      params: { season: '2021', league: '1'},
+      headers: {
+        'x-rapidapi-key': '52aa6a2637mshdf98d5a291eb6cep182376jsnfb67836d7b3b',
+        'x-rapidapi-host': 'api-baseball.p.rapidapi.com'
+      }
+    });
+  }
+
+
 };

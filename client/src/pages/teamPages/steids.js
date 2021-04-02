@@ -30,13 +30,36 @@ class steids extends React.Component {
         woods: "",
         ancer: "",
         griffin: "",
-        totalPGA: ""
+        totalPGA: "",
+        // MLB here 
+        twins: "",
+        angels: "",
+        rockies: "",
+        totalMLB: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresPGA();
         this.getScoresEPL();
         this.getScoresNHL();
+        this.getScoresMLB();
+    };
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+        .then(res => {
+            console.log(res.data.response[0]);
+            var angelsWin = res.data.response[0][2].games.win.total;
+            var twinsWin = res.data.response[0][13].games.win.total;
+            var rockiesWin = res.data.response[0][17].games.win.total;
+            var allMLB = angelsWin + twinsWin + rockiesWin ; 
+            
+            this.setState({ totalMLB: allMLB });
+            this.setState({ angels: angelsWin});
+            this.setState({ twins: twinsWin });
+            this.setState({ rockies: rockiesWin });
+
+        });
     };
 
     getScoresPGA = () => {
@@ -524,22 +547,22 @@ class steids extends React.Component {
                                             <tr>
                                                 <th scope="row">50</th>
                                                 <td className="twins">Minnesota Twins</td>
-                                                <td>{this.state.knights}</td>
+                                                <td>{this.state.twins}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">93</th>
                                                 <td className="angels">Los Angeles Angels</td>
-                                                <td>{this.state.blackhawks}</td>
+                                                <td>{this.state.angels}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">128</th>
                                                 <td className="rockies">Colorado Rockies</td>
-                                                <td>{this.state.canucks}</td>
+                                                <td>{this.state.rockies}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                {/* <td>{this.state.totalNHL}</td> */}
+                                                <td>{this.state.totalMLB}</td>
                                             </tr>
                                         </tbody>
                                     </table>
