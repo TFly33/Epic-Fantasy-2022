@@ -29,13 +29,19 @@ class goose extends React.Component {
         fleetwood: "",
         leishman: "",
         horschel: "",
-        totalPGA: ""
+        totalPGA: "",
+        // MLB
+        braves:"",
+        mariners:"",
+        cubs:"",
+        totalMLB:""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresPGA();
         this.getScoresNHL();
+        this.getScoresMLB();
     }
 
     getScoresPGA = () => {
@@ -52,6 +58,45 @@ class goose extends React.Component {
         this.setState({ fleetwood: Fleetwood });
         this.setState({ leishman: Leishman });
         this.setState({ horschel: Horschel });
+    };
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var bravesWin;
+                var marinersWin;
+                var cubsWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // braves
+                    if (fullIndex[i].team.id === 3) {
+                        bravesWin = fullIndex[i].games.win.total
+                    }
+
+                    // cubs
+                    if (fullIndex[i].team.id === 6) {
+                        cubsWin = fullIndex[i].games.win.total
+                    }
+
+                    // mariners
+                    if (fullIndex[i].team.id === 32) {
+                        marinersWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var allMLB = bravesWin + cubsWin + marinersWin;
+
+                this.setState({ totalMLB: allMLB });
+                this.setState({ braves: bravesWin });
+                this.setState({ mariners: marinersWin });
+                this.setState({ cubs: cubsWin });
+
+            });
     };
 
 
@@ -513,17 +558,17 @@ class goose extends React.Component {
                                             <tr>
                                                 <th scope="row">16</th>
                                                 <td className="braves">Atlanta Braves</td>
-                                                <td>{this.state.preds}</td>
+                                                <td>{this.state.braves}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">86</th>
                                                 <td className="cubs">Chicago Cubs</td>
-                                                <td>{this.state.stars}</td>
+                                                <td>{this.state.cubs}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">120</th>
                                                 <td className="mariners">Seattle Mariners</td>
-                                                <td>{this.state.canadians}</td>
+                                                <td>{this.state.mariners}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>

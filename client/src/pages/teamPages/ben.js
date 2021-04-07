@@ -32,13 +32,18 @@ class ben extends React.Component {
         fitzpatrick: "",
         todd: "",
         kuchar: "",
-        totalPGA: ""
+        totalPGA: "",
+        rays: "",
+        nats: "",
+        rangers: "",
+        totalMLB: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresPGA();
         this.getScoresNHL();
+        this.getScoresMLB();
     };
 
     getScoresPGA = () => {
@@ -47,7 +52,7 @@ class ben extends React.Component {
         var Berger = 46
         var Fitzpatrick = 23
         var Todd = 17
-        var Kuchar = 14
+        var Kuchar = 17
         var pgaTotal = Thomas + Berger + Fitzpatrick + Todd + Kuchar
         this.setState({ totalPGA: pgaTotal });
         this.setState({ thomas: Thomas });
@@ -55,6 +60,45 @@ class ben extends React.Component {
         this.setState({ fitzpatrick: Fitzpatrick });
         this.setState({ todd: Todd });
         this.setState({ kuchar: Kuchar });
+    };
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var raysWin;
+                var natsWin;
+                var rangersWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // rays
+                    if (fullIndex[i].team.id === 34) {
+                        raysWin = fullIndex[i].games.win.total
+                    }
+
+                    // rangers
+                    if (fullIndex[i].team.id === 35) {
+                        rangersWin = fullIndex[i].games.win.total
+                    }
+
+                    // nats
+                    if (fullIndex[i].team.id === 37) {
+                        natsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var allMLB = raysWin + rangersWin + natsWin;
+
+                this.setState({ totalMLB: allMLB });
+                this.setState({ rays: raysWin });
+                this.setState({ nats: natsWin });
+                this.setState({ rangers: rangersWin });
+
+            });
     };
 
     getScoresNHL = () => {
@@ -86,8 +130,8 @@ class ben extends React.Component {
                     }
                 }
 
-                   // Here is the lightning loop. 
-                   for (var i = 0; i < westResults.length; i++) {
+                // Here is the lightning loop. 
+                for (var i = 0; i < westResults.length; i++) {
                     // lightning
                     if (westResults[i].team.id === 14) {
                         lightningWins = westResults[i].leagueRecord.wins;
@@ -95,8 +139,8 @@ class ben extends React.Component {
                     }
                 }
 
-                   // Here is the lightning loop. 
-                   for (var i = 0; i < eastResults.length; i++) {
+                // Here is the lightning loop. 
+                for (var i = 0; i < eastResults.length; i++) {
                     // lightning
                     if (eastResults[i].team.id === 14) {
                         lightningWins = eastResults[i].leagueRecord.wins;
@@ -104,8 +148,8 @@ class ben extends React.Component {
                     }
                 }
 
-                   // Here is the lightning loop. 
-                   for (var i = 0; i < northResults.length; i++) {
+                // Here is the lightning loop. 
+                for (var i = 0; i < northResults.length; i++) {
                     // lightning
                     if (northResults[i].team.id === 14) {
                         lightningWins = northResults[i].leagueRecord.wins;
@@ -519,22 +563,22 @@ class ben extends React.Component {
                                             <tr>
                                                 <th scope="row">28</th>
                                                 <td className="rays">Tampa Bay Rays</td>
-                                                <td>{this.state.leafs}</td>
+                                                <td>{this.state.rays}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">81</th>
                                                 <td className="nationals">Washington Nationals</td>
-                                                <td>{this.state.avalanche}</td>
+                                                <td>{this.state.nats}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">142</th>
                                                 <td className="rangers">Texas Rangers</td>
-                                                <td>{this.state.flyers}</td>
+                                                <td>{this.state.rangers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                {/* <td>{this.state.totalNHL}</td> */}
+                                                <td>{this.state.totalMLB}</td>
                                             </tr>
                                         </tbody>
                                     </table>

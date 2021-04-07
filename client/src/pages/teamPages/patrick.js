@@ -29,21 +29,26 @@ class patrick extends React.Component {
         wolff: "",
         champ: "",
         munoz: "",
-        henley: ""
+        henley: "",
+        jays: "",
+        dbacks:"",
+        pirates:"",
+        totalMLB:""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresPGA();
         this.getScoresNHL();
+        this.getScoresMLB();
     }
 
     getScoresPGA = () => {
         // Pat's PGA Here. Golf Team 10. 
         var Hovland = 61
         var Wolff = 32
-        var Champ = 9
-        var Munoz = 19
+        var Champ = 10
+        var Munoz = 22
         var Henley = 30
         var pgaTotal = Hovland + Wolff + Champ + Munoz + Henley
 
@@ -54,6 +59,47 @@ class patrick extends React.Component {
         this.setState({ munoz: Munoz });
         this.setState({ henley: Henley });
     }
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+        .then(res => {
+            console.log(res.data.response[0]);
+            var fullIndex = res.data.response[0];
+            var jaysWin;
+            var dbacksWin;
+            var piratesWin;
+
+            for (var i = 0; i < fullIndex.length; i++) {
+                console.log("This loop is running.")
+
+                // jays
+                if (fullIndex[i].team.id === 36) {
+                    jaysWin = fullIndex[i].games.win.total
+                }
+
+                // pirates
+                if (fullIndex[i].team.id === 28) {
+                    piratesWin = fullIndex[i].games.win.total
+                }
+
+                // dbacks
+                if (fullIndex[i].team.id === 2) {
+                    dbacksWin = fullIndex[i].games.win.total
+                }
+
+            }
+
+            var allMLB = jaysWin + piratesWin + dbacksWin;
+
+            this.setState({ totalMLB: allMLB });
+            this.setState({ jays: jaysWin });
+            this.setState({ dbacks: dbacksWin });
+            this.setState({ pirates: piratesWin });
+
+        });
+    };
+
+    
 
     getScoresNHL = () => {
         API.getScoresNHL()
@@ -561,22 +607,22 @@ class patrick extends React.Component {
                                             <tr>
                                                 <th scope="row">82</th>
                                                 <td className="blueJays">Toronto Blue Jays</td>
-                                                {/* <td>{this.state.knights}</td> */}
+                                                <td>{this.state.jays}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">99</th>
                                                 <td className="diamondbacks">Arizona Diamondbacks</td>
-                                                {/* <td>{this.state.blackhawks}</td> */}
+                                                <td>{this.state.dbacks}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">143</th>
                                                 <td className="pirates">Pittsburgh Pirates</td>
-                                                {/* <td>{this.state.canucks}</td> */}
+                                                <td>{this.state.pirates}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                {/* <td>{this.state.totalNHL}</td> */}
+                                                <td>{this.state.totalMLB}</td>
                                             </tr>
                                         </tbody>
                                     </table>

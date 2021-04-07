@@ -51,7 +51,7 @@ class tommy extends React.Component {
     getScoresPGA = () => {
         // Tom's PGA Here. Golf Team 8. 
         var Koepka = 48
-        var Matsuyama = 31
+        var Matsuyama = 32
         var English = 51
         var Kokrak = 46
         var Lowry = 14
@@ -66,19 +66,41 @@ class tommy extends React.Component {
 
     getScoresMLB = () => {
         API.getScoresMLB()
-        .then(res => {
-            console.log(res.data.response[0]);
-            var astrosWin = res.data.response[0][6].games.win.total;
-            var redsWin = res.data.response[0][28].games.win.total;
-            var oriolesWin = res.data.response[0][8].games.win.total;
-            var allMLB = astrosWin + redsWin + oriolesWin ; 
-            
-            this.setState({ totalMLB: allMLB });
-            this.setState({ astros: astrosWin});
-            this.setState({ reds: redsWin });
-            this.setState({ orioles: oriolesWin });
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var astrosWin;
+                var oriolesWin;
+                var redsWin;
 
-        });
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // Astros
+                    if (fullIndex[i].team.id === 15) {
+                        astrosWin = fullIndex[i].games.win.total
+                    }
+
+                    // Reds
+                    if (fullIndex[i].team.id === 8) {
+                        redsWin = fullIndex[i].games.win.total
+                    }
+
+                    // Orioles
+                    if (fullIndex[i].team.id === 4) {
+                        oriolesWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var allMLB = astrosWin + redsWin + oriolesWin;
+
+                this.setState({ totalMLB: allMLB });
+                this.setState({ astros: astrosWin });
+                this.setState({ reds: redsWin });
+                this.setState({ orioles: oriolesWin });
+
+            });
     };
 
     getScoresNHL = () => {
@@ -99,7 +121,7 @@ class tommy extends React.Component {
                 var ducksWins;
                 var ducksOTLS;
                 var ducksTotal;
-            
+
                 // For the Canucks: 
                 for (var i = 0; i < northResults.length; i++) {
 
@@ -110,8 +132,8 @@ class tommy extends React.Component {
                     }
                 }
 
-                 // For the Canucks: 
-                 for (var i = 0; i < eastResults.length; i++) {
+                // For the Canucks: 
+                for (var i = 0; i < eastResults.length; i++) {
 
                     // Canucks
                     if (eastResults[i].team.id === 23) {
@@ -120,18 +142,18 @@ class tommy extends React.Component {
                     }
                 }
 
-                        // For the Canucks: 
-                        for (var i = 0; i < westResults.length; i++) {
+                // For the Canucks: 
+                for (var i = 0; i < westResults.length; i++) {
 
-                            // Canucks
-                            if (westResults[i].team.id === 23) {
-                                canucksWins = westResults[i].leagueRecord.wins;
-                                canucksOTLS = westResults[i].leagueRecord.ot;
-                            }
-                        }
+                    // Canucks
+                    if (westResults[i].team.id === 23) {
+                        canucksWins = westResults[i].leagueRecord.wins;
+                        canucksOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
 
-                                // For the Canucks: 
-                 for (var i = 0; i < centralResults.length; i++) {
+                // For the Canucks: 
+                for (var i = 0; i < centralResults.length; i++) {
 
                     // Canucks
                     if (centralResults[i].team.id === 23) {
@@ -227,7 +249,7 @@ class tommy extends React.Component {
                 // console.log(canadiansTotal);
 
                 // ducks total
-                ducksTotal = (ducksWins *2.9) + (ducksOTLS * 1.45);
+                ducksTotal = (ducksWins * 2.9) + (ducksOTLS * 1.45);
                 //  console.log(ducksTotal);
 
                 var allNHL = (canucksTotal + canadiansTotal + ducksTotal).toFixed(1);

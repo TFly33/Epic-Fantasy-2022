@@ -49,26 +49,47 @@ class steids extends React.Component {
         API.getScoresMLB()
         .then(res => {
             console.log(res.data.response[0]);
-            var angelsWin = res.data.response[0][2].games.win.total;
-            var twinsWin = res.data.response[0][13].games.win.total;
-            var rockiesWin = res.data.response[0][17].games.win.total;
-            var allMLB = angelsWin + twinsWin + rockiesWin ; 
-            
+            var fullIndex = res.data.response[0];
+            var twinsWin;
+            var angelsWin;
+            var rockiesWin;
+
+            for (var i = 0; i < fullIndex.length; i++) {
+                console.log("This loop is running.")
+
+                // Twins
+                if (fullIndex[i].team.id === 22) {
+                    twinsWin = fullIndex[i].games.win.total
+                }
+
+                // rockies
+                if (fullIndex[i].team.id === 10) {
+                    rockiesWin = fullIndex[i].games.win.total
+                }
+
+                // angels
+                if (fullIndex[i].team.id === 17) {
+                    angelsWin = fullIndex[i].games.win.total
+                }
+
+            }
+
+            var allMLB = twinsWin + rockiesWin + angelsWin;
+
             this.setState({ totalMLB: allMLB });
-            this.setState({ angels: angelsWin});
             this.setState({ twins: twinsWin });
+            this.setState({ angels: angelsWin });
             this.setState({ rockies: rockiesWin });
 
         });
     };
 
     getScoresPGA = () => {
-        // Tom's PGA Here. Golf Team 8. 
         // Steids's PGA Here. Golf Team 6. 
         var Schauffele = 58
         var Finau = 50
         var Woods = 1
-        var Ancer = 30
+        var Ancer = 31
         var Griffin = 24
         var pgaTotal = Schauffele + Finau + Woods + Ancer + Griffin
         this.setState({ totalPGA: pgaTotal });

@@ -30,7 +30,12 @@ class al extends React.Component {
         hatton: "",
         smith: "",
         conners: "",
-        totalPGA: ""
+        totalPGA: "",
+        // MLB
+        yanks: "",
+        athletics: "",
+        tigers: "",
+        totalMLB: ""
     }
 
     componentDidMount = () => {
@@ -38,6 +43,7 @@ class al extends React.Component {
         this.getScoresEPL();
         this.getScoresPGA();
         this.getScoresNHL();
+        this.getScoresMLB();
     }
 
     getScoresPGA = () => {
@@ -46,7 +52,7 @@ class al extends React.Component {
         var Simpson = 28
         var Hatton = 20
         var Smith = 41
-        var Conners = 37
+        var Conners = 39
         var pgaTotal = Morikawa + Simpson + Hatton + Smith + Conners
         this.setState({ totalPGA: pgaTotal });
         this.setState({ morikawa: Morikawa });
@@ -54,6 +60,45 @@ class al extends React.Component {
         this.setState({ hatton: Hatton });
         this.setState({ smith: Smith });
         this.setState({ conners: Conners });
+    };
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var yanksWin;
+                var athleticsWin;
+                var tigersWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // yanks
+                    if (fullIndex[i].team.id === 25) {
+                        yanksWin = fullIndex[i].games.win.total
+                    }
+
+                    // tigers
+                    if (fullIndex[i].team.id === 12) {
+                        tigersWin = fullIndex[i].games.win.total
+                    }
+
+                    // athletics
+                    if (fullIndex[i].team.id === 26) {
+                        athleticsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var allMLB = yanksWin + tigersWin + athleticsWin;
+
+                this.setState({ totalMLB: allMLB });
+                this.setState({ yanks: yanksWin });
+                this.setState({ athletics: athleticsWin });
+                this.setState({ tigers: tigersWin });
+
+            });
     };
 
     getScoresNHL = () => {
@@ -85,8 +130,8 @@ class al extends React.Component {
                     }
                 }
 
-                   // Here is the caps loop. 
-                   for (var i = 0; i < westResults.length; i++) {
+                // Here is the caps loop. 
+                for (var i = 0; i < westResults.length; i++) {
                     // caps
                     if (westResults[i].team.id === 15) {
                         capsWins = westResults[i].leagueRecord.wins;
@@ -94,8 +139,8 @@ class al extends React.Component {
                     }
                 }
 
-                   // Here is the caps loop. 
-                   for (var i = 0; i < centralResults.length; i++) {
+                // Here is the caps loop. 
+                for (var i = 0; i < centralResults.length; i++) {
                     // caps
                     if (centralResults[i].team.id === 15) {
                         capsWins = centralResults[i].leagueRecord.wins;
@@ -103,8 +148,8 @@ class al extends React.Component {
                     }
                 }
 
-                   // Here is the caps loop. 
-                   for (var i = 0; i < northResults.length; i++) {
+                // Here is the caps loop. 
+                for (var i = 0; i < northResults.length; i++) {
                     // caps
                     if (northResults[i].team.id === 15) {
                         capsWins = northResults[i].leagueRecord.wins;
@@ -112,9 +157,9 @@ class al extends React.Component {
                     }
                 }
 
-                  // Here is the rangers loop. 
-                  for (var i = 0; i < northResults.length; i++) {
-                 
+                // Here is the rangers loop. 
+                for (var i = 0; i < northResults.length; i++) {
+
                     // rangers
                     if (northResults[i].team.id === 3) {
                         rangersWins = northResults[i].leagueRecord.wins;
@@ -122,19 +167,19 @@ class al extends React.Component {
                     }
                 }
 
-                    // Here is the rangers loop. 
-                    for (var i = 0; i < eastResults.length; i++) {
-                 
-                        // rangers
-                        if (eastResults[i].team.id === 3) {
-                            rangersWins = eastResults[i].leagueRecord.wins;
-                            rangersOTLS = eastResults[i].leagueRecord.ot;
-                        }
-                    }
+                // Here is the rangers loop. 
+                for (var i = 0; i < eastResults.length; i++) {
 
-                        // Here is the rangers loop. 
-                  for (var i = 0; i < westResults.length; i++) {
-                 
+                    // rangers
+                    if (eastResults[i].team.id === 3) {
+                        rangersWins = eastResults[i].leagueRecord.wins;
+                        rangersOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Here is the rangers loop. 
+                for (var i = 0; i < westResults.length; i++) {
+
                     // rangers
                     if (westResults[i].team.id === 3) {
                         rangersWins = westResults[i].leagueRecord.wins;
@@ -142,20 +187,20 @@ class al extends React.Component {
                     }
                 }
 
-                    // Here is the rangers loop. 
-                    for (var i = 0; i < centralResults.length; i++) {
-                 
-                        // rangers
-                        if (centralResults[i].team.id === 3) {
-                            rangersWins = centralResults[i].leagueRecord.wins;
-                            rangersOTLS = centralResults[i].leagueRecord.ot;
-                        }
+                // Here is the rangers loop. 
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // rangers
+                    if (centralResults[i].team.id === 3) {
+                        rangersWins = centralResults[i].leagueRecord.wins;
+                        rangersOTLS = centralResults[i].leagueRecord.ot;
                     }
-    
+                }
+
 
 
                 // Canes
-                for (var i = 0; i <eastResults.length; i++) {
+                for (var i = 0; i < eastResults.length; i++) {
                     // canes
                     if (eastResults[i].team.id === 12) {
                         canesWins = eastResults[i].leagueRecord.wins;
@@ -163,8 +208,8 @@ class al extends React.Component {
                     }
                 }
 
-                 // Canes
-                 for (var i = 0; i <centralResults.length; i++) {
+                // Canes
+                for (var i = 0; i < centralResults.length; i++) {
                     // canes
                     if (centralResults[i].team.id === 12) {
                         canesWins = centralResults[i].leagueRecord.wins;
@@ -172,8 +217,8 @@ class al extends React.Component {
                     }
                 }
 
-                   // Canes
-                   for (var i = 0; i <northResults.length; i++) {
+                // Canes
+                for (var i = 0; i < northResults.length; i++) {
                     // canes
                     if (northResults[i].team.id === 12) {
                         canesWins = northResults[i].leagueRecord.wins;
@@ -181,8 +226,8 @@ class al extends React.Component {
                     }
                 }
 
-                   // Canes
-                   for (var i = 0; i <westResults.length; i++) {
+                // Canes
+                for (var i = 0; i < westResults.length; i++) {
                     // canes
                     if (westResults[i].team.id === 12) {
                         canesWins = westResults[i].leagueRecord.wins;
@@ -518,22 +563,22 @@ class al extends React.Component {
                                             <tr>
                                                 <th scope="row">15</th>
                                                 <td className="yankees">New York Yankees</td>
-                                                <td>{this.state.lightning}</td>
+                                                <td>{this.state.yanks}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">48</th>
                                                 <td className="athletics">Oakland Athletics</td>
-                                                <td>{this.state.bruins}</td>
+                                                <td>{this.state.athletics}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">127</th>
                                                 <td className="tigers">Detroit Tigers</td>
-                                                <td>{this.state.wings}</td>
+                                                <td>{this.state.tigers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                {/* <td>{this.state.totalNHL}</td> */}
+                                                <td>{this.state.totalMLB}</td>
                                             </tr>
                                         </tbody>
                                     </table>

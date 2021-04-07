@@ -30,13 +30,19 @@ class dj extends React.Component {
         niemann: "",
         oosthuizen: "",
         garcia: "",
-        totalPGA: ""
+        totalPGA: "",
+        padres: "",
+        phillies: "",
+        brewers: "",
+        totalMLB: ""
+
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresPGA();
         this.getScoresNHL();
+        this.getScoresMLB();
     }
 
     getScoresPGA = () => {
@@ -53,6 +59,45 @@ class dj extends React.Component {
         this.setState({ niemann: Niemann });
         this.setState({ oosthuizen: Oosthuizen });
         this.setState({ garcia: Garcia });
+    };
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var padresWin;
+                var philliesWin;
+                var brewersWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // padres
+                    if (fullIndex[i].team.id === 30) {
+                        padresWin = fullIndex[i].games.win.total
+                    }
+
+                    // brewers
+                    if (fullIndex[i].team.id === 20) {
+                        brewersWin = fullIndex[i].games.win.total
+                    }
+
+                    // phillies
+                    if (fullIndex[i].team.id === 27) {
+                        philliesWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var allMLB = padresWin + brewersWin + philliesWin;
+
+                this.setState({ totalMLB: allMLB });
+                this.setState({ padres: padresWin });
+                this.setState({ phillies: philliesWin });
+                this.setState({ brewers: brewersWin });
+
+            });
     };
 
     getScoresNHL = () => {
@@ -131,7 +176,7 @@ class dj extends React.Component {
                     }
                 }
 
-                
+
                 for (var i = 0; i < centralResults.length; i++) {
 
                     // jets
@@ -141,7 +186,7 @@ class dj extends React.Component {
                     }
                 }
 
-                
+
                 for (var i = 0; i < westResults.length; i++) {
 
                     // jets
@@ -515,22 +560,22 @@ class dj extends React.Component {
                                             <tr>
                                                 <th scope="row">29</th>
                                                 <td className="padres">San Diego Padres</td>
-                                                {/* <td>{this.state.jets}</td> */}
+                                                <td>{this.state.padres}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">89</th>
                                                 <td className="phillies">Philadelphia Phillies</td>
-                                                <td>{this.state.canes}</td>
+                                                <td>{this.state.phillies}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">92</th>
                                                 <td className="brewers">Milwaukee Brewers</td>
-                                                <td>{this.state.coyotes}</td>
+                                                <td>{this.state.brewers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                {/* <td>{this.state.totalNHL}</td> */}
+                                                <td>{this.state.totalMLB}</td>
                                             </tr>
                                         </tbody>
                                     </table>

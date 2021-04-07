@@ -29,21 +29,27 @@ class james extends React.Component {
         reed: "",
         fowler: "",
         woodland: "",
-        mickelson: ""
+        mickelson: "",
+        // MLB 
+        dodgers:"",
+        mets:"",
+        giants:"",
+        totalMLB:""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresPGA();
         this.getScoresNHL();
+        this.getScoresMLB();
     }
 
     getScoresPGA = () => {
         // James's PGA Here. Golf Team 2. 
         var Cantlay = 64
         var Reed = 44
-        var Fowler = 8
-        var Woodland = 4
+        var Fowler = 10
+        var Woodland = 8
         var Mickelson = 4
         var jamesPGATotal = Cantlay + Reed + Fowler + Woodland + Mickelson
         this.setState({ jamesPGA: jamesPGATotal });
@@ -55,6 +61,45 @@ class james extends React.Component {
         this.setState({ fowler: Fowler });
         this.setState({ woodland: Woodland });
         this.setState({ mickelson: Mickelson });
+    };
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var dodgersWin;
+                var metsWin;
+                var giantsWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // dodgers
+                    if (fullIndex[i].team.id === 18) {
+                        dodgersWin = fullIndex[i].games.win.total
+                    }
+
+                    // giants
+                    if (fullIndex[i].team.id === 31) {
+                        giantsWin = fullIndex[i].games.win.total
+                    }
+
+                    // mets
+                    if (fullIndex[i].team.id === 24) {
+                        metsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var allMLB = dodgersWin + giantsWin + metsWin;
+
+                this.setState({ totalMLB: allMLB });
+                this.setState({ dodgers: dodgersWin });
+                this.setState({ mets: metsWin });
+                this.setState({ giants: giantsWin });
+
+            });
     };
 
     getScoresNHL = () => {
@@ -151,8 +196,8 @@ class james extends React.Component {
                     }
                 }
 
-                 // Here is the loop for the pens
-                 for (var i = 0; i < westResults.length; i++) {
+                // Here is the loop for the pens
+                for (var i = 0; i < westResults.length; i++) {
 
                     // pens
                     if (westResults[i].team.id === 5) {
@@ -163,8 +208,8 @@ class james extends React.Component {
                         // console.log("this loop is running")
                     }
                 }
-                 // Here is the loop for the pens
-                 for (var i = 0; i < centralResults.length; i++) {
+                // Here is the loop for the pens
+                for (var i = 0; i < centralResults.length; i++) {
 
                     // pens
                     if (centralResults[i].team.id === 5) {
@@ -556,22 +601,22 @@ class james extends React.Component {
                                             <tr>
                                                 <th scope="row">4</th>
                                                 <td className="dodgers">LA Dodgers</td>
-                                                <td>{this.state.flames}</td>
+                                                <td>{this.state.dodgers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">61</th>
                                                 <td className="mets">New York mets</td>
-                                                <td>{this.state.wild}</td>
+                                                <td>{this.state.mets}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">116</th>
                                                 <td className="sfGiants">San Francisco Giants</td>
-                                                {/* <td>{this.state.pens}</td> */}
+                                                <td>{this.state.giants}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                {/* <td>{this.state.totalNHL}</td> */}
+                                                <td>{this.state.totalMLB}</td>
                                             </tr>
                                         </tbody>
                                     </table>

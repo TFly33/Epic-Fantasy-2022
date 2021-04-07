@@ -29,7 +29,12 @@ class joe extends React.Component {
         scott: "",
         kisner: "",
         kim: "",
-        totalPGA: ""
+        totalPGA: "",
+        // MLB HERE
+        wsox:"",
+        rsox:"",
+        indians:"",
+        totalMLB:""
     }
     componentDidMount = () => {
         this.getScoresNBA();
@@ -37,6 +42,7 @@ class joe extends React.Component {
         this.getScoresNHL();
         this.getScoresEPL();
         this.getScoresPGA();
+        this.getScoresMLB();
     };
 
     getScoresPGA = () => {
@@ -45,7 +51,7 @@ class joe extends React.Component {
         var Rose = 5
         var Scott = 13
         var Kisner = 25
-        var Kim = 40
+        var Kim = 41
         var pgaTotal = Dechambeau + Rose + Scott + Kisner + Kim
         this.setState({ totalPGA: pgaTotal });
         this.setState({ dechambeau: Dechambeau });
@@ -53,6 +59,45 @@ class joe extends React.Component {
         this.setState({ scott: Scott });
         this.setState({ kisner: Kisner });
         this.setState({ kim: Kim });
+    };
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var wsoxWin;
+                var indiansWin;
+                var rsoxWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // wsox
+                    if (fullIndex[i].team.id === 7) {
+                        wsoxWin = fullIndex[i].games.win.total
+                    }
+
+                    // rsox
+                    if (fullIndex[i].team.id === 5) {
+                        rsoxWin = fullIndex[i].games.win.total
+                    }
+
+                    // indians
+                    if (fullIndex[i].team.id === 9) {
+                        indiansWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var allMLB = wsoxWin + rsoxWin + indiansWin;
+
+                this.setState({ totalMLB: allMLB });
+                this.setState({ wsox: wsoxWin });
+                this.setState({ indians: indiansWin });
+                this.setState({ rsox: rsoxWin });
+
+            });
     };
 
     getScoresNHL = () => {
@@ -511,22 +556,22 @@ class joe extends React.Component {
                                             <tr>
                                                 <th scope="row">43</th>
                                                 <td className="whiteSox">Chicago White Sox</td>
-                                                <td>{this.state.blues}</td>
+                                                <td>{this.state.wsox}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">57</th>
                                                 <td className="indians">Cleveland Indians</td>
-                                                <td>{this.state.jackets}</td>
+                                                <td>{this.state.indians}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">96</th>
                                                 <td className="redSox">Boston Red Sox</td>
-                                                <td>{this.state.oilers}</td>
+                                                <td>{this.state.rsox}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                {/* <td>{this.state.totalNHL}</td> */}
+                                                <td>{this.state.totalMLB}</td>
                                             </tr>
                                         </tbody>
                                     </table>

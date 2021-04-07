@@ -81,6 +81,18 @@ class Table extends Component {
         steidsGamble: 205,
         eresGamble: 215,
 
+        // MLB Points here:
+        tomMLB: "",
+        patMLB: "",
+        jamesMLB: "",
+        neptuneMLB: "",
+        djMLB: "",
+        gooseMLB: "",
+        alMLB: "",
+        joeMLB: "",
+        steidsMLB: "",
+        benMLB: "",
+
         // Total Points here. 
         tomTotal: "",
         patTotal: "",
@@ -128,12 +140,12 @@ class Table extends Component {
                     sort: 'asc',
                     width: 150
                 },
-                // {
-                //     label: 'MLB',
-                //     field: 'mlb',
-                //     sort: 'asc',
-                //     width: 150
-                // },
+                {
+                    label: 'MLB',
+                    field: 'mlb',
+                    sort: 'asc',
+                    width: 150
+                },
                 {
                     label: 'Golf',
                     field: 'pga',
@@ -160,7 +172,7 @@ class Table extends Component {
                     nfl: this.state.tomNFL,
                     nba: this.state.tomNBA,
                     nhl: this.state.tomNHL,
-                    mlb: 0,
+                    mlb: this.state.tomMLB,
                     pga: this.state.tomPGA,
                     bonus: this.state.tomGamble,
                     total: this.state.tomTotal
@@ -171,7 +183,7 @@ class Table extends Component {
                     nfl: this.state.patNFL,
                     nba: this.state.patNBA,
                     nhl: this.state.patNHL,
-                    mlb: 0,
+                    mlb: this.state.patMLB,
                     pga: this.state.patPGA,
                     bonus: this.state.patGamble,
                     total: this.state.patTotal
@@ -182,7 +194,7 @@ class Table extends Component {
                     nfl: this.state.jamesNFL,
                     nba: this.state.jamesNBA,
                     nhl: this.state.jamesNHL,
-                    mlb: 0,
+                    mlb: this.state.jamesMLB,
                     pga: this.state.jamesPGA,
                     bonus: this.state.jamesGamble,
                     total: this.state.jamesTotal
@@ -193,7 +205,7 @@ class Table extends Component {
                     nfl: this.state.gooseNFL,
                     nba: this.state.gooseNBA,
                     nhl: this.state.gooseNHL,
-                    mlb: 0,
+                    mlb: this.state.gooseMLB,
                     pga: this.state.goosePGA,
                     bonus: this.state.gooseGamble,
                     total: this.state.gooseTotal
@@ -204,7 +216,7 @@ class Table extends Component {
                     nfl: this.state.neptuneNFL,
                     nba: this.state.neptuneNBA,
                     nhl: this.state.neptuneNHL,
-                    mlb: 0,
+                    mlb: this.state.neptuneMLB,
                     pga: this.state.neptunePGA,
                     bonus: this.state.neptuneGamble,
                     total: this.state.neptuneTotal
@@ -215,7 +227,7 @@ class Table extends Component {
                     nfl: this.state.joeNFL,
                     nba: this.state.joeNBA,
                     nhl: this.state.joeNHL,
-                    mlb: 0,
+                    mlb: this.state.joeMLB,
                     pga: this.state.joePGA,
                     bonus: this.state.joeGamble,
                     total: this.state.joeTotal
@@ -226,7 +238,7 @@ class Table extends Component {
                     nfl: this.state.benNFL,
                     nba: this.state.benNBA,
                     nhl: this.state.benNHL,
-                    mlb: 0,
+                    mlb: this.state.eresMLB,
                     pga: this.state.eresPGA,
                     bonus: this.state.eresGamble,
                     total: this.state.benTotal
@@ -237,7 +249,7 @@ class Table extends Component {
                     nfl: this.state.djNFL,
                     nba: this.state.djNBA,
                     nhl: this.state.djNHL,
-                    mlb: 0,
+                    mlb: this.state.djMLB,
                     pga: this.state.djPGA,
                     bonus: this.state.djGamble,
                     total: this.state.djTotal
@@ -248,7 +260,7 @@ class Table extends Component {
                     nfl: this.state.steidsNFL,
                     nba: this.state.steidsNBA,
                     nhl: this.state.steidsNHL,
-                    mlb: 0,
+                    mlb: this.state.steidsMLB,
                     pga: this.state.steidsPGA,
                     bonus: this.state.steidsGamble,
                     total: this.state.steidsTotal
@@ -259,7 +271,7 @@ class Table extends Component {
                     nfl: this.state.alNFL,
                     nba: this.state.alNBA,
                     nhl: this.state.alNHL,
-                    mlb: 0,
+                    mlb: this.state.alMLB,
                     pga: this.state.alPGA,
                     bonus: this.state.alGamble,
                     total: this.state.alTotal
@@ -290,7 +302,7 @@ class Table extends Component {
         // // running NHL here
         this.getScoresNHL();
         // MLB Here 
-        // this.getScoresMLB(); 
+        this.getScoresMLB();
         // PGA Golf here. Gonna do it by hand for now and then potentially change it later if I can get the API to work. 
         this.getScoresPGA();
     };
@@ -365,6 +377,7 @@ class Table extends Component {
             parseInt((this.state.alNHL)) +
             // parseInt((this.state.alNFL)) + 
             parseInt((this.state.alEPL)) +
+            parseInt((this.state.alMLB)) +
             parseInt((this.state.alPGA)) +
             parseInt((this.state.alGamble));;
         this.setState({ alTotal: alTotalPoints });
@@ -400,12 +413,307 @@ class Table extends Component {
         this.setState({ benTotal: benTotalPoints });
     };
 
+    // Adding MLB Here
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+
+                // Al here
+                var yanksWin;
+                var athleticsWin;
+                var tigersWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // yanks
+                    if (fullIndex[i].team.id === 25) {
+                        yanksWin = fullIndex[i].games.win.total
+                    }
+
+                    // tigers
+                    if (fullIndex[i].team.id === 12) {
+                        tigersWin = fullIndex[i].games.win.total
+                    }
+
+                    // athletics
+                    if (fullIndex[i].team.id === 26) {
+                        athleticsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var alTotal = yanksWin + tigersWin + athleticsWin;
+                this.setState({ alMLB: alTotal });
+
+                // Eres Here
+
+                var raysWin;
+                var natsWin;
+                var rangersWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // rays
+                    if (fullIndex[i].team.id === 34) {
+                        raysWin = fullIndex[i].games.win.total
+                    }
+
+                    // rangers
+                    if (fullIndex[i].team.id === 35) {
+                        rangersWin = fullIndex[i].games.win.total
+                    }
+
+                    // nats
+                    if (fullIndex[i].team.id === 37) {
+                        natsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var eresTotal = raysWin + rangersWin + natsWin;
+                this.setState({ eresMLB: eresTotal });
+
+                // DJ Here
+                var padresWin;
+                var philliesWin;
+                var brewersWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // padres
+                    if (fullIndex[i].team.id === 30) {
+                        padresWin = fullIndex[i].games.win.total
+                    }
+
+                    // brewers
+                    if (fullIndex[i].team.id === 20) {
+                        brewersWin = fullIndex[i].games.win.total
+                    }
+
+                    // phillies
+                    if (fullIndex[i].team.id === 27) {
+                        philliesWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var djTotal = padresWin + brewersWin + philliesWin;
+                this.setState({ djMLB: djTotal });
+
+                // Goose MLB 
+
+                var bravesWin;
+                var marinersWin;
+                var cubsWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // braves
+                    if (fullIndex[i].team.id === 3) {
+                        bravesWin = fullIndex[i].games.win.total
+                    }
+
+                    // cubs
+                    if (fullIndex[i].team.id === 6) {
+                        cubsWin = fullIndex[i].games.win.total
+                    }
+
+                    // mariners
+                    if (fullIndex[i].team.id === 32) {
+                        marinersWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var gooseTotal = bravesWin + cubsWin + marinersWin;
+
+                this.setState({ gooseMLB: gooseTotal });
+
+                // James MLB
+                var dodgersWin;
+                var metsWin;
+                var giantsWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // dodgers
+                    if (fullIndex[i].team.id === 18) {
+                        dodgersWin = fullIndex[i].games.win.total
+                    }
+
+                    // giants
+                    if (fullIndex[i].team.id === 31) {
+                        giantsWin = fullIndex[i].games.win.total
+                    }
+
+                    // mets
+                    if (fullIndex[i].team.id === 24) {
+                        metsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var jamesTotal = dodgersWin + giantsWin + metsWin;
+                this.setState({ jamesMLB: jamesTotal });
+
+                // Joe MLB
+                var wsoxWin;
+                var indiansWin;
+                var rsoxWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // wsox
+                    if (fullIndex[i].team.id === 7) {
+                        wsoxWin = fullIndex[i].games.win.total
+                    }
+
+                    // rsox
+                    if (fullIndex[i].team.id === 5) {
+                        rsoxWin = fullIndex[i].games.win.total
+                    }
+
+                    // indians
+                    if (fullIndex[i].team.id === 9) {
+                        indiansWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var joeTotal = wsoxWin + rsoxWin + indiansWin;
+                this.setState({ joeMLB: joeTotal });
+
+                // Neptune MLB
+                var cardsWin;
+                var marlinsWin;
+                var royalsWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // cards
+                    if (fullIndex[i].team.id === 33) {
+                        cardsWin = fullIndex[i].games.win.total
+                    }
+
+                    // royals
+                    if (fullIndex[i].team.id === 16) {
+                        royalsWin = fullIndex[i].games.win.total
+                    }
+
+                    // marlins
+                    if (fullIndex[i].team.id === 19) {
+                        marlinsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var neptuneTotal = cardsWin + royalsWin + marlinsWin;
+                this.setState({ neptuneMLB: neptuneTotal });
+
+                // Patrick MLB
+                var jaysWin;
+                var dbacksWin;
+                var piratesWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // jays
+                    if (fullIndex[i].team.id === 36) {
+                        jaysWin = fullIndex[i].games.win.total
+                    }
+
+                    // pirates
+                    if (fullIndex[i].team.id === 28) {
+                        piratesWin = fullIndex[i].games.win.total
+                    }
+
+                    // dbacks
+                    if (fullIndex[i].team.id === 2) {
+                        dbacksWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var patTotal = jaysWin + piratesWin + dbacksWin;
+                this.setState({ patMLB: patTotal });
+
+                // Steids MLB
+                var twinsWin;
+                var angelsWin;
+                var rockiesWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // Twins
+                    if (fullIndex[i].team.id === 22) {
+                        twinsWin = fullIndex[i].games.win.total
+                    }
+
+                    // rockies
+                    if (fullIndex[i].team.id === 10) {
+                        rockiesWin = fullIndex[i].games.win.total
+                    }
+
+                    // angels
+                    if (fullIndex[i].team.id === 17) {
+                        angelsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var steidsTotal = twinsWin + rockiesWin + angelsWin;
+                this.setState({ steidsMLB: steidsTotal });
+
+                // Tom MLB
+                var astrosWin;
+                var oriolesWin;
+                var redsWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
+
+                    // Astros
+                    if (fullIndex[i].team.id === 15) {
+                        astrosWin = fullIndex[i].games.win.total
+                    }
+
+                    // Reds
+                    if (fullIndex[i].team.id === 8) {
+                        redsWin = fullIndex[i].games.win.total
+                    }
+
+                    // Orioles
+                    if (fullIndex[i].team.id === 4) {
+                        oriolesWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var tomTotal = astrosWin + redsWin + oriolesWin;
+
+                this.setState({ tomMLB: tomTotal });
+
+            });
+    };
+
     // Going to hard code this until I get the API rolling. 
 
     getScoresPGA = () => {
         // Tom's PGA Here. Golf Team 8. 
         var Koepka = 48
-        var Matsuyama = 31
+        var Matsuyama = 32
         var English = 51
         var Kokrak = 46
         var Lowry = 14
@@ -416,8 +724,8 @@ class Table extends Component {
         // Pat's PGA Here. Golf Team 10. 
         var Hovland = 61
         var Wolff = 32
-        var Champ = 9
-        var Munoz = 19
+        var Champ = 10
+        var Munoz = 22
         var Henley = 30
         var patPGATotal = Hovland + Wolff + Champ + Munoz + Henley
         this.setState({ patPGA: patPGATotal });
@@ -426,8 +734,8 @@ class Table extends Component {
         // James's PGA Here. Golf Team 7. 
         var Cantlay = 64
         var Reed = 44
-        var Fowler = 8
-        var Woodland = 4
+        var Fowler = 10
+        var Woodland = 8
         var Mickelson = 4
         var jamesPGATotal = Cantlay + Reed + Fowler + Woodland + Mickelson
         this.setState({ jamesPGA: jamesPGATotal });
@@ -436,7 +744,7 @@ class Table extends Component {
         // Neptune's PGA Here. Golf Team 3. 
         var Rahm = 48
         var Scheffler = 38
-        var Spieth = 29
+        var Spieth = 54
         var Casey = 24
         var Watson = 17
         var neptunePGATotal = Rahm + Scheffler + Spieth + Casey + Watson
@@ -468,7 +776,7 @@ class Table extends Component {
         var Simpson = 28
         var Hatton = 20
         var Smith = 41
-        var Conners = 37
+        var Conners = 39
         var alPGATotal = Morikawa + Simpson + Hatton + Smith + Conners
         this.setState({ alPGA: alPGATotal });
         // console.log(alPGATotal);
@@ -478,7 +786,7 @@ class Table extends Component {
         var Rose = 5
         var Scott = 13
         var Kisner = 25
-        var Kim = 40
+        var Kim = 41
         var joePGATotal = Dechambeau + Rose + Scott + Kisner + Kim
         this.setState({ joePGA: joePGATotal });
         // console.log(joePGATotal);
@@ -487,7 +795,7 @@ class Table extends Component {
         var Schauffele = 58
         var Finau = 50
         var Woods = 1
-        var Ancer = 30
+        var Ancer = 31
         var Griffin = 24
         var steidsPGATotal = Schauffele + Finau + Woods + Ancer + Griffin
         this.setState({ steidsPGA: steidsPGATotal });
@@ -498,7 +806,7 @@ class Table extends Component {
         var Berger = 46
         var Fitzpatrick = 23
         var Todd = 17
-        var Kuchar = 14
+        var Kuchar = 17
         var eresPGATotal = Thomas + Berger + Fitzpatrick + Todd + Kuchar
         this.setState({ eresPGA: eresPGATotal });
         // console.log(eresPGATotal);
@@ -1471,7 +1779,7 @@ class Table extends Component {
                     }
                 }
 
-                
+
                 for (var i = 0; i < eastResults.length; i++) {
 
                     // coyotes
@@ -1481,7 +1789,7 @@ class Table extends Component {
                     }
                 }
 
-                
+
                 for (var i = 0; i < centralResults.length; i++) {
 
                     // coyotes
@@ -1491,7 +1799,7 @@ class Table extends Component {
                     }
                 }
 
-                
+
                 for (var i = 0; i < northResults.length; i++) {
 
                     // coyotes
@@ -1529,8 +1837,8 @@ class Table extends Component {
                 var rangersTotal;
                 var allNHL;
 
-                 // Here is the caps loop. 
-                 for (var i = 0; i < eastResults.length; i++) {
+                // Here is the caps loop. 
+                for (var i = 0; i < eastResults.length; i++) {
                     // caps
                     if (eastResults[i].team.id === 15) {
                         capsWins = eastResults[i].leagueRecord.wins;
@@ -1538,8 +1846,8 @@ class Table extends Component {
                     }
                 }
 
-                   // Here is the caps loop. 
-                   for (var i = 0; i < westResults.length; i++) {
+                // Here is the caps loop. 
+                for (var i = 0; i < westResults.length; i++) {
                     // caps
                     if (westResults[i].team.id === 15) {
                         capsWins = westResults[i].leagueRecord.wins;
@@ -1547,8 +1855,8 @@ class Table extends Component {
                     }
                 }
 
-                   // Here is the caps loop. 
-                   for (var i = 0; i < centralResults.length; i++) {
+                // Here is the caps loop. 
+                for (var i = 0; i < centralResults.length; i++) {
                     // caps
                     if (centralResults[i].team.id === 15) {
                         capsWins = centralResults[i].leagueRecord.wins;
@@ -1556,8 +1864,8 @@ class Table extends Component {
                     }
                 }
 
-                   // Here is the caps loop. 
-                   for (var i = 0; i < northResults.length; i++) {
+                // Here is the caps loop. 
+                for (var i = 0; i < northResults.length; i++) {
                     // caps
                     if (northResults[i].team.id === 15) {
                         capsWins = northResults[i].leagueRecord.wins;
@@ -1565,9 +1873,9 @@ class Table extends Component {
                     }
                 }
 
-                  // Here is the rangers loop. 
-                  for (var i = 0; i < northResults.length; i++) {
-                 
+                // Here is the rangers loop. 
+                for (var i = 0; i < northResults.length; i++) {
+
                     // rangers
                     if (northResults[i].team.id === 3) {
                         rangersWins = northResults[i].leagueRecord.wins;
@@ -1575,19 +1883,19 @@ class Table extends Component {
                     }
                 }
 
-                    // Here is the rangers loop. 
-                    for (var i = 0; i < eastResults.length; i++) {
-                 
-                        // rangers
-                        if (eastResults[i].team.id === 3) {
-                            rangersWins = eastResults[i].leagueRecord.wins;
-                            rangersOTLS = eastResults[i].leagueRecord.ot;
-                        }
-                    }
+                // Here is the rangers loop. 
+                for (var i = 0; i < eastResults.length; i++) {
 
-                        // Here is the rangers loop. 
-                  for (var i = 0; i < westResults.length; i++) {
-                 
+                    // rangers
+                    if (eastResults[i].team.id === 3) {
+                        rangersWins = eastResults[i].leagueRecord.wins;
+                        rangersOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Here is the rangers loop. 
+                for (var i = 0; i < westResults.length; i++) {
+
                     // rangers
                     if (westResults[i].team.id === 3) {
                         rangersWins = westResults[i].leagueRecord.wins;
@@ -1595,20 +1903,20 @@ class Table extends Component {
                     }
                 }
 
-                    // Here is the rangers loop. 
-                    for (var i = 0; i < centralResults.length; i++) {
-                 
-                        // rangers
-                        if (centralResults[i].team.id === 3) {
-                            rangersWins = centralResults[i].leagueRecord.wins;
-                            rangersOTLS = centralResults[i].leagueRecord.ot;
-                        }
+                // Here is the rangers loop. 
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // rangers
+                    if (centralResults[i].team.id === 3) {
+                        rangersWins = centralResults[i].leagueRecord.wins;
+                        rangersOTLS = centralResults[i].leagueRecord.ot;
                     }
-    
+                }
+
 
 
                 // Canes
-                for (var i = 0; i <eastResults.length; i++) {
+                for (var i = 0; i < eastResults.length; i++) {
                     // canes
                     if (eastResults[i].team.id === 12) {
                         canesWins = eastResults[i].leagueRecord.wins;
@@ -1616,8 +1924,8 @@ class Table extends Component {
                     }
                 }
 
-                 // Canes
-                 for (var i = 0; i <centralResults.length; i++) {
+                // Canes
+                for (var i = 0; i < centralResults.length; i++) {
                     // canes
                     if (centralResults[i].team.id === 12) {
                         canesWins = centralResults[i].leagueRecord.wins;
@@ -1625,8 +1933,8 @@ class Table extends Component {
                     }
                 }
 
-                   // Canes
-                   for (var i = 0; i <northResults.length; i++) {
+                // Canes
+                for (var i = 0; i < northResults.length; i++) {
                     // canes
                     if (northResults[i].team.id === 12) {
                         canesWins = northResults[i].leagueRecord.wins;
@@ -1634,8 +1942,8 @@ class Table extends Component {
                     }
                 }
 
-                   // Canes
-                   for (var i = 0; i <westResults.length; i++) {
+                // Canes
+                for (var i = 0; i < westResults.length; i++) {
                     // canes
                     if (westResults[i].team.id === 12) {
                         canesWins = westResults[i].leagueRecord.wins;
@@ -1674,127 +1982,127 @@ class Table extends Component {
                 var senatorsTotal;
                 var allNHL;
 
-                     // Here is the knights loop. 
-                     for (var i = 0; i < westResults.length; i++) {
-                        // knights
-                        if (westResults[i].team.id === 54) {
-                            knightsWins = westResults[i].leagueRecord.wins;
-                            knightsOTLS = westResults[i].leagueRecord.ot;
-                        }
+                // Here is the knights loop. 
+                for (var i = 0; i < westResults.length; i++) {
+                    // knights
+                    if (westResults[i].team.id === 54) {
+                        knightsWins = westResults[i].leagueRecord.wins;
+                        knightsOTLS = westResults[i].leagueRecord.ot;
                     }
-   
-                      // Here is the knights loop. 
-                      for (var i = 0; i < eastResults.length; i++) {
-                       // knights
-                       if (eastResults[i].team.id === 54) {
-                           knightsWins = eastResults[i].leagueRecord.wins;
-                           knightsOTLS = eastResults[i].leagueRecord.ot;
-                       }
-                   }
-   
-                     // Here is the knights loop. 
-                     for (var i = 0; i < centralResults.length; i++) {
-                       // knights
-                       if (centralResults[i].team.id === 54) {
-                           knightsWins = centralResults[i].leagueRecord.wins;
-                           knightsOTLS = centralResults[i].leagueRecord.ot;
-                       }
-                   }
-   
-                     // Here is the knights loop. 
-                     for (var i = 0; i < northResults.length; i++) {
-                       // knights
-                       if (northResults[i].team.id === 54) {
-                           knightsWins = northResults[i].leagueRecord.wins;
-                           knightsOTLS = northResults[i].leagueRecord.ot;
-                       }
-                   }
-    
-                    // Here is the loop for the sabres
-                    for (var i = 0; i < eastResults.length; i++) {
-    
-                        // sabres
-                        if (eastResults[i].team.id === 7) {
-                            sabresWins = eastResults[i].leagueRecord.wins;
-                            sabresOTLS = eastResults[i].leagueRecord.ot;
-                        }
+                }
+
+                // Here is the knights loop. 
+                for (var i = 0; i < eastResults.length; i++) {
+                    // knights
+                    if (eastResults[i].team.id === 54) {
+                        knightsWins = eastResults[i].leagueRecord.wins;
+                        knightsOTLS = eastResults[i].leagueRecord.ot;
                     }
-   
-                      // Here is the loop for the sabres
-                      for (var i = 0; i < northResults.length; i++) {
-    
-                       // sabres
-                       if (northResults[i].team.id === 7) {
-                           sabresWins = northResults[i].leagueRecord.wins;
-                           sabresOTLS = northResults[i].leagueRecord.ot;
-                       }
-                   }
-   
-                     // Here is the loop for the sabres
-                     for (var i = 0; i < westResults.length; i++) {
-    
-                       // sabres
-                       if (westResults[i].team.id === 7) {
-                           sabresWins = westResults[i].leagueRecord.wins;
-                           sabresOTLS = westResults[i].leagueRecord.ot;
-                       }
-                   }
-   
-                     // Here is the loop for the sabres
-                     for (var i = 0; i < centralResults.length; i++) {
-    
-                       // sabres
-                       if (centralResults[i].team.id === 7) {
-                           sabresWins = centralResults[i].leagueRecord.wins;
-                           sabresOTLS = centralResults[i].leagueRecord.ot;
-                       }
-                   }
-    
-                    for (var i = 0; i < northResults.length; i++) {
-    
-                        // senators
-                        if (northResults[i].team.id === 9) {
-                            senatorsWins = northResults[i].leagueRecord.wins;
-                            senatorsOTLS = northResults[i].leagueRecord.ot;
-                        }
+                }
+
+                // Here is the knights loop. 
+                for (var i = 0; i < centralResults.length; i++) {
+                    // knights
+                    if (centralResults[i].team.id === 54) {
+                        knightsWins = centralResults[i].leagueRecord.wins;
+                        knightsOTLS = centralResults[i].leagueRecord.ot;
                     }
-   
-                    for (var i = 0; i < eastResults.length; i++) {
-    
-                       // senators
-                       if (eastResults[i].team.id === 9) {
-                           senatorsWins = eastResults[i].leagueRecord.wins;
-                           senatorsOTLS = eastResults[i].leagueRecord.ot;
-                       }
-                   }
-   
-                   for (var i = 0; i < westResults.length; i++) {
-    
-                       // senators
-                       if (westResults[i].team.id === 9) {
-                           senatorsWins = westResults[i].leagueRecord.wins;
-                           senatorsOTLS = westResults[i].leagueRecord.ot;
-                       }
-                   }
-   
-                   for (var i = 0; i < centralResults.length; i++) {
-    
-                       // senators
-                       if (centralResults[i].team.id === 9) {
-                           senatorsWins = centralResults[i].leagueRecord.wins;
-                           senatorsOTLS = centralResults[i].leagueRecord.ot;
-                       }
-                   }
-    
-                    // sabres total
-                    sabresTotal = (sabresWins * 2.9) + (sabresOTLS * 1.45);
-    
-                    // senators total
-                    senatorsTotal = (senatorsWins * 2.9) + (senatorsOTLS * 1.45);
-   
-                    // knights total
-                    knightsTotal = (knightsWins * 2.9) + (knightsOTLS * 1.45);
-    
+                }
+
+                // Here is the knights loop. 
+                for (var i = 0; i < northResults.length; i++) {
+                    // knights
+                    if (northResults[i].team.id === 54) {
+                        knightsWins = northResults[i].leagueRecord.wins;
+                        knightsOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Here is the loop for the sabres
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // sabres
+                    if (eastResults[i].team.id === 7) {
+                        sabresWins = eastResults[i].leagueRecord.wins;
+                        sabresOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Here is the loop for the sabres
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // sabres
+                    if (northResults[i].team.id === 7) {
+                        sabresWins = northResults[i].leagueRecord.wins;
+                        sabresOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Here is the loop for the sabres
+                for (var i = 0; i < westResults.length; i++) {
+
+                    // sabres
+                    if (westResults[i].team.id === 7) {
+                        sabresWins = westResults[i].leagueRecord.wins;
+                        sabresOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // Here is the loop for the sabres
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // sabres
+                    if (centralResults[i].team.id === 7) {
+                        sabresWins = centralResults[i].leagueRecord.wins;
+                        sabresOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < northResults.length; i++) {
+
+                    // senators
+                    if (northResults[i].team.id === 9) {
+                        senatorsWins = northResults[i].leagueRecord.wins;
+                        senatorsOTLS = northResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < eastResults.length; i++) {
+
+                    // senators
+                    if (eastResults[i].team.id === 9) {
+                        senatorsWins = eastResults[i].leagueRecord.wins;
+                        senatorsOTLS = eastResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < westResults.length; i++) {
+
+                    // senators
+                    if (westResults[i].team.id === 9) {
+                        senatorsWins = westResults[i].leagueRecord.wins;
+                        senatorsOTLS = westResults[i].leagueRecord.ot;
+                    }
+                }
+
+                for (var i = 0; i < centralResults.length; i++) {
+
+                    // senators
+                    if (centralResults[i].team.id === 9) {
+                        senatorsWins = centralResults[i].leagueRecord.wins;
+                        senatorsOTLS = centralResults[i].leagueRecord.ot;
+                    }
+                }
+
+                // sabres total
+                sabresTotal = (sabresWins * 2.9) + (sabresOTLS * 1.45);
+
+                // senators total
+                senatorsTotal = (senatorsWins * 2.9) + (senatorsOTLS * 1.45);
+
+                // knights total
+                knightsTotal = (knightsWins * 2.9) + (knightsOTLS * 1.45);
+
 
                 var allNHL = (knightsTotal + sabresTotal + senatorsTotal).toFixed(1);
 
@@ -1815,7 +2123,7 @@ class Table extends Component {
                 var panthersTotal;
                 var allNHL;
 
-                           // Blues: 
+                // Blues: 
 
                 // Here is the loop for the blues
                 for (var i = 0; i < westResults.length; i++) {
@@ -1962,8 +2270,8 @@ class Table extends Component {
                 var flamesTotal;
                 var allNHL;
 
-                 // Here is the lightning loop. 
-                 for (var i = 0; i < centralResults.length; i++) {
+                // Here is the lightning loop. 
+                for (var i = 0; i < centralResults.length; i++) {
                     // lightning
                     if (centralResults[i].team.id === 14) {
                         lightningWins = centralResults[i].leagueRecord.wins;
@@ -1971,8 +2279,8 @@ class Table extends Component {
                     }
                 }
 
-                   // Here is the lightning loop. 
-                   for (var i = 0; i < westResults.length; i++) {
+                // Here is the lightning loop. 
+                for (var i = 0; i < westResults.length; i++) {
                     // lightning
                     if (westResults[i].team.id === 14) {
                         lightningWins = westResults[i].leagueRecord.wins;
@@ -1980,8 +2288,8 @@ class Table extends Component {
                     }
                 }
 
-                   // Here is the lightning loop. 
-                   for (var i = 0; i < eastResults.length; i++) {
+                // Here is the lightning loop. 
+                for (var i = 0; i < eastResults.length; i++) {
                     // lightning
                     if (eastResults[i].team.id === 14) {
                         lightningWins = eastResults[i].leagueRecord.wins;
@@ -1989,8 +2297,8 @@ class Table extends Component {
                     }
                 }
 
-                   // Here is the lightning loop. 
-                   for (var i = 0; i < northResults.length; i++) {
+                // Here is the lightning loop. 
+                for (var i = 0; i < northResults.length; i++) {
                     // lightning
                     if (northResults[i].team.id === 14) {
                         lightningWins = northResults[i].leagueRecord.wins;
