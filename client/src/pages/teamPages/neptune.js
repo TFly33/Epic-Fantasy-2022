@@ -46,11 +46,11 @@ class neptune extends React.Component {
 
     getScoresPGA = () => {
         // Pat's PGA Here. Golf Team 10. 
-        var Rahm = 48
-        var Scheffler = 38
-        var Spieth = 54
-        var Casey = 24
-        var Watson = 17
+        var Rahm = 53
+        var Scheffler = 41
+        var Spieth = 63
+        var Casey = 26
+        var Watson = 19
         var pgaTotal = Rahm + Scheffler + Spieth + Casey + Watson
 
         this.setState({ totalPGA: pgaTotal });
