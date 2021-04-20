@@ -89,7 +89,7 @@ class steids extends React.Component {
         var Schauffele = 67
         var Finau = 54
         var Woods = 1
-        var Ancer = 33
+        var Ancer = 35
         var Griffin = 24
         var pgaTotal = Schauffele + Finau + Woods + Ancer + Griffin
         this.setState({ totalPGA: pgaTotal });
