@@ -49,8 +49,8 @@ class goose extends React.Component {
         var McIlroy = 29
         var Im = 47
         var Fleetwood = 13
-        var Leishman = 22
-        var Horschel = 55
+        var Leishman = 42
+        var Horschel = 59
         var pgaTotal = McIlroy + Im + Fleetwood + Leishman + Horschel
         this.setState({ totalPGA: pgaTotal });
         this.setState({ mcIlroy: McIlroy });

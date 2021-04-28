@@ -51,7 +51,7 @@ class ben extends React.Component {
         var Thomas = 78
         var Berger = 49
         var Fitzpatrick = 30
-        var Todd = 18
+        var Todd = 19
         var Kuchar = 19
         var pgaTotal = Thomas + Berger + Fitzpatrick + Todd + Kuchar
         this.setState({ totalPGA: pgaTotal });
