@@ -52,7 +52,7 @@ class al extends React.Component {
         var Simpson = 35
         var Hatton = 26
         var Smith = 69
-        var Conners = 50
+        var Conners = 52
         var pgaTotal = Morikawa + Simpson + Hatton + Smith + Conners
         this.setState({ totalPGA: pgaTotal });
         this.setState({ morikawa: Morikawa });
