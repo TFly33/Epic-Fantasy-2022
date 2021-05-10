@@ -722,7 +722,7 @@ class Table extends Component {
         // console.log(tomPGATotal);
 
         // Pat's PGA Here. Golf Team 10. 
-        var Hovland = 72
+        var Hovland = 80
         var Wolff = 32
         var Champ = 12
         var Munoz = 23
@@ -733,9 +733,9 @@ class Table extends Component {
 
         // James's PGA Here. Golf Team 7. 
         var Cantlay = 66
-        var Reed = 49
+        var Reed = 53
         var Fowler = 10
-        var Woodland = 9
+        var Woodland = 15
         var Mickelson = 6
         var jamesPGATotal = Cantlay + Reed + Fowler + Woodland + Mickelson
         this.setState({ jamesPGA: jamesPGATotal });
@@ -746,7 +746,7 @@ class Table extends Component {
         var Scheffler = 44
         var Spieth = 63
         var Casey = 27
-        var Watson = 24
+        var Watson = 26
         var neptunePGATotal = Rahm + Scheffler + Spieth + Casey + Watson
         this.setState({ neptunePGA: neptunePGATotal });
         // console.log(neptunePGATotal);
@@ -754,7 +754,7 @@ class Table extends Component {
         // DJ's PGA Here. Golf Team 1. 
         var Johnson = 60
         var Day = 18
-        var Niemann = 54
+        var Niemann = 56
         var Oosthuizen = 40
         var Garcia = 41
         var djPGATotal = Johnson + Day + Niemann + Oosthuizen + Garcia
@@ -762,9 +762,9 @@ class Table extends Component {
         // console.log(djPGATotal);
 
         // Goose's PGA Here. Golf Team 5. 
-        var McIlroy = 29
+        var McIlroy = 54
         var Im = 48
-        var Fleetwood = 13
+        var Fleetwood = 16
         var Leishman = 42
         var Horschel = 59
         var goosePGATotal = McIlroy + Im + Fleetwood + Leishman + Horschel
@@ -782,7 +782,7 @@ class Table extends Component {
         // console.log(alPGATotal);
 
         // Joe's PGA Here. Golf Team 2. 
-        var Dechambeau = 79
+        var Dechambeau = 83
         var Rose = 12
         var Scott = 14
         var Kisner = 25
@@ -792,17 +792,17 @@ class Table extends Component {
         // console.log(joePGATotal);
 
         // Steids's PGA Here. Golf Team 6. 
-        var Schauffele = 68
+        var Schauffele = 71
         var Finau = 55
         var Woods = 1
-        var Ancer = 41
-        var Griffin = 24
+        var Ancer = 56
+        var Griffin = 26
         var steidsPGATotal = Schauffele + Finau + Woods + Ancer + Griffin
         this.setState({ steidsPGA: steidsPGATotal });
         // console.log(steidsPGATotal);
 
         // Eres's PGA Here. Golf Team 4. 
-        var Thomas = 80
+        var Thomas = 82
         var Berger = 49
         var Fitzpatrick = 30
         var Todd = 19
