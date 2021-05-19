@@ -51,7 +51,7 @@ class joe extends React.Component {
         var Rose = 12
         var Scott = 14
         var Kisner = 25
-        var Kim = 45
+        var Kim = 46
         var pgaTotal = Dechambeau + Rose + Scott + Kisner + Kim
         this.setState({ totalPGA: pgaTotal });
         this.setState({ dechambeau: Dechambeau });

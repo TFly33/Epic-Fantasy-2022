@@ -713,8 +713,8 @@ class Table extends Component {
     getScoresPGA = () => {
         // Tom's PGA Here. Golf Team 8. 
         var Koepka = 48
-        var Matsuyama = 62
-        var English = 53
+        var Matsuyama = 63
+        var English = 56
         var Kokrak = 50
         var Lowry = 20
         var tomPGATotal = Koepka + Matsuyama + English + Kokrak + Lowry
@@ -724,7 +724,7 @@ class Table extends Component {
         // Pat's PGA Here. Golf Team 10. 
         var Hovland = 80
         var Wolff = 32
-        var Champ = 12
+        var Champ = 13
         var Munoz = 23
         var Henley = 34
         var patPGATotal = Hovland + Wolff + Champ + Munoz + Henley
@@ -742,9 +742,9 @@ class Table extends Component {
         // console.log(jamesPGATotal);
 
         // Neptune's PGA Here. Golf Team 3. 
-        var Rahm = 56
+        var Rahm = 57
         var Scheffler = 44
-        var Spieth = 63
+        var Spieth = 66
         var Casey = 27
         var Watson = 26
         var neptunePGATotal = Rahm + Scheffler + Spieth + Casey + Watson
@@ -765,7 +765,7 @@ class Table extends Component {
         var McIlroy = 54
         var Im = 48
         var Fleetwood = 16
-        var Leishman = 42
+        var Leishman = 44
         var Horschel = 59
         var goosePGATotal = McIlroy + Im + Fleetwood + Leishman + Horschel
         this.setState({ goosePGA: goosePGATotal });
@@ -786,7 +786,7 @@ class Table extends Component {
         var Rose = 12
         var Scott = 14
         var Kisner = 25
-        var Kim = 45
+        var Kim = 46
         var joePGATotal = Dechambeau + Rose + Scott + Kisner + Kim
         this.setState({ joePGA: joePGATotal });
         // console.log(joePGATotal);
@@ -803,10 +803,10 @@ class Table extends Component {
 
         // Eres's PGA Here. Golf Team 4. 
         var Thomas = 82
-        var Berger = 49
+        var Berger = 56
         var Fitzpatrick = 30
         var Todd = 19
-        var Kuchar = 19
+        var Kuchar = 21
         var eresPGATotal = Thomas + Berger + Fitzpatrick + Todd + Kuchar
         this.setState({ eresPGA: eresPGATotal });
         // console.log(eresPGATotal);
