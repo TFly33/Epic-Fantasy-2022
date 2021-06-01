@@ -48,7 +48,7 @@ class patrick extends React.Component {
         var Hovland = 81
         var Wolff = 32
         var Champ = 13
-        var Munoz = 23
+        var Munoz = 30
         var Henley = 34
         var pgaTotal = Hovland + Wolff + Champ + Munoz + Henley
 

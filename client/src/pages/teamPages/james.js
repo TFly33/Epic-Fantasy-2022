@@ -49,7 +49,7 @@ class james extends React.Component {
         var Cantlay = 68
         var Reed = 56
         var Fowler = 14
-        var Woodland = 16
+        var Woodland = 18
         var Mickelson = 36
         var jamesPGATotal = Cantlay + Reed + Fowler + Woodland + Mickelson
         this.setState({ jamesPGA: jamesPGATotal });
