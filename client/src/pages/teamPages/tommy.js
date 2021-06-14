@@ -52,7 +52,7 @@ class tommy extends React.Component {
         // Tom's PGA Here. Golf Team 8. 
         var Koepka = 62
         var Matsuyama = 65
-        var English = 56
+        var English = 59
         var Kokrak = 76
         var Lowry = 31
         var pgaTotal = Koepka + Matsuyama + English + Kokrak + Lowry
