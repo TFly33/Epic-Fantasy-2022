@@ -47,11 +47,11 @@ class dj extends React.Component {
 
     getScoresPGA = () => {
         // DJ's PGA Here. Golf Team 1. 
-        var Johnson = 63
+        var Johnson = 66
         var Day = 18
-        var Niemann = 57
-        var Oosthuizen = 55
-        var Garcia = 43
+        var Niemann = 59
+        var Oosthuizen = 72
+        var Garcia = 45
         var pgaTotal = Johnson + Day + Niemann + Oosthuizen + Garcia
         this.setState({ totalPGA: pgaTotal });
         this.setState({ johnson: Johnson });
