@@ -45,7 +45,7 @@ class patrick extends React.Component {
 
     getScoresPGA = () => {
         // Pat's PGA Here. Golf Team 10. 
-        var Hovland = 82
+        var Hovland = 85
         var Wolff = 35
         var Champ = 16
         var Munoz = 36
