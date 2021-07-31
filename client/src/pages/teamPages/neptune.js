@@ -50,7 +50,7 @@ class neptune extends React.Component {
         var Scheffler = 67
         var Spieth = 104
         var Casey = 41
-        var Watson = 33
+        var Watson = 34
         var pgaTotal = Rahm + Scheffler + Spieth + Casey + Watson
 
         this.setState({ totalPGA: pgaTotal });
