@@ -48,11 +48,11 @@ class al extends React.Component {
 
     getScoresPGA = () => {
         // Al's PGA Here. Golf Team 1. 
-        var Morikawa = 77
-        var Simpson = 37
-        var Hatton = 34
-        var Smith = 71
-        var Conners = 57
+        var Morikawa = 109
+        var Simpson = 46
+        var Hatton = 37
+        var Smith = 77
+        var Conners = 61
         var pgaTotal = Morikawa + Simpson + Hatton + Smith + Conners
         this.setState({ totalPGA: pgaTotal });
         this.setState({ morikawa: Morikawa });

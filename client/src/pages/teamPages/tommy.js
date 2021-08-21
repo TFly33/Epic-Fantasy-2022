@@ -50,11 +50,11 @@ class tommy extends React.Component {
 
     getScoresPGA = () => {
         // Tom's PGA Here. Golf Team 8. 
-        var Koepka = 73
-        var Matsuyama = 67
-        var English = 94
-        var Kokrak = 76
-        var Lowry = 31
+        var Koepka = 78
+        var Matsuyama = 80
+        var English = 102
+        var Kokrak = 81
+        var Lowry = 36
         var pgaTotal = Koepka + Matsuyama + English + Kokrak + Lowry
         this.setState({ totalPGA: pgaTotal });
         this.setState({ koepka: Koepka });
