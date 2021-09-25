@@ -42,14 +42,26 @@ class neptune extends React.Component {
         this.getScoresPGA();
         this.getScoresNHL();
         this.getScoresMLB();
+        this.getScoresNFL();
+    };
+
+    getScoresNFL = () => {
+        var bills = 9.4
+        var cardinals = 18.8
+        var eagles = 9.4
+        var allNFL = bills + cardinals + eagles
+        this.setState({ totalNFL: allNFL.toFixed(2) })
+        this.setState({ cardinals: cardinals })
+        this.setState({ eagles: eagles })
+        this.setState({ bills: bills })
     };
 
     getScoresPGA = () => {
         // Pat's PGA Here. Golf Team 10. 
         var Rahm = 100
-        var Scheffler = 67
-        var Spieth = 104
-        var Casey = 41
+        var Scheffler = 70
+        var Spieth = 107
+        var Casey = 47
         var Watson = 34
         var pgaTotal = Rahm + Scheffler + Spieth + Casey + Watson
 
@@ -500,17 +512,17 @@ class neptune extends React.Component {
                                             <tr>
                                                 <th scope="row">20</th>
                                                 <td className="bills">Buffalo Bills</td>
-                                                <td>{this.state.rams}</td>
+                                                <td>{this.state.bills}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">56</th>
                                                 <td className="cardinals">Arizona Cardinals</td>
-                                                <td>{this.state.jaguars}</td>
+                                                <td>{this.state.cardinals}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">106</th>
                                                 <td className="eagles">Philadelphia Eagles</td>
-                                                <td>{this.state.giants}</td>
+                                                <td>{this.state.eagles}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>

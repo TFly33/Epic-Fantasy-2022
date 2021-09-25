@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { MDBDataTable } from 'mdbreact';
 import "./Table.css";
 import API from "../../utils/API";
+import totalNFL from '../../pages/teamPages/al';
+import al from '../../pages/teamPages/al';
 
 // This table is being used for the Home Page currently, but not for the My Teams page. I am going to create that table separately. 
 class Table extends Component {
-
     //since we are extending class Table so we have to use super in order to override Component class constructor
     state = {
         allTeams: [],
@@ -75,9 +76,9 @@ class Table extends Component {
         jamesGamble: 205,
         neptuneGamble: 180,
         djGamble: 190,
-        gooseGamble: 203,
+        gooseGamble: 198,
         alGamble: 201.5,
-        joeGamble: 203,
+        joeGamble: 208,
         steidsGamble: 205,
         eresGamble: 215,
 
@@ -122,12 +123,12 @@ class Table extends Component {
                     sort: 'val',
                     width: 150
                 },
-                // {
-                //     label: 'NFL',
-                //     field: 'nfl',
-                //     sort: 'asc',
-                //     width: 150
-                // },
+                {
+                    label: 'NFL',
+                    field: 'nfl',
+                    sort: 'asc',
+                    width: 150
+                },
                 {
                     label: 'NBA',
                     field: 'nba',
@@ -298,7 +299,7 @@ class Table extends Component {
         // Now, once the updates have applied, we call the getteams. This will show updated results. I'm gonna freeze this for the time being so I don't make a million API calls. 
         this.getScoresEPL();
         // I'm gonna run this as a function even though these are just dead numbers at this point (since the NFL regular season ended)
-        // this.getScoresNFL();
+        this.getScoresNFL();
         // // running NHL here
         this.getScoresNHL();
         // MLB Here 
@@ -315,7 +316,7 @@ class Table extends Component {
         var tomTotalPoints =
             parseInt((this.state.tomNBA)) +
             parseInt((this.state.tomNHL)) +
-            // parseInt((this.state.tomNFL)) + 
+            parseInt((this.state.tomNFL)) +
             parseInt((this.state.tomEPL)) +
             parseInt((this.state.tomPGA)) +
             parseInt((this.state.tomGamble));
@@ -325,7 +326,7 @@ class Table extends Component {
         var patTotalPoints =
             parseInt((this.state.patNBA)) +
             parseInt((this.state.patNHL)) +
-            // parseInt((this.state.patNFL)) + 
+            parseInt((this.state.patNFL)) +
             parseInt((this.state.patEPL)) +
             parseInt((this.state.patPGA)) +
             parseInt((this.state.patGamble));
@@ -335,7 +336,7 @@ class Table extends Component {
         var jamesTotalPoints =
             parseInt((this.state.jamesNBA)) +
             parseInt((this.state.jamesNHL)) +
-            // parseInt((this.state.jamesNFL)) + 
+            parseInt((this.state.jamesNFL)) +
             parseInt((this.state.jamesEPL)) +
             parseInt((this.state.jamesPGA)) +
             parseInt((this.state.jamesGamble));
@@ -345,7 +346,7 @@ class Table extends Component {
         var neptuneTotalPoints =
             parseInt((this.state.neptuneNBA)) +
             parseInt((this.state.neptuneNHL)) +
-            // parseInt((this.state.neptuneNFL)) + 
+            parseInt((this.state.neptuneNFL)) +
             parseInt((this.state.neptuneEPL)) +
             parseInt((this.state.neptunePGA)) +
             parseInt((this.state.neptuneGamble));;
@@ -355,7 +356,7 @@ class Table extends Component {
         var djTotalPoints =
             parseInt((this.state.djNBA)) +
             parseInt((this.state.djNHL)) +
-            // parseInt((this.state.djNFL)) + 
+            parseInt((this.state.djNFL)) +
             parseInt((this.state.djEPL)) +
             parseInt((this.state.djPGA)) +
             parseInt((this.state.djGamble));;
@@ -365,7 +366,7 @@ class Table extends Component {
         var gooseTotalPoints =
             parseInt((this.state.gooseNBA)) +
             parseInt((this.state.gooseNHL)) +
-            // parseInt((this.state.gooseNFL)) + 
+            parseInt((this.state.gooseNFL)) +
             parseInt((this.state.gooseEPL)) +
             parseInt((this.state.goosePGA)) +
             parseInt((this.state.gooseGamble));
@@ -375,7 +376,7 @@ class Table extends Component {
         var alTotalPoints =
             parseInt((this.state.alNBA)) +
             parseInt((this.state.alNHL)) +
-            // parseInt((this.state.alNFL)) + 
+            parseInt((this.state.alNFL)) +
             parseInt((this.state.alEPL)) +
             parseInt((this.state.alMLB)) +
             parseInt((this.state.alPGA)) +
@@ -386,7 +387,7 @@ class Table extends Component {
         var joeTotalPoints =
             parseInt((this.state.joeNBA)) +
             parseInt((this.state.joeNHL)) +
-            // parseInt((this.state.joeNFL)) + 
+            parseInt((this.state.joeNFL)) +
             parseInt((this.state.joeEPL)) +
             parseInt((this.state.joePGA)) +
             parseInt((this.state.joeGamble));;
@@ -396,7 +397,7 @@ class Table extends Component {
         var steidsTotalPoints =
             parseInt((this.state.steidsNBA)) +
             parseInt((this.state.steidsNHL)) +
-            // parseInt((this.state.steidsNFL)) + 
+            parseInt((this.state.steidsNFL)) +
             parseInt((this.state.steidsEPL)) +
             parseInt((this.state.steidsPGA)) +
             parseInt((this.state.steidsGamble));;
@@ -406,7 +407,7 @@ class Table extends Component {
         var benTotalPoints =
             parseInt((this.state.benNBA)) +
             parseInt((this.state.benNHL)) +
-            // parseInt((this.state.benNFL)) + 
+            parseInt((this.state.benNFL)) +
             parseInt((this.state.benEPL)) +
             parseInt((this.state.eresPGA)) +
             parseInt((this.state.eresGamble));;
@@ -713,18 +714,18 @@ class Table extends Component {
     getScoresPGA = () => {
         // Tom's PGA Here. Golf Team 8. 
         var Koepka = 78
-        var Matsuyama = 67
-        var English = 95
-        var Kokrak = 80
-        var Lowry = 34
+        var Matsuyama = 80
+        var English = 102
+        var Kokrak = 82
+        var Lowry = 36
         var tomPGATotal = Koepka + Matsuyama + English + Kokrak + Lowry
         this.setState({ tomPGA: tomPGATotal });
         // console.log(tomPGATotal);
 
         // Pat's PGA Here. Golf Team 10. 
-        var Hovland = 85
-        var Wolff = 36
-        var Champ = 41
+        var Hovland = 86
+        var Wolff = 39
+        var Champ = 42
         var Munoz = 36
         var Henley = 43
         var patPGATotal = Hovland + Wolff + Champ + Munoz + Henley
@@ -732,59 +733,59 @@ class Table extends Component {
         // console.log(patPGATotal);
 
         // James's PGA Here. Golf Team 7. 
-        var Cantlay = 101
-        var Reed = 68
+        var Cantlay = 103
+        var Reed = 69
         var Fowler = 20
-        var Woodland = 22
-        var Mickelson = 37
+        var Woodland = 24
+        var Mickelson = 40
         var jamesPGATotal = Cantlay + Reed + Fowler + Woodland + Mickelson
         this.setState({ jamesPGA: jamesPGATotal });
         // console.log(jamesPGATotal);
 
         // Neptune's PGA Here. Golf Team 3. 
         var Rahm = 100
-        var Scheffler = 67
-        var Spieth = 104
-        var Casey = 41
+        var Scheffler = 70
+        var Spieth = 107
+        var Casey = 47
         var Watson = 34
         var neptunePGATotal = Rahm + Scheffler + Spieth + Casey + Watson
         this.setState({ neptunePGA: neptunePGATotal });
         // console.log(neptunePGATotal);
 
         // DJ's PGA Here. Golf Team 1. 
-        var Johnson = 72
+        var Johnson = 76
         var Day = 24
-        var Niemann = 72
-        var Oosthuizen = 91
-        var Garcia = 49
+        var Niemann = 75
+        var Oosthuizen = 94
+        var Garcia = 51
         var djPGATotal = Johnson + Day + Niemann + Oosthuizen + Garcia
         this.setState({ djPGA: djPGATotal });
         // console.log(djPGATotal);
 
         // Goose's PGA Here. Golf Team 5. 
-        var McIlroy = 61
-        var Im = 57
-        var Fleetwood = 18
-        var Leishman = 54
-        var Horschel = 62
+        var McIlroy = 65
+        var Im = 58
+        var Fleetwood = 19
+        var Leishman = 55
+        var Horschel = 65
         var goosePGATotal = McIlroy + Im + Fleetwood + Leishman + Horschel
         this.setState({ goosePGA: goosePGATotal });
         // console.log(goosePGATotal);
 
         // Al's PGA Here. Golf Team 9. 
-        var Morikawa = 107
-        var Simpson = 39
-        var Hatton = 34
-        var Smith = 72
-        var Conners = 60
+        var Morikawa = 109
+        var Simpson = 42
+        var Hatton = 37
+        var Smith = 77
+        var Conners = 61
         var alPGATotal = Morikawa + Simpson + Hatton + Smith + Conners
         this.setState({ alPGA: alPGATotal });
         // console.log(alPGATotal);
 
         // Joe's PGA Here. Golf Team 2. 
-        var Dechambeau = 91
-        var Rose = 18
-        var Scott = 21
+        var Dechambeau = 96
+        var Rose = 19
+        var Scott = 22
         var Kisner = 35
         var Kim = 51
         var joePGATotal = Dechambeau + Rose + Scott + Kisner + Kim
@@ -793,17 +794,17 @@ class Table extends Component {
 
         // Steids's PGA Here. Golf Team 6. 
         var Schauffele = 81
-        var Finau = 66
+        var Finau = 67
         var Woods = 1
-        var Ancer = 69
+        var Ancer = 96
         var Griffin = 30
         var steidsPGATotal = Schauffele + Finau + Woods + Ancer + Griffin
         this.setState({ steidsPGA: steidsPGATotal });
         // console.log(steidsPGATotal);
 
         // Eres's PGA Here. Golf Team 4. 
-        var Thomas = 86
-        var Berger = 67
+        var Thomas = 88
+        var Berger = 72
         var Fitzpatrick = 37
         var Todd = 24
         var Kuchar = 22
@@ -814,16 +815,66 @@ class Table extends Component {
     // This one I get to hard code because the season ended. 
 
     getScoresNFL = () => {
-        this.setState({ tomNFL: 360 });
-        this.setState({ patNFL: 300 });
-        this.setState({ jamesNFL: 232.35 });
-        this.setState({ neptuneNFL: 190 });
-        this.setState({ djNFL: 250 });
-        this.setState({ gooseNFL: 190 });
-        this.setState({ alNFL: 280 });
-        this.setState({ joeNFL: 240 });
-        this.setState({ steidsNFL: 210 });
-        this.setState({ benNFL: 200 });
+        //    Tom NFL
+        var Rams = 18.8
+        var Steelers = 9.4
+        var Dolphins = 9.4
+        var TomNFL = Rams + Steelers + Dolphins
+        this.setState({ tomNFL: TomNFL.toFixed(2) })
+        // SteidsNFL
+        var Ravens = 9.4
+        var Cowboys = 9.4
+        var Chargers = 18.8
+        var SteidsNFL = Ravens + Cowboys + Chargers
+        this.setState({ steidsNFL: SteidsNFL.toFixed(2) })
+        // PatNFL
+        var Saints = 9.4
+        var Colts = 0
+        var Fortyniners = 18.8
+        var PatNFL = Saints + Colts + Fortyniners
+        this.setState({ patNFL: PatNFL.toFixed(2) })
+        // NeptuneNFL
+        var bills = 9.4
+        var cardinals = 18.8
+        var eagles = 9.4
+        var NeptuneNFL = bills + cardinals + eagles
+        this.setState({ neptuneNFL: NeptuneNFL.toFixed(2) })
+        // JoeNFL
+        var Washington = 9.4
+        var Falcons = 0
+        var Texans = 9.4
+        var JoeNFL = Washington + Falcons + Texans
+        this.setState({ joeNFL: JoeNFL.toFixed(2) })
+        // JamesNFL
+        var nyGiants = 0
+        var Broncos= 18.8
+        var Vikings = 0
+        var JamesNFL = nyGiants + Broncos+ Vikings
+        this.setState({ jamesNFL: JamesNFL.toFixed(2) })
+        // GooseNFL
+        var Chiefs = 9.4
+        var Seahawks= 9.4
+        var Bucs = 18.8
+        var GooseNFL = Chiefs + Seahawks+ Bucs
+        this.setState({ gooseNFL: GooseNFL.toFixed(2) })
+        // DjNFL
+        var Patriots = 9.4
+        var Raiders= 18.8
+        var Bengals = 9.4
+        var DjNFL = Patriots + Raiders+ Bengals
+        this.setState({ djNFL: DjNFL.toFixed(2) })
+        // EresNFL
+        var Packers = 9.4
+        var Titans = 9.4
+        var Bears= 9.4
+        var EresNFL = Packers + Titans+ Bears
+        this.setState({ benNFL: EresNFL.toFixed(2) })
+        // AlNFL
+        var Browns = 9.4
+        var Panthers = 28.2
+        var Lions = 0
+        var AlNFL = Browns + Panthers + Lions
+        this.setState({ alNFL: AlNFL.toFixed(2) })
     };
 
     // Going to put NHL Here
@@ -2841,4 +2892,6 @@ class Table extends Component {
 }
 
 // Let's export the table.
-export default Table; 
+export default Table;
+
+

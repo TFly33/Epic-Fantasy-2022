@@ -50,19 +50,28 @@ export default {
     })
   },
 
+  // getScoresNFL: function () {
+  //   return axios({
+  //     method: 'GET',
+  //     url: 'https://api.sportsdata.io/v3/nfl/scores/json/Standings/2021',
+  //     params: {season: "2021"},
+  //     headers: "Ocp-Apim-Subscription-Key: 86a8c69cae814a848bd6353160f882b7"
+  //   })
+  // },
+
   // This one isn't working yet. 
   getScoresNFL: function () {
-    // Sports API Search Here. 
     return axios({
-      "method": "GET",
-      "url": "https://api-nba-v1.p.rapidapi.com/standings/standard/2019",
-      "headers": {
-        "content-type": "application/octet-stream",
-        "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
-        "x-rapidapi-key": "52aa6a2637mshdf98d5a291eb6cep182376jsnfb67836d7b3b"
-      }
-    })
+      method: 'GET',
+      url: "https://api.sportsdata.io/v3/nfl/scores/json/Standings/2021",
+      headers: {
+        'Ocp-Apim-Subscription-Key': '86a8c69cae814a848bd6353160f882b7'}
+    });
   },
+
+  // getScoresNFL: function () {
+  //   return axios.get("https://api.sportsdata.io/v3/nfl/scores/json/Standings/2021")
+  // },
 
   // This one isn't working yet. 
   getScoresNHL: function () {
@@ -80,7 +89,7 @@ export default {
     return axios({
       method: 'GET',
       url: 'https://api-baseball.p.rapidapi.com/standings',
-      params: { season: '2021', league: '1'},
+      params: { season: '2021', league: '1' },
       headers: {
         'x-rapidapi-key': '52aa6a2637mshdf98d5a291eb6cep182376jsnfb67836d7b3b',
         'x-rapidapi-host': 'api-baseball.p.rapidapi.com'

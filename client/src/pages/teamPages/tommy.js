@@ -1,6 +1,7 @@
 import React from "react";
 import API from "../../utils/API";
 
+
 class tommy extends React.Component {
     // Here is the function we will use for creating the actual table. 
     state = {
@@ -12,9 +13,9 @@ class tommy extends React.Component {
         magic: "",
         twolves: "",
         // NFL Here
-        fourtyNiners: "",
-        seahawks: "",
-        patriots: "",
+        rams: "",
+        steelers: "",
+        dolphins: "",
         totalNFL: "",
         // Adding EPL Results Here:
         chelsea: "",
@@ -32,7 +33,6 @@ class tommy extends React.Component {
         kokrak: "",
         lowry: "",
         totalPGA: "",
-
         // MLB States here 
         astros: "",
         reds: "",
@@ -46,15 +46,28 @@ class tommy extends React.Component {
         this.getScoresEPL();
         this.getScoresPGA();
         this.getScoresMLB();
+        this.getScoresNFL();
     }
+
+    getScoresNFL = () => {
+        var Rams = 18.8
+        var Steelers = 9.4
+        var Dolphins = 9.4
+        var allNFL = Rams + Steelers + Dolphins
+        this.setState({ totalNFL: allNFL.toFixed(2) })
+        this.setState({ steelers: Steelers })
+        this.setState({ dolphins: Dolphins })
+        this.setState({ rams: Rams })
+    };
+
 
     getScoresPGA = () => {
         // Tom's PGA Here. Golf Team 8. 
         var Koepka = 78
-        var Matsuyama = 67
-        var English = 95
-        var Kokrak = 80
-        var Lowry = 34
+        var Matsuyama = 80
+        var English = 102
+        var Kokrak = 82
+        var Lowry = 36
         var pgaTotal = Koepka + Matsuyama + English + Kokrak + Lowry
         this.setState({ totalPGA: pgaTotal });
         this.setState({ koepka: Koepka });
@@ -67,14 +80,15 @@ class tommy extends React.Component {
     getScoresMLB = () => {
         API.getScoresMLB()
             .then(res => {
-                console.log(res.data.response[0]);
+                // console.log(res.data.response[0]);
                 var fullIndex = res.data.response[0];
                 var astrosWin;
                 var oriolesWin;
                 var redsWin;
 
                 for (var i = 0; i < fullIndex.length; i++) {
-                    console.log("This loop is running.")
+                    // console.log("This loop is running."
+                    // )
 
                     // Astros
                     if (fullIndex[i].team.id === 15) {
@@ -319,7 +333,7 @@ class tommy extends React.Component {
                 var magicWin = res.data.api.standings[2].win;
                 // and Twolves
                 var twolvesWin = res.data.api.standings[28].win;
-                console.log(res.data.api.standings);
+                // console.log(res.data.api.standings);
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
@@ -441,8 +455,8 @@ class tommy extends React.Component {
                             <div className="row">
                                 <div className="col">
                                     {/* Here is NFL */}
-                                    <table class="table table-striped table-bordered table-hover">
-                                        <thead class="thead-dark">
+                                    <table className="table table-striped table-bordered table-hover">
+                                        <thead className="thead-dark">
                                             <tr>
                                                 <th scope="col-6">Draft Pick</th>
                                                 <th scope="col-6">NFL Team</th>
@@ -453,17 +467,17 @@ class tommy extends React.Component {
                                             <tr>
                                                 <th scope="row">24</th>
                                                 <td className="rams">Los Angeles Rams</td>
-                                                <td>{this.state.patriots}</td>
+                                                <td>{this.state.rams}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">37</th>
                                                 <td className="steelers">Pittsburgh Steelers</td>
-                                                <td>{this.state.seahawks}</td>
+                                                <td>{this.state.steelers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">46</th>
                                                 <td className="dolphins">Miami Dolphins</td>
-                                                <td>{this.state.fourtyNiners}</td>
+                                                <td>{this.state.dolphins}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
@@ -655,7 +669,7 @@ class tommy extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
+                    <footer id="sticky-footer" className="py-2 bg-dark text-white-50">
                         <div className="container text-center">
                             <small>Copyright &copy; Epic Fantasy League 2021</small>
                         </div>

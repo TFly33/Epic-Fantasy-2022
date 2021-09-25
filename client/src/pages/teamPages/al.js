@@ -11,9 +11,9 @@ class al extends React.Component {
         heat: "",
         hornets: "",
         cavs: "",
-        chargers: "",
-        packers: "",
-        bills: "",
+        panthers: "",
+        browns: "",
+        lions: "",
         totalNFL: "",
         // EPL
         everton: "",
@@ -44,15 +44,27 @@ class al extends React.Component {
         this.getScoresPGA();
         this.getScoresNHL();
         this.getScoresMLB();
+        this.getScoresNFL();
     }
+
+    getScoresNFL = () => {
+        var Browns = 9.4
+        var Panthers = 28.2
+        var Lions = 0
+        var allNFL = Browns + Panthers + Lions
+        this.setState({ totalNFL: allNFL.toFixed(2) })
+        this.setState({ browns: Browns})
+        this.setState({ lions: Lions })
+        this.setState({ panthers : Panthers  })
+    };
 
     getScoresPGA = () => {
         // Al's PGA Here. Golf Team 1. 
-        var Morikawa = 107
-        var Simpson = 39
-        var Hatton = 34
-        var Smith = 72
-        var Conners = 60
+        var Morikawa = 109
+        var Simpson = 42
+        var Hatton = 37
+        var Smith = 77
+        var Conners = 61
         var pgaTotal = Morikawa + Simpson + Hatton + Smith + Conners
         this.setState({ totalPGA: pgaTotal });
         this.setState({ morikawa: Morikawa });
@@ -449,17 +461,17 @@ class al extends React.Component {
                                             <tr>
                                                 <th scope="row">35</th>
                                                 <td className="browns">Cleveland Browns</td>
-                                                <td>{this.state.chargers}</td>
+                                                <td>{this.state.browns}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">87</th>
                                                 <td className="panthers">Carolina Panthers</td>
-                                                <td>{this.state.packers}</td>
+                                                <td>{this.state.panthers}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">117</th>
                                                 <td className="lions">Detroit Lions</td>
-                                                <td>{this.state.bills}</td>
+                                                <td>{this.state.lions}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>

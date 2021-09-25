@@ -11,10 +11,10 @@ class patrick extends React.Component {
         jazz: "",
         rockets: "",
         suns: "",
-        ravens: "",
-        titans: "",
-        jets: "",
-        totalNFL: "",
+        saints: 9.4,
+        colts: 0,
+        fortyniners: 18.8,
+        totalNFL: 28.2,
         // EPL HERE
         city: "",
         wolves: "",
@@ -31,9 +31,9 @@ class patrick extends React.Component {
         munoz: "",
         henley: "",
         jays: "",
-        dbacks:"",
-        pirates:"",
-        totalMLB:""
+        dbacks: "",
+        pirates: "",
+        totalMLB: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
@@ -41,13 +41,25 @@ class patrick extends React.Component {
         this.getScoresPGA();
         this.getScoresNHL();
         this.getScoresMLB();
+        this.getScoresNFL();
     }
+
+    getScoresNFL = () => {
+        var Saints = 9.4
+        var Colts = 0
+        var Fortyniners = 18.8
+        var allNFL = Saints + Colts + Fortyniners
+        this.setState({ totalNFL: allNFL.toFixed(2) })
+        this.setState({ colts: Colts })
+        this.setState({ fortyniners: Fortyniners })
+        this.setState({ saints: Saints })
+    };
 
     getScoresPGA = () => {
         // Pat's PGA Here. Golf Team 10. 
-        var Hovland = 85
-        var Wolff = 36
-        var Champ = 41
+        var Hovland = 86
+        var Wolff = 39
+        var Champ = 42
         var Munoz = 36
         var Henley = 43
         var pgaTotal = Hovland + Wolff + Champ + Munoz + Henley
@@ -62,44 +74,43 @@ class patrick extends React.Component {
 
     getScoresMLB = () => {
         API.getScoresMLB()
-        .then(res => {
-            console.log(res.data.response[0]);
-            var fullIndex = res.data.response[0];
-            var jaysWin;
-            var dbacksWin;
-            var piratesWin;
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var jaysWin;
+                var dbacksWin;
+                var piratesWin;
 
-            for (var i = 0; i < fullIndex.length; i++) {
-                console.log("This loop is running.")
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running.")
 
-                // jays
-                if (fullIndex[i].team.id === 36) {
-                    jaysWin = fullIndex[i].games.win.total
+                    // jays
+                    if (fullIndex[i].team.id === 36) {
+                        jaysWin = fullIndex[i].games.win.total
+                    }
+
+                    // pirates
+                    if (fullIndex[i].team.id === 28) {
+                        piratesWin = fullIndex[i].games.win.total
+                    }
+
+                    // dbacks
+                    if (fullIndex[i].team.id === 2) {
+                        dbacksWin = fullIndex[i].games.win.total
+                    }
+
                 }
 
-                // pirates
-                if (fullIndex[i].team.id === 28) {
-                    piratesWin = fullIndex[i].games.win.total
-                }
+                var allMLB = jaysWin + piratesWin + dbacksWin;
 
-                // dbacks
-                if (fullIndex[i].team.id === 2) {
-                    dbacksWin = fullIndex[i].games.win.total
-                }
+                this.setState({ totalMLB: allMLB });
+                this.setState({ jays: jaysWin });
+                this.setState({ dbacks: dbacksWin });
+                this.setState({ pirates: piratesWin });
 
-            }
-
-            var allMLB = jaysWin + piratesWin + dbacksWin;
-
-            this.setState({ totalMLB: allMLB });
-            this.setState({ jays: jaysWin });
-            this.setState({ dbacks: dbacksWin });
-            this.setState({ pirates: piratesWin });
-
-        });
+            });
     };
 
-    
 
     getScoresNHL = () => {
         API.getScoresNHL()
@@ -133,8 +144,8 @@ class patrick extends React.Component {
                     }
                 }
 
-                  // Here is the wild/blackhawks for loop. 
-                  for (var i = 0; i < eastResults.length; i++) {
+                // Here is the wild/blackhawks for loop. 
+                for (var i = 0; i < eastResults.length; i++) {
                     // wild
                     if (eastResults[i].team.id === 30) {
                         wildWins = eastResults[i].leagueRecord.wins;
@@ -145,8 +156,8 @@ class patrick extends React.Component {
                     }
                 }
 
-                  // Here is the wild/blackhawks for loop. 
-                  for (var i = 0; i < northResults.length; i++) {
+                // Here is the wild/blackhawks for loop. 
+                for (var i = 0; i < northResults.length; i++) {
                     // wild
                     if (northResults[i].team.id === 30) {
                         wildWins = northResults[i].leagueRecord.wins;
@@ -157,8 +168,8 @@ class patrick extends React.Component {
                     }
                 }
 
-                  // Here is the wild/blackhawks for loop. 
-                  for (var i = 0; i < centralResults.length; i++) {
+                // Here is the wild/blackhawks for loop. 
+                for (var i = 0; i < centralResults.length; i++) {
                     // wild
                     if (centralResults[i].team.id === 30) {
                         wildWins = centralResults[i].leagueRecord.wins;
@@ -197,7 +208,7 @@ class patrick extends React.Component {
                     }
                 }
 
-                
+
                 // Here is the loop for the islanders
                 for (var i = 0; i < westResults.length; i++) {
 
@@ -211,7 +222,7 @@ class patrick extends React.Component {
                     }
                 }
 
-                
+
                 // Here is the loop for the islanders
                 for (var i = 0; i < centralResults.length; i++) {
 
@@ -239,21 +250,21 @@ class patrick extends React.Component {
                     }
                 }
 
-                    // blackhawks total
-                    for (var i = 0; i < westResults.length; i++) {
+                // blackhawks total
+                for (var i = 0; i < westResults.length; i++) {
 
-                        // islanders
-                        if (westResults[i].team.id === 16) {
-                            blackhawksWins = westResults[i].leagueRecord.wins;
-                            blackhawksOTLS = westResults[i].leagueRecord.ot;
-                            // console.log("blackhawks wins: " + blackhawksWins);
-                            // console.log(blackhawksOTLS);
-                            // console.log("this loop is running");
-                        }
+                    // islanders
+                    if (westResults[i].team.id === 16) {
+                        blackhawksWins = westResults[i].leagueRecord.wins;
+                        blackhawksOTLS = westResults[i].leagueRecord.ot;
+                        // console.log("blackhawks wins: " + blackhawksWins);
+                        // console.log(blackhawksOTLS);
+                        // console.log("this loop is running");
                     }
+                }
 
-                    
-                        // blackhawks total
+
+                // blackhawks total
                 for (var i = 0; i < northResults.length; i++) {
 
                     // islanders
@@ -267,26 +278,26 @@ class patrick extends React.Component {
                 }
 
 
-                    // blackhawks total
-                    for (var i = 0; i < eastResults.length; i++) {
+                // blackhawks total
+                for (var i = 0; i < eastResults.length; i++) {
 
-                        // islanders
-                        if (eastResults[i].team.id === 16) {
-                            blackhawksWins = eastResults[i].leagueRecord.wins;
-                            blackhawksOTLS = eastResults[i].leagueRecord.ot;
-                            // console.log("blackhawks wins: " + blackhawksWins);
-                            // console.log(blackhawksOTLS);
-                            // console.log("this loop is running");
-                        }
+                    // islanders
+                    if (eastResults[i].team.id === 16) {
+                        blackhawksWins = eastResults[i].leagueRecord.wins;
+                        blackhawksOTLS = eastResults[i].leagueRecord.ot;
+                        // console.log("blackhawks wins: " + blackhawksWins);
+                        // console.log(blackhawksOTLS);
+                        // console.log("this loop is running");
                     }
-    
+                }
+
                 // wild total
                 wildTotal = (wildWins * 2.9) + (wildOTLS * 1.45);
                 // console.log(wildTotal);
 
-                  // islanders total
-                  islandersTotal = (islandersWins * 2.9) + (islandersOTLS * 1.45);
-                  // console.log(islandersTotal);
+                // islanders total
+                islandersTotal = (islandersWins * 2.9) + (islandersOTLS * 1.45);
+                // console.log(islandersTotal);
 
                 blackhawksTotal = (blackhawksWins * 2.9) + (blackhawksOTLS * 1.45);
 
@@ -494,17 +505,17 @@ class patrick extends React.Component {
                                             <tr>
                                                 <th scope="row">18</th>
                                                 <td className="saints">New Orleans Saints</td>
-                                                <td>{this.state.ravens}</td>
+                                                <td>{this.state.saints}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">58</th>
                                                 <td className="colts">Indianapolis Colts</td>
-                                                <td>{this.state.titans}</td>
+                                                <td>{this.state.colts}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">71</th>
                                                 <td className="niners">San Francisco 49ers</td>
-                                                <td>{this.state.jets}</td>
+                                                <td>{this.state.fortyniners}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>

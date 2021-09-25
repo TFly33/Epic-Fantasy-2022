@@ -9,56 +9,56 @@ class Home extends React.Component {
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
         return (
             <div>
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <a className="navbar-brand" href="/Home">Epic Fantasy League 2021</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/Home">Standings <span class="sr-only">(current)</span></a>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item active">
+                                <a className="nav-link" href="/Home">Standings <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item">
-                                <div class="dropdown show">
-                                    <div class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <li className="nav-item">
+                                <div className="dropdown show">
+                                    <div className="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
                                     </div>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="/tommy">Bommy</a>
-                                        <a class="dropdown-item" href="/patrick">Patrick</a>
-                                        <a class="dropdown-item" href="/james">James</a>
-                                        <a class="dropdown-item" href="/neptune">Neptune</a>
-                                        <a class="dropdown-item" href="/dj">DJ</a>
-                                        <a class="dropdown-item" href="/goose">Goose</a>
-                                        <a class="dropdown-item" href="/al">Al</a>
-                                        <a class="dropdown-item" href="/joe">Joe</a>
-                                        <a class="dropdown-item" href="/steids">Steids</a>
-                                        <a class="dropdown-item" href="/ben">Eres/JMar</a>
+                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a className="dropdown-item" href="/tommy">Bommy</a>
+                                        <a className="dropdown-item" href="/patrick">Patrick</a>
+                                        <a className="dropdown-item" href="/james">James</a>
+                                        <a className="dropdown-item" href="/neptune">Neptune</a>
+                                        <a className="dropdown-item" href="/dj">DJ</a>
+                                        <a className="dropdown-item" href="/goose">Goose</a>
+                                        <a className="dropdown-item" href="/al">Al</a>
+                                        <a className="dropdown-item" href="/joe">Joe</a>
+                                        <a className="dropdown-item" href="/steids">Steids</a>
+                                        <a className="dropdown-item" href="/ben">Eres/JMar</a>
                                     </div>
                                 </div>
                             </li>
                             {/* <li class="nav-item">
                                 <a class="nav-link" href="/Login">Login</a>
                             </li> */}
-                            <li class="nav-item">
-                                <a class="nav-link" href="/draft">Draft Results</a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/draft">Draft Results</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/points">Points System</a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/points">Points System</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
-                <div class="container specialTable">
+                <div className="container specialTable">
                     <Table />
                 </div>
                 {/* <div class ="container">
                 <DatatablePage/>
                 </div> */}
 
-                <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
-                    <div class="container text-center footerText">
+                <footer id="sticky-footer" className="py-2 bg-dark text-white-50">
+                    <div className="container text-center footerText">
                         <small>Copyright &copy; Epic Fantasy League 2021</small>
                     </div>
                 </footer>
