@@ -46,14 +46,14 @@ class neptune extends React.Component {
     };
 
     getScoresNFL = () => {
-        var bills = 9.4
-        var cardinals = 18.8
-        var eagles = 9.4
-        var allNFL = bills + cardinals + eagles
+        var Bills = 9.4
+        var Cardinals = 18.8
+        var Eagles = 9.4
+        var allNFL = Bills + Cardinals + Eagles
         this.setState({ totalNFL: allNFL.toFixed(2) })
-        this.setState({ cardinals: cardinals })
-        this.setState({ eagles: eagles })
-        this.setState({ bills: bills })
+        this.setState({ cardinals: Cardinals })
+        this.setState({ eagles: Eagles })
+        this.setState({ bills: Bills })
     };
 
     getScoresPGA = () => {

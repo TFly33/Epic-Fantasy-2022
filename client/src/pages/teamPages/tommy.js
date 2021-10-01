@@ -50,7 +50,7 @@ class tommy extends React.Component {
     }
 
     getScoresNFL = () => {
-        var Rams = 18.8
+        var Rams = 28.2
         var Steelers = 9.4
         var Dolphins = 9.4
         var allNFL = Rams + Steelers + Dolphins

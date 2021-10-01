@@ -74,12 +74,12 @@ class Table extends Component {
         tomGamble: 190,
         patGamble: 207.5,
         jamesGamble: 205,
-        neptuneGamble: 180,
+        neptuneGamble: 170,
         djGamble: 190,
         gooseGamble: 198,
         alGamble: 201.5,
         joeGamble: 208,
-        steidsGamble: 205,
+        steidsGamble: 215,
         eresGamble: 215,
 
         // MLB Points here:
@@ -318,6 +318,7 @@ class Table extends Component {
             parseInt((this.state.tomNHL)) +
             parseInt((this.state.tomNFL)) +
             parseInt((this.state.tomEPL)) +
+            parseInt((this.state.tomMLB)) +
             parseInt((this.state.tomPGA)) +
             parseInt((this.state.tomGamble));
         this.setState({ tomTotal: tomTotalPoints });
@@ -328,6 +329,7 @@ class Table extends Component {
             parseInt((this.state.patNHL)) +
             parseInt((this.state.patNFL)) +
             parseInt((this.state.patEPL)) +
+            parseInt((this.state.patMLB)) +
             parseInt((this.state.patPGA)) +
             parseInt((this.state.patGamble));
         this.setState({ patTotal: patTotalPoints });
@@ -338,6 +340,7 @@ class Table extends Component {
             parseInt((this.state.jamesNHL)) +
             parseInt((this.state.jamesNFL)) +
             parseInt((this.state.jamesEPL)) +
+            parseInt((this.state.jamesMLB)) +
             parseInt((this.state.jamesPGA)) +
             parseInt((this.state.jamesGamble));
         this.setState({ jamesTotal: jamesTotalPoints });
@@ -348,6 +351,7 @@ class Table extends Component {
             parseInt((this.state.neptuneNHL)) +
             parseInt((this.state.neptuneNFL)) +
             parseInt((this.state.neptuneEPL)) +
+            parseInt((this.state.neptuneMLB)) +
             parseInt((this.state.neptunePGA)) +
             parseInt((this.state.neptuneGamble));;
         this.setState({ neptuneTotal: neptuneTotalPoints });
@@ -358,6 +362,7 @@ class Table extends Component {
             parseInt((this.state.djNHL)) +
             parseInt((this.state.djNFL)) +
             parseInt((this.state.djEPL)) +
+            parseInt((this.state.djMLB)) +
             parseInt((this.state.djPGA)) +
             parseInt((this.state.djGamble));;
         this.setState({ djTotal: djTotalPoints });
@@ -368,6 +373,7 @@ class Table extends Component {
             parseInt((this.state.gooseNHL)) +
             parseInt((this.state.gooseNFL)) +
             parseInt((this.state.gooseEPL)) +
+            parseInt((this.state.gooseMLB)) +
             parseInt((this.state.goosePGA)) +
             parseInt((this.state.gooseGamble));
         this.setState({ gooseTotal: gooseTotalPoints });
@@ -389,6 +395,7 @@ class Table extends Component {
             parseInt((this.state.joeNHL)) +
             parseInt((this.state.joeNFL)) +
             parseInt((this.state.joeEPL)) +
+            parseInt((this.state.joeMLB)) +
             parseInt((this.state.joePGA)) +
             parseInt((this.state.joeGamble));;
         this.setState({ joeTotal: joeTotalPoints });
@@ -399,6 +406,7 @@ class Table extends Component {
             parseInt((this.state.steidsNHL)) +
             parseInt((this.state.steidsNFL)) +
             parseInt((this.state.steidsEPL)) +
+            parseInt((this.state.steidsMLB)) +
             parseInt((this.state.steidsPGA)) +
             parseInt((this.state.steidsGamble));;
         this.setState({ steidsTotal: steidsTotalPoints });
@@ -409,6 +417,7 @@ class Table extends Component {
             parseInt((this.state.benNHL)) +
             parseInt((this.state.benNFL)) +
             parseInt((this.state.benEPL)) +
+            parseInt((this.state.eresMLB)) +
             parseInt((this.state.eresPGA)) +
             parseInt((this.state.eresGamble));;
         this.setState({ benTotal: benTotalPoints });
@@ -816,28 +825,28 @@ class Table extends Component {
 
     getScoresNFL = () => {
         //    Tom NFL
-        var Rams = 18.8
+        var Rams = 28.2
         var Steelers = 9.4
         var Dolphins = 9.4
         var TomNFL = Rams + Steelers + Dolphins
         this.setState({ tomNFL: TomNFL.toFixed(2) })
         // SteidsNFL
-        var Ravens = 9.4
-        var Cowboys = 9.4
+        var Ravens = 18.8
+        var Cowboys = 18.8
         var Chargers = 18.8
         var SteidsNFL = Ravens + Cowboys + Chargers
         this.setState({ steidsNFL: SteidsNFL.toFixed(2) })
         // PatNFL
-        var Saints = 9.4
+        var Saints = 18.8
         var Colts = 0
         var Fortyniners = 18.8
         var PatNFL = Saints + Colts + Fortyniners
         this.setState({ patNFL: PatNFL.toFixed(2) })
         // NeptuneNFL
-        var bills = 9.4
-        var cardinals = 18.8
-        var eagles = 9.4
-        var NeptuneNFL = bills + cardinals + eagles
+        var Bills = 9.4
+        var Cardinals = 18.8
+        var Eagles = 9.4
+        var NeptuneNFL = Bills + Cardinals + Eagles
         this.setState({ neptuneNFL: NeptuneNFL.toFixed(2) })
         // JoeNFL
         var Washington = 9.4
@@ -847,8 +856,8 @@ class Table extends Component {
         this.setState({ joeNFL: JoeNFL.toFixed(2) })
         // JamesNFL
         var nyGiants = 0
-        var Broncos= 18.8
-        var Vikings = 0
+        var Broncos= 28.2
+        var Vikings = 9.4
         var JamesNFL = nyGiants + Broncos+ Vikings
         this.setState({ jamesNFL: JamesNFL.toFixed(2) })
         // GooseNFL
@@ -859,18 +868,18 @@ class Table extends Component {
         this.setState({ gooseNFL: GooseNFL.toFixed(2) })
         // DjNFL
         var Patriots = 9.4
-        var Raiders= 18.8
-        var Bengals = 9.4
+        var Raiders= 28.2
+        var Bengals = 28.2
         var DjNFL = Patriots + Raiders+ Bengals
         this.setState({ djNFL: DjNFL.toFixed(2) })
         // EresNFL
-        var Packers = 9.4
-        var Titans = 9.4
+        var Packers = 18.8
+        var Titans = 18.8
         var Bears= 9.4
         var EresNFL = Packers + Titans+ Bears
         this.setState({ benNFL: EresNFL.toFixed(2) })
         // AlNFL
-        var Browns = 9.4
+        var Browns = 18.8
         var Panthers = 28.2
         var Lions = 0
         var AlNFL = Browns + Panthers + Lions

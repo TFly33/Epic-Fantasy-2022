@@ -45,7 +45,7 @@ class patrick extends React.Component {
     }
 
     getScoresNFL = () => {
-        var Saints = 9.4
+        var Saints = 18.8
         var Colts = 0
         var Fortyniners = 18.8
         var allNFL = Saints + Colts + Fortyniners
