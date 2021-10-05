@@ -48,9 +48,9 @@ class ben extends React.Component {
     };
 
     getScoresNFL = () => {
-        var Packers = 18.8
+        var Packers = 28.2
         var Titans = 18.8
-        var Bears= 9.4
+        var Bears= 18.8
         var allNFL = Packers + Titans+ Bears
         this.setState({ totalNFL: allNFL.toFixed(2) })
         this.setState({ packers: Packers})
