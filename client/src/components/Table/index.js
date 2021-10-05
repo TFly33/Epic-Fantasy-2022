@@ -833,7 +833,7 @@ class Table extends Component {
         // SteidsNFL
         var Ravens = 28.2
         var Cowboys = 28.2
-        var Chargers = 18.8
+        var Chargers = 28.2
         var SteidsNFL = Ravens + Cowboys + Chargers
         this.setState({ steidsNFL: SteidsNFL.toFixed(2) })
         // PatNFL
