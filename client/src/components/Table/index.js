@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { MDBDataTable } from 'mdbreact';
 import "./Table.css";
 import API from "../../utils/API";
-import totalNFL from '../../pages/teamPages/al';
-import al from '../../pages/teamPages/al';
+// import totalNFL from '../../pages/teamPages/al';
+// import al from '../../pages/teamPages/al';
 
 // This table is being used for the Home Page currently, but not for the My Teams page. I am going to create that table separately. 
 class Table extends Component {
@@ -75,8 +75,8 @@ class Table extends Component {
         patGamble: 207.5,
         jamesGamble: 205,
         neptuneGamble: 170,
-        djGamble: 190,
-        gooseGamble: 198,
+        djGamble: 210,
+        gooseGamble: 178,
         alGamble: 201.5,
         joeGamble: 208,
         steidsGamble: 215,
@@ -825,57 +825,57 @@ class Table extends Component {
 
     getScoresNFL = () => {
         //    Tom NFL
-        var Rams = 28.2
-        var Steelers = 9.4
+        var Rams = 37.6
+        var Steelers = 18.8
         var Dolphins = 9.4
         var TomNFL = Rams + Steelers + Dolphins
         this.setState({ tomNFL: TomNFL.toFixed(2) })
         // SteidsNFL
-        var Ravens = 28.2
-        var Cowboys = 28.2
-        var Chargers = 28.2
+        var Ravens = 37.6
+        var Cowboys = 37.6
+        var Chargers = 37.6
         var SteidsNFL = Ravens + Cowboys + Chargers
         this.setState({ steidsNFL: SteidsNFL.toFixed(2) })
         // PatNFL
-        var Saints = 18.8
+        var Saints = 28.2
         var Colts = 9.4
         var Fortyniners = 18.8
         var PatNFL = Saints + Colts + Fortyniners
         this.setState({ patNFL: PatNFL.toFixed(2) })
         // NeptuneNFL
-        var Bills = 28.2
-        var Cardinals = 37.6
-        var Eagles = 9.4
+        var Bills = 37.6
+        var Cardinals = 47
+        var Eagles = 18.8
         var NeptuneNFL = Bills + Cardinals + Eagles
         this.setState({ neptuneNFL: NeptuneNFL.toFixed(2) })
         // JoeNFL
         var Washington = 18.8
-        var Falcons = 9.4
+        var Falcons = 18.8
         var Texans = 9.4
         var JoeNFL = Washington + Falcons + Texans
         this.setState({ joeNFL: JoeNFL.toFixed(2) })
         // JamesNFL
         var nyGiants = 9.4
         var Broncos= 28.2
-        var Vikings = 9.4
+        var Vikings = 18.8
         var JamesNFL = nyGiants + Broncos+ Vikings
         this.setState({ jamesNFL: JamesNFL.toFixed(2) })
         // GooseNFL
         var Chiefs = 18.8
         var Seahawks= 18.8
-        var Bucs = 28.2
+        var Bucs = 37.6
         var GooseNFL = Chiefs + Seahawks+ Bucs
         this.setState({ gooseNFL: GooseNFL.toFixed(2) })
         // DjNFL
-        var Patriots = 9.4
+        var Patriots = 18.8
         var Raiders= 28.2
         var Bengals = 28.2
         var DjNFL = Patriots + Raiders+ Bengals
         this.setState({ djNFL: DjNFL.toFixed(2) })
         // EresNFL
-        var Packers = 28.2
-        var Titans = 18.8
-        var Bears= 18.8
+        var Packers = 37.6
+        var Titans = 28.2
+        var Bears= 28.2
         var EresNFL = Packers + Titans+ Bears
         this.setState({ benNFL: EresNFL.toFixed(2) })
         // AlNFL
@@ -1043,7 +1043,7 @@ class Table extends Component {
                 var allNHL = (canucksTotal + canadiansTotal + ducksTotal).toFixed(1)
                 // console.log(allNHL + " Here is Tom NHL")
 
-                this.setState({ tomNHL: allNHL });
+                this.setState({ tomNHL: 220.4 });
                 this.setState({ canadians: canadiansTotal });
                 this.setState({ canucks: canucksTotal });
                 this.setState({ ducks: ducksTotal });
@@ -1231,7 +1231,7 @@ class Table extends Component {
 
                 var allNHL = (islandersTotal + wildTotal + blackhawksTotal).toFixed(1)
 
-                this.setState({ patNHL: allNHL });
+                this.setState({ patNHL: 291.45 });
                 this.setState({ islanders: islandersTotal });
                 this.setState({ wild: wildTotal });
                 this.setState({ blackhawks: blackhawksTotal });
@@ -1412,7 +1412,7 @@ class Table extends Component {
 
                 var allNHL = (avalancheTotal + pensTotal + kingsTotal).toFixed(1);
 
-                this.setState({ jamesNHL: allNHL });
+                this.setState({ jamesNHL: 301.6 });
                 this.setState({ avalanche: avalancheTotal });
                 this.setState({ pens: pensTotal });
                 this.setState({ kings: kingsTotal });
@@ -1594,7 +1594,7 @@ class Table extends Component {
 
                 var allNHL = (starsTotal + blueJacketsTotal + devilsTotal).toFixed(1);
 
-                this.setState({ neptuneNHL: allNHL });
+                this.setState({ neptuneNHL: 221.85 });
                 this.setState({ stars: starsTotal });
                 this.setState({ blueJackets: blueJacketsTotal });
                 this.setState({ devils: devilsTotal });
@@ -1737,7 +1737,7 @@ class Table extends Component {
 
                 var allNHL = (flyersTotal + oilersTotal + jetsTotal).toFixed(1);
 
-                this.setState({ djNHL: allNHL });
+                this.setState({ djNHL: 279.85 });
                 this.setState({ flyers: flyersTotal });
                 this.setState({ oilers: oilersTotal });
                 this.setState({ jets: jetsTotal });
@@ -1880,7 +1880,7 @@ class Table extends Component {
 
                 var allNHL = (leafsTotal + sharksTotal + coyotesTotal).toFixed(1);
 
-                this.setState({ gooseNHL: allNHL });
+                this.setState({ gooseNHL: 261 });
                 this.setState({ leafs: leafsTotal });
                 this.setState({ sharks: sharksTotal });
                 this.setState({ coyotes: coyotesTotal });
@@ -2025,7 +2025,7 @@ class Table extends Component {
 
                 var allNHL = (capsTotal + canesTotal + rangersTotal).toFixed(1);
 
-                this.setState({ alNHL: allNHL });
+                this.setState({ alNHL: 314.65 });
                 this.setState({ caps: capsTotal });
                 this.setState({ canes: canesTotal });
                 this.setState({ rangers: rangersTotal });
@@ -2166,7 +2166,7 @@ class Table extends Component {
 
                 var allNHL = (knightsTotal + sabresTotal + senatorsTotal).toFixed(1);
 
-                this.setState({ joeNHL: allNHL });
+                this.setState({ joeNHL: 246.5 });
                 this.setState({ knights: knightsTotal });
                 this.setState({ sabres: sabresTotal });
                 this.setState({ senators: senatorsTotal });
@@ -2313,7 +2313,7 @@ class Table extends Component {
 
                 var allNHL = (bluesTotal + panthersTotal + predatorsTotal).toFixed(1);
 
-                this.setState({ steidsNHL: allNHL });
+                this.setState({ steidsNHL: 298.7 });
                 this.setState({ blues: bluesTotal });
                 this.setState({ panthers: panthersTotal });
                 this.setState({ predators: predatorsTotal });
@@ -2458,7 +2458,7 @@ class Table extends Component {
 
                 var allNHL = (lightningTotal + bruinsTotal + flamesTotal).toFixed(1);
 
-                this.setState({ benNHL: allNHL });
+                this.setState({ benNHL: 294.35 });
                 this.setState({ lightning: lightningTotal });
                 this.setState({ bruins: bruinsTotal });
                 this.setState({ flames: flamesTotal });
