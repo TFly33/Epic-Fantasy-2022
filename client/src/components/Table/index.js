@@ -73,14 +73,14 @@ class Table extends Component {
         // Gambling points here: 
         tomGamble: 190,
         patGamble: 207.5,
-        jamesGamble: 205,
-        neptuneGamble: 170,
+        jamesGamble: 215,
+        neptuneGamble: 180,
         djGamble: 210,
         gooseGamble: 178,
-        alGamble: 201.5,
+        alGamble: 171.5,
         joeGamble: 208,
         steidsGamble: 215,
-        eresGamble: 215,
+        eresGamble: 225,
 
         // MLB Points here:
         tomMLB: "",
