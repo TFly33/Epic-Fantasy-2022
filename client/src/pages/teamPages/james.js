@@ -49,7 +49,7 @@ class james extends React.Component {
     getScoresNFL = () => {
         var nyGiants = 9.4
         var Broncos= 28.2
-        var Vikings = 9.4
+        var Vikings = 28.2
         var allNFL = nyGiants + Broncos+ Vikings
         this.setState({ totalNFL: allNFL.toFixed(2) })
         this.setState({ nygiants: nyGiants})

@@ -50,8 +50,8 @@ class tommy extends React.Component {
     }
 
     getScoresNFL = () => {
-        var Rams = 28.2
-        var Steelers = 9.4
+        var Rams = 47
+        var Steelers = 28.2
         var Dolphins = 9.4
         var allNFL = Rams + Steelers + Dolphins
         this.setState({ totalNFL: allNFL.toFixed(2) })
