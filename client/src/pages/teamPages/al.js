@@ -48,8 +48,8 @@ class al extends React.Component {
     }
 
     getScoresNFL = () => {
-        var Browns = 28.2
-        var Panthers = 28.2
+        var Browns = 37.6
+        var Panthers = 37.6
         var Lions = 0
         var allNFL = Browns + Panthers + Lions
         this.setState({ totalNFL: allNFL.toFixed(2) })

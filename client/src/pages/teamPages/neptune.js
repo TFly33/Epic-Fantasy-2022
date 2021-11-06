@@ -46,9 +46,9 @@ class neptune extends React.Component {
     };
 
     getScoresNFL = () => {
-        var Bills = 37.6
-        var Cardinals = 56.4
-        var Eagles = 18.8
+        var Bills = 47
+        var Cardinals = 65.8
+        var Eagles = 28.2
         var allNFL = Bills + Cardinals + Eagles
         this.setState({ totalNFL: allNFL.toFixed(2) })
         this.setState({ cardinals: Cardinals })

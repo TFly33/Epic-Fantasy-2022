@@ -47,9 +47,9 @@ class dj extends React.Component {
     }
 
     getScoresNFL = () => {
-        var Patriots = 18.8
-        var Raiders= 37.6
-        var Bengals = 37.6
+        var Patriots = 37.6
+        var Raiders= 47
+        var Bengals = 47
         var allNFL = Patriots + Raiders+ Bengals
         this.setState({ totalNFL: allNFL.toFixed(2) })
         this.setState({ patriots: Patriots})
