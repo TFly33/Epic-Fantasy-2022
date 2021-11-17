@@ -48,9 +48,9 @@ class al extends React.Component {
     }
 
     getScoresNFL = () => {
-        var Browns = 37.6
-        var Panthers = 37.6
-        var Lions = 0
+        var Browns = 47
+        var Panthers = 47
+        var Lions = 2.2
         var allNFL = Browns + Panthers + Lions
         this.setState({ totalNFL: allNFL.toFixed(2) })
         this.setState({ browns: Browns})

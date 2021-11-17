@@ -47,7 +47,7 @@ class dj extends React.Component {
     }
 
     getScoresNFL = () => {
-        var Patriots = 37.6
+        var Patriots = 56.4
         var Raiders= 47
         var Bengals = 47
         var allNFL = Patriots + Raiders+ Bengals

@@ -51,8 +51,9 @@ class tommy extends React.Component {
 
     getScoresNFL = () => {
         var Rams = 65.8
-        var Steelers = 37.6
-        var Dolphins = 9.4
+        var Steelers = 49.2
+        // Ties worth 2.2 based on the points for everything else. 
+        var Dolphins = 28.2
         var allNFL = Rams + Steelers + Dolphins
         this.setState({ totalNFL: allNFL.toFixed(2) })
         this.setState({ steelers: Steelers })
