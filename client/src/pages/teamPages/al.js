@@ -48,7 +48,7 @@ class al extends React.Component {
     }
 
     getScoresNFL = () => {
-        var Browns = 47
+        var Browns = 56.4
         var Panthers = 47
         var Lions = 2.2
         var allNFL = Browns + Panthers + Lions
