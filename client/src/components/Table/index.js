@@ -864,7 +864,7 @@ class Table extends Component {
         // GooseNFL
         var Chiefs = 65.8
         var Seahawks= 28.2
-        var Bucs = 56.4
+        var Bucs = 65.8
         var GooseNFL = Chiefs + Seahawks+ Bucs
         this.setState({ gooseNFL: GooseNFL.toFixed(2) })
         // DjNFL
