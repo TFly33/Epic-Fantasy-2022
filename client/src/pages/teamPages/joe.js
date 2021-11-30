@@ -46,8 +46,8 @@ class joe extends React.Component {
     };
 
     getScoresNFL = () => {
-        var Washington = 37.6
-        var Falcons = 37.6
+        var Washington = 47
+        var Falcons = 47
         var Texans = 18.8
         var allNFL = Washington + Falcons + Texans
         this.setState({ totalNFL: allNFL.toFixed(2) })

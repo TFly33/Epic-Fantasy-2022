@@ -47,7 +47,7 @@ class steids extends React.Component {
     };
 
     getScoresNFL = () => {
-        var Ravens = 65.8
+        var Ravens = 75.2
         var Cowboys = 65.8
         var Chargers = 56.4
         var allNFL = Ravens + Cowboys + Chargers
