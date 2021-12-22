@@ -45,9 +45,9 @@ class patrick extends React.Component {
     }
 
     getScoresNFL = () => {
-        var Saints = 56.4
-        var Colts = 65.8
-        var Fortyniners = 65.8
+        var Saints = 65.8
+        var Colts = 75.2
+        var Fortyniners = 75.2
         var allNFL = Saints + Colts + Fortyniners
         this.setState({ totalNFL: allNFL.toFixed(2) })
         this.setState({ colts: Colts })
