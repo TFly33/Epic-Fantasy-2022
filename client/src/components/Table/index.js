@@ -825,34 +825,34 @@ class Table extends Component {
 
     getScoresNFL = () => {
         //    Tom NFL
-        var Rams = 94
+        var Rams = 103.4
         var Steelers = 65.8
         // Ties worth 2.2 based on the points for everything else. 
-        var Dolphins = 65.8
+        var Dolphins = 75.2
         var TomNFL = Rams + Steelers + Dolphins
         this.setState({ tomNFL: TomNFL.toFixed(2) })
         // SteidsNFL
         var Ravens = 75.2
-        var Cowboys = 94
+        var Cowboys = 103.4
         var Chargers = 75.2
         var SteidsNFL = Ravens + Cowboys + Chargers
         this.setState({ steidsNFL: SteidsNFL.toFixed(2) })
         // PatNFL
         var Saints = 65.8
-        var Colts = 75.2
+        var Colts = 84.6
         var Fortyniners = 75.2
         var PatNFL = Saints + Colts + Fortyniners
         this.setState({ patNFL: PatNFL.toFixed(2) })
         // NeptuneNFL
-        var Bills = 75.2
+        var Bills = 84.6
         var Cardinals = 94
-        var Eagles = 65.8
+        var Eagles = 75.2
         var NeptuneNFL = Bills + Cardinals + Eagles
         this.setState({ neptuneNFL: NeptuneNFL.toFixed(2) })
         // JoeNFL
         var Washington = 56.4
-        var Falcons = 56.4
-        var Texans = 28.2
+        var Falcons = 65.8
+        var Texans = 37.6
         var JoeNFL = Washington + Falcons + Texans
         this.setState({ joeNFL: JoeNFL.toFixed(2) })
         // JamesNFL
@@ -862,21 +862,21 @@ class Table extends Component {
         var JamesNFL = nyGiants + Broncos+ Vikings
         this.setState({ jamesNFL: JamesNFL.toFixed(2) })
         // GooseNFL
-        var Chiefs = 94
+        var Chiefs = 103.4
         var Seahawks= 47
-        var Bucs = 94
+        var Bucs = 103.4
         var GooseNFL = Chiefs + Seahawks+ Bucs
         this.setState({ gooseNFL: GooseNFL.toFixed(2) })
         // DjNFL
         var Patriots = 84.6
-        var Raiders= 65.8
-        var Bengals = 75.2
+        var Raiders= 75.2
+        var Bengals = 84.6
         var DjNFL = Patriots + Raiders+ Bengals
         this.setState({ djNFL: DjNFL.toFixed(2) })
         // EresNFL
-        var Packers = 103.4
-        var Titans = 84.6
-        var Bears= 37.6
+        var Packers = 112.8
+        var Titans = 94
+        var Bears= 47
         var EresNFL = Packers + Titans+ Bears
         this.setState({ benNFL: EresNFL.toFixed(2) })
         // AlNFL
