@@ -49,7 +49,7 @@ class steids extends React.Component {
     getScoresNFL = () => {
         var Ravens = 75.2
         var Cowboys = 103.4
-        var Chargers = 75.2
+        var Chargers = 84.6
         var allNFL = Ravens + Cowboys + Chargers
         this.setState({ totalNFL: allNFL.toFixed(2) })
         this.setState({ ravens: Ravens })
