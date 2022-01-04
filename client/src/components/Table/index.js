@@ -71,14 +71,14 @@ class Table extends Component {
         eresPGA: "",
 
         // Gambling points here: 
-        tomGamble: 210,
+        tomGamble: 230,
         patGamble: 207.5,
         jamesGamble: 215,
-        neptuneGamble: 140,
+        neptuneGamble: 100,
         djGamble: 220,
-        gooseGamble: 178,
-        alGamble: 201.5,
-        joeGamble: 188,
+        gooseGamble: 193,
+        alGamble: 165.5,
+        joeGamble: 228,
         steidsGamble: 215,
         eresGamble: 225,
 
@@ -826,7 +826,7 @@ class Table extends Component {
     getScoresNFL = () => {
         //    Tom NFL
         var Rams = 112.8
-        var Steelers = 65.8
+        var Steelers = 77.4
         // Ties worth 2.2 based on the points for everything else. 
         var Dolphins = 75.2
         var TomNFL = Rams + Steelers + Dolphins
