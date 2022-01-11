@@ -46,9 +46,9 @@ class goose extends React.Component {
     }
 
     getScoresNFL = () => {
-        var Chiefs = 103.4
-        var Seahawks= 56.4
-        var Bucs = 112.8
+        var Chiefs = 112.8
+        var Seahawks= 65.8
+        var Bucs = 122.2
         var allNFL = Chiefs + Seahawks+ Bucs
         this.setState({ totalNFL: allNFL.toFixed(2) })
         this.setState({ chiefs: Chiefs})
