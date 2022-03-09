@@ -2,11 +2,6 @@ import React from "react";
 
 class points extends React.Component {
 
-    componentDidMount = () => {
-        // this.getScoresNBA();
-        // this.getScoresNHL();
-        // this.getScoresEPL();
-    }
 
     render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
         return (
@@ -23,7 +18,7 @@ class points extends React.Component {
                             </li>
                             <li class="nav-item">
                                 <div class="dropdown show">
-                                    <div class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
                                     </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -55,7 +50,7 @@ class points extends React.Component {
                 <div class="card">
                     <div class="card-body text-center bg-light text-secondary">
                         Points System
-                     </div>
+                    </div>
                 </div>
                 {/* Starting my new tables here */}
                 <div class="container pointsTable">
@@ -112,6 +107,38 @@ class points extends React.Component {
                             </table>
                         </div>
                     </div>
+
+                </div>
+
+                <div class="container pointsTable">
+                    <div class="row">
+                        <div class="col-12">
+                            {/* Here is the table for the points system */}
+                            <table class="table table-striped table-bordered table-hover text-center">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col-6">Standings</th>
+                                        <th scope="col-6">Payout</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr>
+                                        <th scope="row">1st</th>
+                                        <td>$750</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2nd</th>
+                                        <td>$450</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3rd</th>
+                                        <td>$150</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
 
                 <body class="d-flex flex-column">
