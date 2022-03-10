@@ -8,9 +8,9 @@ class patrick extends React.Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         PatrickNBA: "",
-        lakers: "",
-        jazz: "",
-        warriors: "",
+        suns: "",
+        kings: "",
+        hornets: "",
         ravens: 140,
         titans: 90,
         jets: 70,
@@ -168,21 +168,21 @@ class patrick extends React.Component {
                 // HERE ARE NBA TEAMS FOR TOMMY. 
                 // console.log(res);
                 // console.log(res.data.api.standings);
-                var lakersWin = res.data.api.standings[23].win;
-                var warriorsWin = res.data.api.standings[20].win;
-                var jazzWin = res.data.api.standings[27].win;
+                var sunsWin = res.data.api.standings[22].win;
+                var hornetsWin = res.data.api.standings[1].win;
+                var kingsWin = res.data.api.standings[21].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doubleLakers = (lakersWin * 2);
-                var doubleWarriors = (warriorsWin * 2);
-                var doubleJazz = (jazzWin * 2);
+                var doublesuns = (sunsWin * 2);
+                var doublehornets = (hornetsWin * 2);
+                var doublekings = (kingsWin * 2);
 
                 const tempPatrickNBA = this.state.allNBA;
 
-                tempPatrickNBA.push(lakersWin);
-                tempPatrickNBA.push(warriorsWin);
-                tempPatrickNBA.push(jazzWin);
+                tempPatrickNBA.push(sunsWin);
+                tempPatrickNBA.push(hornetsWin);
+                tempPatrickNBA.push(kingsWin);
 
                 var PatrickDoubledScores = tempPatrickNBA.map(team => team * 2);
 
@@ -193,9 +193,9 @@ class patrick extends React.Component {
                 }
                 console.log(PatrickPoints);
                 this.setState({ PatrickNBA: PatrickPoints });
-                this.setState({ lakers: doubleLakers });
-                this.setState({ jazz: doubleJazz });
-                this.setState({ warriors: doubleWarriors });
+                this.setState({ suns: doublesuns });
+                this.setState({ kings: doublekings });
+                this.setState({ hornets: doublehornets });
             })
             .catch(error => {
                 console.log(error)
@@ -266,19 +266,19 @@ class patrick extends React.Component {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">19</th>
-                                        <td className="lakers">Los Angeles Lakers</td>
-                                        <td>{this.state.lakers}</td>
+                                        <th scope="row">21</th>
+                                        <td className="suns">Phoenix Suns</td>
+                                        <td>{this.state.suns}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">23</th>
-                                        <td className="jazz">Utah Jazz</td>
-                                        <td>{this.state.jazz}</td>
+                                        <th scope="row">86</th>
+                                        <td className="hornets">Charlotte Hornets</td>
+                                        <td>{this.state.hornets}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">38</th>
-                                        <td className="warriors">Golden State Warriors</td>
-                                        <td>{this.state.warriors}</td>
+                                        <th scope="row">95</th>
+                                        <td className="kings">Sacramento Kings</td>
+                                        <td>{this.state.kings}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>

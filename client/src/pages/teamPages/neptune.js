@@ -8,9 +8,9 @@ class neptune extends React.Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         neptuneNBA: "",
+        jazz: "",
         celtics: "",
-        pacers: "",
-        hornets: "",
+        wizardss: "",
         // NFL STARTING HERE 
         rams: 90,
         jaguars: 60,
@@ -172,21 +172,21 @@ class neptune extends React.Component {
                 // HERE ARE NBA TEAMS FOR TOMMY. 
                 // console.log(res);
                 // console.log(res.data.api.standings);
-                var celticsWin = res.data.api.standings[7].win;
-                var pacersWin = res.data.api.standings[11].win;
-                var hornetsWin = res.data.api.standings[1].win;
+                var jazzWin = res.data.api.standings[25].win;
+                var celticsWin = res.data.api.standings[9].win;
+                var wizardsWin = res.data.api.standings[0].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doubleCeltics = (celticsWin * 2);
-                var doublePacers = (pacersWin * 2);
-                var doubleHornets = (hornetsWin * 2);
+                var doublejazz = (jazzWin * 2);
+                var doubleceltics = (celticsWin * 2);
+                var doublewizards = (wizardsWin * 2);
 
                 const tempNeptuneNBA = this.state.allNBA;
 
+                tempNeptuneNBA.push(jazzWin);
                 tempNeptuneNBA.push(celticsWin);
-                tempNeptuneNBA.push(pacersWin);
-                tempNeptuneNBA.push(hornetsWin);
+                tempNeptuneNBA.push(wizardsWin);
 
                 var NeptuneDoubledScores = tempNeptuneNBA.map(team => team * 2);
 
@@ -197,9 +197,9 @@ class neptune extends React.Component {
                 }
                 console.log(NeptunePoints);
                 this.setState({ neptuneNBA: NeptunePoints });
-                this.setState({ celtics: doubleCeltics });
-                this.setState({ pacers: doublePacers });
-                this.setState({ hornets: doubleHornets });
+                this.setState({ jazz: doublejazz });
+                this.setState({ celtics: doubleceltics });
+                this.setState({ wizards: doublewizards });
             })
             .catch(error => {
                 console.log(error)
@@ -271,18 +271,18 @@ class neptune extends React.Component {
                                 <tbody>
                                     <tr>
                                         <th scope="row">24</th>
-                                        <td className="celtics">Boston Celtics</td>
-                                        <td>{this.state.celtics}</td>
+                                        <td className="jazz">Utah jazz</td>
+                                        <td>{this.state.jazz}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">46</th>
-                                        <td className="pacers">Indiana Pacers</td>
-                                        <td>{this.state.pacers}</td>
+                                        <td className="celtics">Boston celtics</td>
+                                        <td>{this.state.celtics}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">122</th>
-                                        <td className="hornets">Charlotte Hornets</td>
-                                        <td>{this.state.hornets}</td>
+                                        <td className="wiz">Washington Wizards</td>
+                                        <td>{this.state.wizards}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>

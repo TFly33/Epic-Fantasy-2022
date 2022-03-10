@@ -77,8 +77,8 @@ class points extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">NFL</th>
-                                        <td>16</td>
-                                        <td>10</td>
+                                        <td>17</td>
+                                        <td>9.4</td>
                                         <td>2.35</td>
                                         <td>160</td>
                                     </tr>
