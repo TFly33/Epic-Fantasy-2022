@@ -1,6 +1,8 @@
 import React from "react";
 import API from "../../utils/API";
 
+// This page is now for Mark Eres. 
+
 class ben extends React.Component {
     // Here is the function we will use for creating the actual table. 
     state = {
@@ -8,9 +10,9 @@ class ben extends React.Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         benNBA: "",
-        pelicans: "",
-        grizzlies: "",
-        cavs: "",
+        clippers: "",
+        magic: "",
+        rockets: "",
         eagles: 90,
         cowboys: 80,
         redskins: 30,
@@ -172,21 +174,21 @@ class ben extends React.Component {
                 // HERE ARE NBA TEAMS FOR TOMMY. 
                 // console.log(res);
                 // console.log(res.data.api.standings);
-                var pelicansWin = res.data.api.standings[18].win;
-                var grizzliesWin = res.data.api.standings[17].win;
-                var cavsWin = res.data.api.standings[14].win;
+                var clippersWin = res.data.api.standings[23].win;
+                var magicWin = res.data.api.standings[4].win;
+                var rocketsWin = res.data.api.standings[16].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doublepelicans = (pelicansWin * 2);
-                var doublegrizzlies = (grizzliesWin * 2);
-                var doublecavs = (cavsWin * 2);
+                var doubleclippers = (clippersWin * 2);
+                var doublemagic = (magicWin * 2);
+                var doublerockets = (rocketsWin * 2);
 
                 const tempbenNBA = this.state.allNBA;
 
-                tempbenNBA.push(pelicansWin);
-                tempbenNBA.push(grizzliesWin);
-                tempbenNBA.push(cavsWin);
+                tempbenNBA.push(clippersWin);
+                tempbenNBA.push(magicWin);
+                tempbenNBA.push(rocketsWin);
 
                 var benDoubledScores = tempbenNBA.map(team => team * 2);
 
@@ -197,9 +199,9 @@ class ben extends React.Component {
                 }
                 console.log(benPoints);
                 this.setState({ benNBA: benPoints });
-                this.setState({ pelicans: doublepelicans });
-                this.setState({ grizzlies: doublegrizzlies });
-                this.setState({ cavs: doublecavs });
+                this.setState({ clippers: doubleclippers });
+                this.setState({ magic: doublemagic });
+                this.setState({ rockets: doublerockets });
             })
             .catch(error => {
                 console.log(error)
@@ -234,7 +236,7 @@ class ben extends React.Component {
                                         <a class="dropdown-item" href="al">Al</a>
                                         <a class="dropdown-item" href="joe">Joe</a>
                                         <a class="dropdown-item" href="steids">Steids</a>
-                                        <a class="dropdown-item" href="ben">Ben</a>
+                                        <a class="dropdown-item" href="ben">Eres</a>
                                     </div>
                                 </div>
                             </li>
@@ -252,7 +254,7 @@ class ben extends React.Component {
                 </nav>
                 <div class="card">
                     <div class="card-body text-center bg-light text-secondary">
-                        Ben
+                        Eres
   </div>
                 </div>
                 {/* Starting my new table here */}
@@ -269,19 +271,19 @@ class ben extends React.Component {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">69</th>
-                                        <td className="pelicans">New Orleans Pelicans</td>
-                                        <td>{this.state.pelicans}</td>
+                                        <th scope="row">31</th>
+                                        <td className="clippers">LA Clippers</td>
+                                        <td>{this.state.clippers}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">120</th>
-                                        <td className="grizzlies">Memphis Grizzlies</td>
-                                        <td>{this.state.grizzlies}</td>
+                                        <th scope="row">162</th>
+                                        <td className="magic">Orlando Magic</td>
+                                        <td>{this.state.magic}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">135</th>
-                                        <td className="cavs">Cleveland Cavaliers</td>
-                                        <td>{this.state.cavs}</td>
+                                        <th scope="row">179</th>
+                                        <td className="rockets">Houston Rockets</td>
+                                        <td>{this.state.rockets}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>
