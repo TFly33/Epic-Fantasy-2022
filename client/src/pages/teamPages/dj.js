@@ -8,9 +8,9 @@ class dj extends React.Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         djNBA: "",
-        sixers: "",
-        rockets: "",
-        timberwolves: "",
+        bucks: "",
+        grizzlies: "",
+        pistons: "",
         bears: 80,
         texans: 100,
         broncos: 70,
@@ -172,21 +172,21 @@ class dj extends React.Component {
                 // HERE ARE NBA TEAMS FOR TOMMY. 
                 // console.log(res);
                 // console.log(res.data.api.standings);
-                var sixersWin = res.data.api.standings[6].win;
-                var rocketsWin = res.data.api.standings[15].win;
-                var timberwolvesWin = res.data.api.standings[29].win;
+                var bucksWin = res.data.api.standings[11].win;
+                var grizzliesWin = res.data.api.standings[15].win;
+                var pistonsWin = res.data.api.standings[14].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doublesixers = (sixersWin * 2);
-                var doublerockets = (rocketsWin * 2);
-                var doubletimberwolves = (timberwolvesWin * 2);
+                var doublebucks = (bucksWin * 2);
+                var doublegrizzlies = (grizzliesWin * 2);
+                var doublepistons = (pistonsWin * 2);
 
                 const tempdjNBA = this.state.allNBA;
 
-                tempdjNBA.push(sixersWin);
-                tempdjNBA.push(rocketsWin);
-                tempdjNBA.push(timberwolvesWin);
+                tempdjNBA.push(bucksWin);
+                tempdjNBA.push(grizzliesWin);
+                tempdjNBA.push(pistonsWin);
 
                 var djDoubledScores = tempdjNBA.map(team => team * 2);
 
@@ -197,9 +197,9 @@ class dj extends React.Component {
                 }
                 console.log(djPoints);
                 this.setState({ djNBA: djPoints });
-                this.setState({ sixers: doublesixers });
-                this.setState({ rockets: doublerockets });
-                this.setState({ timberwolves: doubletimberwolves });
+                this.setState({ bucks: doublebucks });
+                this.setState({ grizzlies: doublegrizzlies });
+                this.setState({ pistons: doublepistons });
             })
             .catch(error => {
                 console.log(error)
@@ -269,19 +269,19 @@ class dj extends React.Component {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">4</th>
-                                        <td className="sixers">Philadelphia 76ers</td>
-                                        <td>{this.state.sixers}</td>
+                                        <th scope="row">8</th>
+                                        <td className="bucks">Milwaukee Bucks</td>
+                                        <td>{this.state.bucks}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">17</th>
-                                        <td className="rockets">Houston Rockets</td>
-                                        <td>{this.state.rockets}</td>
+                                        <th scope="row">81</th>
+                                        <td className="grizzlies">Memphis Grizzlies</td>
+                                        <td>{this.state.grizzlies}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">84</th>
-                                        <td className="tWolves">Minnesota Timberwolves</td>
-                                        <td>{this.state.timberwolves}</td>
+                                        <th scope="row">164</th>
+                                        <td className="pistons">Detroit Pistons</td>
+                                        <td>{this.state.pistons}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total</th>

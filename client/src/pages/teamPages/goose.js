@@ -8,13 +8,13 @@ class goose extends React.Component {
         // Putting NBA arrays here. Each person's array will include three NBA teams. 
         allNBA: [],
         gooseNBA: "",
-        raptors: "",
-        pistons: "",
+        nuggets: "",
+        bulls: "",
         knicks: "",
-        chiefs: 120,
-        panthers: 50,
-        bengals: 20,
-        totalNFL: 190,
+        // chiefs: 120,
+        // panthers: 50,
+        // bengals: 20,
+        // totalNFL: 190,
         // EPL
         manu: "",
         westham: "",
@@ -169,20 +169,20 @@ class goose extends React.Component {
                 // HERE ARE NBA TEAMS FOR TOMMY. 
                 // console.log(res);
                 // console.log(res.data.api.standings);
-                var raptorsWin = res.data.api.standings[5].win;
-                var pistonsWin = res.data.api.standings[12].win;
-                var knicksWin = res.data.api.standings[9].win;
+                var nuggetsWin = res.data.api.standings[27].win;
+                var bullsWin = res.data.api.standings[10].win;
+                var knicksWin = res.data.api.standings[5].win;
 
                 // I need to multiply the API result by 2 FIRST since we need them individually. 
 
-                var doubleRaptors = (raptorsWin * 2);
-                var doublePistons = (pistonsWin * 2);
+                var doublenuggets = (nuggetsWin * 2);
+                var doublebulls = (bullsWin * 2);
                 var doubleKnicks = (knicksWin * 2);
 
                 const tempGooseNBA = this.state.allNBA;
 
-                tempGooseNBA.push(raptorsWin);
-                tempGooseNBA.push(pistonsWin);
+                tempGooseNBA.push(nuggetsWin);
+                tempGooseNBA.push(bullsWin);
                 tempGooseNBA.push(knicksWin);
 
                 var GooseDoubledScores = tempGooseNBA.map(team => team * 2);
@@ -194,8 +194,8 @@ class goose extends React.Component {
                 }
                 console.log(GoosePoints);
                 this.setState({ gooseNBA: GoosePoints });
-                this.setState({ raptors: doubleRaptors });
-                this.setState({ pistons: doublePistons });
+                this.setState({ nuggets: doublenuggets });
+                this.setState({ bulls: doublebulls });
                 this.setState({ knicks: doubleKnicks });
             })
             .catch(error => {
@@ -266,17 +266,17 @@ class goose extends React.Component {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">51</th>
-                                        <td className="raptors">Toronto Raptors</td>
-                                        <td>{this.state.raptors}</td>
+                                        <th scope="row">32</th>
+                                        <td className="nuggets">Denver Nuggets</td>
+                                        <td>{this.state.nuggets}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">78</th>
-                                        <td className="pistons">Detroit Pistons</td>
-                                        <td>{this.state.pistons}</td>
+                                        <th scope="row">47</th>
+                                        <td className="bulls">Chicago Bulls</td>
+                                        <td>{this.state.bulls}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">128</th>
+                                        <th scope="row">64</th>
                                         <td className="knicks">New York Knicks</td>
                                         <td>{this.state.knicks}</td>
                                     </tr>

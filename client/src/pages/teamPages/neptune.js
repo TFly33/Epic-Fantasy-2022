@@ -276,7 +276,7 @@ class neptune extends React.Component {
                                     </tr>
                                     <tr>
                                         <th scope="row">46</th>
-                                        <td className="celtics">Boston celtics</td>
+                                        <td className="celtics">Boston Celtics</td>
                                         <td>{this.state.celtics}</td>
                                     </tr>
                                     <tr>
