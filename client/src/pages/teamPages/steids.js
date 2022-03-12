@@ -9,7 +9,7 @@ class steids extends React.Component {
         allNBA: [],
         steidsNBA: "",
         hawks: "",
-        hawks: "",
+        raptors: "",
         tWolves: "",
         browns: 60,
         steelers: 80,
@@ -228,7 +228,7 @@ class steids extends React.Component {
                                         <a class="dropdown-item" href="al">Al</a>
                                         <a class="dropdown-item" href="joe">Joe</a>
                                         <a class="dropdown-item" href="steids">Steids</a>
-                                        <a class="dropdown-item" href="ben">Ben</a>
+                                        <a class="dropdown-item" href="ben">Eres</a>
                                     </div>
                                 </div>
                             </li>
