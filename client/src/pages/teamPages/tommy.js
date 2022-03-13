@@ -12,13 +12,13 @@ class tommy extends React.Component {
         blazers: "",
         spurs: "",
         // NFL Here
-        fourtyNiners: 130,
-        seahawks: 110,
-        patriots: 120,
-        totalNFL: 360,
+        // fourtyNiners: 130,
+        // seahawks: 110,
+        // patriots: 120,
+        // totalNFL: 360,
         // Adding EPL Results Here:
-        chelsea: "",
-        brighton: "",
+        arsenal: "",
+        wolves: "",
         eplTotal: "",
         // NHL States here 
         blackhawks: "",
@@ -118,43 +118,43 @@ class tommy extends React.Component {
         API.getScoresEPL()
             .then(res => {
                 // HERE ARE EPL TEAMS FOR TOMMY. 
-                //  Chelsea
-                // console.log(res)
-                var chelseaWin;
-                var chelseaTie;
-                var brightonWin;
-                var brightonTie;
+                //  arsenal
+                console.log(res.data.response[0].league.standings[0])
+                var arsenalWin;
+                var arsenalTie;
+                var wolvesWin;
+                var wolvesTie;
 
                 // running the for loop here. 
-                var forLoopArray = res.data.api.standings[0]
+                var forLoopArray = res.data.response[0].league.standings[0]
                 for (var i = 0; i < forLoopArray.length; i++) {
 
-                    if (forLoopArray[i].team_id === 49) {
-                        chelseaWin = forLoopArray[i].all.win
-                        chelseaTie = forLoopArray[i].all.draw
+                    if (forLoopArray[i].team.id === 42) {
+                        arsenalWin = forLoopArray[i].all.win
+                        arsenalTie = forLoopArray[i].all.draw
                         //then so something
                         //return something here
-                        console.log("here are the wins" + chelseaWin);
-                        console.log("here are the ties" + chelseaTie);
+                        console.log("here are the wins" + arsenalWin);
+                        console.log("here are the ties" + arsenalTie);
                     }
 
-                    if (forLoopArray[i].team_id === 51) {
-                        brightonWin = forLoopArray[i].all.win
-                        brightonTie = forLoopArray[i].all.draw
+                    if (forLoopArray[i].team.id === 39) {
+                        wolvesWin = forLoopArray[i].all.win
+                        wolvesTie = forLoopArray[i].all.draw
                         //then so something
                         //return something here
-                        console.log("here are the wins" + brightonWin);
-                        console.log("here are the ties" + brightonTie);
+                        console.log("here are the wins" + wolvesWin);
+                        console.log("here are the ties" + wolvesTie);
                     }
                 }
 
-                var chelseaTotal = (chelseaWin * 4.25) + (chelseaTie);
-                var brightonTotal = (brightonWin * 4.25) + (brightonTie);
+                var arsenalTotal = (arsenalWin * 4.25) + (arsenalTie);
+                var wolvesTotal = (wolvesWin * 4.25) + (wolvesTie);
 
                 // Here is the final result
-                var tomPoints = chelseaTotal + brightonTotal;
-                this.setState({ chelsea: chelseaTotal });
-                this.setState({ brighton: brightonTotal });
+                var tomPoints = arsenalTotal + wolvesTotal;
+                this.setState({ arsenal: arsenalTotal });
+                this.setState({ wolves: wolvesTotal });
                 this.setState({ eplTotal: tomPoints });
 
                 // And now I need to run the totalscores function so that it can get logged. 
@@ -347,14 +347,14 @@ class tommy extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">10</th>
-                                                <td className="chelsea">Chelsea</td>
-                                                <td>{this.state.chelsea}</td>
+                                                <th scope="row">55</th>
+                                                <td className="arsenal">Arsenal</td>
+                                                <td>{this.state.arsenal}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">138</th>
-                                                <td className="brighton">Brighton and Hove Albion</td>
-                                                <td>{this.state.brighton}</td>
+                                                <th scope="row">65</th>
+                                                <td className="wolverhampton">Wolverhampton</td>
+                                                <td>{this.state.wolves}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>

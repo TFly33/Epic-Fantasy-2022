@@ -16,7 +16,7 @@ class steids extends React.Component {
         buccaneers: 70,
         totalNFL: 210,
         // EPL Teams Here
-        arsenal: "",
+        westHam: "",
         watford: "",
         steidsEPL: "",
         // NHL
@@ -116,43 +116,43 @@ class steids extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-            //   Starting Steids EPL Here 
-                var arsenalWin;
-                var arsenalTie;
-                var watfordWin;
-                var watfordTie;
+                console.log(res.data.response[0].league.standings[0])
+                var westHamWin;
+                var westHamTie;
+                var burnleyWin;
+                var burnleyTie;
 
                 // running the for loop here. 
-                var forLoopArray = res.data.api.standings[0]
+                var forLoopArray = res.data.response[0].league.standings[0]
                 for (var i = 0; i < forLoopArray.length; i++) {
 
-                    if (forLoopArray[i].team_id === 42) {
-                        arsenalWin = forLoopArray[i].all.win
-                        arsenalTie = forLoopArray[i].all.draw
+                    if (forLoopArray[i].team.id === 48) {
+                        westHamWin = forLoopArray[i].all.win
+                        westHamTie = forLoopArray[i].all.draw
                         //then so something
                         //return something here
-                        console.log("here are the wins" + arsenalWin);
-                        console.log("here are the ties" + arsenalTie);
+                        console.log("here are the wins" + westHamWin);
+                        console.log("here are the ties" + westHamTie);
                     }
 
-                    if (forLoopArray[i].team_id === 38) {
-                        watfordWin = forLoopArray[i].all.win
-                        watfordTie = forLoopArray[i].all.draw
+                    if (forLoopArray[i].team.id === 44) {
+                        burnleyWin = forLoopArray[i].all.win
+                        burnleyTie = forLoopArray[i].all.draw
                         //then so something
                         //return something here
-                        console.log("here are the wins" + watfordWin);
-                        console.log("here are the ties" + watfordTie);
+                        console.log("here are the wins" + burnleyWin);
+                        console.log("here are the ties" + burnleyTie);
                     }
                 }
 
-                var arsenalTotal = (arsenalWin * 4.25) + (arsenalTie);
-                var watfordTotal = (watfordWin * 4.25) + (watfordTie);
+                var westHamTotal = (westHamWin * 4.25) + (westHamTie);
+                var burnleyTotal = (burnleyWin * 4.25) + (burnleyTie);
 
                 // Here is the final result
-                var steidsPoints = arsenalTotal + watfordTotal;
-                this.setState({ arsenal: arsenalTotal });
-                this.setState({ watford: watfordTotal });
-                this.setState({ steidsEPL: steidsPoints });
+                var steidsPoints = westHamTotal + burnleyTotal;
+                this.setState({ westHam: westHamTotal });
+                this.setState({ burnley: burnleyTotal });
+                this.setState({ eplTotal: steidsPoints });
 
             })
             .catch(error => {
@@ -341,19 +341,19 @@ class steids extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">13</th>
-                                                <td className="arsenal">Arsenal</td>
-                                                <td>{this.state.arsenal}</td>
+                                                <th scope="row">53</th>
+                                                <td className="westHam">Westham United</td>
+                                                <td>{this.state.westHam}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">81</th>
-                                                <td className="watford">Watford</td>
-                                                <td>{this.state.watford}</td>
+                                                <td className="burnley">Burnley</td>
+                                                <td>{this.state.burnley}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                <td>{this.state.steidsEPL}</td>
+                                                <td>{this.state.eplTotal}</td>
                                             </tr>
                                         </tbody>
                                     </table>
