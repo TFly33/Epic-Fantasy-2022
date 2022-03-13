@@ -16,7 +16,7 @@ class goose extends React.Component {
         // bengals: 20,
         // totalNFL: 190,
         // EPL
-        manu: "",
+        crystal: "",
         westham: "",
         gooseEPL: "",
         // NHL Here
@@ -118,44 +118,43 @@ class goose extends React.Component {
         API.getScoresEPL()
             .then(res => {
                 //   Starting Goose EPL Here 
-                var manuWin;
-                var manuTie;
-                var westhamWin;
-                var westhamTie;
+                console.log(res.data.response[0].league.standings[0])
+                var crystalWin;
+                var crystalTie;
+                var newcastleWin;
+                var newcastleTie;
 
                 // running the for loop here. 
-                var forLoopArray = res.data.api.standings[0];
-                console.log(forLoopArray);
-
+                var forLoopArray = res.data.response[0].league.standings[0]
                 for (var i = 0; i < forLoopArray.length; i++) {
 
-                    if (forLoopArray[i].team_id === 33) {
-                        manuWin = forLoopArray[i].all.win
-                        manuTie = forLoopArray[i].all.draw
+                    if (forLoopArray[i].team.id === 52) {
+                        crystalWin = forLoopArray[i].all.win
+                        crystalTie = forLoopArray[i].all.draw
                         //then so something
                         //return something here
-                        console.log("here are the wins" + manuWin);
-                        console.log("here are the ties" + manuTie);
+                        console.log("here are the wins" + crystalWin);
+                        console.log("here are the ties" + crystalTie);
                     }
 
-                    if (forLoopArray[i].team_id === 48) {
-                        westhamWin = forLoopArray[i].all.win
-                        westhamTie = forLoopArray[i].all.draw
+                    if (forLoopArray[i].team.id === 34) {
+                        newcastleWin = forLoopArray[i].all.win
+                        newcastleTie = forLoopArray[i].all.draw
                         //then so something
                         //return something here
-                        console.log("here are the wins" + westhamWin);
-                        console.log("here are the ties" + westhamTie);
+                        console.log("here are the wins" + newcastleWin);
+                        console.log("here are the ties" + newcastleTie);
                     }
                 }
 
-                var manuTotal = (manuWin * 4.25) + (manuTie);
-                var westhamTotal = (westhamWin * 4.25) + (westhamTie);
+                var crystalTotal = (crystalWin * 4.25) + (crystalTie);
+                var newcastleTotal = (newcastleWin * 4.25) + (newcastleTie);
 
                 // Here is the final result
-                var goosePoints = manuTotal + westhamTotal;
-                this.setState({ manu: manuTotal });
-                this.setState({ westham: westhamTotal });
-                this.setState({ gooseEPL: goosePoints });
+                var goosePoints = crystalTotal + newcastleTotal;
+                this.setState({ crystal: crystalTotal });
+                this.setState({ newcastle: newcastleTotal });
+                this.setState({ eplTotal: goosePoints });
 
             })
             .catch(error => {
@@ -342,19 +341,19 @@ class goose extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">14</th>
-                                                <td className="manU">Manchester United</td>
-                                                <td>{this.state.manu}</td>
+                                                <th scope="row">77</th>
+                                                <td className="crystalP">Crystal Palace</td>
+                                                <td>{this.state.crystal}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">63</th>
-                                                <td className="westHam">West Ham United</td>
-                                                <td>{this.state.westham}</td>
+                                                <th scope="row">92</th>
+                                                <td className="newcastle">Newcastle</td>
+                                                <td>{this.state.newcastle}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                <td>{this.state.gooseEPL}</td>
+                                                <td>{this.state.eplTotal}</td>
                                             </tr>
                                         </tbody>
                                     </table>

@@ -122,45 +122,45 @@ class ben extends React.Component {
     getScoresEPL = () => {
         API.getScoresEPL()
             .then(res => {
-                //   Starting Goose EPL Here 
-               var tottenhamWin;
-               var tottenhamTie;
-               var bournemouthWin;
-               var bournemouthTie;
+                //   Starting Eres EPL Here 
+            
+                console.log(res.data.response[0].league.standings[0])
+                var manCityWin;
+                var manCityTie;
+                var norwichWin;
+                var norwichTie;
 
-               // running the for loop here. 
-               var forLoopArray = res.data.api.standings[0];
-               console.log(forLoopArray);
+                // running the for loop here. 
+                var forLoopArray = res.data.response[0].league.standings[0]
+                for (var i = 0; i < forLoopArray.length; i++) {
 
-               for (var i = 0; i < forLoopArray.length; i++) {
+                    if (forLoopArray[i].team.id === 50) {
+                        manCityWin = forLoopArray[i].all.win
+                        manCityTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + manCityWin);
+                        console.log("here are the ties" + manCityTie);
+                    }
 
-                   if (forLoopArray[i].team_id === 47) {
-                       tottenhamWin = forLoopArray[i].all.win
-                       tottenhamTie = forLoopArray[i].all.draw
-                       //then so something
-                       //return something here
-                       console.log("here are the wins" + tottenhamWin);
-                       console.log("here are the ties" + tottenhamTie);
-                   }
+                    if (forLoopArray[i].team.id === 71) {
+                        norwichWin = forLoopArray[i].all.win
+                        norwichTie = forLoopArray[i].all.draw
+                        //then so something
+                        //return something here
+                        console.log("here are the wins" + norwichWin);
+                        console.log("here are the ties" + norwichTie);
+                    }
+                }
 
-                   if (forLoopArray[i].team_id === 35) {
-                       bournemouthWin = forLoopArray[i].all.win
-                       bournemouthTie = forLoopArray[i].all.draw
-                       //then so something
-                       //return something here
-                       console.log("here are the wins" + bournemouthWin);
-                       console.log("here are the ties" + bournemouthTie);
-                   }
-               }
+                var manCityTotal = (manCityWin * 4.25) + (manCityTie);
+                var norwichTotal = (norwichWin * 4.25) + (norwichTie);
 
-               var tottenhamTotal = (tottenhamWin * 4.25) + (tottenhamTie);
-               var bournemouthTotal = (bournemouthWin * 4.25) + (bournemouthTie);
-
-               // Here is the final result
-               var benPoints = tottenhamTotal + bournemouthTotal;
-               this.setState({ tottenham: tottenhamTotal });
-               this.setState({ bournemouth: bournemouthTotal });
-               this.setState({ benEPL: benPoints });
+                // Here is the final result
+                var eresPoints = manCityTotal + norwichTotal;
+                this.setState({ manCity: manCityTotal });
+                this.setState({ norwich: norwichTotal });
+                this.setState({ eplTotal: eresPoints });
 
             })
             .catch(error => {
@@ -348,18 +348,18 @@ class ben extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">5</th>
-                                                <td className="tottenham">Tottenham</td>
-                                                <td>{this.state.tottenham}</td>
+                                                <td className="mancity">Manchester City</td>
+                                                <td>{this.state.manCity}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">101</th>
-                                                <td className="bournemouth">Bournemouth</td>
-                                                <td>{this.state.bournemouth}</td>
+                                                <th scope="row">189</th>
+                                                <td className="norwich">Norwich</td>
+                                                <td>{this.state.norwich}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
                                                 <td></td>
-                                                <td>{this.state.benEPL}</td>
+                                                <td>{this.state.eplTotal}</td>
                                             </tr>
                                         </tbody>
                                     </table>
