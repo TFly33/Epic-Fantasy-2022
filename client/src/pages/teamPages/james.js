@@ -21,8 +21,8 @@ class james extends React.Component {
         jamesEPL: "",
         // NHL HERE
         flames: "",
-        pens: "",
-        wild: "",
+        panthers: "",
+        stars: "",
         totalNHL: ""
     }
     componentDidMount = () => {
@@ -37,7 +37,7 @@ class james extends React.Component {
                 // This is the Metro Division
                 var metroResults = res.data.records[0].teamRecords;
                 // Atlantic Division
-                // var atlanticResults = res.data.records[1].teamRecords;
+                var atlanticResults = res.data.records[1].teamRecords;
                 // Central Division
                 var centralResults = res.data.records[2].teamRecords;
                 // central
@@ -47,12 +47,12 @@ class james extends React.Component {
                 var flamesWins;
                 var flamesOTLS;
                 var flamesTotal;
-                var pensWins;
-                var pensOTLS;
-                var pensTotal;
-                var wildWins;
-                var wildOTLS;
-                var wildTotal;
+                var panthersWins;
+                var panthersOTLS;
+                var panthersTotal;
+                var starsWins;
+                var starsOTLS;
+                var starsTotal;
                 var allNHL;
 
                 // Here is the flames loop. 
@@ -67,49 +67,50 @@ class james extends React.Component {
                     }
                 }
 
-                // flames total
-                flamesTotal = (flamesWins * 2) + flamesOTLS;
-                console.log(flamesTotal);
 
-                // Here is the loop for the pens
-                for (var i = 0; i < metroResults.length; i++) {
+                // Here is the loop for the panthers
+                for (var i = 0; i < atlanticResults.length; i++) {
 
-                    // pens
-                    if (metroResults[i].team.id === 5) {
-                        pensWins = metroResults[i].leagueRecord.wins;
-                        pensOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(pensWins);
-                        console.log(pensOTLS);
+                    // panthers
+                    if (atlanticResults[i].team.id === 13) {
+                        panthersWins = atlanticResults[i].leagueRecord.wins;
+                        panthersOTLS = atlanticResults[i].leagueRecord.ot;
+                        console.log(panthersWins);
+                        console.log(panthersOTLS);
                         console.log("this loop is running")
                     }
                 }
 
                 for (var i = 0; i < centralResults.length; i++) {
 
-                    // wild
-                    if (centralResults[i].team.id === 30) {
-                        wildWins = centralResults[i].leagueRecord.wins;
-                        wildOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(wildWins);
-                        console.log(wildOTLS);
+                    // stars
+                    if (centralResults[i].team.id === 25) {
+                        starsWins = centralResults[i].leagueRecord.wins;
+                        starsOTLS = centralResults[i].leagueRecord.ot;
+                        console.log(starsWins);
+                        console.log(starsOTLS);
                         console.log("this loop is running")
                     }
                 }
 
-                // pens total
-                pensTotal = (pensWins * 2) + pensOTLS;
-                console.log(pensTotal)
+                // panthers total
+                panthersTotal = (panthersWins * 2) + panthersOTLS;
+                console.log(panthersTotal)
 
-                // wild total
-                wildTotal = (wildWins * 2) + wildOTLS;
-                console.log(wildTotal);
+                // stars total
+                starsTotal = (starsWins * 2) + starsOTLS;
+                console.log(starsTotal);
 
-                var allNHL = flamesTotal + pensTotal + wildTotal
+                // flames total
+                flamesTotal = (flamesWins * 2) + flamesOTLS;
+                console.log(flamesTotal);
+
+                var allNHL = flamesTotal + panthersTotal + starsTotal
 
                 this.setState({ totalNHL: allNHL });
                 this.setState({ flames: flamesTotal });
-                this.setState({ pens: pensTotal });
-                this.setState({ wild: wildTotal });
+                this.setState({ panthers: panthersTotal });
+                this.setState({ stars: starsTotal });
 
             })
             .catch(error => {
@@ -379,19 +380,19 @@ class james extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">35</th>
-                                                <td className="flames">Calgary Flames</td>
+                                                <th scope="row">116</th>
+                                                <td className="fPanthers">Florida Panthers</td>
                                                 <td>{this.state.flames}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">48</th>
-                                                <td className="penguins">Pittsburgh Penguins</td>
-                                                <td>{this.state.pens}</td>
+                                                <th scope="row">136</th>
+                                                <td className="stars">Dallas Stars</td>
+                                                <td>{this.state.stars}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">117</th>
-                                                <td className="wild">Minnesota Wild</td>
-                                                <td>{this.state.wild}</td>
+                                                <td className="flames">Calgary Flames</td>
+                                                <td>{this.state.flames}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>

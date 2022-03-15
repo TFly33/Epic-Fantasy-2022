@@ -20,9 +20,9 @@ class dj extends React.Component {
         astonVilla: "",
         djEPL: "",
         // NHL 
-        jets: "",
-        canes: "",
-        coyotes: "",
+        bruins: "",
+        pens: "",
+        krakens: "",
         totalNHL: "",
     }
     componentDidMount = () => {
@@ -37,7 +37,7 @@ class dj extends React.Component {
                 // This is the Metro Division
                 var metroResults = res.data.records[0].teamRecords;
                 // Atlantic Division
-                // var atlanticResults = res.data.records[1].teamRecords;
+                var atlanticResults = res.data.records[1].teamRecords;
                 // Central Division
                 var centralResults = res.data.records[2].teamRecords;
                 // central
@@ -45,71 +45,71 @@ class dj extends React.Component {
 
                 console.log(metroResults);
 
-                var jetsWins;
-                var jetsOTLS;
-                var jetsTotal;
-                var canesWins;
-                var canesOTLS;
-                var canesTotal;
-                var coyotesWins;
-                var coyotesOTLS;
-                var coyotesTotal;
+                var bruinsWins;
+                var bruinsOTLS;
+                var bruinsTotal;
+                var pensWins;
+                var pensOTLS;
+                var pensTotal;
+                var krakensWins;
+                var krakensOTLS;
+                var krakensTotal;
                 var allNHL;
 
-                // Here is the jets loop. 
-                for (var i = 0; i < centralResults.length; i++) {
-                    // jets
-                    if (centralResults[i].team.id === 52) {
-                        jetsWins = centralResults[i].leagueRecord.wins;
-                        jetsOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(jetsWins);
-                        console.log(jetsOTLS);
+                // Here is the bruins loop. 
+                for (var i = 0; i < atlanticResults.length; i++) {
+                    // bruins
+                    if (atlanticResults[i].team.id === 6) {
+                        bruinsWins = atlanticResults[i].leagueRecord.wins;
+                        bruinsOTLS = atlanticResults[i].leagueRecord.ot;
+                        console.log(bruinsWins);
+                        console.log(bruinsOTLS);
                         console.log("this loop is running")
                     }
                 }
 
-                // jets total
-                jetsTotal = (jetsWins * 2) + jetsOTLS;
-                console.log(jetsTotal);
-
                 for (var i = 0; i < pacificResults.length; i++) {
 
-                    // coyotes
-                    if (pacificResults[i].team.id === 53) {
-                        coyotesWins = pacificResults[i].leagueRecord.wins;
-                        coyotesOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(coyotesWins);
-                        console.log(coyotesOTLS);
+                    // krakens
+                    if (pacificResults[i].team.id === 55) {
+                        krakensWins = pacificResults[i].leagueRecord.wins;
+                        krakensOTLS = pacificResults[i].leagueRecord.ot;
+                        console.log(krakensWins);
+                        console.log(krakensOTLS);
                         console.log("this loop is running")
                     }
                 }
 
                 for (var i = 0; i < metroResults.length; i++) {
 
-                    // canes
-                    if (metroResults[i].team.id === 12) {
-                        canesWins = metroResults[i].leagueRecord.wins;
-                        canesOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(canesWins);
-                        console.log(canesOTLS);
+                    // pens
+                    if (metroResults[i].team.id === 5) {
+                        pensWins = metroResults[i].leagueRecord.wins;
+                        pensOTLS = metroResults[i].leagueRecord.ot;
+                        console.log(pensWins);
+                        console.log(pensOTLS);
                         console.log("this loop is running")
                     }
                 }
 
-                // canes total
-                canesTotal = (canesWins * 2) + canesOTLS;
-                console.log(canesTotal)
+                // pens total
+                pensTotal = (pensWins * 2) + pensOTLS;
+                console.log(pensTotal)
 
-                // coyotes total
-                coyotesTotal = (coyotesWins * 2) + coyotesOTLS;
-                console.log(coyotesTotal);
+                // krakens total
+                krakensTotal = (krakensWins * 2) + krakensOTLS;
+                console.log(krakensTotal);
 
-                var allNHL = jetsTotal + canesTotal + coyotesTotal
+                // bruins total
+                bruinsTotal = (bruinsWins * 2) + bruinsOTLS;
+                console.log(bruinsTotal);
+
+                var allNHL = bruinsTotal + pensTotal + krakensTotal
 
                 this.setState({ totalNHL: allNHL });
-                this.setState({ jets: jetsTotal });
-                this.setState({ canes: canesTotal });
-                this.setState({ coyotes: coyotesTotal });
+                this.setState({ bruins: bruinsTotal });
+                this.setState({ pens: pensTotal });
+                this.setState({ krakens: krakensTotal });
 
             })
             .catch(error => {
@@ -380,19 +380,19 @@ class dj extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">39</th>
-                                                <td className="winnipeg">Winnipeg Jets</td>
-                                                <td>{this.state.jets}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">61</th>
-                                                <td className="hurricanes">Carolina Hurricanes</td>
-                                                <td>{this.state.canes}</td>
-                                            </tr>
-                                            <tr>
                                                 <th scope="row">80</th>
-                                                <td className="coyotes">Arizona Coyotes</td>
-                                                <td>{this.state.coyotes}</td>
+                                                <td className="bruins">Boston Bruins</td>
+                                                <td>{this.state.bruins}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">109</th>
+                                                <td className="penguins">Pittsburgh Penguins</td>
+                                                <td>{this.state.pens}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">143</th>
+                                                <td className="mariners">Seattle Kraken</td>
+                                                <td>{this.state.krakens}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>

@@ -20,9 +20,9 @@ class goose extends React.Component {
         westham: "",
         gooseEPL: "",
         // NHL Here
-        preds: "",
-        stars: "",
-        canadians: "",
+        islanders: "",
+        devils: "",
+        ducks: "",
 
     }
     componentDidMount = () => {
@@ -36,77 +36,77 @@ class goose extends React.Component {
         API.getScoresNHL()
             .then(res => {
                 // This is the Metro Division
-                // var metroResults = res.data.records[0].teamRecords;
+                var metroResults = res.data.records[0].teamRecords;
                 // Atlantic Division
                 var atlanticResults = res.data.records[1].teamRecords;
                 // Central Division
                 var centralResults = res.data.records[2].teamRecords;
                 // central
-                // var pacificResults = res.data.records[3].teamRecords;
+                var pacificResults = res.data.records[3].teamRecords;
 
                 console.log(centralResults);
-                var predsWins;
-                var predsOTLS;
-                var predsTotal;
-                var starsWins;
-                var starsOTLS;
-                var starsTotal;
-                var canadiansWins;
-                var canadiansOTLS;
-                var canadiansTotal;
+                var islandersWins;
+                var islandersOTLS;
+                var islandersTotal;
+                var devilsWins;
+                var devilsOTLS;
+                var devilsTotal;
+                var ducksWins;
+                var ducksOTLS;
+                var ducksTotal;
                 var allNHL;
 
-                // Here is the preds and Stars loop. 
-                for (var i = 0; i < centralResults.length; i++) {
-                    // preds
-                    if (centralResults[i].team.id === 18) {
-                        predsWins = centralResults[i].leagueRecord.wins;
-                        predsOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(predsWins);
-                        console.log(predsOTLS);
+                // Here is the islanders and devils loop. 
+                for (var i = 0; i < metroResults.length; i++) {
+                    // islanders
+                    if (metroResults[i].team.id === 2) {
+                        islandersWins = metroResults[i].leagueRecord.wins;
+                        islandersOTLS = metroResults[i].leagueRecord.ot;
+                        console.log(islandersWins);
+                        console.log(islandersOTLS);
                         console.log("this loop is running")
                     }
 
-                    // stars
-                    if (centralResults[i].team.id === 25) {
-                        starsWins = centralResults[i].leagueRecord.wins;
-                        starsOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(starsWins);
-                        console.log(starsOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // preds total
-                predsTotal = (predsWins * 2) + predsOTLS;
-                console.log(predsTotal);
-
-                for (var i = 0; i < atlanticResults.length; i++) {
-
-                    // canadians
-                    if (atlanticResults[i].team.id === 8) {
-                        canadiansWins = atlanticResults[i].leagueRecord.wins;
-                        canadiansOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(canadiansWins);
-                        console.log(canadiansOTLS);
+                    // devils
+                    if (metroResults[i].team.id === 1) {
+                        devilsWins = metroResults[i].leagueRecord.wins;
+                        devilsOTLS = metroResults[i].leagueRecord.ot;
+                        console.log(devilsWins);
+                        console.log(devilsOTLS);
                         console.log("this loop is running")
                     }
                 }
 
-                // stars total
-                starsTotal = (starsWins * 2) + starsOTLS;
-                console.log(starsTotal)
+                for (var i = 0; i < pacificResults.length; i++) {
 
-                // canadians total
-                canadiansTotal = (canadiansWins * 2) + canadiansOTLS;
-                console.log(canadiansTotal);
+                    // ducks
+                    if (pacificResults[i].team.id === 24) {
+                        ducksWins = pacificResults[i].leagueRecord.wins;
+                        ducksOTLS = pacificResults[i].leagueRecord.ot;
+                        console.log(ducksWins);
+                        console.log(ducksOTLS);
+                        console.log("this loop is running")
+                    }
+                }
 
-                var allNHL = predsTotal + starsTotal + canadiansTotal
+                // islanders total
+                islandersTotal = (islandersWins * 2) + islandersOTLS;
+                console.log(islandersTotal);
+
+                // devils total
+                devilsTotal = (devilsWins * 2) + devilsOTLS;
+                console.log(devilsTotal)
+
+                // ducks total
+                ducksTotal = (ducksWins * 2) + ducksOTLS;
+                console.log(ducksTotal);
+
+                var allNHL = islandersTotal + devilsTotal + ducksTotal
 
                 this.setState({ totalNHL: allNHL });
-                this.setState({ preds: predsTotal });
-                this.setState({ stars: starsTotal });
-                this.setState({ canadians: canadiansTotal });
+                this.setState({ islanders: islandersTotal });
+                this.setState({ devils: devilsTotal });
+                this.setState({ ducks: ducksTotal });
 
             })
             .catch(error => {
@@ -376,19 +376,19 @@ class goose extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">36</th>
-                                                <td className="predators">Nashville Predators</td>
-                                                <td>{this.state.preds}</td>
+                                                <th scope="row">89</th>
+                                                <td className="islanders">NY Islanders</td>
+                                                <td>{this.state.islanders}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">50</th>
-                                                <td className="stars">Dallas Stars</td>
-                                                <td>{this.state.stars}</td>
+                                                <th scope="row">151</th>
+                                                <td className="devils">New Jersey Devils</td>
+                                                <td>{this.state.devils}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">93</th>
-                                                <td className="canadiens">Montreal Canadians</td>
-                                                <td>{this.state.canadians}</td>
+                                                <th scope="row">167</th>
+                                                <td className="ducks">Anaheim Mighty Ducks</td>
+                                                <td>{this.state.ducks}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
