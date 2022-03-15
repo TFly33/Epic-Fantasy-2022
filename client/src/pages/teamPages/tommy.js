@@ -21,9 +21,9 @@ class tommy extends React.Component {
         wolves: "",
         eplTotal: "",
         // NHL States here 
-        blackhawks: "",
-        knights: "",
-        canucks: "",
+        sharks: "",
+        flyers: "",
+        senators: "",
         totalNHL: ""
     }
 
@@ -37,76 +37,84 @@ class tommy extends React.Component {
         API.getScoresNHL()
             .then(res => {
                 // This is the Metro Division
-                // var metroResults = res.data.records[0].teamRecords;
+                var metroResults = res.data.records[0].teamRecords;
                 // // Atlantic Division
-                // var atlanticResults = res.data.records[1].teamRecords;
+                var atlanticResults = res.data.records[1].teamRecords;
                 // Central Division
                 var centralResults = res.data.records[2].teamRecords;
                 // Pacific
                 var pacificResults = res.data.records[3].teamRecords;
 
                 console.log(pacificResults)
-                var knightsWins;
-                var knightsOTLS;
-                var knightsTotal;
-                var blackhawksWins;
-                var blackhawksOTLS;
-                var blackhawksTotal;
-                var canucksWins;
-                var canucksOTLS;
-                var canucksTotal;
+                var flyersWins;
+                var flyersOTLS;
+                var flyersTotal;
+                var sharksWins;
+                var sharksOTLS;
+                var sharksTotal;
+                var senatorsWins;
+                var senatorsOTLS;
+                var senatorsTotal;
                 var totalNHL;
 
-                // Here is the Blackhawks for loop. 
-                for (var i = 0; i < centralResults.length; i++) {
+                // Here is the flyers for loop. 
+                for (var i = 0; i < metroResults.length; i++) {
 
-                    if (centralResults[i].team.id === 16) {
-                        blackhawksWins = centralResults[i].leagueRecord.wins;
-                        blackhawksOTLS = centralResults[i].leagueRecord.ot;
-                        console.log(blackhawksWins);
-                        console.log(blackhawksOTLS);
+                    if (metroResults[i].team.id === 4) {
+                        flyersWins = metroResults[i].leagueRecord.wins;
+                        flyersOTLS = metroResults[i].leagueRecord.ot;
+                        console.log(flyersWins);
+                        console.log(flyersOTLS);
                         console.log("this loop is running")
                     }
                 }
-                // blackhawks total
-                blackhawksTotal = (blackhawksWins * 2) + blackhawksOTLS;
-                console.log(blackhawksTotal)
+                // sharks total
+                flyersTotal = (flyersWins * 2) + flyersOTLS;
+                console.log(flyersTotal)
 
-                // Here is the loop for the Canucks and Knights, who are in the same division. 
+                // Here is the loop for the senators and flyers, who are in the same division. 
                 for (var i = 0; i < pacificResults.length; i++) {
 
-                    // Knights
-                    if (pacificResults[i].team.id === 54) {
-                        knightsWins = pacificResults[i].leagueRecord.wins;
-                        knightsOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(knightsWins);
-                        console.log(knightsOTLS);
-                        console.log("this loop is running")
-                    }
-                    // Canucks
-                    if (pacificResults[i].team.id === 23) {
-                        canucksWins = pacificResults[i].leagueRecord.wins;
-                        canucksOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(canucksWins);
-                        console.log(canucksOTLS);
+                    // sharks
+                    if (pacificResults[i].team.id === 28) {
+                        sharksWins = pacificResults[i].leagueRecord.wins;
+                        sharksOTLS = pacificResults[i].leagueRecord.ot;
+                        console.log(sharksWins);
+                        console.log(sharksOTLS);
                         console.log("this loop is running")
                     }
                 }
 
-                // knights total
-                knightsTotal = (knightsWins * 2) + knightsOTLS;
-                console.log(knightsTotal);
+                 // Here is the flyers for loop. 
+                 for (var i = 0; i < metroResults.length; i++) {
 
-                // canucks total
-                canucksTotal = (canucksWins * 2) + canucksOTLS;
-                console.log(canucksTotal);
+                     // senators
+                     if (atlanticResults[i].team.id === 9) {
+                        senatorsWins = atlanticResults[i].leagueRecord.wins;
+                        senatorsOTLS = atlanticResults[i].leagueRecord.ot;
+                        console.log(senatorsWins);
+                        console.log(senatorsOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+                // flyers total
+                flyersTotal = (flyersWins * 2) + flyersOTLS;
+                console.log(flyersTotal)
 
-                var allNHL = knightsTotal + canucksTotal + blackhawksTotal
+                // sharks total
+                sharksTotal = (sharksWins * 2) + sharksOTLS;
+                console.log(sharksTotal);
+
+                // senators total
+                senatorsTotal = (senatorsWins * 2) + senatorsOTLS;
+                console.log(senatorsTotal);
+
+                var allNHL = flyersTotal + senatorsTotal + sharksTotal
 
                 this.setState({ totalNHL: allNHL });
-                this.setState({ knights: knightsTotal });
-                this.setState({ canucks: canucksTotal });
-                this.setState({ blackhawks: blackhawksTotal });
+                this.setState({ flyers: flyersTotal });
+                this.setState({ senators: senatorsTotal });
+                this.setState({ sharks: sharksTotal });
 
             })
             .catch(error => {
@@ -384,19 +392,19 @@ class tommy extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">29</th>
-                                                <td className="knights">Vegas Knights</td>
-                                                <td>{this.state.knights}</td>
+                                                <th scope="row">139</th>
+                                                <td className="flyers">Philadelphia Flyers</td>
+                                                <td>{this.state.flyers}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">106</th>
-                                                <td className="blackhawks">Chicago Blackhawks</td>
-                                                <td>{this.state.blackhawks}</td>
+                                                <th scope="row">160</th>
+                                                <td className="sharks">San Jose Sharks</td>
+                                                <td>{this.state.sharks}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">113</th>
-                                                <td className="canucks">Vancouver Canucks</td>
-                                                <td>{this.state.canucks}</td>
+                                                <th scope="row">184</th>
+                                                <td className="senators">Ottawa Senators</td>
+                                                <td>{this.state.senators}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>

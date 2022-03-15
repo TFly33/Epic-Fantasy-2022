@@ -11,18 +11,18 @@ class joe extends React.Component {
         nets: "",
         warriors: "",
         heat: "",
-        colts: 70,
-        vikings: 100,
-        raiders: 70,
-        totalNFL: 240,
+        // colts: 70,
+        // vikings: 100,
+        // raiders: 70,
+        // totalNFL: 240,
         // EPL HERE
         liverpool: "",
         aston: "",
         joeEPL: "",
         // NHL Here
         blues: "",
-        jackets: "",
-        oilers: "",
+        kings: "",
+        redWings: "",
     }
     componentDidMount = () => {
         this.getScoresNBA();
@@ -36,7 +36,7 @@ class joe extends React.Component {
                 // This is the Metro Division
                 var metroResults = res.data.records[0].teamRecords;
                 // Atlantic Division
-                // var atlanticResults = res.data.records[1].teamRecords;
+                var atlanticResults = res.data.records[1].teamRecords;
                 // Central Division
                 var centralResults = res.data.records[2].teamRecords;
                 // central
@@ -46,12 +46,12 @@ class joe extends React.Component {
                 var bluesWins;
                 var bluesOTLS;
                 var bluesTotal;
-                var jacketsWins;
-                var jacketsOTLS;
-                var jacketsTotal;
-                var oilersWins;
-                var oilersOTLS;
-                var oilersTotal;
+                var kingsWins;
+                var kingsOTLS;
+                var kingsTotal;
+                var redWingsWins;
+                var redWingsOTLS;
+                var redWingsTotal;
                 var allNHL;
 
                 // Here is the blues loop. 
@@ -66,49 +66,50 @@ class joe extends React.Component {
                     }
                 }
 
+                // Here is the loop for the kings
+                for (var i = 0; i < pacificResults.length; i++) {
+
+                    // kings
+                    if (pacificResults[i].team.id === 26) {
+                        kingsWins = pacificResults[i].leagueRecord.wins;
+                        kingsOTLS = pacificResults[i].leagueRecord.ot;
+                        console.log(kingsWins);
+                        console.log(kingsOTLS);
+                        console.log("this loop is running")
+                    }
+                }
+
+                for (var i = 0; i < atlanticResults.length; i++) {
+
+                    // red wings
+                    if (atlanticResults[i].team.id === 17) {
+                        redWingsWins = atlanticResults[i].leagueRecord.wins;
+                        redWingsOTLS = atlanticResults[i].leagueRecord.ot;
+                        console.log(redWingsWins);
+                        console.log(redWingsOTLS);
+                        console.log("this loop is running")
+                    }
+
+                }
+
                 // blues total
                 bluesTotal = (bluesWins * 2) + bluesOTLS;
                 console.log(bluesTotal);
 
-                // Here is the loop for the jackets
-                for (var i = 0; i < metroResults.length; i++) {
+                // kings total
+                kingsTotal = (kingsWins * 2) + kingsOTLS;
+                console.log(kingsTotal)
 
-                    // jackets
-                    if (metroResults[i].team.id === 29) {
-                        jacketsWins = metroResults[i].leagueRecord.wins;
-                        jacketsOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(jacketsWins);
-                        console.log(jacketsOTLS);
-                        console.log("this loop is running")
-                    }
-                }
+                // redWings total
+                redWingsTotal = (redWingsWins * 2) + redWingsOTLS;
+                console.log(redWingsTotal);
 
-                for (var i = 0; i < pacificResults.length; i++) {
-
-                    // oilers
-                    if (pacificResults[i].team.id === 22) {
-                        oilersWins = pacificResults[i].leagueRecord.wins;
-                        oilersOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(oilersWins);
-                        console.log(oilersOTLS);
-                        console.log("this loop is running")
-                    }
-                }
-
-                // jackets total
-                jacketsTotal = (jacketsWins * 2) + jacketsOTLS;
-                console.log(jacketsTotal)
-
-                // oilers total
-                oilersTotal = (oilersWins * 2) + oilersOTLS;
-                console.log(oilersTotal);
-
-                var allNHL = bluesTotal + jacketsTotal + oilersTotal
+                var allNHL = bluesTotal + kingsTotal + redWingsTotal
 
                 this.setState({ totalNHL: allNHL });
                 this.setState({ blues: bluesTotal });
-                this.setState({ jackets: jacketsTotal });
-                this.setState({ oilers: oilersTotal });
+                this.setState({ kings: kingsTotal });
+                this.setState({ redWings: redWingsTotal });
 
             })
             .catch(error => {
@@ -377,19 +378,19 @@ class joe extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">43</th>
+                                                <th scope="row">144</th>
                                                 <td className="blues">St. Louis Blues</td>
                                                 <td>{this.state.blues}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">70</th>
-                                                <td className="blueJackets">Columbus Blue Jackets</td>
-                                                <td>{this.state.jackets}</td>
+                                                <th scope="row">157</th>
+                                                <td className="kings">Los Angeles Kings</td>
+                                                <td>{this.state.kings}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">119</th>
-                                                <td className="oilers">Edmonton Oilers</td>
-                                                <td>{this.state.oilers}</td>
+                                                <td className="redwings">Detroit Red Wings</td>
+                                                <td>{this.state.redWings}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>

@@ -12,17 +12,17 @@ class steids extends React.Component {
         raptors: "",
         tWolves: "",
         browns: 60,
-        steelers: 80,
-        buccaneers: 70,
-        totalNFL: 210,
+        // steelers: 80,
+        // buccaneers: 70,
+        // totalNFL: 210,
         // EPL Teams Here
         westHam: "",
         watford: "",
         steidsEPL: "",
         // NHL
-        caps: "",
-        sabres: "",
-        panthers: "",
+        avalanche: "",
+        jackets: "",
+        leafs: "",
         totalNHL: "",
     }
     componentDidMount = () => {
@@ -41,71 +41,75 @@ class steids extends React.Component {
                 // Central Division
                 var centralResults = res.data.records[2].teamRecords;
                 // Pacific
-                // var pacificResults = res.data.records[3].teamRecords;
+                var pacificResults = res.data.records[3].teamRecords;
 
                 console.log(atlanticResults)
-                var capsWins;
-                var capsOTLS;
-                var capsTotal;
-                var panthersWins;
-                var panthersOTLS;
-                var panthersTotal;
-                var sabresWins;
-                var sabresOTLS;
-                var sabresTotal;
+                var avalancheWins;
+                var avalancheOTLS;
+                var avalancheTotal;
+                var leafsWins;
+                var leafsOTLS;
+                var leafsTotal;
+                var jacketsWins;
+                var jacketsOTLS;
+                var jacketsTotal;
                 var allNHL;
 
-                // Here is the panthers for loop. 
+                // Here is the avalanche for loop. 
                 for (var i = 0; i < centralResults.length; i++) {
 
-                    if (atlanticResults[i].team.id === 13) {
-                        panthersWins = atlanticResults[i].leagueRecord.wins;
-                        panthersOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(panthersWins);
-                        console.log(panthersOTLS);
+                    if (centralResults[i].team.id === 21) {
+                        avalancheWins = centralResults[i].leagueRecord.wins;
+                        avalancheOTLS = centralResults[i].leagueRecord.ot;
+                        console.log(avalancheWins);
+                        console.log(avalancheOTLS);
                         console.log("this loop is running")
                     }
 
-                    // sabres
-                    if (atlanticResults[i].team.id === 7) {
-                        sabresWins = atlanticResults[i].leagueRecord.wins;
-                        sabresOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(sabresWins);
-                        console.log(sabresOTLS);
+                }
+
+                for (var i = 0; i < atlanticResults.length; i++) {
+                    // jackets
+                    if (atlanticResults[i].team.id === 10) {
+                        leafsWins = atlanticResults[i].leagueRecord.wins;
+                        leafsOTLS = atlanticResults[i].leagueRecord.ot;
+                        console.log(leafsWins);
+                        console.log(leafsOTLS);
                         console.log("this loop is running")
                     }
                 }
-                // panthers total
-                panthersTotal = (panthersWins * 2) + panthersOTLS;
-                console.log(panthersTotal)
 
-                // Here is the loop for the caps
+                // Here is the loop for the jackets
                 for (var i = 0; i < metroResults.length; i++) {
 
-                    // caps
-                    if (metroResults[i].team.id === 15) {
-                        capsWins = metroResults[i].leagueRecord.wins;
-                        capsOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(capsWins);
-                        console.log(capsOTLS);
+                    // avalanche
+                    if (metroResults[i].team.id === 29) {
+                        jacketsWins = metroResults[i].leagueRecord.wins;
+                        jacketsOTLS = metroResults[i].leagueRecord.ot;
+                        console.log(jacketsWins);
+                        console.log(jacketsOTLS);
                         console.log("this loop is running")
                     }
                 }
 
-                // caps total
-                capsTotal = (capsWins * 2) + capsOTLS;
-                console.log(capsTotal);
+                // avalanche total
+                avalancheTotal = (avalancheWins * 2) + avalancheOTLS;
+                console.log(avalancheTotal);
 
-                // sabres total
-                sabresTotal = (sabresWins * 2) + sabresOTLS;
-                console.log(sabresTotal);
+                // leafs total
+                leafsTotal = (leafsWins * 2) + leafsOTLS;
+                console.log(leafsTotal)
 
-                var allNHL = capsTotal + sabresTotal + panthersTotal
+                // jackets total
+                jacketsTotal = (jacketsWins * 2) + jacketsOTLS;
+                console.log(jacketsTotal);
+
+                var allNHL = avalancheTotal + jacketsTotal + leafsTotal
 
                 this.setState({ totalNHL: allNHL });
-                this.setState({ caps: capsTotal });
-                this.setState({ sabres: sabresTotal });
-                this.setState({ panthers: panthersTotal });
+                this.setState({ avalanche: avalancheTotal });
+                this.setState({ jackets: jacketsTotal });
+                this.setState({ leafs: leafsTotal });
 
             })
             .catch(error => {
@@ -215,7 +219,7 @@ class steids extends React.Component {
                             </li>
                             <li class="nav-item active">
                                 <div class="dropdown show">
-                                    <div class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Teams
                                     </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -377,19 +381,19 @@ class steids extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">33</th>
-                                                <td className="capitals">Washington Capitals</td>
-                                                <td>{this.state.caps}</td>
+                                                <th scope="row">15</th>
+                                                <td className="avalanche">Colorado Avalanche</td>
+                                                <td>{this.state.avalanche}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">79</th>
-                                                <td className="fPanthers">Florida Panthers</td>
-                                                <td>{this.state.panthers}</td>
+                                                <th scope="row">67</th>
+                                                <td className="leafs">Toronto Maple Leafs</td>
+                                                <td>{this.state.leafs}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">129</th>
-                                                <td className="sabres">Buffalo Sabres</td>
-                                                <td>{this.state.sabres}</td>
+                                                <th scope="row">173</th>
+                                                <td className="jackets">Columbus Blue Jackets</td>
+                                                <td>{this.state.jackets}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
