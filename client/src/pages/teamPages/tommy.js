@@ -1,5 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
+import { golfHelper } from "../../middleware/helper";
 
 class tommy extends React.Component {
     // Here is the function we will use for creating the actual table. 
@@ -24,13 +25,33 @@ class tommy extends React.Component {
         sharks: "",
         flyers: "",
         senators: "",
-        totalNHL: ""
+        totalNHL: "",
+        // Golf here
+        schauffele: "",
+        niemann: "",
+        mcnealy: "",
+        henley: "",
+        tringale: "",
+        totalGolf: ""
     }
 
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresNHL();
         this.getScoresEPL();
+        this.getScoresPGA();
+    }
+
+    getScoresPGA = () => {
+        var x = golfHelper();
+        Object.keys(x).forEach((key) => { x[key] = x[key] / 20 })
+        this.setState({ niemann: x.Niemann });
+        this.setState({ schauffele: x.Schauffele });
+        this.setState({ mcnealy: x.Mcnealy });
+        this.setState({ henley: x.Henley });
+        this.setState({ tringale: x.Tringale });
+        var allGolf =  x.Tringale + x.Niemann + x.Schauffele + x.Henley + x.Niemann;
+        this.setState({totalGolf: allGolf});
     }
 
     getScoresNHL = () => {
@@ -63,9 +84,9 @@ class tommy extends React.Component {
                     if (metroResults[i].team.id === 4) {
                         flyersWins = metroResults[i].leagueRecord.wins;
                         flyersOTLS = metroResults[i].leagueRecord.ot;
-                        console.log(flyersWins);
-                        console.log(flyersOTLS);
-                        console.log("this loop is running")
+                        // console.log(flyersWins);
+                        // console.log(flyersOTLS);
+                        // console.log("this loop is running")
                     }
                 }
                 // sharks total
@@ -79,22 +100,22 @@ class tommy extends React.Component {
                     if (pacificResults[i].team.id === 28) {
                         sharksWins = pacificResults[i].leagueRecord.wins;
                         sharksOTLS = pacificResults[i].leagueRecord.ot;
-                        console.log(sharksWins);
-                        console.log(sharksOTLS);
-                        console.log("this loop is running")
+                        // console.log(sharksWins);
+                        // console.log(sharksOTLS);
+                        // console.log("this loop is running")
                     }
                 }
 
-                 // Here is the flyers for loop. 
-                 for (var i = 0; i < metroResults.length; i++) {
+                // Here is the flyers for loop. 
+                for (var i = 0; i < metroResults.length; i++) {
 
-                     // senators
-                     if (atlanticResults[i].team.id === 9) {
+                    // senators
+                    if (atlanticResults[i].team.id === 9) {
                         senatorsWins = atlanticResults[i].leagueRecord.wins;
                         senatorsOTLS = atlanticResults[i].leagueRecord.ot;
-                        console.log(senatorsWins);
-                        console.log(senatorsOTLS);
-                        console.log("this loop is running")
+                        // console.log(senatorsWins);
+                        // console.log(senatorsOTLS);
+                        // console.log("this loop is running")
                     }
                 }
                 // flyers total
@@ -416,6 +437,72 @@ class tommy extends React.Component {
                                 </div>
                             </div>
                         </div>
+                        {/* Adding Golf Here */}                  
+
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">Golfer</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">12</th>
+                                                <td className="senators">Xander Schauffele</td>
+                                                <td>{this.state.schauffele}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">112</th>
+                                                <td className="senators">Joaquin Niemann</td>
+                                                <td>{this.state.niemann}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">141</th>
+                                                <td className="senators">Maverick McNealy</td>
+                                                <td>{this.state.mcnealy}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">163</th>
+                                                <td className="senators">Russell Henley</td>
+                                                <td>{this.state.henley}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">178</th>
+                                                <td className="senators">Cameron Tringale</td>
+                                                <td>{this.state.tringale}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalGolf}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
 

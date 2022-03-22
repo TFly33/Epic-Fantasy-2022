@@ -1,5 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
+import { golfHelper } from "../../middleware/helper";
 
 class james extends React.Component {
     // Here is the function we will use for creating the actual table. 
@@ -23,12 +24,32 @@ class james extends React.Component {
         flames: "",
         panthers: "",
         stars: "",
-        totalNHL: ""
+        totalNHL: "",
+        // Golf here
+        koepka: "",
+        im: "",
+        horschel: "",
+        na: "",
+        lowry: "",
+        totalGolf: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
+        this.getScoresPGA();
+    }
+
+    getScoresPGA = () => {
+        var x = golfHelper();
+        Object.keys(x).forEach((key) => { x[key] = x[key] / 20 })
+        this.setState({ im: x.Im });
+        this.setState({ koepka: x.Koepka });
+        this.setState({ horschel: x.Horschel });
+        this.setState({ na: x.Na });
+        this.setState({ lowry: x.Lowry });
+        var allGolf = x.Lowry + x.Im + x.Koepka + x.Na + x.Horschel;
+        this.setState({ totalGolf: allGolf });
     }
 
     getScoresNHL = () => {
@@ -404,6 +425,57 @@ class james extends React.Component {
                                 </div>
                             </div>
                         </div>
+
+                        {/* Adding Golf Here */}
+
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">Golfer</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">41</th>
+                                                <td className="senators">Brooks Koepka</td>
+                                                <td>{this.state.koepka}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">84</th>
+                                                <td className="senators">Sungjae Im</td>
+                                                <td>{this.state.im}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">152</th>
+                                                <td className="senators">Billy Horschel</td>
+                                                <td>{this.state.horschel}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">161</th>
+                                                <td className="senators">Kevin Na</td>
+                                                <td>{this.state.na}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">180</th>
+                                                <td className="senators">Shane Lowry</td>
+                                                <td>{this.state.lowry}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalGolf}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>

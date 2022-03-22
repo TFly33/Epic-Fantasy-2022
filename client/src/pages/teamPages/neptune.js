@@ -1,5 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
+import { golfHelper } from "../../middleware/helper";
 
 class neptune extends React.Component {
     // Here is the function we will use for creating the actual table. 
@@ -25,13 +26,32 @@ class neptune extends React.Component {
         rangers: "",
         jets: "",
         totalNHL: "",
-
+        // Golf here
+        spieth: "",
+        ancer: "",
+        zalatoris: "",
+        matsuyama: "",
+        fleetwood: "",
+        totalGolf: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
+        this.getScoresPGA();
     };
+
+    getScoresPGA = () => {
+        var x = golfHelper();
+        Object.keys(x).forEach((key) => { x[key] = x[key] / 20 })
+        this.setState({ ancer: x.Ancer });
+        this.setState({ spieth: x.Spieth });
+        this.setState({ zalatoris: x.Zalatoris });
+        this.setState({ matsuyama: x.Matsuyama });
+        this.setState({ fleetwood: x.Fleetwood });
+        var allGolf = x.Fleetwood + x.Zalatoris + x.Spieth + x.Matsuyama + x.Ancer;
+        this.setState({ totalGolf: allGolf });
+    }
 
     getScoresNHL = () => {
         API.getScoresNHL()
@@ -251,7 +271,7 @@ class neptune extends React.Component {
                 <div class="card">
                     <div class="card-body text-center bg-light text-secondary">
                         Neptune
-                 </div>
+                    </div>
                 </div>
 
                 {/* Starting my new table here */}
@@ -397,6 +417,56 @@ class neptune extends React.Component {
                                                 <th scope="row">Total</th>
                                                 <td></td>
                                                 <td>{this.state.totalNHL}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Adding Golf Here */}
+
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">Golfer</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">27</th>
+                                                <td className="senators">Jordan Spieth</td>
+                                                <td>{this.state.spieth}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">58</th>
+                                                <td className="senators">Abraham Ancer</td>
+                                                <td>{this.state.ancer}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">70</th>
+                                                <td className="senators">Will Zalatoris</td>
+                                                <td>{this.state.zalatoris}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">71</th>
+                                                <td className="senators">Hideki Matsuyama</td>
+                                                <td>{this.state.matsuyama}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">188</th>
+                                                <td className="senators">Tommy Fleetwood</td>
+                                                <td>{this.state.fleetwood}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalGolf}</td>
                                             </tr>
                                         </tbody>
                                     </table>
