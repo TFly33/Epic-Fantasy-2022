@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { MDBDataTable } from 'mdbreact';
 import API from "../../utils/API";
+import al from "../../pages/teamPages/al";
+import { golfHelper } from "../../middleware/helper";
 
 // This table is being used for the Home Page currently, but not for the My Teams page. I am going to create that table separately. 
 class Table extends Component {
@@ -55,7 +57,17 @@ class Table extends Component {
         joeNHL: "",
         steidsNHL: "",
         eresNHL: "",
-
+        // PGA Here:
+        alPGA: "",
+        tomPGA: "",
+        patPGA: "",
+        steidsPGA: "",
+        neptunePGA: "",
+        jamesPGA: "",
+        joePGA: "",
+        djPGA: "",
+        eresPGA: "",
+        goosePGA: "",
         // Total Points here. 
         tomTotal: "",
         patTotal: "",
@@ -98,6 +110,12 @@ class Table extends Component {
                     width: 150
                 },
                 {
+                    label: 'PGA',
+                    field: 'pga',
+                    sort: 'asc',
+                    width: 150
+                },
+                {
                     label: 'NHL',
                     field: 'nhl',
                     sort: 'asc',
@@ -127,6 +145,7 @@ class Table extends Component {
                     team: 'Tommy',
                     epl: this.state.tomEPL,
                     nfl: this.state.tomNFL,
+                    pga: this.state.tomPGA,
                     nba: this.state.tomNBA,
                     nhl: this.state.tomNHL,
                     mlb: 0,
@@ -134,9 +153,10 @@ class Table extends Component {
                     total: this.state.tomTotal
                 },
                 {
-                    team: 'Patrick',
+                    team: 'Pat/JP',
                     epl: this.state.patEPL,
                     nfl: this.state.patNFL,
+                    pga: this.state.patPGA,
                     nba: this.state.patrickNBA,
                     nhl: this.state.patNHL,
                     mlb: 0,
@@ -147,6 +167,7 @@ class Table extends Component {
                     team: 'James',
                     epl: this.state.jamesEPL,
                     nfl: this.state.jamesNFL,
+                    pga: this.state.jamesPGA,
                     nba: this.state.jamesNBA,
                     nhl: this.state.jamesNHL,
                     mlb: 0,
@@ -157,6 +178,7 @@ class Table extends Component {
                     team: 'Goose',
                     epl: this.state.gooseEPL,
                     nfl: this.state.gooseNFL,
+                    pga: this.state.goosePGA,
                     nba: this.state.gooseNBA,
                     nhl: this.state.gooseNHL,
                     mlb: 0,
@@ -167,6 +189,7 @@ class Table extends Component {
                     team: 'Neptune',
                     epl: this.state.neptuneEPL,
                     nfl: this.state.neptuneNFL,
+                    pga: this.state.neptunePGA,
                     nba: this.state.neptuneNBA,
                     nhl: this.state.neptuneNHL,
                     mlb: 0,
@@ -177,6 +200,7 @@ class Table extends Component {
                     team: 'Joe',
                     epl: this.state.joeEPL,
                     nfl: this.state.joeNFL,
+                    pga: this.state.joePGA,
                     nba: this.state.joeNBA,
                     nhl: this.state.joeNHL,
                     mlb: 0,
@@ -187,6 +211,7 @@ class Table extends Component {
                     team: 'Eres',
                     epl: this.state.eresEPL,
                     nfl: this.state.benNFL,
+                    pga: this.state.eresPGA,
                     nba: this.state.benNBA,
                     nhl: this.state.eresNHL,
                     mlb: 0,
@@ -197,6 +222,7 @@ class Table extends Component {
                     team: 'DJ',
                     epl: this.state.djEPL,
                     nfl: this.state.djNFL,
+                    pga: this.state.djPGA,
                     nba: this.state.djNBA,
                     nhl: this.state.djNHL,
                     mlb: 0,
@@ -207,6 +233,7 @@ class Table extends Component {
                     team: 'Steids',
                     epl: this.state.steidsEPL,
                     nfl: this.state.steidsNFL,
+                    pga: this.state.steidsPGA,
                     nba: this.state.steidsNBA,
                     nhl: this.state.steidsNHL,
                     mlb: 0,
@@ -217,6 +244,7 @@ class Table extends Component {
                     team: 'Al',
                     epl: this.state.alEPL,
                     nfl: this.state.alNFL,
+                    pga: this.state.alPGA,
                     nba: this.state.alNBA,
                     nhl: this.state.alNHL,
                     mlb: 0,
@@ -250,6 +278,7 @@ class Table extends Component {
         this.getScoresNHL();
         // MLB Here 
         // this.getScoreMLB(); 
+        this.getScoresPGA();
 
     };
 
@@ -261,6 +290,7 @@ class Table extends Component {
         var tomTotalPoints =
             parseInt((this.state.tomNBA)) +
             parseInt((this.state.tomNHL)) +
+            parseInt((this.state.tomPGA)) +
             // parseInt((this.state.tomNFL)) + 
             parseInt((this.state.tomEPL));
         this.setState({ tomTotal: tomTotalPoints });
@@ -268,6 +298,7 @@ class Table extends Component {
         // Totals for Pat 
         var patTotalPoints = parseInt((this.state.patrickNBA)) +
             parseInt((this.state.patNHL)) +
+            parseInt((this.state.patPGA)) +
             // parseInt((this.state.patNFL)) + 
             parseInt((this.state.patEPL));
         this.setState({ patTotal: patTotalPoints });
@@ -275,6 +306,7 @@ class Table extends Component {
         // Totals for JAmes
         var jamesTotalPoints = parseInt((this.state.jamesNBA)) +
             parseInt((this.state.jamesNHL)) +
+            parseInt((this.state.jamesPGA)) +
             // parseInt((this.state.jamesNFL)) + 
             parseInt((this.state.jamesEPL));
         this.setState({ jamesTotal: jamesTotalPoints });
@@ -282,6 +314,7 @@ class Table extends Component {
         // Totals for Neptune
         var neptuneTotalPoints = parseInt((this.state.neptuneNBA)) +
             parseInt((this.state.neptuneNHL)) +
+            parseInt((this.state.neptunePGA)) +
             // parseInt((this.state.neptuneNFL)) + 
             parseInt((this.state.neptuneEPL));
         this.setState({ neptuneTotal: neptuneTotalPoints });
@@ -289,6 +322,7 @@ class Table extends Component {
         // Totals for DJ
         var djTotalPoints = parseInt((this.state.djNBA)) +
             parseInt((this.state.djNHL)) +
+            parseInt((this.state.djPGA)) +
             // parseInt((this.state.djNFL)) + 
             parseInt((this.state.djEPL));
         this.setState({ djTotal: djTotalPoints });
@@ -296,6 +330,7 @@ class Table extends Component {
         // Totals for Goose 
         var gooseTotalPoints = parseInt((this.state.gooseNBA)) +
             parseInt((this.state.gooseNHL)) +
+            parseInt((this.state.goosePGA)) +
             // parseInt((this.state.gooseNFL)) + 
             parseInt((this.state.gooseEPL));
         this.setState({ gooseTotal: gooseTotalPoints });
@@ -303,6 +338,7 @@ class Table extends Component {
         // Totals for Al
         var alTotalPoints = parseInt((this.state.alNBA)) +
             parseInt((this.state.alNHL)) +
+            parseInt((this.state.alPGA)) +
             // parseInt((this.state.alNFL)) + 
             parseInt((this.state.alEPL));
         this.setState({ alTotal: alTotalPoints });
@@ -310,6 +346,7 @@ class Table extends Component {
         // Totals for Joe
         var joeTotalPoints = parseInt((this.state.joeNBA)) +
             parseInt((this.state.joeNHL)) +
+            parseInt((this.state.joePGA)) +
             // parseInt((this.state.joeNFL)) + 
             parseInt((this.state.joeEPL));
         this.setState({ joeTotal: joeTotalPoints });
@@ -317,6 +354,7 @@ class Table extends Component {
         // Totals for Steids
         var steidsTotalPoints = parseInt((this.state.steidsNBA)) +
             parseInt((this.state.steidsNHL)) +
+            parseInt((this.state.steidsPGA)) +
             // parseInt((this.state.steidsNFL)) + 
             parseInt((this.state.steidsEPL));
         this.setState({ steidsTotal: steidsTotalPoints });
@@ -324,6 +362,7 @@ class Table extends Component {
         // Totals for Ben - now Mark Eres 
         var benTotalPoints = parseInt((this.state.benNBA)) +
             parseInt((this.state.eresNHL)) +
+            parseInt((this.state.eresPGA)) +
             // parseInt((this.state.benNFL)) + 
             parseInt((this.state.eresEPL));
         this.setState({ benTotal: benTotalPoints });
@@ -343,6 +382,42 @@ class Table extends Component {
         this.setState({ steidsNFL: 210 });
         this.setState({ benNFL: 200 });
     };
+
+    getScoresPGA = () => {
+        var x = golfHelper();
+        Object.keys(x).forEach((key) => { x[key] = x[key] / 20 });
+        // Al
+        var alGolf = x.Gooch + x.Smith + x.Scheffler + x.Peirera + x.Homa;
+        this.setState({ alPGA: alGolf });
+        // Tom
+        var tomGolf =  x.Tringale + x.Niemann + x.Schauffele + x.Henley + x.Niemann;
+        this.setState({tomPGA: tomGolf});
+        // Goose
+        var gooseGolf = x.Grillo + x.Hovland + x.Oosthuizen+ x.Harman + x.Thomas;
+        this.setState({ goosePGA: gooseGolf });
+        // James
+        var jamesGolf = x.Lowry + x.Im + x.Koepka + x.Na + x.Horschel;
+        this.setState({ jamesPGA: jamesGolf });
+        // Joe
+        var joeGolf = x.VanRooyen + x.Finau + x.Dechambeau + x.Scott + x.Simpson;
+        this.setState({ joePGA: joeGolf });
+        // Neptune
+        var neptuneGolf = x.Fleetwood + x.Zalatoris + x.Spieth + x.Matsuyama + x.Ancer;
+        this.setState({ neptunePGA: neptuneGolf });
+        // Patrick
+        var patGolf = x.Rahm + x.Johnson + x.Berger + x.Champ + x.Wolff;
+        this.setState({ patPGA: patGolf });
+        // Steids
+        var steidsGolf = x.Kim + x.Burns + x.English + x.Kokrak + x.Conners;
+        this.setState({ steidsPGA: steidsGolf });
+        // DJ
+        var djGolf = x.Garcia + x.Mcilroy + x.Morikawa + x.Rose + x.Casey;
+        this.setState({ djPGA: djGolf });
+        // Eres
+        var eresGolf =  x.Cantlay + x.Fitzpatrick + x.Reed + x.Fowler + x.Hatton;
+        this.setState({eresPGA: eresGolf});
+
+    }
 
     // Going to put NHL Here
     getScoresNHL = () => {
@@ -963,11 +1038,11 @@ class Table extends Component {
                     }
                 }
 
-                 // Here is the flyers for loop. 
-                 for (var i = 0; i < metroResults.length; i++) {
+                // Here is the flyers for loop. 
+                for (var i = 0; i < metroResults.length; i++) {
 
-                     // senators
-                     if (atlanticResults[i].team.id === 9) {
+                    // senators
+                    if (atlanticResults[i].team.id === 9) {
                         senatorsWins = atlanticResults[i].leagueRecord.wins;
                         senatorsOTLS = atlanticResults[i].leagueRecord.ot;
                         console.log(senatorsWins);
