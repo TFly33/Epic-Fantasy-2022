@@ -51,6 +51,7 @@ export const golfHelper = () => {
         "Gooch": 1093,
         "VanRooyen": 191,
         "Fleetwood": 225,
+        "Smith": 1354
     };
 
     return x

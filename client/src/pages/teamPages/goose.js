@@ -24,13 +24,13 @@ class goose extends React.Component {
         islanders: "",
         devils: "",
         ducks: "",
-         // Golf here
+        // Golf here
         thomas: "",
-         niemann: "",
-         mcnealy: "",
-         henley: "",
-         tringale: "",
-         totalGolf: ""
+        hovland: "",
+        oosthuizen: "",
+        harman: "",
+        grillo: "",
+        totalGolf: ""
 
     }
     componentDidMount = () => {
@@ -43,13 +43,13 @@ class goose extends React.Component {
     getScoresPGA = () => {
         var x = golfHelper();
         Object.keys(x).forEach((key) => { x[key] = x[key] / 20 })
-        this.setState({ niemann: x.Niemann });
-        this.setState({thomas: x.Schauffele });
-        this.setState({ mcnealy: x.Mcnealy });
-        this.setState({ henley: x.Henley });
-        this.setState({ tringale: x.Tringale });
-        var allGolf =  x.Tringale + x.Niemann + x.Schauffele + x.Henley + x.Niemann;
-        this.setState({totalGolf: allGolf});
+        this.setState({ hovland: x.Hovland });
+        this.setState({ thomas: x.Thomas });
+        this.setState({ oosthuizen: x.Oosthuizen });
+        this.setState({ harman: x.Harman });
+        this.setState({ grillo: x.Grillo });
+        var allGolf = x.Grillo + x.Hovland + x.Oosthuizen+ x.Harman + x.Thomas;
+        this.setState({ totalGolf: allGolf });
     }
 
     getScoresNHL = () => {
@@ -421,7 +421,7 @@ class goose extends React.Component {
                             </div>
                         </div>
 
-                        {/* Adding Golf Here */}                  
+                        {/* Adding Golf Here */}
 
                         <div class="container smallTable">
                             <div class="row">
@@ -436,29 +436,29 @@ class goose extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">12</th>
-                                                <td className="senators">Xanderthomas</td>
-                                                <td>{this.state.schauffele}</td>
+                                                <th scope="row">11</th>
+                                                <td className="senators">Justin Thomas</td>
+                                                <td>{this.state.thomas}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">112</th>
-                                                <td className="senators">Joaquin Niemann</td>
-                                                <td>{this.state.niemann}</td>
+                                                <th scope="row">29</th>
+                                                <td className="senators">Viktor Hovland</td>
+                                                <td>{this.state.hovland}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">141</th>
-                                                <td className="senators">Maverick McNealy</td>
-                                                <td>{this.state.mcnealy}</td>
+                                                <th scope="row">54</th>
+                                                <td className="senators">Louis Oosthuizen</td>
+                                                <td>{this.state.oosthuizen}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">163</th>
-                                                <td className="senators">Russell Henley</td>
-                                                <td>{this.state.henley}</td>
+                                                <th scope="row">174</th>
+                                                <td className="senators">Brian Harman</td>
+                                                <td>{this.state.harman}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">178</th>
-                                                <td className="senators">Cameron Tringale</td>
-                                                <td>{this.state.tringale}</td>
+                                                <th scope="row">181</th>
+                                                <td className="senators">Emiliano Grillo</td>
+                                                <td>{this.state.grillo}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
