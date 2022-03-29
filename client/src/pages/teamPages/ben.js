@@ -8,7 +8,7 @@ class ben extends React.Component {
     // Here is the function we will use for creating the actual table. 
     state = {
         allTeams: [],
-        // Putting NBA arrays here. Each person's array will include three NBA teams. 
+        // Putting NBA aryankees here. Each person's array will include three NBA teams. 
         allNBA: [],
         benNBA: "",
         clippers: "",
@@ -33,14 +33,60 @@ class ben extends React.Component {
         hatton: "",
         fowler: "",
         cantlay: "",
-        totalGolf: ""
+        totalGolf: "",
+        // MLB Here
+        yankees: "",
+        giants: "",
+        redSox: "",
+        totalMLB: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
+        this.getScoresMLB();
     }
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var yankeesWin;
+                var giantsWin;
+                var redSoxWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    // yankees
+                    if (fullIndex[i].team.id === 25) {
+                        yankeesWin = fullIndex[i].games.win.total
+                    }
+
+                    // redSox
+                    if (fullIndex[i].team.id === 5) {
+                        redSoxWin = fullIndex[i].games.win.total
+                    }
+
+                    // giants
+                    if (fullIndex[i].team.id === 31) {
+                        giantsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var allMLB = yankeesWin + redSoxWin + giantsWin;
+
+                this.setState({ totalMLB: allMLB });
+                this.setState({ yankees: yankeesWin });
+                this.setState({ redSox: redSoxWin });
+                this.setState({ giants: giantsWin });
+
+            });
+    };
 
 
     getScoresPGA = () => {
@@ -51,8 +97,8 @@ class ben extends React.Component {
         this.setState({ hatton: x.Hatton });
         this.setState({ fowler: x.Fowler });
         this.setState({ cantlay: x.Cantlay });
-        var allGolf =  x.Cantlay + x.Fitzpatrick + x.Reed + x.Fowler + x.Hatton;
-        this.setState({totalGolf: allGolf});
+        var allGolf = x.Cantlay + x.Fitzpatrick + x.Reed + x.Fowler + x.Hatton;
+        this.setState({ totalGolf: allGolf });
     }
 
     getScoresNHL = () => {
@@ -277,7 +323,7 @@ class ben extends React.Component {
                 <div class="card">
                     <div class="card-body text-center bg-light text-secondary">
                         Eres
-  </div>
+                    </div>
                 </div>
                 {/* Starting my new table here */}
                 <div class="container smallTable">
@@ -429,9 +475,50 @@ class ben extends React.Component {
                             </div>
                         </div>
 
-                         {/* Adding Golf Here */}                  
+                        {/* MLB Here */}
 
-                         <div class="container smallTable">
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">MLB Team</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">30</th>
+                                                <td className="yankees">New York Yankees</td>
+                                                <td>{this.state.yankees}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">73</th>
+                                                <td className="sfGiants">San Francisco Giants</td>
+                                                <td>{this.state.giants}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">83</th>
+                                                <td className="redSox">Boston Red Sox</td>
+                                                <td>{this.state.redSox}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalMLB}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        {/* Adding Golf Here */}
+
+                        <div class="container smallTable">
                             <div class="row">
                                 <div class="col">
                                     <table class="table table-striped table-bordered table-hover">

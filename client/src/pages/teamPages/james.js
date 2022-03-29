@@ -6,7 +6,7 @@ class james extends React.Component {
     // Here is the function we will use for creating the actual table. 
     state = {
         allTeams: [],
-        // Putting NBA arrays here. Each person's array will include three NBA teams. 
+        // Putting NBA arastros here. Each person's array will include three NBA teams. 
         allNBA: [],
         jamesNBA: "",
         lakers: "",
@@ -31,14 +31,60 @@ class james extends React.Component {
         horschel: "",
         na: "",
         lowry: "",
-        totalGolf: ""
+        totalGolf: "",
+        // MLB Here
+        astros: "",
+        cardinals: "",
+        phillies: "",
+        totalMLB: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
+        this.getScoresMLB();
     }
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var astrosWin;
+                var cardinalsWin;
+                var philliesWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    // astros
+                    if (fullIndex[i].team.id === 15) {
+                        astrosWin = fullIndex[i].games.win.total
+                    }
+
+                    // phillies
+                    if (fullIndex[i].team.id === 27) {
+                        philliesWin = fullIndex[i].games.win.total
+                    }
+
+                    // cardinals
+                    if (fullIndex[i].team.id === 33) {
+                        cardinalsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var allMLB = astrosWin + philliesWin + cardinalsWin;
+
+                this.setState({ totalMLB: allMLB });
+                this.setState({ astros: astrosWin });
+                this.setState({ phillies: philliesWin });
+                this.setState({ cardinals: cardinalsWin });
+
+            });
+    };
 
     getScoresPGA = () => {
         var x = golfHelper();
@@ -425,6 +471,47 @@ class james extends React.Component {
                                 </div>
                             </div>
                         </div>
+
+                        {/* MLB Here */}
+
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">MLB Team</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">61</th>
+                                                <td className="astros">Houston Astros</td>
+                                                <td>{this.state.astros}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">97</th>
+                                                <td className="cardinals">St. Louis Cardinals</td>
+                                                <td>{this.state.cardinals}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">105</th>
+                                                <td className="phillies">Philadelphia Phillies</td>
+                                                <td>{this.state.phillies}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalMLB}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
 
                         {/* Adding Golf Here */}
 

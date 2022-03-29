@@ -25,29 +25,75 @@ class patrick extends React.Component {
         predators: "",
         kings: "",
         totalNHL: "",
-          // Golf here
-         rahm: "",
-         johnson: "",
-         berger: "",
-         champ: "",
-         wolff: "",
-          totalGolf: ""
+        // Golf here
+        rahm: "",
+        johnson: "",
+        berger: "",
+        champ: "",
+        wolff: "",
+        totalGolf: "",
+        // MLB Here
+        jays: "",
+        reds: "",
+        guardians: "",
+        totalMLB: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
+        this.getScoresMLB();
     }
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var jaysWin;
+                var redsWin;
+                var guardiansWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    //jays
+                    if (fullIndex[i].team.id === 36) {
+                        jaysWin = fullIndex[i].games.win.total
+                    }
+
+                    //guardians
+                    if (fullIndex[i].team.id === 625) {
+                        guardiansWin = fullIndex[i].games.win.total
+                    }
+
+                    // reds
+                    if (fullIndex[i].team.id === 8) {
+                        redsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var allMLB = jaysWin + guardiansWin + redsWin;
+
+                this.setState({ totalMLB: allMLB });
+                this.setState({ jays: jaysWin });
+                this.setState({ guardians: guardiansWin });
+                this.setState({ reds: redsWin });
+
+            });
+    };
 
     getScoresPGA = () => {
         var x = golfHelper();
         Object.keys(x).forEach((key) => { x[key] = x[key] / 20 })
-        this.setState({johnson: x.Johnson });
-        this.setState({rahm: x.Rahm });
-        this.setState({berger: x.Berger });
-        this.setState({champ: x.Champ });
-        this.setState({wolff: x.Wolff });
+        this.setState({ johnson: x.Johnson });
+        this.setState({ rahm: x.Rahm });
+        this.setState({ berger: x.Berger });
+        this.setState({ champ: x.Champ });
+        this.setState({ wolff: x.Wolff });
         var allGolf = x.Rahm + x.Johnson + x.Berger + x.Champ + x.Wolff;
         this.setState({ totalGolf: allGolf });
     }
@@ -426,10 +472,51 @@ class patrick extends React.Component {
                             </div>
                         </div>
 
+                        {/* MLB Here */}
 
-                            {/* Adding Golf Here */}                  
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">MLB Team</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">72</th>
+                                                <td className="blueJays">Toronto Blue Jays</td>
+                                                <td>{this.state.jays}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">120</th>
+                                                <td className="reds">Cincinnati Reds</td>
+                                                <td>{this.state.reds}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">126</th>
+                                                <td className="indians">Cleveland Guardians</td>
+                                                <td>{this.state.guardians}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalMLB}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
 
-                            <div class="container smallTable">
+
+
+                        {/* Adding Golf Here */}
+
+                        <div class="container smallTable">
                             <div class="row">
                                 <div class="col">
                                     <table class="table table-striped table-bordered table-hover">

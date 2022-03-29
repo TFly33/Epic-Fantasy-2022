@@ -31,15 +31,61 @@ class dj extends React.Component {
         casey: "",
         rose: "",
         garcia: "",
-        totalGolf: ""
+        totalGolf: "",
+        // MLB Here
+        brewers: "",
+        rockies: "",
+        orioles: "",
+        totalMLB: ""
     }
-    
+
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
+        this.getScoresMLB();
     }
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var brewersWin;
+                var rockiesWin;
+                var oriolesWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    //brewers
+                    if (fullIndex[i].team.id === 20) {
+                        brewersWin = fullIndex[i].games.win.total
+                    }
+
+                    // orioles
+                    if (fullIndex[i].team.id === 4) {
+                        oriolesWin = fullIndex[i].games.win.total
+                    }
+
+                    // rockies
+                    if (fullIndex[i].team.id === 10) {
+                        rockiesWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var allMLB = brewersWin + oriolesWin + rockiesWin;
+
+                this.setState({ totalMLB: allMLB });
+                this.setState({ brewers: brewersWin });
+                this.setState({ orioles: oriolesWin });
+                this.setState({ rockies: rockiesWin });
+
+            });
+    };
 
 
     getScoresPGA = () => {
@@ -275,7 +321,7 @@ class dj extends React.Component {
                 <div class="card">
                     <div class="card-body text-center bg-light text-secondary">
                         DJ
-  </div>
+                    </div>
                 </div>
                 {/* Starting my new table here */}
                 <div class="container smallTable">
@@ -428,9 +474,50 @@ class dj extends React.Component {
                             </div>
                         </div>
 
-                         {/* Adding Golf Here */}                  
+                        {/* MLB Here */}
 
-                         <div class="container smallTable">
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">MLB Team</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">33</th>
+                                                <td className="brewers">Milwaukee Brewers</td>
+                                                <td>{this.state.brewers}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">129</th>
+                                                <td className="rockies">Colorado Rockies</td>
+                                                <td>{this.state.rockies}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">185</th>
+                                                <td className="orioles">Baltimore Orioles</td>
+                                                <td>{this.state.orioles}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalMLB}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        {/* Adding Golf Here */}
+
+                        <div class="container smallTable">
                             <div class="row">
                                 <div class="col">
                                     <table class="table table-striped table-bordered table-hover">

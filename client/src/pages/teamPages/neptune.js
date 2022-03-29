@@ -6,7 +6,7 @@ class neptune extends React.Component {
     // Here is the function we will use for creating the actual table. 
     state = {
         allTeams: [],
-        // Putting NBA arrays here. Each person's array will include three NBA teams. 
+        // Putting NBA arcubs here. Each person's array will include three NBA teams. 
         allNBA: [],
         neptuneNBA: "",
         jazz: "",
@@ -32,13 +32,59 @@ class neptune extends React.Component {
         zalatoris: "",
         matsuyama: "",
         fleetwood: "",
-        totalGolf: ""
+        totalGolf: "",
+        // MLB Here
+        cubs: "",
+        rangers: "",
+        pirates: "",
+        totalMLB: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
+        this.getScoresMLB();
+    };
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var cubsWin;
+                var rangersWin;
+                var piratesWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    // cubs
+                    if (fullIndex[i].team.id === 6) {
+                        cubsWin = fullIndex[i].games.win.total
+                    }
+
+                    // pirates
+                    if (fullIndex[i].team.id === 28) {
+                        piratesWin = fullIndex[i].games.win.total
+                    }
+
+                    // rangers
+                    if (fullIndex[i].team.id === 35) {
+                        rangersWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var allMLB = cubsWin + piratesWin + rangersWin;
+
+                this.setState({ totalMLB: allMLB });
+                this.setState({ cubs: cubsWin });
+                this.setState({ pirates: piratesWin });
+                this.setState({ rangers: rangersWin });
+
+            });
     };
 
     getScoresPGA = () => {
@@ -423,6 +469,47 @@ class neptune extends React.Component {
                                 </div>
                             </div>
                         </div>
+
+                        {/* MLB Here */}
+
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">MLB Team</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">158</th>
+                                                <td className="cubs">Chicago Cubs</td>
+                                                <td>{this.state.cubs}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">170</th>
+                                                <td className="rangers">Texas Rangers</td>
+                                                <td>{this.state.rangers}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">171</th>
+                                                <td className="pirates">Pittsburgh Pirates</td>
+                                                <td>{this.state.pirates}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalMLB}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
 
                         {/* Adding Golf Here */}
 

@@ -6,7 +6,7 @@ class steids extends React.Component {
     // Here is the function we will use for creating the actual table. 
     state = {
         allTeams: [],
-        // Putting NBA arrays here. Each person's array will include three NBA teams. 
+        // Putting NBA ardodgers here. Each person's array will include three NBA teams. 
         allNBA: [],
         steidsNBA: "",
         hawks: "",
@@ -31,13 +31,59 @@ class steids extends React.Component {
         conners: "",
         kokrak: "",
         kim: "",
-        totalGolf: ""
+        totalGolf: "",
+        // MLB Here
+        dodgers: "",
+        nationals: "",
+        dBacks: "",
+        totalMLB: ""
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
+        this.getScoresMLB();
+    };
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+                var dodgersWin;
+                var nationalsWin;
+                var dBacksWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    // dodgers
+                    if (fullIndex[i].team.id === 18) {
+                        dodgersWin = fullIndex[i].games.win.total
+                    }
+
+                    // dBacks
+                    if (fullIndex[i].team.id === 2) {
+                        dBacksWin = fullIndex[i].games.win.total
+                    }
+
+                    // nationals
+                    if (fullIndex[i].team.id === 37) {
+                        nationalsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var allMLB = dodgersWin + dBacksWin + nationalsWin;
+
+                this.setState({ totalMLB: allMLB });
+                this.setState({ dodgers: dodgersWin });
+                this.setState({ dBacks: dBacksWin });
+                this.setState({ nationals: nationalsWin });
+
+            });
     };
 
     getScoresPGA = () => {
@@ -426,6 +472,47 @@ class steids extends React.Component {
                                 </div>
                             </div>
                         </div>
+
+                        {/* MLB Here */}
+
+                        <div class="container smallTable">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col-6">Draft Pick</th>
+                                                <th scope="col-6">MLB Team</th>
+                                                <th scope="col-6">Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">6</th>
+                                                <td className="dodgers">LA Dodgers</td>
+                                                <td>{this.state.dodgers}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">146</th>
+                                                <td className="nationals">Washington Nationals</td>
+                                                <td>{this.state.nationals}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">190</th>
+                                                <td className="diamondbacks">Arizona Diamondbacks</td>
+                                                <td>{this.state.dBacks}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Total</th>
+                                                <td></td>
+                                                <td>{this.state.totalMLB}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
 
 
                         {/* Adding Golf Here */}
