@@ -68,6 +68,18 @@ class Table extends Component {
         djPGA: "",
         eresPGA: "",
         goosePGA: "",
+        // MLB
+        // PGA Here:
+        alMLB: "",
+        tomMLB: "",
+        patMLB: "",
+        steidsMLB: "",
+        neptuneMLB: "",
+        jamesMLB: "",
+        joeMLB: "",
+        djMLB: "",
+        eresMLB: "",
+        gooseMLB: "",
         // Total Points here. 
         tomTotal: "",
         patTotal: "",
@@ -121,12 +133,12 @@ class Table extends Component {
                     sort: 'asc',
                     width: 150
                 },
-                // {
-                //     label: 'MLB',
-                //     field: 'mlb',
-                //     sort: 'asc',
-                //     width: 150
-                // },
+                {
+                    label: 'MLB',
+                    field: 'mlb',
+                    sort: 'asc',
+                    width: 150
+                },
                 {
                     label: 'Bonus',
                     field: 'bonus',
@@ -148,7 +160,7 @@ class Table extends Component {
                     pga: this.state.tomPGA,
                     nba: this.state.tomNBA,
                     nhl: this.state.tomNHL,
-                    mlb: 0,
+                    mlb: this.state.tomMLB,
                     bonus: 200,
                     total: this.state.tomTotal
                 },
@@ -159,7 +171,7 @@ class Table extends Component {
                     pga: this.state.patPGA,
                     nba: this.state.patrickNBA,
                     nhl: this.state.patNHL,
-                    mlb: 0,
+                    mlb: this.state.patMLB,
                     bonus: 200,
                     total: this.state.patTotal
                 },
@@ -170,7 +182,7 @@ class Table extends Component {
                     pga: this.state.jamesPGA,
                     nba: this.state.jamesNBA,
                     nhl: this.state.jamesNHL,
-                    mlb: 0,
+                    mlb: this.state.jamesMLB,
                     bonus: 200,
                     total: this.state.jamesTotal
                 },
@@ -181,7 +193,7 @@ class Table extends Component {
                     pga: this.state.goosePGA,
                     nba: this.state.gooseNBA,
                     nhl: this.state.gooseNHL,
-                    mlb: 0,
+                    mlb: this.state.gooseMLB,
                     bonus: 200,
                     total: this.state.gooseTotal
                 },
@@ -192,7 +204,7 @@ class Table extends Component {
                     pga: this.state.neptunePGA,
                     nba: this.state.neptuneNBA,
                     nhl: this.state.neptuneNHL,
-                    mlb: 0,
+                    mlb: this.state.neptuneMLB,
                     bonus: 200,
                     total: this.state.neptuneTotal
                 },
@@ -203,7 +215,7 @@ class Table extends Component {
                     pga: this.state.joePGA,
                     nba: this.state.joeNBA,
                     nhl: this.state.joeNHL,
-                    mlb: 0,
+                    mlb: this.state.joeMLB,
                     bonus: 200,
                     total: this.state.joeTotal
                 },
@@ -214,7 +226,7 @@ class Table extends Component {
                     pga: this.state.eresPGA,
                     nba: this.state.benNBA,
                     nhl: this.state.eresNHL,
-                    mlb: 0,
+                    mlb: this.state.eresMLB,
                     bonus: 200,
                     total: this.state.benTotal
                 },
@@ -225,7 +237,7 @@ class Table extends Component {
                     pga: this.state.djPGA,
                     nba: this.state.djNBA,
                     nhl: this.state.djNHL,
-                    mlb: 0,
+                    mlb: this.state.djMLB,
                     bonus: 200,
                     total: this.state.djTotal
                 },
@@ -236,7 +248,7 @@ class Table extends Component {
                     pga: this.state.steidsPGA,
                     nba: this.state.steidsNBA,
                     nhl: this.state.steidsNHL,
-                    mlb: 0,
+                    mlb: this.state.steidsMLB,
                     bonus: 200,
                     total: this.state.steidsTotal
                 },
@@ -247,7 +259,7 @@ class Table extends Component {
                     pga: this.state.alPGA,
                     nba: this.state.alNBA,
                     nhl: this.state.alNHL,
-                    mlb: 0,
+                    mlb: this.state.alMLB,
                     bonus: 200,
                     total: this.state.alTotal
                 },
@@ -277,7 +289,7 @@ class Table extends Component {
         // running NHL here
         this.getScoresNHL();
         // MLB Here 
-        // this.getScoreMLB(); 
+        this.getScoresMLB();
         this.getScoresPGA();
 
     };
@@ -292,7 +304,8 @@ class Table extends Component {
             parseInt((this.state.tomNHL)) +
             parseInt((this.state.tomPGA)) +
             // parseInt((this.state.tomNFL)) + 
-            parseInt((this.state.tomEPL));
+            parseInt((this.state.tomEPL)) +
+            parseInt((this.state.tomMLB));
         this.setState({ tomTotal: tomTotalPoints });
 
         // Totals for Pat 
@@ -300,7 +313,8 @@ class Table extends Component {
             parseInt((this.state.patNHL)) +
             parseInt((this.state.patPGA)) +
             // parseInt((this.state.patNFL)) + 
-            parseInt((this.state.patEPL));
+            parseInt((this.state.patEPL)) +
+            parseInt((this.state.patMLB));
         this.setState({ patTotal: patTotalPoints });
 
         // Totals for JAmes
@@ -308,7 +322,8 @@ class Table extends Component {
             parseInt((this.state.jamesNHL)) +
             parseInt((this.state.jamesPGA)) +
             // parseInt((this.state.jamesNFL)) + 
-            parseInt((this.state.jamesEPL));
+            parseInt((this.state.jamesEPL)) + 
+            parseInt((this.state.jamesMLB));
         this.setState({ jamesTotal: jamesTotalPoints });
 
         // Totals for Neptune
@@ -316,7 +331,8 @@ class Table extends Component {
             parseInt((this.state.neptuneNHL)) +
             parseInt((this.state.neptunePGA)) +
             // parseInt((this.state.neptuneNFL)) + 
-            parseInt((this.state.neptuneEPL));
+            parseInt((this.state.neptuneEPL)) + 
+            parseInt((this.state.neptuneMLB));
         this.setState({ neptuneTotal: neptuneTotalPoints });
 
         // Totals for DJ
@@ -324,7 +340,8 @@ class Table extends Component {
             parseInt((this.state.djNHL)) +
             parseInt((this.state.djPGA)) +
             // parseInt((this.state.djNFL)) + 
-            parseInt((this.state.djEPL));
+            parseInt((this.state.djEPL)) + 
+            parseInt((this.state.djMLB));
         this.setState({ djTotal: djTotalPoints });
 
         // Totals for Goose 
@@ -332,7 +349,8 @@ class Table extends Component {
             parseInt((this.state.gooseNHL)) +
             parseInt((this.state.goosePGA)) +
             // parseInt((this.state.gooseNFL)) + 
-            parseInt((this.state.gooseEPL));
+            parseInt((this.state.gooseEPL)) + 
+            parseInt((this.state.gooseMLB));
         this.setState({ gooseTotal: gooseTotalPoints });
 
         // Totals for Al
@@ -340,7 +358,8 @@ class Table extends Component {
             parseInt((this.state.alNHL)) +
             parseInt((this.state.alPGA)) +
             // parseInt((this.state.alNFL)) + 
-            parseInt((this.state.alEPL));
+            parseInt((this.state.alEPL)) + 
+            parseInt((this.state.alMLB));
         this.setState({ alTotal: alTotalPoints });
 
         // Totals for Joe
@@ -348,7 +367,8 @@ class Table extends Component {
             parseInt((this.state.joeNHL)) +
             parseInt((this.state.joePGA)) +
             // parseInt((this.state.joeNFL)) + 
-            parseInt((this.state.joeEPL));
+            parseInt((this.state.joeEPL)) + 
+            parseInt((this.state.joeMLB));
         this.setState({ joeTotal: joeTotalPoints });
 
         // Totals for Steids
@@ -356,7 +376,8 @@ class Table extends Component {
             parseInt((this.state.steidsNHL)) +
             parseInt((this.state.steidsPGA)) +
             // parseInt((this.state.steidsNFL)) + 
-            parseInt((this.state.steidsEPL));
+            parseInt((this.state.steidsEPL)) + 
+            parseInt((this.state.steidsMLB));
         this.setState({ steidsTotal: steidsTotalPoints });
 
         // Totals for Ben - now Mark Eres 
@@ -364,7 +385,8 @@ class Table extends Component {
             parseInt((this.state.eresNHL)) +
             parseInt((this.state.eresPGA)) +
             // parseInt((this.state.benNFL)) + 
-            parseInt((this.state.eresEPL));
+            parseInt((this.state.eresEPL)) + 
+            parseInt((this.state.eresMLB));
         this.setState({ benTotal: benTotalPoints });
     };
 
@@ -387,37 +409,328 @@ class Table extends Component {
         var x = golfHelper();
         Object.keys(x).forEach((key) => { x[key] = x[key] / 20 });
         // Al
-        var alGolf = x.Gooch + x.Smith + x.Scheffler + x.Peirera + x.Homa;
+        var alGolf = (x.Gooch + x.Smith + x.Scheffler + x.Peirera + x.Homa).toFixed(0);
         this.setState({ alPGA: alGolf });
         // Tom
-        var tomGolf =  x.Tringale + x.Niemann + x.Schauffele + x.Henley + x.Niemann;
-        this.setState({tomPGA: tomGolf});
+        var tomGolf = (x.Tringale + x.Niemann + x.Schauffele + x.Henley + x.Niemann).toFixed(0);
+        this.setState({ tomPGA: tomGolf });
         // Goose
-        var gooseGolf = x.Grillo + x.Hovland + x.Oosthuizen+ x.Harman + x.Thomas;
+        var gooseGolf = (x.Grillo + x.Hovland + x.Oosthuizen + x.Harman + x.Thomas).toFixed(0);
         this.setState({ goosePGA: gooseGolf });
         // James
-        var jamesGolf = x.Lowry + x.Im + x.Koepka + x.Na + x.Horschel;
+        var jamesGolf = (x.Lowry + x.Im + x.Koepka + x.Na + x.Horschel).toFixed(0);
         this.setState({ jamesPGA: jamesGolf });
         // Joe
-        var joeGolf = x.VanRooyen + x.Finau + x.Dechambeau + x.Scott + x.Simpson;
+        var joeGolf = (x.VanRooyen + x.Finau + x.Dechambeau + x.Scott + x.Simpson).toFixed(0);
         this.setState({ joePGA: joeGolf });
         // Neptune
-        var neptuneGolf = x.Fleetwood + x.Zalatoris + x.Spieth + x.Matsuyama + x.Ancer;
+        var neptuneGolf = (x.Fleetwood + x.Zalatoris + x.Spieth + x.Matsuyama + x.Ancer).toFixed(0);
         this.setState({ neptunePGA: neptuneGolf });
         // Patrick
-        var patGolf = x.Rahm + x.Johnson + x.Berger + x.Champ + x.Wolff;
+        var patGolf = (x.Rahm + x.Johnson + x.Berger + x.Champ + x.Wolff).toFixed(0);
         this.setState({ patPGA: patGolf });
         // Steids
-        var steidsGolf = x.Kim + x.Burns + x.English + x.Kokrak + x.Conners;
+        var steidsGolf = (x.Kim + x.Burns + x.English + x.Kokrak + x.Conners).toFixed(0);
         this.setState({ steidsPGA: steidsGolf });
         // DJ
-        var djGolf = x.Garcia + x.Mcilroy + x.Morikawa + x.Rose + x.Casey;
+        var djGolf = (x.Garcia + x.Mcilroy + x.Morikawa + x.Rose + x.Casey).toFixed(0);
         this.setState({ djPGA: djGolf });
         // Eres
-        var eresGolf =  x.Cantlay + x.Fitzpatrick + x.Reed + x.Fowler + x.Hatton;
-        this.setState({eresPGA: eresGolf});
+        var eresGolf = (x.Cantlay + x.Fitzpatrick + x.Reed + x.Fowler + x.Hatton).toFixed(0);
+        this.setState({ eresPGA: eresGolf });
 
     }
+
+    // Adding MLB here. 
+
+    getScoresMLB = () => {
+        API.getScoresMLB()
+            .then(res => {
+                console.log(res.data.response[0]);
+                var fullIndex = res.data.response[0];
+
+                // Patrick here. 
+                var jaysWin;
+                var redsWin;
+                var guardiansWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    //jays
+                    if (fullIndex[i].team.id === 36) {
+                        jaysWin = fullIndex[i].games.win.total
+                    }
+
+                    //guardians
+                    if (fullIndex[i].team.id === 9) {
+                        guardiansWin = fullIndex[i].games.win.total
+                    }
+
+                    // reds
+                    if (fullIndex[i].team.id === 8) {
+                        redsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+                var allMLB = jaysWin + guardiansWin + redsWin;
+                this.setState({ patMLB: allMLB });
+
+                // Al here 
+                var athleticsWin;
+                var tigersWin;
+                var marlinsWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    // athletics
+                    if (fullIndex[i].team.id === 26) {
+                        athleticsWin = fullIndex[i].games.win.total
+                    }
+
+                    //marlins
+                    if (fullIndex[i].team.id === 19) {
+                        marlinsWin = fullIndex[i].games.win.total
+                    }
+
+                    // tigers
+                    if (fullIndex[i].team.id === 12) {
+                        tigersWin = fullIndex[i].games.win.total
+                    }
+
+                }
+                var alTotal = athleticsWin + marlinsWin + tigersWin;
+                this.setState({ alMLB: alTotal });
+
+                // Eres Here 
+                var yankeesWin;
+                var giantsWin;
+                var redSoxWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    // yankees
+                    if (fullIndex[i].team.id === 25) {
+                        yankeesWin = fullIndex[i].games.win.total
+                    }
+
+                    // redSox
+                    if (fullIndex[i].team.id === 5) {
+                        redSoxWin = fullIndex[i].games.win.total
+                    }
+
+                    // giants
+                    if (fullIndex[i].team.id === 31) {
+                        giantsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+
+                var eresTotal = yankeesWin + redSoxWin + giantsWin;
+                this.setState({ eresMLB: eresTotal });
+
+                // DJ here
+                var brewersWin;
+                var rockiesWin;
+                var oriolesWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    //brewers
+                    if (fullIndex[i].team.id === 20) {
+                        brewersWin = fullIndex[i].games.win.total
+                    }
+
+                    // orioles
+                    if (fullIndex[i].team.id === 4) {
+                        oriolesWin = fullIndex[i].games.win.total
+                    }
+
+                    // rockies
+                    if (fullIndex[i].team.id === 10) {
+                        rockiesWin = fullIndex[i].games.win.total
+                    }
+
+                }
+                var djTotal = brewersWin + oriolesWin + rockiesWin;
+                this.setState({ djMLB: djTotal });
+
+                // Goose MLB 
+                var angelsWin;
+                var metsWin;
+                var twinsWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    // angels
+                    if (fullIndex[i].team.id === 17) {
+                        angelsWin = fullIndex[i].games.win.total
+                    }
+
+                    // twins
+                    if (fullIndex[i].team.id === 22) {
+                        twinsWin = fullIndex[i].games.win.total
+                    }
+
+                    // mets
+                    if (fullIndex[i].team.id === 24) {
+                        metsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+                var gooseTotal = angelsWin + twinsWin + metsWin;
+                this.setState({ gooseMLB: gooseTotal });
+
+                // James MLB here
+                var astrosWin;
+                var cardinalsWin;
+                var philliesWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    // astros
+                    if (fullIndex[i].team.id === 15) {
+                        astrosWin = fullIndex[i].games.win.total
+                    }
+
+                    // phillies
+                    if (fullIndex[i].team.id === 27) {
+                        philliesWin = fullIndex[i].games.win.total
+                    }
+
+                    // cardinals
+                    if (fullIndex[i].team.id === 33) {
+                        cardinalsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+                var jamesTotal = astrosWin + philliesWin + cardinalsWin;
+                this.setState({ jamesMLB: jamesTotal });
+
+                // Joe MLB 
+                var padresWin;
+                var marinersWin;
+                var royalsWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    // padres
+                    if (fullIndex[i].team.id === 30) {
+                        padresWin = fullIndex[i].games.win.total
+                    }
+
+                    // royals
+                    if (fullIndex[i].team.id === 16) {
+                        royalsWin = fullIndex[i].games.win.total
+                    }
+
+                    // mariners
+                    if (fullIndex[i].team.id === 32) {
+                        marinersWin = fullIndex[i].games.win.total
+                    }
+
+                }
+                var joeTotal = padresWin + royalsWin + marinersWin;
+                this.setState({ joeMLB: joeTotal });
+
+                // Neptune MLB 
+                var cubsWin;
+                var rangersWin;
+                var piratesWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    // cubs
+                    if (fullIndex[i].team.id === 6) {
+                        cubsWin = fullIndex[i].games.win.total
+                    }
+
+                    // pirates
+                    if (fullIndex[i].team.id === 28) {
+                        piratesWin = fullIndex[i].games.win.total
+                    }
+
+                    // rangers
+                    if (fullIndex[i].team.id === 35) {
+                        rangersWin = fullIndex[i].games.win.total
+                    }
+
+                }
+                var neptuneTotal = cubsWin + piratesWin + rangersWin;
+                this.setState({ neptuneMLB: neptuneTotal });
+
+                // Steids MLB 
+                var dodgersWin;
+                var nationalsWin;
+                var dBacksWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    // dodgers
+                    if (fullIndex[i].team.id === 18) {
+                        dodgersWin = fullIndex[i].games.win.total
+                    }
+
+                    // dBacks
+                    if (fullIndex[i].team.id === 2) {
+                        dBacksWin = fullIndex[i].games.win.total
+                    }
+
+                    // nationals
+                    if (fullIndex[i].team.id === 37) {
+                        nationalsWin = fullIndex[i].games.win.total
+                    }
+
+                }
+                var steidsTotal = dodgersWin + dBacksWin + nationalsWin;
+                this.setState({ steidsMLB: steidsTotal });
+
+                // Tommy MLB 
+                var raysWin;
+                var whiteSoxWin;
+                var bravesWin;
+
+                for (var i = 0; i < fullIndex.length; i++) {
+                    console.log("This loop is running."
+                    )
+
+                    // rays
+                    if (fullIndex[i].team.id === 34) {
+                        raysWin = fullIndex[i].games.win.total
+                    }
+
+                    // braves
+                    if (fullIndex[i].team.id === 3) {
+                        bravesWin = fullIndex[i].games.win.total
+                    }
+
+                    // whiteSox
+                    if (fullIndex[i].team.id === 7) {
+                        whiteSoxWin = fullIndex[i].games.win.total
+                    }
+
+                }
+                var totalTom = raysWin + bravesWin + whiteSoxWin;
+                this.setState({ tomMLB: totalTom });
+            });
+    };
 
     // Going to put NHL Here
     getScoresNHL = () => {

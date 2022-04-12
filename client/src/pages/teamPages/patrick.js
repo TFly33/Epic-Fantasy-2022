@@ -65,7 +65,7 @@ class patrick extends React.Component {
                     }
 
                     //guardians
-                    if (fullIndex[i].team.id === 625) {
+                    if (fullIndex[i].team.id === 9) {
                         guardiansWin = fullIndex[i].games.win.total
                     }
 
