@@ -307,6 +307,7 @@ class Table extends Component {
             parseInt((this.state.tomEPL)) +
             parseInt((this.state.tomMLB));
         this.setState({ tomTotal: tomTotalPoints });
+        console.log(tomTotalPoints);
 
         // Totals for Pat 
         var patTotalPoints = parseInt((this.state.patrickNBA)) +
