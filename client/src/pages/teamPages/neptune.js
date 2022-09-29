@@ -45,7 +45,18 @@ class neptune extends React.Component {
         this.getScoresNHL();
         this.getScoresPGA();
         this.getScoresMLB();
+        this.getScoresNFL();
     };
+
+    getScoresNFL = () => {
+        var x = golfHelper();
+        this.setState({ colts: x.Colts });
+        this.setState({ cardinals: x.Cardinals });
+        this.setState({ patriots: x.Patriots });
+        var allNFL = (x.Colts + x.Cardinals + x.Patriots)
+        this.setState({ totalNFL: allNFL });
+    };
+
 
     getScoresMLB = () => {
         API.getScoresMLB()
@@ -371,19 +382,19 @@ class neptune extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">9</th>
-                                                <td className="rams">Los Angeles Rams</td>
-                                                <td>{this.state.rams}</td>
+                                                <th scope="row">34</th>
+                                                <td className="cardinals">Arizona Cardinals</td>
+                                                <td>{this.state.cardinals}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">90</th>
-                                                <td className="jaguars">Jacksonville Jaguars</td>
-                                                <td>{this.state.jaguars}</td>
+                                                <th scope="row">102</th>
+                                                <td className="patriots">New England Patriots</td>
+                                                <td>{this.state.patriots}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">139</th>
-                                                <td className="giants">New York Giants</td>
-                                                <td>{this.state.giants}</td>
+                                                <th scope="row">130</th>
+                                                <td className="colts">Indianapolis Colts </td>
+                                                <td>{this.state.colts}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>
