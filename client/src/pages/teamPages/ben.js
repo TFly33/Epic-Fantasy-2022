@@ -46,7 +46,17 @@ class ben extends React.Component {
         this.getScoresNHL();
         this.getScoresPGA();
         this.getScoresMLB();
+        this.getScoresNFL();
     }
+
+    getScoresNFL = () => {
+        var x = golfHelper();
+        this.setState({ cowboys: x.Cowboys });
+        this.setState({ chargers: x.Chargers });
+        this.setState({ commanders: x.Commanders });
+        var allNFL = (x.Cowboys + x.Chargers + x.Commanders)
+        this.setState({ totalNFL: allNFL });
+    };
 
     getScoresMLB = () => {
         API.getScoresMLB()
@@ -376,19 +386,19 @@ class ben extends React.Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">16</th>
-                                                <td className="eagles">Philadelphia Eagles</td>
-                                                <td>{this.state.eagles}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">72</th>
+                                                <th scope="row">45</th>
                                                 <td className="cowboys">Dallas Cowboys</td>
                                                 <td>{this.state.cowboys}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">126</th>
-                                                <td className="redskins">Washington Redskins</td>
-                                                <td>{this.state.redskins}</td>
+                                                <th scope="row">56</th>
+                                                <td className="chargers">LA Chargers</td>
+                                                <td>{this.state.chargers}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">106</th>
+                                                <td className="redskins">Washington Commanders</td>
+                                                <td>{this.state.commanders}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Total</th>

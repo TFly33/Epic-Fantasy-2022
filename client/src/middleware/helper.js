@@ -83,7 +83,7 @@ export const golfHelper = () => {
         "Seahawks": 9.4,
         "Cardinals": 0, 
         "Rams": 0, 
-        "Forty-Niners": 0
+        "FortyNiners": 0
 
     };
 
