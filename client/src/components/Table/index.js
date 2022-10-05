@@ -38,13 +38,13 @@ class Table extends Component {
         allNFL: [],
         tomNFL: "",
         patNFL: "",
-        patFixedFootball:"",
+        patFixedFootball: "",
         jamesNFL: "",
         neptuneNFL: "",
         djNFL: "",
         gooseNFL: "",
         alNFL: "",
-        alFixedFootball:"",
+        alFixedFootball: "",
         joeNFL: "",
         steidsNFL: "",
         eresNFL: "",
@@ -307,8 +307,10 @@ class Table extends Component {
             parseInt((this.state.tomPGA)) +
             parseInt((this.state.tomNFL)) +
             parseInt((this.state.tomEPL)) +
-            parseInt((this.state.tomMLB));
-        this.setState({ tomTotal: tomTotalPoints });
+            parseInt((this.state.tomMLB)) +
+            // Bonus
+            200
+            this.setState({ tomTotal: tomTotalPoints });
         console.log(tomTotalPoints);
 
         // Totals for Pat 
@@ -318,7 +320,9 @@ class Table extends Component {
             parseInt((this.state.patPGA)) +
             parseInt((this.state.patNFL)) +
             parseInt((this.state.patEPL)) +
-            parseInt((this.state.patMLB));
+            parseInt((this.state.patMLB)) +
+            // Bonus
+            200
         this.setState({ patTotal: patTotalPoints });
 
         // Totals for JAmes
@@ -328,7 +332,9 @@ class Table extends Component {
             parseInt((this.state.jamesPGA)) +
             parseInt((this.state.jamesNFL)) +
             parseInt((this.state.jamesEPL)) +
-            parseInt((this.state.jamesMLB));
+            parseInt((this.state.jamesMLB)) +
+            // Bonus
+            200
         this.setState({ jamesTotal: jamesTotalPoints });
 
         // Totals for Neptune
@@ -338,7 +344,9 @@ class Table extends Component {
             parseInt((this.state.neptunePGA)) +
             parseInt((this.state.neptuneNFL)) +
             parseInt((this.state.neptuneEPL)) +
-            parseInt((this.state.neptuneMLB));
+            parseInt((this.state.neptuneMLB)) +
+            // Bonus
+            200
         this.setState({ neptuneTotal: neptuneTotalPoints });
 
         // Totals for DJ
@@ -348,7 +356,9 @@ class Table extends Component {
             parseInt((this.state.djPGA)) +
             parseInt((this.state.djNFL)) +
             parseInt((this.state.djEPL)) +
-            parseInt((this.state.djMLB));
+            parseInt((this.state.djMLB)) +
+            // Bonus
+            200
         this.setState({ djTotal: djTotalPoints });
 
         // Totals for Goose 
@@ -358,7 +368,9 @@ class Table extends Component {
             parseInt((this.state.goosePGA)) +
             parseInt((this.state.gooseNFL)) +
             parseInt((this.state.gooseEPL)) +
-            parseInt((this.state.gooseMLB));
+            parseInt((this.state.gooseMLB)) +
+            // Bonus
+            200
         this.setState({ gooseTotal: gooseTotalPoints });
 
         // Totals for Al
@@ -368,7 +380,9 @@ class Table extends Component {
             parseInt((this.state.alPGA)) +
             parseInt((this.state.alNFL)) +
             parseInt((this.state.alEPL)) +
-            parseInt((this.state.alMLB));
+            parseInt((this.state.alMLB)) +
+            // Bonus
+            200
         this.setState({ alTotal: alTotalPoints });
 
         // Totals for Joe
@@ -378,7 +392,9 @@ class Table extends Component {
             parseInt((this.state.joePGA)) +
             parseInt((this.state.joeNFL)) +
             parseInt((this.state.joeEPL)) +
-            parseInt((this.state.joeMLB));
+            parseInt((this.state.joeMLB)) +
+            // Bonus
+            200
         this.setState({ joeTotal: joeTotalPoints });
 
         // Totals for Steids
@@ -388,7 +404,9 @@ class Table extends Component {
             parseInt((this.state.steidsPGA)) +
             parseInt((this.state.steidsNFL)) +
             parseInt((this.state.steidsEPL)) +
-            parseInt((this.state.steidsMLB));
+            parseInt((this.state.steidsMLB)) +
+            // Bonus
+            200
         this.setState({ steidsTotal: steidsTotalPoints });
 
         // Totals for Ben - now Mark Eres 
@@ -398,7 +416,9 @@ class Table extends Component {
             parseInt((this.state.eresPGA)) +
             parseInt((this.state.eresNFL)) +
             parseInt((this.state.eresEPL)) +
-            parseInt((this.state.eresMLB));
+            parseInt((this.state.eresMLB)) +
+            // Bonus
+            200
         this.setState({ benTotal: benTotalPoints });
     };
 
@@ -413,7 +433,7 @@ class Table extends Component {
         var patFootball = (x.Buccaneers + x.Jets + x.Jaguars)
         this.setState({ patNFL: patFootball });
         var patFootballFixed = parseInt((patFootball));
-        this.setState({patFixedFootball: patFootballFixed});
+        this.setState({ patFixedFootball: patFootballFixed });
         // James
         var jamesFootball = (x.Rams + x.Browns + x.Steelers)
         this.setState({ jamesNFL: jamesFootball });
@@ -430,7 +450,7 @@ class Table extends Component {
         var alFootball = (x.FortyNiners + x.Broncos + x.Dolphins)
         this.setState({ alNFL: alFootball });
         var alFootballFixed = parseInt((alFootball));
-        this.setState({alFixedFootball: alFootballFixed})
+        this.setState({ alFixedFootball: alFootballFixed })
         // Joe
         var joeFootball = (x.Seahawks + x.Bengals + x.Raiders)
         this.setState({ joeNFL: joeFootball });
