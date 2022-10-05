@@ -38,14 +38,16 @@ class Table extends Component {
         allNFL: [],
         tomNFL: "",
         patNFL: "",
+        patFixedFootball:"",
         jamesNFL: "",
         neptuneNFL: "",
         djNFL: "",
         gooseNFL: "",
         alNFL: "",
+        alFixedFootball:"",
         joeNFL: "",
         steidsNFL: "",
-        benNFL: "",
+        eresNFL: "",
         // NHL Here: 
         tomNHL: "",
         patNHL: "",
@@ -109,12 +111,12 @@ class Table extends Component {
                     sort: 'asc',
                     width: 150
                 },
-                // {
-                //     label: 'NFL',
-                //     field: 'nfl',
-                //     sort: 'asc',
-                //     width: 150
-                // },
+                {
+                    label: 'NFL',
+                    field: 'nfl',
+                    sort: 'asc',
+                    width: 150
+                },
                 {
                     label: 'NBA',
                     field: 'nba',
@@ -167,7 +169,7 @@ class Table extends Component {
                 {
                     team: 'Pat/JP',
                     epl: this.state.patEPL,
-                    nfl: this.state.patNFL,
+                    nfl: this.state.patFixedFootball,
                     pga: this.state.patPGA,
                     nba: this.state.patrickNBA,
                     nhl: this.state.patNHL,
@@ -222,7 +224,7 @@ class Table extends Component {
                 {
                     team: 'Eres',
                     epl: this.state.eresEPL,
-                    nfl: this.state.benNFL,
+                    nfl: this.state.eresNFL,
                     pga: this.state.eresPGA,
                     nba: this.state.benNBA,
                     nhl: this.state.eresNHL,
@@ -255,7 +257,7 @@ class Table extends Component {
                 {
                     team: 'Al',
                     epl: this.state.alEPL,
-                    nfl: this.state.alNFL,
+                    nfl: this.state.alFixedFootball,
                     pga: this.state.alPGA,
                     nba: this.state.alNBA,
                     nhl: this.state.alNHL,
@@ -285,7 +287,7 @@ class Table extends Component {
         // Now, once the updates have applied, we call the getteams. This will show updated results. I'm gonna freeze this for the time being so I don't make a million API calls. 
         this.getScoresEPL();
         // I'm gonna run this as a function even though these are just dead numbers at this point (since the NFL regular season ended)
-        // this.getScoresNFL();
+        this.getScoresNFL();
         // running NHL here
         this.getScoresNHL();
         // MLB Here 
@@ -303,90 +305,99 @@ class Table extends Component {
             parseInt((this.state.tomNBA)) +
             parseInt((this.state.tomNHL)) +
             parseInt((this.state.tomPGA)) +
-            // parseInt((this.state.tomNFL)) + 
+            parseInt((this.state.tomNFL)) +
             parseInt((this.state.tomEPL)) +
             parseInt((this.state.tomMLB));
         this.setState({ tomTotal: tomTotalPoints });
         console.log(tomTotalPoints);
 
         // Totals for Pat 
-        var patTotalPoints = parseInt((this.state.patrickNBA)) +
+        var patTotalPoints =
+            parseInt((this.state.patrickNBA)) +
             parseInt((this.state.patNHL)) +
             parseInt((this.state.patPGA)) +
-            // parseInt((this.state.patNFL)) + 
+            parseInt((this.state.patNFL)) +
             parseInt((this.state.patEPL)) +
             parseInt((this.state.patMLB));
         this.setState({ patTotal: patTotalPoints });
 
         // Totals for JAmes
-        var jamesTotalPoints = parseInt((this.state.jamesNBA)) +
+        var jamesTotalPoints =
+            parseInt((this.state.jamesNBA)) +
             parseInt((this.state.jamesNHL)) +
             parseInt((this.state.jamesPGA)) +
-            // parseInt((this.state.jamesNFL)) + 
-            parseInt((this.state.jamesEPL)) + 
+            parseInt((this.state.jamesNFL)) +
+            parseInt((this.state.jamesEPL)) +
             parseInt((this.state.jamesMLB));
         this.setState({ jamesTotal: jamesTotalPoints });
 
         // Totals for Neptune
-        var neptuneTotalPoints = parseInt((this.state.neptuneNBA)) +
+        var neptuneTotalPoints =
+            parseInt((this.state.neptuneNBA)) +
             parseInt((this.state.neptuneNHL)) +
             parseInt((this.state.neptunePGA)) +
-            // parseInt((this.state.neptuneNFL)) + 
-            parseInt((this.state.neptuneEPL)) + 
+            parseInt((this.state.neptuneNFL)) +
+            parseInt((this.state.neptuneEPL)) +
             parseInt((this.state.neptuneMLB));
         this.setState({ neptuneTotal: neptuneTotalPoints });
 
         // Totals for DJ
-        var djTotalPoints = parseInt((this.state.djNBA)) +
+        var djTotalPoints =
+            parseInt((this.state.djNBA)) +
             parseInt((this.state.djNHL)) +
             parseInt((this.state.djPGA)) +
-            // parseInt((this.state.djNFL)) + 
-            parseInt((this.state.djEPL)) + 
+            parseInt((this.state.djNFL)) +
+            parseInt((this.state.djEPL)) +
             parseInt((this.state.djMLB));
         this.setState({ djTotal: djTotalPoints });
 
         // Totals for Goose 
-        var gooseTotalPoints = parseInt((this.state.gooseNBA)) +
+        var gooseTotalPoints =
+            parseInt((this.state.gooseNBA)) +
             parseInt((this.state.gooseNHL)) +
             parseInt((this.state.goosePGA)) +
-            // parseInt((this.state.gooseNFL)) + 
-            parseInt((this.state.gooseEPL)) + 
+            parseInt((this.state.gooseNFL)) +
+            parseInt((this.state.gooseEPL)) +
             parseInt((this.state.gooseMLB));
         this.setState({ gooseTotal: gooseTotalPoints });
 
         // Totals for Al
-        var alTotalPoints = parseInt((this.state.alNBA)) +
+        var alTotalPoints =
+            parseInt((this.state.alNBA)) +
             parseInt((this.state.alNHL)) +
             parseInt((this.state.alPGA)) +
-            // parseInt((this.state.alNFL)) + 
-            parseInt((this.state.alEPL)) + 
+            parseInt((this.state.alNFL)) +
+            parseInt((this.state.alEPL)) +
             parseInt((this.state.alMLB));
         this.setState({ alTotal: alTotalPoints });
 
         // Totals for Joe
-        var joeTotalPoints = parseInt((this.state.joeNBA)) +
+        var joeTotalPoints =
+            parseInt((this.state.joeNBA)) +
             parseInt((this.state.joeNHL)) +
             parseInt((this.state.joePGA)) +
-            // parseInt((this.state.joeNFL)) + 
-            parseInt((this.state.joeEPL)) + 
+            parseInt((this.state.joeNFL)) +
+            parseInt((this.state.joeEPL)) +
             parseInt((this.state.joeMLB));
         this.setState({ joeTotal: joeTotalPoints });
 
         // Totals for Steids
-        var steidsTotalPoints = parseInt((this.state.steidsNBA)) +
+        var steidsTotalPoints =
+            parseInt((this.state.steidsNBA)) +
             parseInt((this.state.steidsNHL)) +
             parseInt((this.state.steidsPGA)) +
-            // parseInt((this.state.steidsNFL)) + 
-            parseInt((this.state.steidsEPL)) + 
+            parseInt((this.state.steidsNFL)) +
+            parseInt((this.state.steidsEPL)) +
             parseInt((this.state.steidsMLB));
         this.setState({ steidsTotal: steidsTotalPoints });
 
         // Totals for Ben - now Mark Eres 
-        var benTotalPoints = parseInt((this.state.benNBA)) +
+        var benTotalPoints =
+            parseInt((this.state.benNBA)) +
             parseInt((this.state.eresNHL)) +
             parseInt((this.state.eresPGA)) +
-            // parseInt((this.state.benNFL)) + 
-            parseInt((this.state.eresEPL)) + 
+            parseInt((this.state.eresNFL)) +
+            parseInt((this.state.eresEPL)) +
             parseInt((this.state.eresMLB));
         this.setState({ benTotal: benTotalPoints });
     };
@@ -394,16 +405,41 @@ class Table extends Component {
     // This one I get to hard code because the season ended. 
 
     getScoresNFL = () => {
-        this.setState({ tomNFL: 360 });
-        this.setState({ patNFL: 300 });
-        this.setState({ jamesNFL: 232.35 });
-        this.setState({ neptuneNFL: 190 });
-        this.setState({ djNFL: 250 });
-        this.setState({ gooseNFL: 190 });
-        this.setState({ alNFL: 280 });
-        this.setState({ joeNFL: 240 });
-        this.setState({ steidsNFL: 210 });
-        this.setState({ benNFL: 200 });
+        var x = golfHelper();
+        // Tom
+        var tomFootball = (x.Chiefs + x.Saints + x.Vikings)
+        this.setState({ tomNFL: tomFootball });
+        // Pat
+        var patFootball = (x.Buccaneers + x.Jets + x.Jaguars)
+        this.setState({ patNFL: patFootball });
+        var patFootballFixed = parseInt((patFootball));
+        this.setState({patFixedFootball: patFootballFixed});
+        // James
+        var jamesFootball = (x.Rams + x.Browns + x.Steelers)
+        this.setState({ jamesNFL: jamesFootball });
+        // Neptune
+        var neptuneFootball = (x.Colts + x.Cardinals + x.Patriots)
+        this.setState({ neptuneNFL: neptuneFootball });
+        // DJ
+        var djFootball = (x.Packers + x.Titans + x.Falcons)
+        this.setState({ djNFL: djFootball });
+        // Goose
+        var gooseFootball = (x.Bills + x.Eagles + x.Giants)
+        this.setState({ gooseNFL: gooseFootball });
+        // AL
+        var alFootball = (x.FortyNiners + x.Broncos + x.Dolphins)
+        this.setState({ alNFL: alFootball });
+        var alFootballFixed = parseInt((alFootball));
+        this.setState({alFixedFootball: alFootballFixed})
+        // Joe
+        var joeFootball = (x.Seahawks + x.Bengals + x.Raiders)
+        this.setState({ joeNFL: joeFootball });
+        // Steids
+        var steidsFootball = (x.Panthers + x.Bears + x.Ravens)
+        this.setState({ steidsNFL: steidsFootball });
+        // Eres 
+        var eresFootball = (x.Cowboys + x.Chargers + x.Commanders)
+        this.setState({ eresNFL: eresFootball });
     };
 
     getScoresPGA = () => {
