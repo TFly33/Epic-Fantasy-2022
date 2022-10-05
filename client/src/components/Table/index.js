@@ -309,7 +309,9 @@ class Table extends Component {
             parseInt((this.state.tomEPL)) +
             parseInt((this.state.tomMLB)) +
             // Bonus
-            200
+            200 -
+            // Negative bonus for losing NHL
+            30
             this.setState({ tomTotal: tomTotalPoints });
         console.log(tomTotalPoints);
 
@@ -322,7 +324,9 @@ class Table extends Component {
             parseInt((this.state.patEPL)) +
             parseInt((this.state.patMLB)) +
             // Bonus
-            200
+            200 -
+            // Bonus for losing PGA
+            30
         this.setState({ patTotal: patTotalPoints });
 
         // Totals for JAmes
@@ -334,7 +338,13 @@ class Table extends Component {
             parseInt((this.state.jamesEPL)) +
             parseInt((this.state.jamesMLB)) +
             // Bonus
-            200
+            200 - 
+            // Negative Bonus for losing NBA
+            30 + 
+            // Positive bonus for winning NHL
+            30 + 
+            // Positive Bonus for winning MLB
+            30
         this.setState({ jamesTotal: jamesTotalPoints });
 
         // Totals for Neptune
@@ -382,7 +392,13 @@ class Table extends Component {
             parseInt((this.state.alEPL)) +
             parseInt((this.state.alMLB)) +
             // Bonus
-            200
+            200 +
+            // bonus for winning EPL 
+            30 +
+            // bonus for PGA
+            30 -
+            // negative bonus for losing MLB
+            30
         this.setState({ alTotal: alTotalPoints });
 
         // Totals for Joe
@@ -394,7 +410,11 @@ class Table extends Component {
             parseInt((this.state.joeEPL)) +
             parseInt((this.state.joeMLB)) +
             // Bonus
-            200
+            200 -
+            // Negative Bonus for losing EPL
+            30 +
+            // Positive Bonus for winning NBA
+            30
         this.setState({ joeTotal: joeTotalPoints });
 
         // Totals for Steids
