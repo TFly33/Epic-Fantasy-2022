@@ -200,7 +200,7 @@ class Table extends Component {
                     // nhl: this.state.gooseNHL,
                     nhl: 223,
                     mlb: this.state.gooseMLB,
-                    bonus: 210,
+                    bonus: 220,
                     total: this.state.gooseTotal
                 },
                 {
@@ -224,7 +224,7 @@ class Table extends Component {
                     // nhl: this.state.joeNHL,
                     nhl: 282,
                     mlb: this.state.joeMLB,
-                    bonus: 200,
+                    bonus: 190,
                     total: this.state.joeTotal
                 },
                 {
