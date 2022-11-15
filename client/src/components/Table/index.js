@@ -93,6 +93,17 @@ class Table extends Component {
         joeTotal: "",
         steidsTotal: "",
         benTotal: "",
+        tomBonus: 200,
+        patBonus: 200,
+        gooseBonus: 220,
+        joeBonus: 190,
+        steidsBonus: 190,
+        neptuneBonus: 200,
+        alBonus: 200,
+        eresBonus: 200,
+        djBonus: 200,
+        jamesBonus: 200
+
     }
 
     datatablePage = () => {
@@ -164,7 +175,7 @@ class Table extends Component {
                     // nhl: this.state.tomNHL,
                     nhl: 211,
                     mlb: this.state.tomMLB,
-                    bonus: 200,
+                    bonus: this.state.tomBonus,
                     total: this.state.tomTotal
                 },
                 {
@@ -176,7 +187,7 @@ class Table extends Component {
                     // nhl: this.state.patNHL,
                     nhl: 262,
                     mlb: this.state.patMLB,
-                    bonus: 200,
+                    bonus: this.state.patBonus,
                     total: this.state.patTotal
                 },
                 {
@@ -188,7 +199,7 @@ class Table extends Component {
                     // nhl: this.state.jamesNHL,
                     nhl: 331, 
                     mlb: this.state.jamesMLB,
-                    bonus: 200,
+                    bonus: this.state.jamesBonus,
                     total: this.state.jamesTotal
                 },
                 {
@@ -200,7 +211,7 @@ class Table extends Component {
                     // nhl: this.state.gooseNHL,
                     nhl: 223,
                     mlb: this.state.gooseMLB,
-                    bonus: 220,
+                    bonus: this.state.gooseBonus,
                     total: this.state.gooseTotal
                 },
                 {
@@ -212,7 +223,7 @@ class Table extends Component {
                     // nhl: this.state.neptuneNHL,
                     nhl: 312,
                     mlb: this.state.neptuneMLB,
-                    bonus: 200,
+                    bonus: this.state.neptuneBonus,
                     total: this.state.neptuneTotal
                 },
                 {
@@ -224,7 +235,7 @@ class Table extends Component {
                     // nhl: this.state.joeNHL,
                     nhl: 282,
                     mlb: this.state.joeMLB,
-                    bonus: 190,
+                    bonus: this.state.joeBonus,
                     total: this.state.joeTotal
                 },
                 {
@@ -236,7 +247,7 @@ class Table extends Component {
                     // nhl: this.state.eresNHL,
                     nhl: 284,
                     mlb: this.state.eresMLB,
-                    bonus: 200,
+                    bonus: this.state.eresBonus,
                     total: this.state.benTotal
                 },
                 {
@@ -248,7 +259,7 @@ class Table extends Component {
                     // nhl: this.state.djNHL,
                     nhl: 270,
                     mlb: this.state.djMLB,
-                    bonus: 200,
+                    bonus: this.state.djBonus,
                     total: this.state.djTotal
                 },
                 {
@@ -260,7 +271,7 @@ class Table extends Component {
                     // nhl: this.state.steidsNHL,
                     nhl: 315,
                     mlb: this.state.steidsMLB,
-                    bonus: 190,
+                    bonus: this.state.steidsBonus,
                     total: this.state.steidsTotal
                 },
                 {
@@ -272,7 +283,7 @@ class Table extends Component {
                     // nhl: this.state.alNHL,
                     nhl: 296,
                     mlb: this.state.alMLB,
-                    bonus: 200,
+                    bonus: this.state.alBonus,
                     total: this.state.alTotal
                 },
 
@@ -320,7 +331,7 @@ class Table extends Component {
             parseInt((this.state.tomEPL)) +
             parseInt((this.state.tomMLB)) +
             // Bonus
-            200 -
+            parseInt((this.state.tomBonus)) - 
             // Negative bonus for losing NHL
             30
             this.setState({ tomTotal: tomTotalPoints });
@@ -336,7 +347,7 @@ class Table extends Component {
             parseInt((this.state.patEPL)) +
             parseInt((this.state.patMLB)) +
             // Bonus
-            200 -
+            parseInt((this.state.patBonus)) - 
             // Bonus for losing PGA
             30
         this.setState({ patTotal: patTotalPoints });
@@ -350,8 +361,9 @@ class Table extends Component {
             parseInt((this.state.jamesNFL)) +
             parseInt((this.state.jamesEPL)) +
             parseInt((this.state.jamesMLB)) +
+            parseInt((this.state.jamesBonus))
             // Bonus
-            200 - 
+            - 
             // Negative Bonus for losing NBA
             30 + 
             // Positive bonus for winning NHL
@@ -370,7 +382,7 @@ class Table extends Component {
             parseInt((this.state.neptuneEPL)) +
             parseInt((this.state.neptuneMLB)) +
             // Bonus
-            200
+            parseInt((this.state.neptuneBonus))
         this.setState({ neptuneTotal: neptuneTotalPoints });
 
         // Totals for DJ
@@ -383,7 +395,7 @@ class Table extends Component {
             parseInt((this.state.djEPL)) +
             parseInt((this.state.djMLB)) +
             // Bonus
-            200
+            parseInt((this.state.djBonus))
         this.setState({ djTotal: djTotalPoints });
 
         // Totals for Goose 
@@ -396,7 +408,7 @@ class Table extends Component {
             parseInt((this.state.gooseEPL)) +
             parseInt((this.state.gooseMLB)) +
             // Bonus
-            200
+            parseInt((this.state.gooseBonus)) 
         this.setState({ gooseTotal: gooseTotalPoints });
 
         // Totals for Al
@@ -408,8 +420,9 @@ class Table extends Component {
             parseInt((this.state.alNFL)) +
             parseInt((this.state.alEPL)) +
             parseInt((this.state.alMLB)) +
+            parseInt((this.state.alBonus))
             // Bonus
-            200 +
+            +
             // bonus for winning EPL 
             30 +
             // bonus for PGA
@@ -427,8 +440,9 @@ class Table extends Component {
             parseInt((this.state.joeNFL)) +
             parseInt((this.state.joeEPL)) +
             parseInt((this.state.joeMLB)) +
+            parseInt((this.state.joeBonus))
             // Bonus
-            200 -
+            -
             // Negative Bonus for losing EPL
             30 +
             // Positive Bonus for winning NBA
@@ -444,8 +458,8 @@ class Table extends Component {
             parseInt((this.state.steidsNFL)) +
             parseInt((this.state.steidsEPL)) +
             parseInt((this.state.steidsMLB)) +
+            parseInt((this.state.steidsBonus))
             // Bonus
-            200
         this.setState({ steidsTotal: steidsTotalPoints });
 
         // Totals for Ben - now Mark Eres 
@@ -457,8 +471,8 @@ class Table extends Component {
             parseInt((this.state.eresNFL)) +
             parseInt((this.state.eresEPL)) +
             parseInt((this.state.eresMLB)) +
+            parseInt((this.state.eresBonus))
             // Bonus
-            200
         this.setState({ benTotal: benTotalPoints });
     };
 
