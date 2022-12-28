@@ -33,17 +33,17 @@ class james extends React.Component {
         lowry: "",
         totalGolf: "",
         // MLB Here
-        astros: "",
-        cardinals: "",
-        phillies: "",
-        totalMLB: ""
+        astros: 106,
+        cardinals: 93,
+        phillies: 87,
+        totalMLB: 286
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
-        this.getScoresMLB();
+        // this.getScoresMLB();
         this.getScoresNFL();
     }
 

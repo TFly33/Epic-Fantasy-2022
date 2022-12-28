@@ -32,17 +32,17 @@ class joe extends React.Component {
         vanRooyen: "",
         totalGolf: "",
         // MLB Here
-        padres: "",
-        mariners: "",
-        royals: "",
-        totalMLB: ""
+        padres: 89,
+        mariners: 90,
+        royals: 65,
+        totalMLB: 244
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
-        this.getScoresMLB();
+        // this.getScoresMLB();
         this.getScoresNFL();
     }
 

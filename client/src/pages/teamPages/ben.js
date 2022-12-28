@@ -35,17 +35,17 @@ class ben extends React.Component {
         cantlay: "",
         totalGolf: "",
         // MLB Here
-        yankees: "",
-        giants: "",
-        redSox: "",
-        totalMLB: ""
+        yankees: 99,
+        giants: 81,
+        redSox: 78,
+        totalMLB: 258
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
-        this.getScoresMLB();
+        // this.getScoresMLB();
         this.getScoresNFL();
     }
 

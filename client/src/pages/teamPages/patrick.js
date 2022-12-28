@@ -33,17 +33,17 @@ class patrick extends React.Component {
         wolff: "",
         totalGolf: "",
         // MLB Here
-        jays: "",
-        reds: "",
-        guardians: "",
-        totalMLB: ""
+        jays: 86,
+        reds: 62,
+        guardians: 92,
+        totalMLB: 240
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
-        this.getScoresMLB();
+        // this.getScoresMLB();
         this.getScoresNFL();
     }
 

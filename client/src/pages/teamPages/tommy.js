@@ -35,9 +35,9 @@ class tommy extends React.Component {
         tringale: "",
         totalGolf: "",
         // MLB Here
-        rays: "",
-        whiteSox: "",
-        braves: "",
+        rays: 86,
+        whiteSox: 81,
+        braves: 101,
         totalMLB: "",
     }
 
@@ -46,7 +46,7 @@ class tommy extends React.Component {
         this.getScoresNHL();
         this.getScoresEPL();
         this.getScoresPGA();
-        this.getScoresMLB();
+        // this.getScoresMLB();
         this.getScoresNFL();
     }
 

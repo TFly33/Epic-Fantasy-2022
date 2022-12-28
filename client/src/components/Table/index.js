@@ -72,16 +72,16 @@ class Table extends Component {
         goosePGA: "",
         // MLB
         // PGA Here:
-        alMLB: "",
-        tomMLB: "",
-        patMLB: "",
-        steidsMLB: "",
-        neptuneMLB: "",
-        jamesMLB: "",
-        joeMLB: "",
-        djMLB: "",
-        eresMLB: "",
-        gooseMLB: "",
+        alMLB: 195,
+        tomMLB: 268,
+        patMLB: 240,
+        steidsMLB: 240,
+        neptuneMLB: 204,
+        jamesMLB: 286,
+        joeMLB: 244,
+        djMLB: 237,
+        eresMLB: 258,
+        gooseMLB: 252,
         // Total Points here. 
         tomTotal: "",
         patTotal: "",
@@ -312,7 +312,7 @@ class Table extends Component {
         // running NHL here
         this.getScoresNHL();
         // MLB Here 
-        this.getScoresMLB();
+        // this.getScoresMLB();
         this.getScoresPGA();
 
     };

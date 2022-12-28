@@ -33,17 +33,17 @@ class steids extends React.Component {
         kim: "",
         totalGolf: "",
         // MLB Here
-        dodgers: "",
-        nationals: "",
-        dBacks: "",
-        totalMLB: ""
+        dodgers: 111,
+        nationals: 55,
+        dBacks: 74,
+        totalMLB: 240
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
-        this.getScoresMLB();
+        // this.getScoresMLB();
         this.getScoresNFL();
     };
 

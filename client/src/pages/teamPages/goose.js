@@ -32,10 +32,10 @@ class goose extends React.Component {
         grillo: "",
         totalGolf: "",
         // MLB Here
-        angels: "",
-        mets: "",
-        twins: "",
-        totalMLB: ""
+        angels: 73,
+        mets: 101,
+        twins: 78,
+        totalMLB: 252
 
     }
     componentDidMount = () => {
@@ -43,7 +43,7 @@ class goose extends React.Component {
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
-        this.getScoresMLB();
+        // this.getScoresMLB();
         this.getScoresNFL();
     }
 

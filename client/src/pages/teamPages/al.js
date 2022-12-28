@@ -33,10 +33,10 @@ class al extends React.Component {
         gooch: "",
         totalGolf: "",
         // MLB Here
-        athletics: "",
-        tigers: "",
-        marlins: "",
-        totalMLB: ""
+        athletics: 60,
+        tigers: 66,
+        marlins: 69,
+        totalMLB: 195
     }
 
     componentDidMount = () => {
@@ -44,7 +44,7 @@ class al extends React.Component {
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
-        this.getScoresMLB();
+        // this.getScoresMLB();
         this.getScoresNFL();
     }
 

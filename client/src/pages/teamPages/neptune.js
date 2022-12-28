@@ -34,17 +34,17 @@ class neptune extends React.Component {
         fleetwood: "",
         totalGolf: "",
         // MLB Here
-        cubs: "",
-        rangers: "",
-        pirates: "",
-        totalMLB: ""
+        cubs: 74,
+        rangers: 68,
+        pirates: 62,
+        totalMLB: 204
     }
     componentDidMount = () => {
         this.getScoresNBA();
         this.getScoresEPL();
         this.getScoresNHL();
         this.getScoresPGA();
-        this.getScoresMLB();
+        // this.getScoresMLB();
         this.getScoresNFL();
     };
 

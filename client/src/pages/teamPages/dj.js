@@ -33,10 +33,10 @@ class dj extends React.Component {
         garcia: "",
         totalGolf: "",
         // MLB Here
-        brewers: "",
-        rockies: "",
-        orioles: "",
-        totalMLB: ""
+        brewers: 86,
+        rockies: 68,
+        orioles: 83,
+        totalMLB: 237
     }
 
     componentDidMount = () => {
