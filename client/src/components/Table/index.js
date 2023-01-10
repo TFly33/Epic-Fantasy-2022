@@ -98,8 +98,8 @@ class Table extends Component {
         gooseBonus: 220,
         joeBonus: 190,
         steidsBonus: 190,
-        neptuneBonus: 200,
-        alBonus: 200,
+        neptuneBonus: 180,
+        alBonus: 220,
         eresBonus: 200,
         djBonus: 200,
         jamesBonus: 200
